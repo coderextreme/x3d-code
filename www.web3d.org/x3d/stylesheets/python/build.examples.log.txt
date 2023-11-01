@@ -1,0 +1,2275 @@
+ant -f C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\python -DXmaxwarns=1000 build.examples
+build.package.x3d.py:
+X3D stylesheets.BuildX3dPythonPackageFromX3duom.saxon:
+Following output is for X3D version 4.0 in X3dPackageDirectory=python
+Result: created files C:\x3d-code\www.web3d.org\x3d\stylesheets/python/x3d.py and __init__.py
+PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+BuildX3dPythonPackageFromX3duom.saxon complete.
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+test.x3d.py:
+Loading active PYTHONPATH x3d.py package in python to check for correctness...
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+build:
+versions:
+X3D stylesheets.versions:
+  ANT_HOME=C:\apache-ant-1.10.12
+ JAVA_HOME=C:\Program Files\Java\openjdk\jdk-19.0.2
+PYTHONHOME=${env.PYTHONHOME}
+PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+Check CLASSPATH for X3DJSAIL X3DJSAIL.4.0.full.jar or X3DJSAIL.4.0.classes.jar
+CLASSPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar;
+javac source/target      $java.source=16
+                         $java.target=16
+Java/JVM version    $ant.java.version=19
+Java/JVM detail version $java.version=19.0.2
+Saxon directory            $saxon.dir=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib
+Saxon jar                  $saxon.jar=saxon-he-11.4.jar
+Ant version              $ant.version=Apache Ant(TM) version 1.10.12 compiled on October 13 2021
+
+ant -version
+Apache Ant(TM) version 1.10.12 compiled on October 13 2021
+java -version
+openjdk version "19.0.2" 2023-01-17
+OpenJDK Runtime Environment (build 19.0.2+7-44)
+OpenJDK 64-Bit Server VM (build 19.0.2+7-44, mixed mode, sharing)
+python -version
+Python 3.11.1
+saxon -? help
+SaxonJ-HE 11.4 from Saxonica
+Usage: see http://www.saxonica.com/documentation/index.html#!using-xsl/commandline
+Format: net.sf.saxon.Transform options params
+Options available: -? -a -catalog -config -cr -diag -dtd -ea -expand -explain -export -ext -im -init -it -jit -json -l -lib -license -nogo -now -ns -o -opt -or -outval -p -quit -r -relocate -repeat -s -sa -scmin -strip -t -T -target -TB -threads -TJ -Tlevel -Tout -TP -traceout -tree -u -val -versionmsg -warnings -x -xi -xmlversion -xsd -xsdversion -xsiloc -xsl -y --?
+Use -XYZ:? for details of option XYZ
+Params: 
+  param=value           Set stylesheet string parameter
+  +param=filename       Set stylesheet document parameter
+  ?param=expression     Set stylesheet parameter using XPath
+  !param=value          Set serialization parameter
+Check for node.js installation from https://nodejs.org
+v18.13.0
+X3DJSAIL.4.0.full.jar -version
+X3DJSAIL version date: 29 January 2023
+Configuration settings:  https://savage.nps.edu/Savage/developers.html
+===========================================
+examples:
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+test.x3d.py:
+Loading active PYTHONPATH x3d.py package in python to check for correctness...
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+===========================================
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+examples.SmokeTests:
+Run PythonX3dSmokeTests.py in python using local build of Python x3d package
+  python examples/PythonX3dSmokeTests.py
+===================
+Importing local development copy of X3D package:
+  from x3d import *
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+===================
+PythonX3dSmokeTests:
+
+- - - - - - - - - -
+Access types: initializeOnly inputOutput inputOnly outputOnly
+- - - - - - - - - -
+SFBool.NAME()         = SFBool
+SFBool.DEFAULT_VALUE()= False
+SFBool.ARRAY_TYPE()   = False
+SFBool.TUPLE_SIZE()   = 1
+SFBool.REGEX_PYTHON() = \s*(true|false|True|False)\s*
+SFBool.REGEX_XML()    = \s*(true|false)\s*
+SFBool.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFBool
+
+SFBool X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFBool fixBoolean(test)= False type=<class 'bool'>
+SFBool test       = False
+SFBool value type = <class 'bool'>
+isinstance SFBool = True
+SFBool test.value = False
+SFBool test.XML() = false
+SFBool test.VRML()= FALSE
+SFBool test.JSON()= false
+SFBool regex match= <re.Match object; span=(0, 5), match='False'>
+SFBool     isValidSFBool(test)=True
+SFBool assertValidSFBool(test) # execution continues if no assertion failure occurs
+
+MFBool.NAME()         = MFBool
+MFBool.DEFAULT_VALUE()= []
+MFBool.ARRAY_TYPE()   = True
+MFBool.TUPLE_SIZE()   = 1
+MFBool.REGEX_PYTHON() = \s*\[?\s*((true|false|True|False)\s*,?\s*)*\]?\s*
+MFBool.REGEX_XML()    = \s*((true|false)\s*,?\s*)*
+MFBool.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFBool
+
+MFBool X3DTypeError exception correctly thrown when test.value = 'plain text'
+MFBool fixBoolean(test)= [True, False, True, False, True, True, False] type=<class 'list'>
+MFBool test       = [True, False, True, False, True, True, False]
+MFBool value type = <class 'list'>
+isinstance MFBool = True
+MFBool test.value = [True, False, True, False, True, True, False]
+MFBool test.XML() = true false true false true true false
+MFBool test.VRML()= TRUE FALSE TRUE FALSE TRUE TRUE FALSE
+MFBool test.JSON()= true false true false true true false
+MFBool regex match= <re.Match object; span=(0, 45), match='[True, False, True, False, True, True, False]'>
+MFBool     isValidMFBool(test)=True
+MFBool assertValidMFBool(test) # execution continues if no assertion failure occurs
+MFBool bool(test)=True, len(test)=7
+MFBool test downcast legal singleton: SFBool(MFBool([True]))=True, type=<class 'x3d.SFBool'>
+MFBool test   upcast legal SF value:  MFBool(SFBool(False))=[False], type=<class 'x3d.MFBool'>
+- - - - - - - - - -
+SFInt32.NAME()         = SFInt32
+SFInt32.DEFAULT_VALUE()= 0
+SFInt32.ARRAY_TYPE()   = False
+SFInt32.TUPLE_SIZE()   = 1
+SFInt32.REGEX_PYTHON() = \s*[+-]?(0|[1-9][0-9]*)([Ee][+-]?[0-9]+)?\s*
+SFInt32.REGEX_XML()    = \s*[+-]?(0|[1-9][0-9]*)([Ee][+-]?[0-9]+)?\s*
+SFInt32.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFInt32
+*** string value provided, value=111, int(value)=111
+SFInt32 X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFInt32 isZeroToOne        (-1)  =False, isZeroToOne        (0)  =True,  isZeroToOne        (+1) =True
+SFInt32 isNonNegative      (-1)  =False, isNonNegative      (0)  =True,  isNonNegative      (+1) =True
+SFInt32 isPositive         (-1)  =False, isPositive         (0)  =False, isPositive         (+1) =True
+SFInt32 isGreaterThan      (-1,0)=False, isGreaterThan      (0,0)=False, isGreaterThan      (1,0)=True
+SFInt32 isGreaterThanEquals(-1,0)=False, isGreaterThanEquals(0,0)=True,  isGreaterThanEquals(1,0)=True
+SFInt32 isLessThan         (-1,0)=True,  isLessThan         (0,0)=False, isLessThan         (1,0)=False
+SFInt32 isLessThanEquals   (-1,0)=True,  isLessThanEquals   (0,0)=True,  isLessThanEquals   (1,0)=False
+SFInt32 test       = 111
+SFInt32 value type = <class 'int'>
+isinstance SFInt32 = True
+SFInt32 test.value = 111
+SFInt32 test.XML() = 111
+SFInt32 test.VRML()= 111
+SFInt32 test.JSON()= 111
+SFInt32 regex match= <re.Match object; span=(0, 3), match='111'>
+SFInt32     isValidSFInt32(test)=True
+SFInt32 assertValidSFInt32(test) # execution continues if no assertion failure occurs
+
+MFInt32.NAME()         = MFInt32
+MFInt32.DEFAULT_VALUE()= []
+MFInt32.ARRAY_TYPE()   = True
+MFInt32.TUPLE_SIZE()   = 1
+MFInt32.REGEX_PYTHON() = \s*\[?\s*([+-]?(0|[1-9][0-9]*)([Ee][+-]?[0-9]+)?\s*,?\s*)*\]?\s*
+MFInt32.REGEX_XML()    = \s*([+-]?(0|[1-9][0-9]*)([Ee][+-]?[0-9]+)?\s*,?\s*)*
+MFInt32.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFInt32
+MFInt32 ValueError exception correctly thrown when test.value = 'plain text'
+MFInt32 test       = [11, 22, 33, 44, -55, -66, 77, -88, 99]
+MFInt32 value type = <class 'list'>
+isinstance MFInt32 = True
+MFInt32 test.value = [11, 22, 33, 44, -55, -66, 77, -88, 99]
+MFInt32 test.XML() = 11 22 33 44 -55 -66 77 -88 99
+MFInt32 test.VRML()= [11 22 33 44 -55 -66 77 -88 99]
+MFInt32 test.JSON()= 11 22 33 44 -55 -66 77 -88 99
+MFInt32 regex match= <re.Match object; span=(0, 39), match='[11, 22, 33, 44, -55, -66, 77, -88, 99]'>
+MFInt32     isValidMFInt32(test)=True
+MFInt32 assertValidMFInt32(test) # execution continues if no assertion failure occurs
+MFInt32 bool(test)=True, len(test)=9
+downcasting by dereferencing simple-list value=[1], type=<class 'x3d.MFInt32'> as 1
+SFInt32 test downcast legal singleton: SFInt32(MFInt32([1]))=1, type=<class 'x3d.SFInt32'>
+MFInt32 test   upcast legal SF value:  MFInt32(SFInt32(2))=2, type=<class 'x3d.MFInt32'>
+- - - - - - - - - -
+SFFloat.NAME()         = SFFloat
+SFFloat.DEFAULT_VALUE()= 0.0
+SFFloat.ARRAY_TYPE()   = False
+SFFloat.TUPLE_SIZE()   = 1
+SFFloat.REGEX_PYTHON() = \s*([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFFloat.REGEX_XML()    = \s*([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFFloat.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFFloat
+*** string value provided, value=44, float(value)=44.0
+SFFloat X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFFloat test       = 44.0
+SFFloat value type = <class 'float'>
+isinstance SFFloat = True
+SFFloat test.value = 44.0
+SFFloat test.XML() = 44.0
+SFFloat test.VRML()= 44.0
+SFFloat regex match= <re.Match object; span=(0, 4), match='44.0'>
+SFFloat     isValidSFFloat(test)=True
+SFFloat assertValidSFFloat(test) # execution continues if no assertion failure occurs
+
+MFFloat.NAME()         = MFFloat
+MFFloat.DEFAULT_VALUE()= []
+MFFloat.ARRAY_TYPE()   = True
+MFFloat.TUPLE_SIZE()   = 1
+MFFloat.REGEX_PYTHON() = \s*\[?\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\]?\s*
+MFFloat.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFFloat.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFFloat
+MFFloat ValueError exception correctly thrown when test.value = 'plain text'
+MFFloat test       = [0, 1, 2]
+MFFloat value type = <class 'list'>
+isinstance MFFloat = True
+MFFloat test.value = [0, 1, 2]
+MFFloat test.XML() = 0 1 2
+MFFloat test.VRML()= [0 1 2]
+MFFloat test.JSON()= 0 1 2
+MFFloat regex match= <re.Match object; span=(0, 9), match='[0, 1, 2]'>
+MFFloat     isValidMFFloat(test)=True
+MFFloat assertValidMFFloat(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFDouble.NAME()         = SFDouble
+SFDouble.DEFAULT_VALUE()= 0.0
+SFDouble.ARRAY_TYPE()   = False
+SFDouble.TUPLE_SIZE()   = 1
+SFDouble.REGEX_PYTHON() = \s*([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFDouble.REGEX_XML()    = \s*([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFDouble.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFDouble
+*** string value provided, value=66, float(value)=66.0
+SFDouble X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFDouble test       = 66.0
+SFDouble value type = <class 'float'>
+isinstance SFDouble = True
+SFDouble test.value = 66.0
+SFDouble test.XML() = 66.0
+SFDouble test.VRML()= 66.0
+SFDouble test.JSON()= 66.0
+SFDouble regex match= <re.Match object; span=(0, 4), match='66.0'>
+SFDouble     isValidSFDouble(test)=True
+SFDouble assertValidSFDouble(test) # execution continues if no assertion failure occurs
+
+MFDouble.NAME()         = MFDouble
+MFDouble.DEFAULT_VALUE()= []
+MFDouble.ARRAY_TYPE()   = True
+MFDouble.TUPLE_SIZE()   = 1
+MFDouble.REGEX_PYTHON() = \s*\[?\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\]?\s*
+MFDouble.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFDouble.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFDouble
+MFDouble ValueError exception correctly thrown when test.value = 'plain text'
+MFDouble test       = [0, 1, 2]
+MFDouble value type = <class 'list'>
+isinstance MFDouble = True
+MFDouble test.value = [0, 1, 2]
+MFDouble test.XML() = 0 1 2
+MFDouble test.VRML()= [0 1 2]
+MFDouble test.JSON()= 0 1 2
+MFDouble regex match= <re.Match object; span=(0, 9), match='[0, 1, 2]'>
+MFDouble     isValidMFDouble(test)=True
+MFDouble assertValidMFDouble(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFString.NAME()         = SFString
+SFString.DEFAULT_VALUE()= ""
+SFString.ARRAY_TYPE()   = False
+SFString.TUPLE_SIZE()   = 1
+SFString.REGEX_PYTHON() = (\s|\S)*
+SFString.REGEX_XML()    = (\s|\S)*
+SFString.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFString
+SFString test       = 'test setter'
+SFString value type = <class 'str'>
+isinstance SFString = True
+SFString test.value = test setter
+SFString test.XML() = test setter
+SFString test.VRML()= "test setter"
+SFString test.JSON()= test setter
+SFString regex match= <re.Match object; span=(0, 11), match='test setter'>
+SFString     isValidSFString(test)=True
+SFString assertValidSFString(test) # execution continues if no assertion failure occurs
+
+MFString.NAME()         = MFString
+MFString.DEFAULT_VALUE()= []
+MFString.ARRAY_TYPE()   = True
+MFString.TUPLE_SIZE()   = 1
+MFString.REGEX_PYTHON() = \s*\[?(\s|\S)*\]?\s*
+MFString.REGEX_XML()    = (\s|\S)*
+MFString.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFString
+MFString test       = [test, constructor, with'apostrophe]
+MFString value type = <class 'list'>
+isinstance MFString = True
+MFString test.value = ['test', 'constructor', "with'apostrophe"]
+MFString test.XML() = "test" "constructor" "with&apos;apostrophe"
+MFString test.VRML()= ["test" "constructor" "with'apostrophe"]
+MFString test.JSON()= "test" "constructor" "with'apostrophe"
+MFString regex match= <re.Match object; span=(0, 42), match='[\'test\', \'constructor\', "with\'apostrophe"]'>
+MFString     isValidMFString(test)=True
+MFString assertValidMFString(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFVec2f.NAME()         = SFVec2f
+SFVec2f.DEFAULT_VALUE()= (0.0, 0.0)
+SFVec2f.ARRAY_TYPE()   = False
+SFVec2f.TUPLE_SIZE()   = 2
+SFVec2f.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFVec2f.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFVec2f.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFVec2f
+SFVec2f X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFVec2f test       = (1, 2)
+SFVec2f value type = <class 'tuple'>
+isinstance SFVec2f = True
+SFVec2f test.value = (1, 2)
+SFVec2f test.XML() = 1 2
+SFVec2f test.VRML()= 1 2
+SFVec2f test.JSON()= 1 2
+SFVec2f regex match= <re.Match object; span=(0, 6), match='(1, 2)'>
+SFVec2f     isValidSFVec2f(test)=True
+SFVec2f assertValidSFVec2f(test) # execution continues if no assertion failure occurs
+
+MFVec2f.NAME()         = MFVec2f
+MFVec2f.DEFAULT_VALUE()= []
+MFVec2f.ARRAY_TYPE()   = True
+MFVec2f.TUPLE_SIZE()   = 2
+MFVec2f.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFVec2f.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFVec2f.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFVec2f
+MFVec2f ValueError exception correctly thrown when test.value = 'plain text'
+MFVec2f test       = (1, -2)
+MFVec2f value type = <class 'tuple'>
+isinstance MFVec2f = True
+MFVec2f test.value = (1, -2)
+MFVec2f test.XML() = 1 -2
+MFVec2f test.VRML()= [1 -2]
+MFVec2f test.JSON()= 1 -2
+MFVec2f regex match= <re.Match object; span=(0, 7), match='(1, -2)'>
+MFVec2f     isValidMFVec2f(test)=True
+MFVec2f assertValidMFVec2f(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFVec2d.NAME()         = SFVec2d
+SFVec2d.DEFAULT_VALUE()= (0.0, 0.0)
+SFVec2d.ARRAY_TYPE()   = False
+SFVec2d.TUPLE_SIZE()   = 2
+SFVec2d.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFVec2d.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFVec2d.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFVec2d
+SFVec2d X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFVec2d test       = (1, 2)
+SFVec2d value type = <class 'tuple'>
+isinstance SFVec2d = True
+SFVec2d test.value = (1, 2)
+SFVec2d test.XML() = 1 2
+SFVec2d test.VRML()= 1 2
+SFVec2d test.JSON()= 1 2
+SFVec2d regex match= <re.Match object; span=(0, 6), match='(1, 2)'>
+SFVec2d     isValidSFVec2d(test)=True
+SFVec2d assertValidSFVec2d(test) # execution continues if no assertion failure occurs
+
+MFVec2d.NAME()         = MFVec2d
+MFVec2d.DEFAULT_VALUE()= []
+MFVec2d.ARRAY_TYPE()   = True
+MFVec2d.TUPLE_SIZE()   = 2
+MFVec2d.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFVec2d.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){1}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFVec2d.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFVec2d
+MFVec2d ValueError exception correctly thrown when test.value = 'plain text'
+MFVec2d test       = ((0, 1), (2, 3))
+MFVec2d value type = <class 'tuple'>
+isinstance MFVec2d = True
+MFVec2d test.value = ((0, 1), (2, 3))
+MFVec2d test.XML() = 0 1 2 3
+MFVec2d test.VRML()= [0 1 2 3]
+MFVec2d test.JSON()= 0 1 2 3
+MFVec2d regex match= <re.Match object; span=(0, 16), match='((0, 1), (2, 3))'>
+MFVec2d     isValidMFVec2d(test)=True
+MFVec2d assertValidMFVec2d(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFVec3f.NAME()         = SFVec3f
+SFVec3f.DEFAULT_VALUE()= (0.0, 0.0, 0.0)
+SFVec3f.ARRAY_TYPE()   = False
+SFVec3f.TUPLE_SIZE()   = 3
+SFVec3f.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFVec3f.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFVec3f.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFVec3f
+SFVec3f X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFVec3f test       = (1, 2, 3)
+SFVec3f value type = <class 'tuple'>
+isinstance SFVec3f = True
+SFVec3f test.value = (1, 2, 3)
+SFVec3f test.XML() = 1 2 3
+SFVec3f test.VRML()= 1 2 3
+SFVec3f test.JSON()= 1 2 3
+SFVec3f regex match= <re.Match object; span=(0, 9), match='(1, 2, 3)'>
+SFVec3f     isValidSFVec3f(test)=True
+SFVec3f assertValidSFVec3f(test) # execution continues if no assertion failure occurs
+
+MFVec3f.NAME()         = MFVec3f
+MFVec3f.DEFAULT_VALUE()= []
+MFVec3f.ARRAY_TYPE()   = True
+MFVec3f.TUPLE_SIZE()   = 3
+MFVec3f.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFVec3f.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFVec3f.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFVec3f
+MFVec3f ValueError exception correctly thrown when test.value = 'plain text'
+MFVec3f test       = [(0, 1, 2), (3, 4, 5)]
+MFVec3f value type = <class 'list'>
+isinstance MFVec3f = True
+MFVec3f test.value = [(0, 1, 2), (3, 4, 5)]
+MFVec3f test.XML() = 0 1 2 3 4 5
+MFVec3f test.VRML()= [0 1 2 3 4 5]
+MFVec3f test.JSON()= 0 1 2 3 4 5
+MFVec3f regex match= <re.Match object; span=(0, 22), match='[(0, 1, 2), (3, 4, 5)]'>
+MFVec3f     isValidMFVec3f(test)=True
+MFVec3f assertValidMFVec3f(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFVec3d.NAME()         = SFVec3d
+SFVec3d.DEFAULT_VALUE()= (0.0, 0.0, 0.0)
+SFVec3d.ARRAY_TYPE()   = False
+SFVec3d.TUPLE_SIZE()   = 3
+SFVec3d.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFVec3d.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFVec3d.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFVec3d
+SFVec3d X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFVec3d test       = (1, 2, 3)
+SFVec3d value type = <class 'tuple'>
+isinstance SFVec3d = True
+SFVec3d test.value = (1, 2, 3)
+SFVec3d test.XML() = 1 2 3
+SFVec3d test.VRML()= 1 2 3
+SFVec3d test.JSON()= 1 2 3
+SFVec3d regex match= <re.Match object; span=(0, 9), match='(1, 2, 3)'>
+SFVec3d     isValidSFVec3d(test)=True
+SFVec3d assertValidSFVec3d(test) # execution continues if no assertion failure occurs
+
+MFVec3d.NAME()         = MFVec3d
+MFVec3d.DEFAULT_VALUE()= []
+MFVec3d.ARRAY_TYPE()   = True
+MFVec3d.TUPLE_SIZE()   = 3
+MFVec3d.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFVec3d.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){2}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFVec3d.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFVec3d
+MFVec3d ValueError exception correctly thrown when test.value = 'plain text'
+MFVec3d test       = [(0, 1, 2), (3, 4, 5)]
+MFVec3d value type = <class 'list'>
+isinstance MFVec3d = True
+MFVec3d test.value = [(0, 1, 2), (3, 4, 5)]
+MFVec3d test.XML() = 0 1 2 3 4 5
+MFVec3d test.VRML()= [0 1 2 3 4 5]
+MFVec3d test.JSON()= 0 1 2 3 4 5
+MFVec3d regex match= <re.Match object; span=(0, 22), match='[(0, 1, 2), (3, 4, 5)]'>
+MFVec3d     isValidMFVec3d(test)=True
+MFVec3d assertValidMFVec3d(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFVec4f.NAME()         = SFVec4f
+SFVec4f.DEFAULT_VALUE()= (0.0, 0.0, 0.0, 1.0)
+SFVec4f.ARRAY_TYPE()   = False
+SFVec4f.TUPLE_SIZE()   = 4
+SFVec4f.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFVec4f.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFVec4f.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFVec4f
+SFVec4f X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFVec4f test       = (1, 2, 3, 4)
+SFVec4f value type = <class 'tuple'>
+isinstance SFVec4f = True
+SFVec4f test.value = (1, 2, 3, 4)
+SFVec4f test.XML() = 1 2 3 4
+SFVec4f test.VRML()= 1 2 3 4
+SFVec4f test.JSON()= 1 2 3 4
+SFVec4f regex match= <re.Match object; span=(0, 12), match='(1, 2, 3, 4)'>
+SFVec4f     isValidSFVec4f(test)=True
+SFVec4f assertValidSFVec4f(test) # execution continues if no assertion failure occurs
+
+MFVec4f.NAME()         = MFVec4f
+MFVec4f.DEFAULT_VALUE()= []
+MFVec4f.ARRAY_TYPE()   = True
+MFVec4f.TUPLE_SIZE()   = 4
+MFVec4f.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFVec4f.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFVec4f.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFVec4f
+MFVec4f ValueError exception correctly thrown when test.value = 'plain text'
+MFVec4f test       = [(0, 1, 2, 3), (4, 5, 6, 7)]
+MFVec4f value type = <class 'list'>
+isinstance MFVec4f = True
+MFVec4f test.value = [(0, 1, 2, 3), (4, 5, 6, 7)]
+MFVec4f test.XML() = 0 1 2 3 4 5 6 7
+MFVec4f test.VRML()= [0 1 2 3 4 5 6 7]
+MFVec4f test.JSON()= 0 1 2 3 4 5 6 7
+MFVec4f regex match= <re.Match object; span=(0, 28), match='[(0, 1, 2, 3), (4, 5, 6, 7)]'>
+MFVec4f     isValidMFVec4f(test)=True
+MFVec4f assertValidMFVec4f(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFVec4d.NAME()         = SFVec4d
+SFVec4d.DEFAULT_VALUE()= (0.0, 0.0, 0.0, 1.0)
+SFVec4d.ARRAY_TYPE()   = False
+SFVec4d.TUPLE_SIZE()   = 4
+SFVec4d.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFVec4d.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFVec4d.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFVec4d
+SFVec4d X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFVec4d test       = (1, 2, 3, 4)
+SFVec4d value type = <class 'tuple'>
+isinstance SFVec4d = True
+SFVec4d test.value = (1, 2, 3, 4)
+SFVec4d test.XML() = 1 2 3 4
+SFVec4d test.VRML()= 1 2 3 4
+SFVec4d test.JSON()= 1 2 3 4
+SFVec4d regex match= <re.Match object; span=(0, 12), match='(1, 2, 3, 4)'>
+SFVec4d     isValidSFVec4d(test)=True
+SFVec4d assertValidSFVec4d(test) # execution continues if no assertion failure occurs
+
+MFVec4d.NAME()         = MFVec4d
+MFVec4d.DEFAULT_VALUE()= []
+MFVec4d.ARRAY_TYPE()   = True
+MFVec4d.TUPLE_SIZE()   = 4
+MFVec4d.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFVec4d.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFVec4d.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFVec4d
+MFVec4d ValueError exception correctly thrown when test.value = 'plain text'
+MFVec4d test       = [(0, 1, 2, 3), (4, 5, 6, 7)]
+MFVec4d value type = <class 'list'>
+isinstance MFVec4d = True
+MFVec4d test.value = [(0, 1, 2, 3), (4, 5, 6, 7)]
+MFVec4d test.XML() = 0 1 2 3 4 5 6 7
+MFVec4d test.VRML()= [0 1 2 3 4 5 6 7]
+MFVec4d test.JSON()= 0 1 2 3 4 5 6 7
+MFVec4d regex match= <re.Match object; span=(0, 28), match='[(0, 1, 2, 3), (4, 5, 6, 7)]'>
+MFVec4d     isValidMFVec4d(test)=True
+MFVec4d assertValidMFVec4d(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFColor.NAME()         = SFColor
+SFColor.DEFAULT_VALUE()= (0, 0, 0)
+SFColor.ARRAY_TYPE()   = False
+SFColor.TUPLE_SIZE()   = 3
+SFColor.REGEX_PYTHON() = \s*\(\s*(([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*\,?\s*){2}([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFColor.REGEX_XML()    = \s*(([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s+){2}([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*
+SFColor.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFColor
+SFColor isZeroToOne((1, 1, 1))=True
+SFColor isZeroToOne((1, 1, 1))=True
+SFColor X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFColor test       = (0, 0.5, 1)
+SFColor value type = <class 'tuple'>
+isinstance SFColor = True
+SFColor test.value = (0, 0.5, 1)
+SFColor test.XML() = 0 0.5 1
+SFColor test.VRML()= 0 0.5 1
+SFColor test.JSON()= 0 0.5 1
+SFColor regex match= <re.Match object; span=(0, 11), match='(0, 0.5, 1)'>
+SFColor   isValidSFColor(test)=True
+SFColor      isZeroToOne(test)=True
+SFColor assertValidSFColor(test) # execution continues if no assertion failure occurs
+
+MFColor.NAME()         = MFColor
+MFColor.DEFAULT_VALUE()= []
+MFColor.ARRAY_TYPE()   = True
+MFColor.TUPLE_SIZE()   = 3
+MFColor.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*\,?\s*){2}([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFColor.REGEX_XML()    = \s*((([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s+){2}([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFColor.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFColor
+MFColor isZeroToOne((1, 1, 1))=True
+MFColor isZeroToOne([(0, 0.5, 1), (1, 0.5, 0)])=True
+MFColor ValueError exception correctly thrown when test.value = 'plain text'
+MFColor test       = [(0, 0.5, 1), (1, 0.5, 0)]
+MFColor value type = <class 'list'>
+isinstance MFColor = True
+MFColor test.value = [(0, 0.5, 1), (1, 0.5, 0)]
+MFColor test.XML() = 0 0.5 1 1 0.5 0
+MFColor test.VRML()= [0 0.5 1 1 0.5 0]
+MFColor test.JSON()= 0 0.5 1 1 0.5 0
+MFColor regex match= <re.Match object; span=(0, 26), match='[(0, 0.5, 1), (1, 0.5, 0)]'>
+MFColor     isValidMFColor(test)=True
+MFColor        isZeroToOne(test)=True
+MFColor assertValidMFColor(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFColorRGBA.NAME()         = SFColorRGBA
+SFColorRGBA.DEFAULT_VALUE()= (0, 0, 0, 0)
+SFColorRGBA.ARRAY_TYPE()   = False
+SFColorRGBA.TUPLE_SIZE()   = 4
+SFColorRGBA.REGEX_PYTHON() = \s*\(\s*(([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFColorRGBA.REGEX_XML()    = \s*(([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*
+SFColorRGBA.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFColorRGBA
+SFColorRGBA isZeroToOne((1, 1, 1, 1))=True
+SFColorRGBA isZeroToOne((1, 1, 1, 1))=True
+SFColorRGBA X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFColorRGBA test       = (0, 0.5, 1, 0.75)
+SFColorRGBA value type = <class 'tuple'>
+isinstance SFColorRGBA = True
+SFColorRGBA test.value = (0, 0.5, 1, 0.75)
+SFColorRGBA test.XML() = 0 0.5 1 0.75
+SFColorRGBA test.VRML()= 0 0.5 1 0.75
+SFColorRGBA test.JSON()= 0 0.5 1 0.75
+SFColorRGBA regex match= <re.Match object; span=(0, 17), match='(0, 0.5, 1, 0.75)'>
+SFColorRGBA     isValidSFColorRGBA(test)=True
+SFColorRGBA            isZeroToOne(test)=True
+SFColorRGBA assertValidSFColorRGBA(test) # execution continues if no assertion failure occurs
+
+MFColorRGBA.NAME()         = MFColorRGBA
+MFColorRGBA.DEFAULT_VALUE()= []
+MFColorRGBA.ARRAY_TYPE()   = True
+MFColorRGBA.TUPLE_SIZE()   = 4
+MFColorRGBA.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFColorRGBA.REGEX_XML()    = \s*((([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFColorRGBA.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFColorRGBA
+MFColorRGBA isZeroToOne((1, 1, 1, 1))=True
+MFColorRGBA isZeroToOne([(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)])=True
+MFColorRGBA ValueError exception correctly thrown when test.value = 'plain text'
+MFColorRGBA test       = [(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)]
+MFColorRGBA value type = <class 'list'>
+isinstance MFColorRGBA = True
+MFColorRGBA test.value = [(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)]
+MFColorRGBA test.XML() = 0 0.5 1 0.75 1 0.5 0 0.75
+MFColorRGBA test.VRML()= [0 0.5 1 0.75 1 0.5 0 0.75]
+MFColorRGBA test.JSON()= 0 0.5 1 0.75 1 0.5 0 0.75
+MFColorRGBA regex match= <re.Match object; span=(0, 38), match='[(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)]'>
+MFColorRGBA     isValidMFColorRGBA(test)=True
+MFColorRGBA            isZeroToOne(test)=True
+MFColorRGBA assertValidMFColorRGBA(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFRotation.NAME()         = SFRotation
+SFRotation.DEFAULT_VALUE()= (0, 0, 1, 0)
+SFRotation.ARRAY_TYPE()   = False
+SFRotation.TUPLE_SIZE()   = 4
+SFRotation.REGEX_PYTHON() = \s*\(\s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\)\s*
+SFRotation.REGEX_XML()    = \s*(([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*
+SFRotation.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFRotation
+SFRotation X3DTypeError exception correctly thrown when test.value = 'plain text'
+SFRotation test       = (0, 0.5, 1, 0.75)
+SFRotation value type = <class 'tuple'>
+isinstance SFRotation = True
+SFRotation test.value = (0, 0.5, 1, 0.75)
+SFRotation test.XML() = 0 0.5 1 0.75
+SFRotation test.VRML()= 0 0.5 1 0.75
+SFRotation test.JSON()= 0 0.5 1 0.75
+SFRotation regex match= <re.Match object; span=(0, 17), match='(0, 0.5, 1, 0.75)'>
+SFRotation     isValidSFRotation(test)=True
+SFRotation assertValidSFRotation(test) # execution continues if no assertion failure occurs
+
+MFRotation.NAME()         = MFRotation
+MFRotation.DEFAULT_VALUE()= []
+MFRotation.ARRAY_TYPE()   = True
+MFRotation.TUPLE_SIZE()   = 4
+MFRotation.REGEX_PYTHON() = \s*\[?\s*(\s*\(?\s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*\,?\s*){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*\)?\s*\,?)*\s*\]?\s*
+MFRotation.REGEX_XML()    = \s*((([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s+){3}([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)([Ee][+-]?[0-9]+)?)\s*,?\s*)*
+MFRotation.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFRotation
+MFRotation ValueError exception correctly thrown when test.value = 'plain text'
+MFRotation test       = [(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)]
+MFRotation value type = <class 'list'>
+isinstance MFRotation = True
+MFRotation test.value = [(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)]
+MFRotation test.XML() = 0 0.5 1 0.75 1 0.5 0 0.75
+MFRotation test.VRML()= [0 0.5 1 0.75 1 0.5 0 0.75]
+MFRotation test.JSON()= 0 0.5 1 0.75 1 0.5 0 0.75
+MFRotation regex match= <re.Match object; span=(0, 38), match='[(0, 0.5, 1, 0.75), (1, 0.5, 0, 0.75)]'>
+MFRotation     isValidMFRotation(test)=True
+MFRotation assertValidMFRotation(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+SFNode.NAME()         = SFNode
+SFNode.DEFAULT_VALUE()= None
+SFNode.ARRAY_TYPE()   = False
+SFNode.TUPLE_SIZE()   = 1
+SFNode.REGEX_PYTHON() = 
+SFNode.REGEX_XML()    = 
+SFNode.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#SFNode
+SFNode test                   = WorldInfo(title='Smoky World',DEF='A')
+SFNode test.value             = WorldInfo(title='Smoky World',DEF='A')
+-----
+SFNode test.XML()  =
+<WorldInfo DEF='A' title='Smoky World'/>
+
+-----
+SFNode test.VRML() =
+
+DEF A WorldInfo {
+  title "Smoky World" 
+}
+
+-----
+SFNode test.JSON() =
+"WorldInfo":
+{
+      {
+        "@DEF":"A",
+        "@title":"Smoky World"
+      }
+    }
+
+-----
+SFNode     isValidSFNode(test)=True
+SFNode assertValidSFNode(test) # execution continues if no assertion failure occurs
+
+MFNode.NAME()         = MFNode
+MFNode.DEFAULT_VALUE()= []
+MFNode.ARRAY_TYPE()   = True
+MFNode.TUPLE_SIZE()   = 1
+MFNode.REGEX_PYTHON() = 
+MFNode.REGEX_XML()    = 
+MFNode.TOOLTIP_URL()  = https://www.web3d.org/x3d/tooltips/X3dTooltips.html#MFNode
+MFNode test                   = [Group(DEF='B'), Shape(appearance=Appearance(material=Material(DEF='E'),DEF='D'),DEF='C'), WorldInfo(DEF='F'), ROUTE(fromField='bboxSize',fromNode='B',toField='bboxCenter',toNode='C')]
+-----
+MFNode test.XML()  =
+<Group DEF='B'/>
+<Shape DEF='C'>
+  <Appearance DEF='D'>
+    <Material DEF='E'/>
+  </Appearance>
+</Shape>
+<WorldInfo DEF='F'/>
+<ROUTE fromField='bboxSize' fromNode='B' toField='bboxCenter' toNode='C'/>
+-----
+MFNode test.VRML() =
+
+DEF B Group { 
+}
+
+DEF C Shape {
+  appearance DEF D Appearance {
+    material DEF E Material { 
+    }
+     
+  }
+   
+}
+
+DEF F WorldInfo { 
+}
+
+ROUTE B.bboxSize TO C.bboxCenter
+-----
+MFNode test.JSON() =
+"Group":
+{
+      {
+        "@DEF":"B"
+      }
+    },
+"Shape":
+{
+      {
+        "@DEF":"C"
+      }
+    "Appearance":
+    {
+      {
+        "@DEF":"D"
+      }
+        "Material":
+        {
+      {
+        "@DEF":"E"
+      }
+    },
+    }}"WorldInfo":
+{
+      {
+        "@DEF":"F"
+      }
+    }
+"ROUTE":
+{
+      {
+        "@fromField":"bboxSize",
+        "@fromNode":"B",
+        "@toField":"bboxCenter",
+        "@toNode":"C"
+      }
+    },
+-----
+MFNode str(test.value)        = [<x3d.Group object at 0x00000247AD369B50>, <x3d.Shape object at 0x00000247AD3360D0>, <x3d.WorldInfo object at 0x00000247B0F8A050>, <x3d.ROUTE object at 0x00000247B0F89E50>] TODO get result to match by adding MFNode.__repl__; questionable use case
+MFNode     isValidMFNode(test)=True
+MFNode assertValidMFNode(test) # execution continues if no assertion failure occurs
+- - - - - - - - - -
+
+Range function tests:
+isPositive()    tests passed
+isNonNegative() tests passed
+isZeroToOne()   tests passed
+isBoundingBox() tests passed
+isPositive   (None)= None
+isNonNegative(None)= None
+isZeroToOne  (None)= None
+isBoundingBox(None)= None
+
+Assertion tests:
+test AssertionError assertBoundingBox:       Group(bboxSize=(+3, +2, +1)) expected to pass
+test AssertionError assertZeroToOne:         SpotLight(ambientIntensity=0.5) expected to pass
+test AssertionError assertNonNegative:       SpotLight(radius=1) expected to pass
+test AssertionError assertPositive:          unit(conversionFactor=1) expected to pass
+test AssertionError assertGreaterThanEquals: component(level=1) expected to pass
+test AssertionError assertLessThanEquals:    component(level=5) expected to pass
+test AssertionError assertGreaterThan:       Arc2D(startAngle=-6.28) expected to pass
+test AssertionError assertLessThan:          Arc2D(startAngle=+6.28) expected to pass
+
+(Assertion tests expected to fail are commented out and require individual confirmation checks)
+
+test X3DField type mismatch:  isValidSFVec3f(SFColor()) expected to return False, actual return: True
+
+Node and field tests:
+materialInstance.NAME= Material
+field accessor test, including default value emissiveColor:
+materialInstance=Material(DEF='Grey',diffuseColor=(0.5, 0.5, 0.5),emissiveColor=(0, 0, 0),transparency=0.2)
+must use str() function when concatenating:
+    materialInstance  = Material(diffuseColor=(0.5, 0.5, 0.5),transparency=0.2,DEF='Grey')
+str(materialInstance) = Material(diffuseColor=(0.5, 0.5, 0.5),transparency=0.2,DEF='Grey') (should match)
+assertValidSFNode (materialInstance) =True
+isX3DNode         (materialInstance) =True
+isX3DStatement    (materialInstance) =False
+WorldInfo(USE='useful',class_='classic')= WorldInfo(DEF=None,USE='useful',class_='classic')
+    Group() = Group()
+str(Group())= Group() (should match)
+    routeInstance = ROUTE(fromField='Here',toField='There')
+str(routeInstance)= ROUTE(fromField='Here',toField='There') (should match)
+    ROUTE()  = ROUTE()
+str(ROUTE()) = ROUTE() (should match)
+isX3DNode     (routeInstance)=False
+isX3DNode     (ROUTE())      =False (should match)
+isX3DStatement(routeInstance)=True
+isX3DStatement(ROUTE())      =True (should match)
+    nestedNodesTest = Shape(appearance=Appearance(material=Material(diffuseColor=(0.3, 0.4, 0.5),transparency=0.2,DEF='Grey')),geometry=Sphere(radius=2),metadata=MetadataString(value=[checking]))
+str(nestedNodesTest)= Shape(appearance=Appearance(material=Material(diffuseColor=(0.3, 0.4, 0.5),transparency=0.2,DEF='Grey')),geometry=Sphere(radius=2),metadata=MetadataString(value=[checking])) (should match)
+    groupTest  = Group(bboxSize=(1, 2, 3),children=[WorldInfo(), Group(), Shape()])
+str(groupTest) = Group(bboxSize=(1, 2, 3),children=[WorldInfo(), Group(), Shape()]) (should match)
+length of MFNode list groupTest.children = 3
+     headTest  = head(children=[component(), unit(), meta(content='2',name='1'), meta()])
+ str(headTest) = head(children=[component(), unit(), meta(content='2',name='1'), meta()]) (should match)
+    sceneTest  = Scene(children=[WorldInfo(), Group()])
+str(sceneTest) = Scene(children=[WorldInfo(), Group()]) (should match)
+
+initialization testScene1.XML()=
+<Scene/>
+
+*** testScene1 Scene with no children() test:    hasChild() = False
+
+initialization testScene2.XML()=
+<Scene>
+  <Group/>
+</Scene>
+
+*** testScene2 Scene with single children() test: hasChild() = True
+
+initialization testScene3.XML()=
+<Scene>
+  <Transform/>
+</Scene>
+
+*** testScene3 Scene with different single children() test: hasChild() = True
+
+metaDiagnostics utility function:
+meta information, info: diagnostic test 1, hint: diagnostic test 2, warning: diagnostic test 3, error: diagnostic test 4
+
+    modelTest     = X3D(head=head(children=[component(level=2,name='Grouping'), Comment(), unit(category='length',conversionFacto,Scene=Scene(children=[WorldInfo(title='modelTest sample scene',DEF='TestWorldInfo'), WorldInfo(DEF=None,US)
+str(modelTest)    = X3D(head=head(children=[component(level=2,name='Grouping'), Comment(), unit(category='length',conversionFacto,Scene=Scene(children=[WorldInfo(title='modelTest sample scene',DEF='TestWorldInfo'), WorldInfo(DEF=None,US) (should match)
+
+===================
+    (default) XML(syntax="XML") allows self-closing singleton elements
+    modelTest.XML(syntax="XML") =
+[ 1] <?xml version="1.0" encoding="UTF-8"?>
+[ 2] <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+[ 3] <X3D profile='Full' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+[ 4]   <head>
+[ 5]     <component level='2' name='Grouping'/>
+[ 6]     <!-- hello persistent comment in head children -->
+[ 7]     <unit category='length' conversionFactor='0.001' name='MILLIMETER'/>
+[ 8]     <meta content='name-value pair &amp; solitary-ampersand test' name='description'/>
+[ 9]     <meta content='diagnostic test 1' name='info'/>
+[10]     <meta content='diagnostic test 2' name='hint'/>
+[11]     <meta content='diagnostic test 3' name='warning'/>
+[12]     <meta content='diagnostic test 4' name='error'/>
+[13]   </head>
+[14]   <Scene>
+[15]     <WorldInfo DEF='TestWorldInfo' title='modelTest sample scene'/>
+[16]     <WorldInfo USE='TestWorldInfo'/>
+[17]     <!-- hello persistent comment in Scene children -->
+[18]     <NavigationInfo type='"EXAMINE" "FLY" "ANY"'/>
+[19]     <Group DEF='EmptyGroup' bboxSize='1 2 3'/>
+[20]     <Transform translation='0 2 0'>
+[21]       <Shape>
+[22]         <Text string='"Smoke" "Test"'>
+[23]           <FontStyle style='BOLD'/>
+[24]         </Text>
+[25]       </Shape>
+[26]       <!-- hello persistent comment in Transform children -->
+[27]     </Transform>
+[28]     <Shape DEF='TestShape'>
+[29]       <Appearance DEF='TestAppearance'>
+[30]         <Material DEF='TestMaterial' diffuseColor='0.4 0.6 0.8' transparency='0.5'/>
+[31]       </Appearance>
+[32]       <Box DEF='TestBox'/>
+[33]     </Shape>
+[34]     <!-- note that comment objects are persistent and valid children nodes -->
+[35]     <Inline url='"HelloWorld.x3d" "https://www.web3d.org/x3d/content/examples/HelloWorld.x3d"'/>
+[36]     <ROUTE fromField='bboxSize' fromNode='TestGroup' toField='size' toNode='TestBox'/>
+[37]     <ProtoDeclare name='SmokeProto'>
+[38]       <ProtoInterface>
+[39]         <field accessType='inputOutput' appinfo='offset 1' name='offset1' type='SFVec3f' value='0 0 -5'/>
+[40]         <field accessType='inputOutput' appinfo='offset 2' name='offset2' type='SFFloat' value='0.5'/>
+[41]       </ProtoInterface>
+[42]       <ProtoBody>
+[43]         <Material ambientIntensity='0.254777' diffuseColor='0.685208 0.134679 0.332385' shininess='0.071429' specularColor='0.122449 0.050035 0.050035'>
+[44]           <IS>
+[45]             <connect nodeField='shininess' protoField='offset2'/>
+[46]           </IS>
+[47]         </Material>
+[48]       </ProtoBody>
+[49]     </ProtoDeclare>
+[50]     <ProtoInstance name='SmokeProto'>
+[51]       <fieldValue name='offset1' value='0 7 8'/>
+[52]       <fieldValue name='offset2' value='0.78'/>
+[53]     </ProtoInstance>
+[54]     <Script DEF='SmokeScript'>
+[55]     <![CDATA[
+[56] ecmascript:
+[57] // testing multi-line text block support for Script sourceCode field
+[58] ]]>
+[59]     </Script>
+[60]   </Scene>
+[61] </X3D>
+
+===================
+    alternate HTML5() produces closing elements, invokes XML(syntax="HTML5")
+    modelTest.HTML5() =
+[ 1]   <?xml version="1.0" encoding="UTF-8"?>
+[ 2]   <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+[ 3]   <X3D profile='Full' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+[ 4]     <head>
+[ 5]       <component level='2' name='Grouping'></component>
+[ 6]       <!-- hello persistent comment in head children -->
+[ 7]       <unit category='length' conversionFactor='0.001' name='MILLIMETER'></unit>
+[ 8]       <meta content='name-value pair &amp; solitary-ampersand test' name='description'></meta>
+[ 9]       <meta content='diagnostic test 1' name='info'></meta>
+[10]       <meta content='diagnostic test 2' name='hint'></meta>
+[11]       <meta content='diagnostic test 3' name='warning'></meta>
+[12]       <meta content='diagnostic test 4' name='error'></meta>
+[13]     </head>
+[14]     <Scene>
+[15]       <WorldInfo DEF='TestWorldInfo' title='modelTest sample scene'></WorldInfo>
+[16]       <WorldInfo USE='TestWorldInfo'></WorldInfo>
+[17]       <!-- hello persistent comment in Scene children -->
+[18]       <NavigationInfo type='"EXAMINE" "FLY" "ANY"'></NavigationInfo>
+[19]       <Group DEF='EmptyGroup' bboxSize='1 2 3'></Group>
+[20]       <Transform translation='0 2 0'>
+[21]         <Shape>
+[22]           <Text string='"Smoke" "Test"'>
+[23]             <FontStyle style='BOLD'></FontStyle>
+[24]           </Text>
+[25]         </Shape>
+[26]         <!-- hello persistent comment in Transform children -->
+[27]       </Transform>
+[28]       <Shape DEF='TestShape'>
+[29]         <Appearance DEF='TestAppearance'>
+[30]           <Material DEF='TestMaterial' diffuseColor='0.4 0.6 0.8' transparency='0.5'></Material>
+[31]         </Appearance>
+[32]         <Box DEF='TestBox'></Box>
+[33]       </Shape>
+[34]       <!-- note that comment objects are persistent and valid children nodes -->
+[35]       <Inline url='"HelloWorld.x3d" "https://www.web3d.org/x3d/content/examples/HelloWorld.x3d"'></Inline>
+[36]       <ROUTE fromField='bboxSize' fromNode='TestGroup' toField='size' toNode='TestBox'></ROUTE>
+[37]       <ProtoDeclare name='SmokeProto'>
+[38]         <ProtoInterface>
+[39]           <field accessType='inputOutput' appinfo='offset 1' name='offset1' type='SFVec3f' value='0 0 -5'></field>
+[40]           <field accessType='inputOutput' appinfo='offset 2' name='offset2' type='SFFloat' value='0.5'></field>
+[41]         </ProtoInterface>
+[42]         <ProtoBody>
+[43]           <Material ambientIntensity='0.254777' diffuseColor='0.685208 0.134679 0.332385' shininess='0.071429' specularColor='0.122449 0.050035 0.050035'>
+[44]             <IS>
+[45]               <connect nodeField='shininess' protoField='offset2'></connect>
+[46]             </IS>
+[47]           </Material>
+[48]         </ProtoBody>
+[49]       </ProtoDeclare>
+[50]       <ProtoInstance name='SmokeProto'>
+[51]         <fieldValue name='offset1' value='0 7 8'></fieldValue>
+[52]         <fieldValue name='offset2' value='0.78'></fieldValue>
+[53]       </ProtoInstance>
+[54]       <Script DEF='SmokeScript'>
+[55]       <![CDATA[
+[56] ecmascript:
+[57] // testing multi-line text block support for Script sourceCode field
+[58] ]]>
+[59]       </Script>
+[60]     </Scene>
+[61] </X3D>
+
+===================
+              VRML() produces Virtual Reality Modeling Language syntax
+    modelTest.VRML() =
+[ 1] #VRML V4.0 utf8
+[ 2] #X3D-to-ClassicVRML serialization autogenerated by X3DPSAIL x3d.py
+[ 3] 
+[ 4] PROFILE Full
+[ 5] COMPONENT Grouping:2
+[ 6] 
+[ 7]     # hello persistent comment in head children
+[ 8]     UNIT length MILLIMETER 0.001
+[ 9] META "description" "name-value pair & solitary-ampersand test"
+[10] META "info" "diagnostic test 1"
+[11] META "hint" "diagnostic test 2"
+[12] META "warning" "diagnostic test 3"
+[13] META "error" "diagnostic test 4"
+[14] DEF TestWorldInfo WorldInfo {
+[15]       title "modelTest sample scene" 
+[16]     }
+[17]     USE TestWorldInfo 
+[18]     # hello persistent comment in Scene children
+[19]     NavigationInfo {
+[20]       type ["EXAMINE" "FLY" "ANY"] 
+[21]     }
+[22]     DEF EmptyGroup Group {
+[23]       bboxSize 1 2 3 
+[24]     }
+[25]     Transform {
+[26]       translation 0 2 0
+[27]       children [
+[28]         Shape {
+[29]           geometry Text {
+[30]             string ["Smoke" "Test"]
+[31]             fontStyle FontStyle {
+[32]               style "BOLD" 
+[33]             }
+[34]              
+[35]           }
+[36]            
+[37]         }
+[38]         
+[39]         # hello persistent comment in Transform children
+[40]         
+[41]       ]
+[42]     
+[43]     }
+[44]     DEF TestShape Shape {
+[45]       appearance DEF TestAppearance Appearance {
+[46]         material DEF TestMaterial Material {
+[47]           diffuseColor 0.4 0.6 0.8
+[48]           transparency 0.5 
+[49]         }
+[50]          
+[51]       }
+[52]       
+[53]       geometry DEF TestBox Box { 
+[54]       }
+[55]        
+[56]     }
+[57]     
+[58]     # note that comment objects are persistent and valid children nodes
+[59]     Inline {
+[60]       url ["HelloWorld.x3d" "https://www.web3d.org/x3d/content/examples/HelloWorld.x3d"] 
+[61]     }
+[62]     
+[63]     ROUTE TestGroup.bboxSize TO TestBox.size
+[64]     ProtoDeclare {
+[65]       name "SmokeProto"
+[66]       ProtoInterface ProtoInterface {
+[67]         children [
+[68]           field {
+[69]             accessType "inputOutput"
+[70]             appinfo "offset 1"
+[71]             name "offset1"
+[72]             type "SFVec3f"
+[73]             value (0, 0, -5) 
+[74]           }
+[75]           field {
+[76]             accessType "inputOutput"
+[77]             appinfo "offset 2"
+[78]             name "offset2"
+[79]             type "SFFloat"
+[80]             value 0.5 
+[81]           }
+[82]           
+[83]         ]
+[84]       
+[85]       }
+[86]       
+[87]       ProtoBody ProtoBody {
+[88]         children [
+[89]           Material {
+[90]             ambientIntensity 0.254777
+[91]             diffuseColor 0.685208 0.134679 0.332385
+[92]             shininess 0.071429
+[93]             specularColor 0.122449 0.050035 0.050035
+[94]             IS IS {
+[95]               children [
+[96]                 connect {
+[97]                   nodeField "shininess"
+[98]                   protoField "offset2" 
+[99]                 }
+[100]                 
+[101]               ]
+[102]             
+[103]             }
+[104]              
+[105]           }
+[106]           
+[107]         ]
+[108]       
+[109]       }
+[110]       
+[111]     }
+[112]     ProtoInstance {
+[113]       name "SmokeProto"
+[114]       children [
+[115]         fieldValue {
+[116]           name "offset1"
+[117]           value (0, 7, 8) 
+[118]         }
+[119]         fieldValue {
+[120]           name "offset2"
+[121]           value 0.78 
+[122]         }
+[123]         
+[124]       ]
+[125]     
+[126]     }
+[127]     DEF SmokeScript Script {
+[128]       url "
+[129] ecmascript:
+[130] // testing multi-line text block support for Script sourceCode field
+[131] " 
+[132]     }
+[133]     
+
+===================
+              JSON() produces JavaScript Object Notation (JSON) syntax
+    modelTest.JSON() =
+[ 1] {
+[ 2]     "X3D":,
+[ 3]     {
+[ 4]         "encoding":"UTF-8",
+[ 5]         "$id":   "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+[ 6]         "$schema": "https://json-schema.org/draft/2020-12/schema",
+[ 7]         "@version":"4.0",
+[ 8]         "@profile":"Full",
+[ 9]     "head":
+[10]     {
+[11]         "component":
+[12]         {
+[13]       {
+[14]         "@level":"2",
+[15]         "@name":"Grouping"
+[16]       }
+[17]     },
+[18]     { "#comment" : "hello persistent comment in head children" }
+[19]         "unit":
+[20]         {
+[21]       {
+[22]         "@category":"length",
+[23]         "@conversionFactor":"0.001",
+[24]         "@name":"MILLIMETER"
+[25]       }
+[26]     },
+[27]         "meta":
+[28]         {
+[29]       {
+[30]         "@content":"name-value pair & solitary-ampersand test",
+[31]         "@name":"description"
+[32]       }
+[33]     },
+[34]         "meta":
+[35]         {
+[36]       {
+[37]         "@content":"diagnostic test 1",
+[38]         "@name":"info"
+[39]       }
+[40]     },
+[41]         "meta":
+[42]         {
+[43]       {
+[44]         "@content":"diagnostic test 2",
+[45]         "@name":"hint"
+[46]       }
+[47]     },
+[48]         "meta":
+[49]         {
+[50]       {
+[51]         "@content":"diagnostic test 3",
+[52]         "@name":"warning"
+[53]       }
+[54]     },
+[55]         "meta":
+[56]         {
+[57]       {
+[58]         "@content":"diagnostic test 4",
+[59]         "@name":"error"
+[60]       }
+[61]     },
+[62]     }    "Scene":
+[63]     {
+[64]         "WorldInfo":
+[65]         {
+[66]       {
+[67]         "@DEF":"TestWorldInfo",
+[68]         "@title":"modelTest sample scene"
+[69]       }
+[70]     }
+[71]         "WorldInfo":
+[72]         {
+[73]       {
+[74]         "@USE":"TestWorldInfo"
+[75]       }
+[76]     }
+[77]     { "#comment" : "hello persistent comment in Scene children" }
+[78]         "NavigationInfo":
+[79]         {
+[80]       {
+[81]         "@type":""EXAMINE" "FLY" "ANY""
+[82]       }
+[83]     },
+[84]         "Group":
+[85]         {
+[86]       {
+[87]         "@DEF":"EmptyGroup",
+[88]         "@bboxSize":"1 2 3"
+[89]       }
+[90]     },
+[91]         "Transform":
+[92]         {
+[93]       {
+[94]         "@translation":"0 2 0"
+[95]       }
+[96]             "Shape":
+[97]             {
+[98]                 "Text":
+[99]                 {
+[100]       {
+[101]         "@string":""Smoke" "Test""
+[102]       }
+[103]                     "FontStyle":
+[104]                     {
+[105]       {
+[106]         "@style":"BOLD"
+[107]       }
+[108]     },
+[109]                 }            }      { "#comment" : "hello persistent comment in Transform children" }
+[110]         }        "Shape":
+[111]         {
+[112]       {
+[113]         "@DEF":"TestShape"
+[114]       }
+[115]             "Appearance":
+[116]             {
+[117]       {
+[118]         "@DEF":"TestAppearance"
+[119]       }
+[120]                 "Material":
+[121]                 {
+[122]       {
+[123]         "@DEF":"TestMaterial",
+[124]         "@diffuseColor":"0.4 0.6 0.8",
+[125]         "@transparency":"0.5"
+[126]       }
+[127]     },
+[128]             }            "Box":
+[129]             {
+[130]       {
+[131]         "@DEF":"TestBox"
+[132]       }
+[133]     },
+[134]         }    { "#comment" : "note that comment objects are persistent and valid children nodes" }
+[135]         "Inline":
+[136]         {
+[137]       {
+[138]         "@url":""HelloWorld.x3d" "https://www.web3d.org/x3d/content/examples/HelloWorld.x3d""
+[139]       }
+[140]     },
+[141]         "ROUTE":
+[142]         {
+[143]       {
+[144]         "@fromField":"bboxSize",
+[145]         "@fromNode":"TestGroup",
+[146]         "@toField":"size",
+[147]         "@toNode":"TestBox"
+[148]       }
+[149]     },
+[150]         "ProtoDeclare":
+[151]         {
+[152]       {
+[153]         "@name":"SmokeProto"
+[154]       }
+[155]             "ProtoInterface":
+[156]             {
+[157]                 "field":
+[158]                 {
+[159]       {
+[160]         "@accessType":"inputOutput",
+[161]         "@appinfo":"offset 1",
+[162]         "@name":"offset1",
+[163]         "@type":"SFVec3f",
+[164]         "@value":"(0, 0, -5)"
+[165]       }
+[166]     },
+[167]                 "field":
+[168]                 {
+[169]       {
+[170]         "@accessType":"inputOutput",
+[171]         "@appinfo":"offset 2",
+[172]         "@name":"offset2",
+[173]         "@type":"SFFloat",
+[174]         "@value":"0.5"
+[175]       }
+[176]     },
+[177]             }            "ProtoBody":
+[178]             {
+[179]                 "Material":
+[180]                 {
+[181]       {
+[182]         "@ambientIntensity":"0.254777",
+[183]         "@diffuseColor":"0.685208 0.134679 0.332385",
+[184]         "@shininess":"0.071429",
+[185]         "@specularColor":"0.122449 0.050035 0.050035"
+[186]       }
+[187]                     "IS":
+[188]                     {
+[189]                         "connect":
+[190]                         {
+[191]       {
+[192]         "@nodeField":"shininess",
+[193]         "@protoField":"offset2"
+[194]       }
+[195]     },
+[196]                     }                }            }        }        "ProtoInstance":
+[197]         {
+[198]       {
+[199]         "@name":"SmokeProto"
+[200]       }
+[201]             "fieldValue":
+[202]             {
+[203]       {
+[204]         "@name":"offset1",
+[205]         "@value":"(0, 7, 8)"
+[206]       }
+[207]     },
+[208]             "fieldValue":
+[209]             {
+[210]       {
+[211]         "@name":"offset2",
+[212]         "@value":"0.78"
+[213]       }
+[214]     },
+[215]         }        "Script":
+[216]         {
+[217]       {
+[218]         "@DEF":"SmokeScript",
+[219]         "@sourceCode":"
+[220] ecmascript:
+[221] // testing multi-line text block support for Script sourceCode field
+[222] "
+[223]       }
+[224]     },
+[225]     }}
+
+===================
+              X3DOM() produces HTML for X3DOM
+    modelTest.X3DOM() =
+[ 1] <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+[ 2] 
+[ 3] <!-- =================================================================== -->
+[ 4] <!-- embedded X3D scene appears after html/head/script and style entries -->
+[ 5] <!-- =================================================================== -->
+[ 6] <html>
+[ 7]    <head>
+[ 8]       <title></title>
+[ 9]       <meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge"/>
+[10]       <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+[11] <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+[12] <!-- Numbered X3DOM release versions: https://doc.x3dom.org/download -->
+[13] <!-- Developer X3DOM release version: https://doc.x3dom.org/download/dev -->
+[14] <link rel="stylesheet"
+[15]             type="text/css"
+[16]             href="https://x3dom.org/release/x3dom.css"/>
+[17]       <script type="text/javascript" src="https://x3dom.org/release/x3dom-full.js"/>
+[18]       <meta name="warning"
+[19]             content="Webfonts must be loaded prior to using Text node in X3D scene... see https://x3dom.org/x3dom/example/x3dom_text.html"/>
+[20]       <!-- X3DOM needs Web Fonts when an X3D Text node is included -->
+[21]       <!-- adapted from https://x3dom.org/x3dom/example/x3dom_text.html and https://web.mit.edu/jmorzins/www/fonts.html -->
+[22]       <style type="text/css">
+[23] /* ============================================================================= */
+[24] @font-face {
+[25]   font-family: 'SERIF'; /* default original */
+[26]   font-style: normal;
+[27]   font-weight: 700;
+[28]   src: local('Roman'), url('Roman.ttf') format('truetype');
+[29] }
+[30] @font-face {
+[31]   font-family: 'SERIF'; /* default alternate */
+[32]   font-style: normal;
+[33]   font-weight: 700;
+[34]   src: local('Times New Roman'), local('TimesNewRoman'), url('Times New Roman.ttf') format('truetype');
+[35] }
+[36] /* ============================================================================= */
+[37] @font-face {
+[38]   font-family: 'SANS'; /* default original */
+[39]   font-style: normal;
+[40]   font-weight: 400;
+[41]   src: local('Arial'), url('Arial.ttf') format('truetype');
+[42] }
+[43] @font-face {
+[44]   font-family: 'SANS'; /* default alternate */
+[45]   font-style: normal;
+[46]   font-weight: 400;
+[47]   src: local('Helvetica'), url('Helvetica.ttf') format('truetype');
+[48] }
+[49] /* ============================================================================= */
+[50] @font-face {
+[51]   font-family: 'TYPEWRITER'; /* default original */
+[52]   font-style: normal;
+[53]   font-weight: 900;
+[54]   src: local('Courier'), url('Courier.ttf') format('truetype');
+[55] }
+[56] @font-face {
+[57]   font-family: 'TYPEWRITER'; /* default alternate */
+[58]   font-style: normal;
+[59]   font-weight: 900;
+[60]   src: local('Courier New'), url('Courier New.ttf') format('truetype');
+[61] }
+[62] /* ============================================================================= */
+[63] </style>
+[64]    </head>
+[65]    <body><?xml version="1.0" encoding="UTF-8"?>
+[66] <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+[67] <X3D profile='Full' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+[68]   <head>
+[69]     <component level='2' name='Grouping'></component>
+[70]     <!-- hello persistent comment in head children -->
+[71]     <unit category='length' conversionFactor='0.001' name='MILLIMETER'></unit>
+[72]     <meta content='name-value pair &amp; solitary-ampersand test' name='description'></meta>
+[73]     <meta content='diagnostic test 1' name='info'></meta>
+[74]     <meta content='diagnostic test 2' name='hint'></meta>
+[75]     <meta content='diagnostic test 3' name='warning'></meta>
+[76]     <meta content='diagnostic test 4' name='error'></meta>
+[77]   </head>
+[78]   <Scene>
+[79]     <WorldInfo DEF='TestWorldInfo' title='modelTest sample scene'></WorldInfo>
+[80]     <WorldInfo USE='TestWorldInfo'></WorldInfo>
+[81]     <!-- hello persistent comment in Scene children -->
+[82]     <NavigationInfo type='"EXAMINE" "FLY" "ANY"'></NavigationInfo>
+[83]     <Group DEF='EmptyGroup' bboxSize='1 2 3'></Group>
+[84]     <Transform translation='0 2 0'>
+[85]       <Shape>
+[86]         <Text string='"Smoke" "Test"'>
+[87]           <FontStyle style='BOLD'></FontStyle>
+[88]         </Text>
+[89]       </Shape>
+[90]       <!-- hello persistent comment in Transform children -->
+[91]     </Transform>
+[92]     <Shape DEF='TestShape'>
+[93]       <Appearance DEF='TestAppearance'>
+[94]         <Material DEF='TestMaterial' diffuseColor='0.4 0.6 0.8' transparency='0.5'></Material>
+[95]       </Appearance>
+[96]       <Box DEF='TestBox'></Box>
+[97]     </Shape>
+[98]     <!-- note that comment objects are persistent and valid children nodes -->
+[99]     <Inline url='"HelloWorld.x3d" "https://www.web3d.org/x3d/content/examples/HelloWorld.x3d"'></Inline>
+[100]     <ROUTE fromField='bboxSize' fromNode='TestGroup' toField='size' toNode='TestBox'></ROUTE>
+[101]     <ProtoDeclare name='SmokeProto'>
+[102]       <ProtoInterface>
+[103]         <field accessType='inputOutput' appinfo='offset 1' name='offset1' type='SFVec3f' value='0 0 -5'></field>
+[104]         <field accessType='inputOutput' appinfo='offset 2' name='offset2' type='SFFloat' value='0.5'></field>
+[105]       </ProtoInterface>
+[106]       <ProtoBody>
+[107]         <Material ambientIntensity='0.254777' diffuseColor='0.685208 0.134679 0.332385' shininess='0.071429' specularColor='0.122449 0.050035 0.050035'>
+[108]           <IS>
+[109]             <connect nodeField='shininess' protoField='offset2'></connect>
+[110]           </IS>
+[111]         </Material>
+[112]       </ProtoBody>
+[113]     </ProtoDeclare>
+[114]     <ProtoInstance name='SmokeProto'>
+[115]       <fieldValue name='offset1' value='0 7 8'></fieldValue>
+[116]       <fieldValue name='offset2' value='0.78'></fieldValue>
+[117]     </ProtoInstance>
+[118]     <Script DEF='SmokeScript'>
+[119]     <![CDATA[
+[120] ecmascript:
+[121] // testing multi-line text block support for Script sourceCode field
+[122] ]]>
+[123]     </Script>
+[124]   </Scene>
+[125] </X3D>
+[126] 
+[127]    </body>
+[128] </html>
+
+===================
+*** created XML examples/PythonX3dSmokeTestsModel.xml
+*** created VMRL97 examples/PythonX3dSmokeTestsModel.wrl
+*** created JSON examples/PythonX3dSmokeTestsModel.json
+*** created X3DOM examples/PythonX3dSmokeTestsModelX3DOM.html
+
+Current work:
+DONE value range checks for simple types
+DONE .XML()   .x3d recursive serializer unit testing validation
+DONE .VRML()       recursive serializer unit testing export
+DONE .JSON()       recursive serializer unit testing export
+TEST X3D.X_ITE()   saved as .xhtml
+TEST X3D.X3DOM()   saved as .html
+TEST .HTML5() .x3d recursive serializer
+TODO check node types when building scene graph
+TODO add and invoke validation methods that walk model tree
+TEST add regex checks on field export for XML attributes
+
+Build results are maintained at
+https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/x3d/stylesheets/python/build.examples.log.txt
+
+PythonX3dSmokeTests execution complete.
+test.X3dToPython.SmokeTests complete.
+===========================================
+===========================================
+examples.HelloWorld.prefixed:
+Convert and test verbose approach using HelloWorldPrefixed.py
+convert.X3dToPython.xslt.prefixed:
+Deleting: C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\HelloWorldPrefixed.py
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+convert.X3dToPython.xslt:
+===========================================
+Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\HelloWorld.py
+===========================================
+convert.X3dToPython.xslt conversion of HelloWorld.x3d to HelloWorld.py complete.
+####################################################################################################
+#
+# Now available: developmental python x3d.py package on PyPI for import.
+#   This approach simplifies Python X3D deployment and use.
+#   https://pypi.org/project/x3d
+#
+# Installation:
+#       pip install x3d
+# or
+#       python -m pip install x3d
+#
+# Developer options for loading x3d package:
+#
+#    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
+#
+# or
+#    import x3d         # traditional way to subclass x3d package, all classes require x3d.* prefix,
+#                       # but python source is very verbose, for example x3d.Material x3d.Shape etc.
+#                       # X3dToPython.xslt stylesheet insertPackagePrefix=true supports this option.
+#
+####################################################################################################
+
+import x3d
+
+#  comment preceding root node 
+newModel=x3d.X3D(profile='Immersive',version='3.3',
+  head=x3d.head(
+    children=[
+    x3d.meta(content='HelloWorld.x3d',name='title'),
+    x3d.meta(content='Simple X3D scene example: Hello World!',name='description'),
+    x3d.meta(content='30 October 2000',name='created'),
+    x3d.meta(content='31 October 2019',name='modified'),
+    x3d.meta(content='Don Brutzman',name='creator'),
+    x3d.meta(content='HelloWorld.tall.png',name='Image'),
+    x3d.meta(content='http://en.wikipedia.org/wiki/Hello_world',name='reference'),
+    x3d.meta(content='https://en.wikipedia.org/wiki/Hello#.22Hello.2C_World.22_computer_program',name='reference'),
+    x3d.meta(content='https://en.wikipedia.org/wiki/"Hello,_World!"_program',name='reference'),
+    x3d.meta(content='http://en.wikibooks.org/w/index.php?title=Computer_Programming/Hello_world',name='reference'),
+    x3d.meta(content='http://www.HelloWorldExample.net',name='reference'),
+    x3d.meta(content='http://www.web3D.org',name='reference'),
+    x3d.meta(content='http://www.web3d.org/realtime-3d/news/internationalization-x3d',name='reference'),
+    x3d.meta(content='http://www.web3d.org/x3d/content/examples/HelloWorld.x3d',name='reference'),
+    x3d.meta(content='http://X3dGraphics.com/examples/X3dForAdvancedModeling/HelloWorldScenes',name='reference'),
+    x3d.meta(content='http://X3dGraphics.com/examples/X3dForWebAuthors/Chapter01TechnicalOverview/HelloWorld.x3d',name='identifier'),
+    x3d.meta(content='http://www.web3d.org/x3d/content/examples/license.html',name='license'),
+    x3d.meta(content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit',name='generator'),
+    #  Alternate encodings: VRML97, X3D ClassicVRML Encoding, X3D Compressed Binary Encoding (CBE), X3DOM, JSON 
+    x3d.meta(content='HelloWorld.wrl',name='reference'),
+    x3d.meta(content='HelloWorld.x3dv',name='reference'),
+    x3d.meta(content='HelloWorld.x3db',name='reference'),
+    x3d.meta(content='HelloWorld.xhtml',name='reference'),
+    x3d.meta(content='HelloWorld.json',name='reference')]),
+  Scene=x3d.Scene(
+    #  Example scene to illustrate X3D nodes and fields (XML elements and attributes) 
+    children=[
+    x3d.WorldInfo(title='Hello World!'),
+    x3d.WorldInfo(title="Hello ' apostrophe 1"),
+    x3d.WorldInfo(title="Hello ' apostrophe 2"),
+    x3d.WorldInfo(title='Hello " quotation mark 3'),
+    x3d.WorldInfo(title='Hello " quotation mark 4'),
+    x3d.MetadataSet(name="items'",
+      value=[
+      x3d.MetadataInteger(name='one',value=[1]),
+      x3d.MetadataInteger(name='two',value=[2])]),
+    x3d.Group(
+      children=[
+      x3d.Viewpoint(DEF='ViewUpClose',centerOfRotation=(0,-1,0),description='Hello world!',position=(0,-1,7)),
+      #  insert commas to test removal when converted to ttl 
+      x3d.Transform(DEF='TestWhitespaceCommas',rotation=(0,1,0,3),
+        children=[
+        x3d.Shape(
+          geometry=x3d.Sphere(),
+          appearance=x3d.Appearance(
+            material=x3d.Material(DEF='MaterialLightBlue',diffuseColor=(0.1,0.5,1)),
+            texture=x3d.ImageTexture(DEF='ImageCloudlessEarth',url=["earth-topo.png","earth-topo.jpg","earth-topo-small.gif","http://www.web3d.org/x3d/content/examples/Basic/earth-topo.png","http://www.web3d.org/x3d/content/examples/Basic/earth-topo.jpg","http://www.web3d.org/x3d/content/examples/Basic/earth-topo-small.gif"])))]),
+      x3d.Transform(translation=(0,-2,0),
+        children=[
+        x3d.Shape(
+          geometry=x3d.Text(DEF='TextMessage',string=["Hello","world!"],
+            fontStyle=x3d.FontStyle(justify=["MIDDLE","MIDDLE"])),
+          appearance=x3d.Appearance(
+            material=x3d.Material(USE='MaterialLightBlue')))])])])
+) # X3D model complete
+
+####################################################################################################
+# Self-test diagnostics
+####################################################################################################
+
+print('Self-test diagnostics for HelloWorld.py:')
+if        x3d.metaDiagnostics(newModel): # built-in utility method in X3D class to show
+    print(x3d.metaDiagnostics(newModel)) # ('info', 'hint', 'warning', 'error', 'TODO')
+
+# print('check newModel.XML() serialization...')
+newModelXML= newModel.XML() # test export method XML() for exceptions during export
+newModel.XMLvalidate()
+# print(newModelXML) # diagnostic
+
+try:
+#   print('check newModel.VRML() serialization...')
+    newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
+    # print(prependLineNumbers(newModelVRML)) # debug
+    print("Python-to-VRML export of VRML output successful", flush=True)
+except Exception as err: # usually BaseException
+    # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
+    if newModelVRML: # may have failed to generate
+        print(prependLineNumbers(newModelVRML, err.lineno))
+
+try:
+#   print('check newModel.JSON() serialization...')
+    newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
+#   print(prependLineNumbers(newModelJSON)) # debug
+    print("Python-to-JSON export of JSON output successful (under development)")
+except Exception as err: # usually SyntaxError
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
+    if newModelJSON: # may have failed to generate
+        print(prependLineNumbers(newModelJSON,err.lineno))
+
+print("python HelloWorld.py load and self-test diagnostics complete.")
+===========================================
+Loading local x3d.py package in python to check for correctness...
+  then test HelloWorld.py execution and self-validation:
+  python examples/HelloWorld.py
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+Self-test diagnostics for HelloWorld.py:
+Python-to-XML well-formed XML document  test of XML output complete
+Python-to-XML X3D 3.3 schema validation test of XML output complete
+Python-to-VRML export of VRML output successful
+Python-to-JSON export of JSON output successful (under development)
+python HelloWorld.py load and self-test diagnostics complete.
+convert.X3dToPython.xslt conversion of HelloWorld.x3d to HelloWorld.py complete.
+===========================================
+Moving 1 file to C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples
+Attempting to rename: C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\HelloWorld.py to C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\HelloWorldPrefixed.py
+===========================================
+examples.HelloWorld:
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+convert.X3dToPython.xslt:
+===========================================
+===========================================
+convert.X3dToPython.xslt conversion of HelloWorld.x3d to HelloWorld.py complete.
+####################################################################################################
+#
+# Now available: developmental python x3d.py package on PyPI for import.
+#   This approach simplifies Python X3D deployment and use.
+#   https://pypi.org/project/x3d
+#
+# Installation:
+#       pip install x3d
+# or
+#       python -m pip install x3d
+#
+# Developer options for loading x3d package:
+#
+#    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
+#
+# or
+#    import x3d         # traditional way to subclass x3d package, all classes require x3d.* prefix,
+#                       # but python source is very verbose, for example x3d.Material x3d.Shape etc.
+#                       # X3dToPython.xslt stylesheet insertPackagePrefix=true supports this option.
+#
+####################################################################################################
+
+from x3d import *
+
+#  comment preceding root node 
+newModel=X3D(profile='Immersive',version='3.3',
+  head=head(
+    children=[
+    meta(content='HelloWorld.x3d',name='title'),
+    meta(content='Simple X3D scene example: Hello World!',name='description'),
+    meta(content='30 October 2000',name='created'),
+    meta(content='31 October 2019',name='modified'),
+    meta(content='Don Brutzman',name='creator'),
+    meta(content='HelloWorld.tall.png',name='Image'),
+    meta(content='http://en.wikipedia.org/wiki/Hello_world',name='reference'),
+    meta(content='https://en.wikipedia.org/wiki/Hello#.22Hello.2C_World.22_computer_program',name='reference'),
+    meta(content='https://en.wikipedia.org/wiki/"Hello,_World!"_program',name='reference'),
+    meta(content='http://en.wikibooks.org/w/index.php?title=Computer_Programming/Hello_world',name='reference'),
+    meta(content='http://www.HelloWorldExample.net',name='reference'),
+    meta(content='http://www.web3D.org',name='reference'),
+    meta(content='http://www.web3d.org/realtime-3d/news/internationalization-x3d',name='reference'),
+    meta(content='http://www.web3d.org/x3d/content/examples/HelloWorld.x3d',name='reference'),
+    meta(content='http://X3dGraphics.com/examples/X3dForAdvancedModeling/HelloWorldScenes',name='reference'),
+    meta(content='http://X3dGraphics.com/examples/X3dForWebAuthors/Chapter01TechnicalOverview/HelloWorld.x3d',name='identifier'),
+    meta(content='http://www.web3d.org/x3d/content/examples/license.html',name='license'),
+    meta(content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit',name='generator'),
+    #  Alternate encodings: VRML97, X3D ClassicVRML Encoding, X3D Compressed Binary Encoding (CBE), X3DOM, JSON 
+    meta(content='HelloWorld.wrl',name='reference'),
+    meta(content='HelloWorld.x3dv',name='reference'),
+    meta(content='HelloWorld.x3db',name='reference'),
+    meta(content='HelloWorld.xhtml',name='reference'),
+    meta(content='HelloWorld.json',name='reference')]),
+  Scene=Scene(
+    #  Example scene to illustrate X3D nodes and fields (XML elements and attributes) 
+    children=[
+    WorldInfo(title='Hello World!'),
+    WorldInfo(title="Hello ' apostrophe 1"),
+    WorldInfo(title="Hello ' apostrophe 2"),
+    WorldInfo(title='Hello " quotation mark 3'),
+    WorldInfo(title='Hello " quotation mark 4'),
+    MetadataSet(name="items'",
+      value=[
+      MetadataInteger(name='one',value=[1]),
+      MetadataInteger(name='two',value=[2])]),
+    Group(
+      children=[
+      Viewpoint(DEF='ViewUpClose',centerOfRotation=(0,-1,0),description='Hello world!',position=(0,-1,7)),
+      #  insert commas to test removal when converted to ttl 
+      Transform(DEF='TestWhitespaceCommas',rotation=(0,1,0,3),
+        children=[
+        Shape(
+          geometry=Sphere(),
+          appearance=Appearance(
+            material=Material(DEF='MaterialLightBlue',diffuseColor=(0.1,0.5,1)),
+            texture=ImageTexture(DEF='ImageCloudlessEarth',url=["earth-topo.png","earth-topo.jpg","earth-topo-small.gif","http://www.web3d.org/x3d/content/examples/Basic/earth-topo.png","http://www.web3d.org/x3d/content/examples/Basic/earth-topo.jpg","http://www.web3d.org/x3d/content/examples/Basic/earth-topo-small.gif"])))]),
+      Transform(translation=(0,-2,0),
+        children=[
+        Shape(
+          geometry=Text(DEF='TextMessage',string=["Hello","world!"],
+            fontStyle=FontStyle(justify=["MIDDLE","MIDDLE"])),
+          appearance=Appearance(
+            material=Material(USE='MaterialLightBlue')))])])])
+) # X3D model complete
+
+####################################################################################################
+# Self-test diagnostics
+####################################################################################################
+
+print('Self-test diagnostics for HelloWorld.py:')
+if        metaDiagnostics(newModel): # built-in utility method in X3D class
+    print(metaDiagnostics(newModel)) # display meta info, hint, warning, error, TODO values in this model
+# print('check newModel.XML() serialization...')
+newModelXML= newModel.XML() # test export method XML() for exceptions during export
+newModel.XMLvalidate()
+# print(newModelXML) # diagnostic
+
+try:
+#   print('check newModel.VRML() serialization...')
+    newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
+    # print(prependLineNumbers(newModelVRML)) # debug
+    print("Python-to-VRML export of VRML output successful", flush=True)
+except Exception as err: # usually BaseException
+    # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
+    if newModelVRML: # may have failed to generate
+        print(prependLineNumbers(newModelVRML, err.lineno))
+
+try:
+#   print('check newModel.JSON() serialization...')
+    newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
+#   print(prependLineNumbers(newModelJSON)) # debug
+    print("Python-to-JSON export of JSON output successful (under development)")
+except Exception as err: # usually SyntaxError
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
+    if newModelJSON: # may have failed to generate
+        print(prependLineNumbers(newModelJSON,err.lineno))
+
+print("python HelloWorld.py load and self-test diagnostics complete.")
+===========================================
+Loading local x3d.py package in python to check for correctness...
+  then test HelloWorld.py execution and self-validation:
+  python examples/HelloWorld.py
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+Self-test diagnostics for HelloWorld.py:
+Python-to-XML well-formed XML document  test of XML output complete
+Python-to-XML X3D 3.3 schema validation test of XML output complete
+Python-to-VRML export of VRML output successful
+Python-to-JSON export of JSON output successful (under development)
+python HelloWorld.py load and self-test diagnostics complete.
+convert.X3dToPython.xslt conversion of HelloWorld.x3d to HelloWorld.py complete.
+===========================================
+examples.HelloWorldX3D4:
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+convert.X3dToPython.xslt:
+===========================================
+Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\HelloWorldX3D4.py
+===========================================
+convert.X3dToPython.xslt conversion of HelloWorldX3D4.x3d to HelloWorldX3D4.py complete.
+####################################################################################################
+#
+# Now available: developmental python x3d.py package on PyPI for import.
+#   This approach simplifies Python X3D deployment and use.
+#   https://pypi.org/project/x3d
+#
+# Installation:
+#       pip install x3d
+# or
+#       python -m pip install x3d
+#
+# Developer options for loading x3d package:
+#
+#    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
+#
+# or
+#    import x3d         # traditional way to subclass x3d package, all classes require x3d.* prefix,
+#                       # but python source is very verbose, for example x3d.Material x3d.Shape etc.
+#                       # X3dToPython.xslt stylesheet insertPackagePrefix=true supports this option.
+#
+####################################################################################################
+
+from x3d import *
+
+newModel=X3D(profile='Immersive',version='4.0',
+  head=head(
+    children=[
+    meta(content='HelloWorldX3D4.x3d',name='title'),
+    meta(content='Test X3D version 4 with simple X3D model example: Hello World!',name='description'),
+    meta(content='10 June 2021',name='created'),
+    meta(content='18 September 2021',name='modified'),
+    meta(content='Don Brutzman',name='creator'),
+    meta(content='HelloWorld.tall.png',name='Image'),
+    meta(content='https://en.wikipedia.org/wiki/Hello_world',name='reference'),
+    meta(content='https://en.wikipedia.org/wiki/Hello#.22Hello.2C_World.22_computer_program',name='reference'),
+    meta(content='https://en.wikipedia.org/wiki/"Hello,_World!"_program',name='reference'),
+    meta(content='https://en.wikibooks.org/w/index.php?title=Computer_Programming/Hello_world',name='reference'),
+    meta(content='https://www.HelloWorldExample.net',name='reference'),
+    meta(content='https://www.web3d.org',name='reference'),
+    meta(content='https://www.web3d.org/realtime-3d/news/internationalization-x3d',name='reference'),
+    meta(content='https://www.web3d.org/x3d/content/examples/HelloWorld.x3d',name='reference'),
+    meta(content='https://X3dGraphics.com/examples/X3dForAdvancedModeling/HelloWorldScenes/HelloWorld.x3d',name='reference'),
+    meta(content='https://X3dGraphics.com/examples/X3dForAdvancedModeling/HelloWorldScenes/HelloWorldX3D4.x3d',name='identifier'),
+    meta(content='https://www.web3d.org/x3d/content/examples/license.html',name='license'),
+    meta(content='X3D-Edit 4.0, https://savage.nps.edu/X3D-Edit',name='generator'),
+    meta(content='HelloWorld.wrl',name='reference'),
+    meta(content='HelloWorldX3D4.x3dv',name='reference'),
+    meta(content='HelloWorldX3D4.x3db',name='reference'),
+    meta(content='HelloWorldX3D4.xhtml',name='reference'),
+    meta(content='HelloWorldX3D4.json',name='reference')]),
+  Scene=Scene(
+    #  Example scene to illustrate X3D nodes and fields (XML elements and attributes) 
+    children=[
+    WorldInfo(DEF='WorldInfoPrimary',info=["Example scene to illustrate a simple X3D4 model"],title='Hello World!'),
+    WorldInfo(DEF='WorldInfoSecondary',class_='TestClass',id_='TestID',style_='TestStyle',title='test HTML CSS fields'),
+    Group(
+      children=[
+      Viewpoint(DEF='ViewUpClose',centerOfRotation=(0,-1,0),description='Hello world!',position=(0,-1,7)),
+      Transform(rotation=(0,1,0,3),
+        children=[
+        Shape(
+          geometry=Sphere(),
+          appearance=Appearance(
+            #  https://htmlcolorcodes.com/colors/off-white 
+            material=Material(DEF='MaterialOffWhite',diffuseColor=(0.980392,0.976471,0.964706)),
+            texture=ImageTexture(DEF='ImageCloudlessEarth',url=["earth-topo.png","earth-topo.jpg","earth-topo-small.gif","https://www.web3d.org/x3d/content/examples/Basic/earth-topo.png","https://www.web3d.org/x3d/content/examples/Basic/earth-topo.jpg","https://www.web3d.org/x3d/content/examples/Basic/earth-topo-small.gif"])))]),
+      Transform(translation=(0,-2,0),
+        children=[
+        Shape(
+          geometry=Text(DEF='TextMessage',string=["Hello","X3D 4!"],
+            fontStyle=FontStyle(justify=["MIDDLE","MIDDLE"])),
+          appearance=Appearance(
+            material=Material(USE='MaterialOffWhite')))])])])
+) # X3D model complete
+
+####################################################################################################
+# Self-test diagnostics
+####################################################################################################
+
+print('Self-test diagnostics for HelloWorldX3D4.py:')
+if        metaDiagnostics(newModel): # built-in utility method in X3D class
+    print(metaDiagnostics(newModel)) # display meta info, hint, warning, error, TODO values in this model
+# print('check newModel.XML() serialization...')
+newModelXML= newModel.XML() # test export method XML() for exceptions during export
+newModel.XMLvalidate()
+# print(newModelXML) # diagnostic
+
+try:
+#   print('check newModel.VRML() serialization...')
+    newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
+    # print(prependLineNumbers(newModelVRML)) # debug
+    print("Python-to-VRML export of VRML output successful", flush=True)
+except Exception as err: # usually BaseException
+    # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
+    if newModelVRML: # may have failed to generate
+        print(prependLineNumbers(newModelVRML, err.lineno))
+
+try:
+#   print('check newModel.JSON() serialization...')
+    newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
+#   print(prependLineNumbers(newModelJSON)) # debug
+    print("Python-to-JSON export of JSON output successful (under development)")
+except Exception as err: # usually SyntaxError
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
+    if newModelJSON: # may have failed to generate
+        print(prependLineNumbers(newModelJSON,err.lineno))
+
+print("python HelloWorldX3D4.py load and self-test diagnostics complete.")
+===========================================
+Loading local x3d.py package in python to check for correctness...
+  then test HelloWorldX3D4.py execution and self-validation:
+  python examples/HelloWorldX3D4.py
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+Self-test diagnostics for HelloWorldX3D4.py:
+Python-to-XML well-formed XML document  test of XML output complete
+Python-to-XML X3D 4.0 schema validation test of XML output complete
+Python-to-VRML export of VRML output successful
+Python-to-JSON export of JSON output successful (under development)
+python HelloWorldX3D4.py load and self-test diagnostics complete.
+convert.X3dToPython.xslt conversion of HelloWorldX3D4.x3d to HelloWorldX3D4.py complete.
+===========================================
+examples.BackgroundCollection:
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+convert.X3dToPython.xslt:
+===========================================
+Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\BackgroundCollection.py
+===========================================
+convert.X3dToPython.xslt conversion of BackgroundCollection.x3d to BackgroundCollection.py complete.
+####################################################################################################
+#
+# Now available: developmental python x3d.py package on PyPI for import.
+#   This approach simplifies Python X3D deployment and use.
+#   https://pypi.org/project/x3d
+#
+# Installation:
+#       pip install x3d
+# or
+#       python -m pip install x3d
+#
+# Developer options for loading x3d package:
+#
+#    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
+#
+# or
+#    import x3d         # traditional way to subclass x3d package, all classes require x3d.* prefix,
+#                       # but python source is very verbose, for example x3d.Material x3d.Shape etc.
+#                       # X3dToPython.xslt stylesheet insertPackagePrefix=true supports this option.
+#
+####################################################################################################
+
+from x3d import *
+
+newModel=X3D(profile='Interchange',version='3.3',
+  head=head(
+    children=[
+    meta(content='BackgroundCollection.x3d',name='title'),
+    meta(content='Collection of example Background nodes for author reuse, browse by selecting corresponding viewpoints.',name='description'),
+    meta(content='28 December 2014',name='created'),
+    meta(content='20 October 2019',name='modified'),
+    meta(content='Don Brutzman',name='creator'),
+    meta(content='https://www.web3d.org/x3d/content/examples/Basic/UniversalMediaPanoramas',name='reference'),
+    meta(content='https://www.web3d.org/x3d/tooltips/X3dTooltips.html#Background',name='reference'),
+    meta(content='https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/enveffects.html#Background',name='reference'),
+    meta(content='https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/enveffects.html#Concepts',name='reference'),
+    meta(content='https://x3dgraphics.com/slidesets/X3dForWebAuthors/Chapter11-LightingEnvironment.pdf',name='reference'),
+    meta(content='https://x3dgraphics.com/examples/X3dForAdvancedModeling/Visualization/BackgroundCollection.x3d',name='identifier'),
+    meta(content='https://www.web3d.org/x3d/content/examples/license.html',name='license'),
+    meta(content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit',name='generator')]),
+  Scene=Scene(
+    children=[
+    WorldInfo(title='BackgroundCollection.x3d'),
+    Group(DEF='AllLandBackgrounds',
+      children=[
+      Background(DEF='BlueSkyWhiteHorizonBrownLand',groundAngle=[1.309,1.5708],groundColor=[(0.5,0.3,0.3),(0.5,0.3,0.3),(0.5,0.4,0.4)],skyAngle=[1.309,1.572],skyColor=[(0,0.2,0.7),(0,0.5,1),(1,1,1)]),
+      Viewpoint(DEF='BlueSkyWhiteHorizonBrownLandViewpoint',description='Blue Sky White Horizon Brown Land'),
+      ROUTE(fromField='isBound',fromNode='BlueSkyWhiteHorizonBrownLandViewpoint',toField='set_bind',toNode='BlueSkyWhiteHorizonBrownLand')]),
+    Group(DEF='AllSeaBackgrounds',
+      children=[
+      Background(DEF='BlueOceanWhiteHorizon',groundAngle=[1.309,1.570796],groundColor=[(0,0.3,.7),(0,0.35,0.75),(0,0.4,0.8)],skyAngle=[1.309,1.571],skyColor=[(0,0.3,0.8),(0,0.5,1),(1,1,1)]),
+      Viewpoint(DEF='BlueOceanWhiteHorizonViewpoint',description='Blue Ocean White Horizon'),
+      ROUTE(fromField='isBound',fromNode='BlueOceanWhiteHorizonViewpoint',toField='set_bind',toNode='BlueOceanWhiteHorizon'),
+      Background(DEF='OvercastSkyBlueOcean',groundAngle=[0.1,1.5,1.56,1.570796],groundColor=[(0,0,0),(0,0.1,0.2),(0,0.1,0.2),(0,0.15,0.3),(0.1,0.1,0.1)],skyAngle=[0.1,1.4,1.5,1.565,1.57079],skyColor=[(0.1,0.1,0.1),(0.2,0.2,0.2),(0.2,0.2,0.2),(0,0.3804,0.4784),(0,0.2,0.4),(0.4,0.4,0.4)]),
+      Viewpoint(DEF='OvercastSkyBlueOceanViewpoint',description='Overcast Sky Blue Ocean'),
+      ROUTE(fromField='isBound',fromNode='OvercastSkyBlueOceanViewpoint',toField='set_bind',toNode='OvercastSkyBlueOcean'),
+      Background(DEF='BlueSkyBlueOcean',groundAngle=[1.57079],groundColor=[(0,0.15,0.25),(0,0.15,0.25)],skyColor=[(0,0.3,0.5)]),
+      Viewpoint(DEF='BlueSkyBlueOceanViewpoint',description='Blue Sky Blue Ocean'),
+      ROUTE(fromField='isBound',fromNode='BlueSkyBlueOceanViewpoint',toField='set_bind',toNode='BlueSkyBlueOcean')]),
+    Group(DEF='AllSkyBackgrounds',
+      children=[
+      Background(DEF='SimplyWhite',skyColor=[(1,1,1)]),
+      Viewpoint(DEF='SimplyWhiteViewpoint',description='Simply White'),
+      ROUTE(fromField='isBound',fromNode='SimplyWhiteViewpoint',toField='set_bind',toNode='SimplyWhite'),
+      Background(DEF='SimplyGrey',skyColor=[(0.8,0.8,0.8)]),
+      Viewpoint(DEF='SimplyGreyViewpoint',description='Simply Grey'),
+      ROUTE(fromField='isBound',fromNode='SimplyGreyViewpoint',toField='set_bind',toNode='SimplyGrey'),
+      Background(DEF='SimplyDarkGrey',skyColor=[(0.4,0.4,0.4)]),
+      Viewpoint(DEF='SimplyDarkGreyViewpoint',description='Simply Dark Grey'),
+      ROUTE(fromField='isBound',fromNode='SimplyDarkGreyViewpoint',toField='set_bind',toNode='SimplyDarkGrey'),
+      Background(DEF='SimplyBlack'),
+      Viewpoint(DEF='SimplyBlackViewpoint',description='Simply Black'),
+      ROUTE(fromField='isBound',fromNode='SimplyBlackViewpoint',toField='set_bind',toNode='SimplyBlack')]),
+    Group(DEF='AllVarietyBackgrounds',
+      children=[
+      Background(DEF='BackgroundTest1',groundAngle=[1,1.4,1.5],groundColor=[(0,0,0),(0.2157,1,0.1216),(0.5,0.5,0.5),(1,1,1)],skyAngle=[1,1.309,1.57079],skyColor=[(0,0,0),(0.1647,0.0588,1),(0.5,0.5,0.5),(1,1,1)]),
+      Background(DEF='BackgroundTest2',groundAngle=[1,1.309],groundColor=[(0,0.3,.7),(0,0.35,0.75),(0,0.4,0.8)],skyAngle=[1.309,1.57079],skyColor=[(0,0.3,0.8),(0,0.5,1),(1,1,1)]),
+      Background(DEF='BackgroundTest3',groundAngle=[1.57079],groundColor=[(0,0.15,0.25),(0,0.15,0.25)],skyColor=[(0,0.3,0.5)]),
+      Background(DEF='BackgroundTest4',groundAngle=[1.57079],groundColor=[(0,0.15,0.25),(0,0.15,0.25)],skyColor=[(0,0.3,0.5)]),
+      Viewpoint(DEF='ViewpointTest1',description='Test1'),
+      ROUTE(fromField='isBound',fromNode='ViewpointTest1',toField='set_bind',toNode='BackgroundTest1'),
+      Viewpoint(DEF='ViewpointTest2',description='Test2'),
+      ROUTE(fromField='isBound',fromNode='ViewpointTest2',toField='set_bind',toNode='BackgroundTest2'),
+      Viewpoint(DEF='ViewpointTest3',description='Test3'),
+      ROUTE(fromField='isBound',fromNode='ViewpointTest3',toField='set_bind',toNode='BackgroundTest3'),
+      Viewpoint(DEF='ViewpointTest4',description='Test4'),
+      ROUTE(fromField='isBound',fromNode='ViewpointTest4',toField='set_bind',toNode='BackgroundTest4')]),
+    Group(DEF='UnboundViewpoints',
+      #  The final two viewpoints are not separately bound and can be selected to check any of the other Background nodes 
+      children=[
+      Viewpoint(description='Looking up at current Background zenith',orientation=(1,0,0,1.570796)),
+      Viewpoint(description='Looking down at current Background nadir',orientation=(1,0,0,-1.570796))])])
+) # X3D model complete
+
+####################################################################################################
+# Self-test diagnostics
+####################################################################################################
+
+print('Self-test diagnostics for BackgroundCollection.py:')
+if        metaDiagnostics(newModel): # built-in utility method in X3D class
+    print(metaDiagnostics(newModel)) # display meta info, hint, warning, error, TODO values in this model
+# print('check newModel.XML() serialization...')
+newModelXML= newModel.XML() # test export method XML() for exceptions during export
+newModel.XMLvalidate()
+# print(newModelXML) # diagnostic
+
+try:
+#   print('check newModel.VRML() serialization...')
+    newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
+    # print(prependLineNumbers(newModelVRML)) # debug
+    print("Python-to-VRML export of VRML output successful", flush=True)
+except Exception as err: # usually BaseException
+    # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
+    if newModelVRML: # may have failed to generate
+        print(prependLineNumbers(newModelVRML, err.lineno))
+
+try:
+#   print('check newModel.JSON() serialization...')
+    newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
+#   print(prependLineNumbers(newModelJSON)) # debug
+    print("Python-to-JSON export of JSON output successful (under development)")
+except Exception as err: # usually SyntaxError
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
+    if newModelJSON: # may have failed to generate
+        print(prependLineNumbers(newModelJSON,err.lineno))
+
+print("python BackgroundCollection.py load and self-test diagnostics complete.")
+===========================================
+Loading local x3d.py package in python to check for correctness...
+  then test BackgroundCollection.py execution and self-validation:
+  python examples/BackgroundCollection.py
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+Self-test diagnostics for BackgroundCollection.py:
+Python-to-XML well-formed XML document  test of XML output complete
+Python-to-XML X3D 3.3 schema validation test of XML output complete
+Python-to-VRML export of VRML output successful
+Python-to-JSON export of JSON output successful (under development)
+python BackgroundCollection.py load and self-test diagnostics complete.
+convert.X3dToPython.xslt conversion of BackgroundCollection.x3d to BackgroundCollection.py complete.
+===========================================
+examples.MaterialModulator:
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+convert.X3dToPython.xslt:
+===========================================
+Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\python\examples\MaterialModulator.py
+===========================================
+convert.X3dToPython.xslt conversion of MaterialModulator.x3d to MaterialModulator.py complete.
+####################################################################################################
+#
+# Now available: developmental python x3d.py package on PyPI for import.
+#   This approach simplifies Python X3D deployment and use.
+#   https://pypi.org/project/x3d
+#
+# Installation:
+#       pip install x3d
+# or
+#       python -m pip install x3d
+#
+# Developer options for loading x3d package:
+#
+#    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
+#
+# or
+#    import x3d         # traditional way to subclass x3d package, all classes require x3d.* prefix,
+#                       # but python source is very verbose, for example x3d.Material x3d.Shape etc.
+#                       # X3dToPython.xslt stylesheet insertPackagePrefix=true supports this option.
+#
+####################################################################################################
+
+from x3d import *
+
+newModel=X3D(profile='Immersive',version='3.3',
+  head=head(
+    children=[
+    meta(content='MaterialModulator.x3d',name='title'),
+    meta(content='Mimic a Material node and modulate the diffuseColor field as an animation effect, provided as a prototype for reusability.',name='description'),
+    meta(content='Learning suggestion for authors: try changing the modulation script so that it goes from [0 ... 1] and then [1 ... 0] alternating, rather than abruptly shifting from 1 immediately back to 0.',name='hint'),
+    meta(content='Don Brutzman',name='creator'),
+    meta(content='10 March 2008',name='created'),
+    meta(content='20 October 2019',name='modified'),
+    meta(content='X3D prototype requiring Script inputOutput fields',name='subject'),
+    meta(content='MaterialModulator.png',name='Image'),
+    meta(content='https://X3dGraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulator.x3d',name='identifier'),
+    meta(content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit',name='generator'),
+    meta(content='../license.html',name='license')]),
+  Scene=Scene(
+    children=[
+    WorldInfo(title='MaterialModulator.x3d'),
+    ProtoDeclare(appinfo='mimic a Material node and modulate the diffuseColor field as an animation effect',documentation='https://x3dgraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulatorIndex.html',name='MaterialModulator',
+      ProtoInterface=ProtoInterface(
+        field=[
+        field(accessType='inputOutput',appinfo='default value true',name='enabled',type='SFBool',value=True),
+        field(accessType='inputOutput',appinfo='default value 0.8 0.8 0.8',name='diffuseColor',type='SFColor',value=(0.8,0.8,0.8)),
+        field(accessType='inputOutput',appinfo='default value 0 0 0',name='emissiveColor',type='SFColor',value=(0,0,0)),
+        field(accessType='inputOutput',appinfo='default value 0 0 0',name='specularColor',type='SFColor',value=(0,0,0)),
+        field(accessType='inputOutput',appinfo='default value 0.0',name='transparency',type='SFFloat',value=0.0),
+        field(accessType='inputOutput',appinfo='default value 0.2',name='shininess',type='SFFloat',value=0.2),
+        field(accessType='inputOutput',appinfo='default value 0.2',name='ambientIntensity',type='SFFloat',value=0.2)]),
+      ProtoBody=ProtoBody(
+        children=[
+        Material(DEF='MaterialNode',
+          IS=IS(
+            connect=[
+            connect(nodeField='diffuseColor',protoField='diffuseColor'),
+            connect(nodeField='emissiveColor',protoField='emissiveColor'),
+            connect(nodeField='specularColor',protoField='specularColor'),
+            connect(nodeField='transparency',protoField='transparency'),
+            connect(nodeField='shininess',protoField='shininess'),
+            connect(nodeField='ambientIntensity',protoField='ambientIntensity')])),
+        #  Only first node (the node type) is renderable, others are along for the ride 
+        Script(DEF='MaterialModulatorScript',
+          field=[
+          field(accessType='inputOutput',name='enabled',type='SFBool'),
+          field(accessType='inputOutput',name='diffuseColor',type='SFColor'),
+          field(accessType='outputOnly',name='newColor',type='SFColor'),
+          field(accessType='inputOnly',name='clockTrigger',type='SFTime')],
+          IS=IS(
+            connect=[
+            connect(nodeField='enabled',protoField='enabled'),
+            connect(nodeField='diffuseColor',protoField='diffuseColor')]),
+
+        sourceCode="""
+ecmascript:
+function initialize ()
+{
+    newColor = diffuseColor; // start with original color
+}
+function clockTrigger (timeValue)
+{
+    if (!enabled) return;
+    red   = newColor.r;
+    green = newColor.g;
+    blue  = newColor.b;
+    
+    // note different modulation rates for each color component, % is modulus operator
+    newColor = new SFColor ((red + 0.02) % 1, (green + 0.03) % 1, (blue + 0.04) % 1);
+	if (enabled)
+	{
+		Browser.print ('diffuseColor=(' + red +',' + green + ',' + blue + ') newColor=' + newColor.toString() + '\n');
+	}
+}
+function set_enabled (newValue)
+{
+	enabled = newValue;
+}
+"""),
+        #  Clock tickles Script to wake up and compute a new value 
+        ROUTE(fromField='newColor',fromNode='MaterialModulatorScript',toField='diffuseColor',toNode='MaterialNode'),
+        TimeSensor(DEF='ModulationClock',cycleInterval=0.1,loop=True,
+          IS=IS(
+            connect=[
+            connect(nodeField='enabled',protoField='enabled')])),
+        ROUTE(fromField='cycleTime',fromNode='ModulationClock',toField='clockTrigger',toNode='MaterialModulatorScript')])),
+    #  Rendered geometry for the ProtoInstance now follows prototype declaration 
+    Transform(translation=(0,1,0),
+      children=[
+      Shape(
+        geometry=Sphere(),
+        appearance=Appearance(
+          material=ProtoInstance(DEF='MaterialModulatorInstance',name='MaterialModulator',
+            fieldValue=[
+            fieldValue(name='enabled',value=True),
+            fieldValue(name='diffuseColor',value=(0.5,0.1,0.1))]
+            #  fieldValue declarations for other Material attributes can appear here 
+            )))]),
+    #  Selectable Text design pattern has transparent Box and TouchSensor description as a tooltip 
+    Transform(translation=(0,-2,0),
+      children=[
+      Shape(
+        geometry=Text(string=["enable/disable","MaterialModulator"],
+          fontStyle=FontStyle(family=["SANS"],justify=["MIDDLE","MIDDLE"],style_='BOLD')),
+        appearance=Appearance(
+          material=Material(diffuseColor=(0.9,0.9,0.9)))),
+      Shape(
+        geometry=Box(size=(8,2,.001)),
+        appearance=Appearance(
+          material=Material(transparency=1))),
+      #  Toggle text to enable/disable MaterialModulator 
+      TouchSensor(DEF='TouchTextInterface',description='Select to enable/disable MaterialModulator'),
+      BooleanToggle(DEF='EventToggler'),
+      ROUTE(fromField='isActive',fromNode='TouchTextInterface',toField='set_boolean',toNode='EventToggler'),
+      ROUTE(fromField='toggle',fromNode='EventToggler',toField='enabled',toNode='MaterialModulatorInstance')])])
+) # X3D model complete
+
+####################################################################################################
+# Self-test diagnostics
+####################################################################################################
+
+print('Self-test diagnostics for MaterialModulator.py:')
+if        metaDiagnostics(newModel): # built-in utility method in X3D class
+    print(metaDiagnostics(newModel)) # display meta info, hint, warning, error, TODO values in this model
+# print('check newModel.XML() serialization...')
+newModelXML= newModel.XML() # test export method XML() for exceptions during export
+newModel.XMLvalidate()
+# print(newModelXML) # diagnostic
+
+try:
+#   print('check newModel.VRML() serialization...')
+    newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
+    # print(prependLineNumbers(newModelVRML)) # debug
+    print("Python-to-VRML export of VRML output successful", flush=True)
+except Exception as err: # usually BaseException
+    # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
+    if newModelVRML: # may have failed to generate
+        print(prependLineNumbers(newModelVRML, err.lineno))
+
+try:
+#   print('check newModel.JSON() serialization...')
+    newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
+#   print(prependLineNumbers(newModelJSON)) # debug
+    print("Python-to-JSON export of JSON output successful (under development)")
+except Exception as err: # usually SyntaxError
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
+    if newModelJSON: # may have failed to generate
+        print(prependLineNumbers(newModelJSON,err.lineno))
+
+print("python MaterialModulator.py load and self-test diagnostics complete.")
+===========================================
+Loading local x3d.py package in python to check for correctness...
+  then test MaterialModulator.py execution and self-validation:
+  python examples/MaterialModulator.py
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+Self-test diagnostics for MaterialModulator.py:
+meta information, hint: Learning suggestion for authors: try changing the modulation script so that it goes from [0 ... 1] and then [1 ... 0] alternating, rather than abruptly shifting from 1 immediately back to 0.
+Python-to-XML well-formed XML document  test of XML output complete
+Python-to-XML X3D 3.3 schema validation test of XML output complete
+Python-to-VRML export of VRML output successful
+Python-to-JSON export of JSON output successful (under development)
+python MaterialModulator.py load and self-test diagnostics complete.
+convert.X3dToPython.xslt conversion of MaterialModulator.x3d to MaterialModulator.py complete.
+===========================================
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+examples.NumpyExample:
+Create .x3d model by running NumpyExample.py in python using numpy and local build of Python x3d package
+  python examples/NumpyExample.py
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "https://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <meta content='NumpyExample.x3d' name='title'/>
+    <meta content='example of using Numpy library to generate coordinate geometry and color' name='description'/>
+    <meta content='24 Feb 2022' name='created'/>
+    <meta content='Vince Marchetti' name='creator'/>
+    <meta content='https://www.web3d.org/x3d/content/examples/license.html' name='license'/>
+  </head>
+  <Scene>
+    <WorldInfo title='NumpyExample.x3d'/>
+    <Viewpoint DEF='ViewUpClose' description='Initial Viewpoint'/>
+    <Shape>
+      <IndexedTriangleSet index='0 1 2 0 2 3 0 3 1 3 2 1'>
+        <Color color='1.0 1.0 0.4 0.7 0.4 1.0 0.0 0.8 0.0 1.0 0.8 0.9'/>
+        <Coordinate point='0.0 2.0 0.0 -1.632 -0.688 0.942 1.632 -0.688 0.942 0.0 -0.688 -1.884'/>
+      </IndexedTriangleSet>
+    </Shape>
+  </Scene>
+</X3D>
+
+test.X3dToPython.SmokeTests complete.
+===========================================
+build.examples:
+BUILD SUCCESSFUL (total time: 1 minute 4 seconds)

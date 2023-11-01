@@ -1,0 +1,115 @@
+ant -f C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\python -DXmaxwarns=1000 configuration
+configuration:
+Updating local Python installation configuration...
+Prerequisite: run as administrative user in console granted administrative permissions
+Reference:    build.DeploymentSteps.txt
+----------------
+Check current Python version:
+Python 3.11.1
+----------------
+Ensure latest pip installed:
+https://docs.python.org/3/installing/index.html?highlight=pip
+python -m ensurepip --default-pip
+Looking in links: c:\Users\BRUTZM~1.IT1\AppData\Local\Temp\tmplji829rj
+Requirement already satisfied: setuptools in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (66.1.1)
+Requirement already satisfied: pip in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (22.3.1)
+python -m pip install --upgrade pip
+Requirement already satisfied: pip in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (22.3.1)
+ latest version of PyPI’s build installed
+python -m pip install --upgrade build
+Requirement already satisfied: build in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (0.10.0)
+Requirement already satisfied: packaging>=19.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from build) (23.0)
+Requirement already satisfied: pyproject_hooks in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from build) (1.0.0)
+Requirement already satisfied: colorama in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from build) (0.4.6)
+----------------
+https://www.pylint.org
+https://en.wikipedia.org/wiki/Pylint
+python -m pip install --upgrade pylint
+Requirement already satisfied: pylint in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (2.15.10)
+Requirement already satisfied: platformdirs>=2.2.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (2.6.2)
+Requirement already satisfied: astroid<=2.14.0-dev0,>=2.12.13 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (2.13.2)
+Requirement already satisfied: isort<6,>=4.2.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (5.11.4)
+Requirement already satisfied: mccabe<0.8,>=0.6 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (0.7.0)
+Requirement already satisfied: tomlkit>=0.10.1 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (0.11.6)
+Requirement already satisfied: dill>=0.3.6 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (0.3.6)
+Requirement already satisfied: colorama>=0.4.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from pylint) (0.4.6)
+Requirement already satisfied: lazy-object-proxy>=1.4.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from astroid<=2.14.0-dev0,>=2.12.13->pylint) (1.9.0)
+Requirement already satisfied: typing-extensions>=4.0.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from astroid<=2.14.0-dev0,>=2.12.13->pylint) (4.4.0)
+Requirement already satisfied: wrapt<2,>=1.14 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from astroid<=2.14.0-dev0,>=2.12.13->pylint) (1.14.1)
+----------------
+Ensure latest numpy (numerical python) installed:
+https://www.numpy.org
+https://en.wikipedia.org/wiki/numpy
+python -m pip install --upgrade numpy
+Requirement already satisfied: numpy in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (1.24.1)
+----------------
+Ensure latest setuptools installed:
+python -m pip install --upgrade setuptools wheel
+Requirement already satisfied: setuptools in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (66.1.1)
+Collecting setuptools
+  Using cached setuptools-67.0.0-py3-none-any.whl (1.1 MB)
+Requirement already satisfied: wheel in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (0.38.4)
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 66.1.1
+    Uninstalling setuptools-66.1.1:
+      Successfully uninstalled setuptools-66.1.1
+Successfully installed setuptools-67.0.0
+----------------
+https://www.sphinx-doc.org
+https://en.wikipedia.org/wiki/Sphinx_(documentation_generator)
+python -m pip install --upgrade sphinx
+Requirement already satisfied: sphinx in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (6.1.3)
+Requirement already satisfied: sphinxcontrib-applehelp in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (1.0.3)
+Requirement already satisfied: sphinxcontrib-devhelp in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (1.0.2)
+Requirement already satisfied: sphinxcontrib-jsmath in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (1.0.1)
+Requirement already satisfied: sphinxcontrib-htmlhelp>=2.0.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (2.0.0)
+Requirement already satisfied: sphinxcontrib-serializinghtml>=1.1.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (1.1.5)
+Requirement already satisfied: sphinxcontrib-qthelp in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (1.0.3)
+Requirement already satisfied: Jinja2>=3.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (3.1.2)
+Requirement already satisfied: Pygments>=2.13 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (2.14.0)
+Requirement already satisfied: docutils<0.20,>=0.18 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (0.19)
+Requirement already satisfied: snowballstemmer>=2.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (2.2.0)
+Requirement already satisfied: babel>=2.9 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (2.11.0)
+Requirement already satisfied: alabaster<0.8,>=0.7 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (0.7.12)
+Requirement already satisfied: imagesize>=1.3 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (1.4.1)
+Requirement already satisfied: requests>=2.25.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (2.28.1)
+Requirement already satisfied: packaging>=21.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (23.0)
+Requirement already satisfied: colorama>=0.4.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from sphinx) (0.4.6)
+Requirement already satisfied: pytz>=2015.7 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from babel>=2.9->sphinx) (2022.7)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from Jinja2>=3.0->sphinx) (2.1.1)
+Requirement already satisfied: charset-normalizer<3,>=2 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.25.0->sphinx) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.25.0->sphinx) (3.4)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.25.0->sphinx) (1.26.13)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.25.0->sphinx) (2022.12.7)
+----------------
+https://pypi.org/project/twine
+python -m pip install --upgrade twine
+Requirement already satisfied: twine in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (4.0.2)
+Requirement already satisfied: pkginfo>=1.8.1 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (1.9.6)
+Requirement already satisfied: readme-renderer>=35.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (37.3)
+Requirement already satisfied: requests>=2.20 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (2.28.1)
+Requirement already satisfied: requests-toolbelt!=0.9.0,>=0.8.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (0.10.1)
+Requirement already satisfied: urllib3>=1.26.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (1.26.13)
+Requirement already satisfied: importlib-metadata>=3.6 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (6.0.0)
+Requirement already satisfied: keyring>=15.1 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (23.13.1)
+Requirement already satisfied: rfc3986>=1.4.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (2.0.0)
+Requirement already satisfied: rich>=12.0.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from twine) (13.0.1)
+Requirement already satisfied: zipp>=0.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from importlib-metadata>=3.6->twine) (3.11.0)
+Requirement already satisfied: jaraco.classes in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from keyring>=15.1->twine) (3.2.3)
+Requirement already satisfied: pywin32-ctypes>=0.2.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from keyring>=15.1->twine) (0.2.0)
+Requirement already satisfied: bleach>=2.1.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from readme-renderer>=35.0->twine) (5.0.1)
+Requirement already satisfied: docutils>=0.13.1 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from readme-renderer>=35.0->twine) (0.19)
+Requirement already satisfied: Pygments>=2.5.1 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from readme-renderer>=35.0->twine) (2.14.0)
+Requirement already satisfied: charset-normalizer<3,>=2 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.20->twine) (2.1.1)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.20->twine) (3.4)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from requests>=2.20->twine) (2022.12.7)
+Requirement already satisfied: commonmark<0.10.0,>=0.9.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from rich>=12.0.0->twine) (0.9.1)
+Requirement already satisfied: six>=1.9.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from bleach>=2.1.0->readme-renderer>=35.0->twine) (1.16.0)
+Requirement already satisfied: webencodings in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from bleach>=2.1.0->readme-renderer>=35.0->twine) (0.5.1)
+Requirement already satisfied: more-itertools in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from jaraco.classes->keyring>=15.1->twine) (9.0.0)
+python -m pip install --upgrade xmlschema
+Requirement already satisfied: xmlschema in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (2.1.1)
+Requirement already satisfied: elementpath<4.0.0,>=3.0.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\python311\lib\site-packages (from xmlschema) (3.0.2)
+python package re (regular expressions, regex standard library) is built in
+BUILD SUCCESSFUL (total time: 15 seconds)

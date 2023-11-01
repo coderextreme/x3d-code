@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="DTD extensions" ExtStr="dtd">
+		<File FilePath="x3d-3.0-InputOutputFields.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensions.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsAmendment1.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsPrivate.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsPublic.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsPublic.Specification.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-InputOutputFields.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-Web3dExtensionsPrivate.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-Web3dExtensionsPublic.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-Web3dExtensionsPublic.Specification.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-InputOutputFields.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-Web3dExtensionsPrivate.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-Web3dExtensionsPublic.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-Web3dExtensionsPublic.Specification.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-InputOutputFields.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-Web3dExtensionsPrivate.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-Web3dExtensionsPublic.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-Web3dExtensionsPublic.Specification.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-InputOutputFields.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-Web3dExtensionsPrivate.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-Web3dExtensionsPublic.dtd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-Web3dExtensionsPublic.Specification.dtd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Schema extensions" ExtStr="xsd">
+		<File FilePath="glossary.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsAmendment1.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsPrivate.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsPublic.Specification.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.0-Web3dExtensionsPublic.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-Web3dExtensionsPrivate.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-Web3dExtensionsPublic.Specification.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.1-Web3dExtensionsPublic.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-Web3dExtensionsPrivate.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-Web3dExtensionsPublic.Specification.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.2-Web3dExtensionsPublic.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-Web3dExtensionsPrivate.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-Web3dExtensionsPublic.Specification.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-3.3-Web3dExtensionsPublic.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-Web3dExtensionsPrivate.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-Web3dExtensionsPublic.Specification.xsd" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-Web3dExtensionsPublic.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Stylesheets">
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\AllX3dElementsAttributes3.3.txt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\AllX3dElementsAttributes3.3.xml" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\AllX3dElementsAttributesTextTemplate.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\BuildSpecificationLanguageBindingJava.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\BuildSpecificationVrmlEncodingFromSchema.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\BuildSpecificationXmlEncodingFromSchema.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\CreateContentCatalog\ContentCatalogToXmlSpyProject.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\CreateX3dSceneAccessInterfaceJava.xslt" HomeFolder="Yes"/>
+		<File FilePath="XmlEncoding\Part01\EncodingOfNodes.html" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\tooltips\license.html" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dAttributesLowerCaseTable.html" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dElementsAttributesLowerCaseTable.txt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dElementsAttributesLowerCaseTableConstruction.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dElementsLowerCaseTable.html" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dExtrusionCrossSectionToSvg.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dExtrusionToSvgViaXslt2.0.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dTidy.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToHtml.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dToJava.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToJson.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dToNodeJS.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\tooltips\X3dTooltipConversions.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dToTurtle.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToVrml97.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dToX3domX_ITE.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToX3dvClassicVrmlEncoding.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToXhtml-1.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToXhtml-2.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToXhtml-3.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToXhtml-4.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToXhtml-5.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\stylesheets\X3dToXhtml.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dUnwrap.xslt" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\X3dWrap.xslt" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="X3D Schematron" ExtStr=".sch">
+		<File FilePath="..\x3d\tools\schematron\build.xml" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\buildSchematronDevelopment.xml" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\iso_abstract_expand.xsl" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\iso_dsdl_include.xsl" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\iso_schematron_skeleton_for_saxon.xsl" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\iso_schematron_skeleton_for_xslt1.xsl" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\iso_svrl.xsl" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\SvrlReportText.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\X3dSchematron.html" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\X3dSchematronValidityChecks.sch" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\X3dSchematronValidityChecks.xslt" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\X3dSchematronValidityChecks1.sch" HomeFolder="Yes"/>
+		<File FilePath="..\x3d\tools\schematron\X3dSchematronValidityChecks2.sch" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Test scenes">
+		<File FilePath="..\x3d\content\examples\X3dForWebAuthors\HelloWorld.x3d" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="KML">
+		<File FilePath="KML2.2\atom-author-link.xsd" HomeFolder="Yes"/>
+		<File FilePath="KML2.2\kml22gx.xsd" HomeFolder="Yes"/>
+		<File FilePath="KML2.2\ogckml22.xsd" HomeFolder="Yes"/>
+		<File FilePath="KML2.2\xAL.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="X3D Unified Object Model (X3DUOM)">
+		<File FilePath="..\x3d\stylesheets\BuildX3dUnifiedObjectModelXmlFile.xslt" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel-3.0.xml" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel-3.1.xml" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel-3.2.xml" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel-3.3.xml" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel-4.0.json" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel-4.0.xml" HomeFolder="Yes"/>
+		<File FilePath="X3dUnifiedObjectModel.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="X3D Java SAI Library X3DJSAIL">
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.MeshLab.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp_MeshLabLauncher.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput_CommandLine.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput_ReloadedDOM.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutputTidy.x3d" HomeFolder="Yes"/>
+		<File FilePath="C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutputTidy_CommandLine.x3d" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="X3D JSON Schema" ExtStr=".json">
+		<File FilePath="x3d-3.3-JSONSchema.json" HomeFolder="Yes"/>
+		<File FilePath="x3d-4.0-JSONSchema.json" HomeFolder="Yes"/>
+	</Folder>
+	<File FilePath="contents.html" HomeFolder="Yes"/>
+	<File FilePath="glossary.xml" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.0.dtd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.0.xsd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.1.dtd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.1.xsd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.2.dtd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.2.xsd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.3.dtd" HomeFolder="Yes"/>
+	<File FilePath="x3d-3.3.xsd" HomeFolder="Yes"/>
+	<File FilePath="x3d-4.0.dtd" HomeFolder="Yes"/>
+	<File FilePath="x3d-4.0.xsd" HomeFolder="Yes"/>
+	<File FilePath="x3d-dtd-changelog.txt" HomeFolder="Yes"/>
+	<File FilePath="x3d-schema-changelog.txt" HomeFolder="Yes"/>
+</Project>

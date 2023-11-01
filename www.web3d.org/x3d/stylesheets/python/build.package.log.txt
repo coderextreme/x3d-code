@@ -1,0 +1,13 @@
+ant -f C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\python -DXmaxwarns=1000 build.package.x3d.py
+build.package.x3d.py:
+X3D stylesheets.BuildX3dPythonPackageFromX3duom.saxon:
+Following output is for X3D version 4.0 in X3dPackageDirectory=python
+Result: created files C:\x3d-code\www.web3d.org\x3d\stylesheets/python/x3d.py and __init__.py
+PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+BuildX3dPythonPackageFromX3duom.saxon complete.
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+test.x3d.py:
+Loading active PYTHONPATH x3d.py package in python to check for correctness...
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+BUILD SUCCESSFUL (total time: 2 seconds)

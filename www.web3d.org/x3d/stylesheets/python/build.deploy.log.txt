@@ -1,0 +1,42 @@
+IT160907-UWALPP+brutzman@IT160907-UWALPP /cygdrive/c/x3d-code/www.web3d.org/x3d/stylesheets/python
+$ python -m twine upload dist/* --verbose
+Uploading distributions to https://upload.pypi.org/legacy/
+INFO     dist/x3d-4.0.64.4-py3-none-any.whl (401.0 KB)
+INFO     dist/x3d-4.0.64.4.tar.gz (393.0 KB)
+INFO     Querying keyring for username
+Enter your username: brutzman
+INFO     Querying keyring for password
+Enter your password:
+INFO     username: brutzman
+INFO     password: <hidden>
+Uploading x3d-4.0.64.4-py3-none-any.whl
+100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 415.7/415.7 kB • 00:00 • 1.0 MB/s
+INFO     Response from https://upload.pypi.org/legacy/:
+         200 OK
+Uploading x3d-4.0.64.4.tar.gz
+100% ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 407.4/407.4 kB • 00:00 • 3.2 MB/s
+INFO     Response from https://upload.pypi.org/legacy/:
+         200 OK
+
+View at:
+https://pypi.org/project/x3d/4.0.64.4/
+
+
+IT160907-UWALPP+brutzman@IT160907-UWALPP /cygdrive/c/x3d-code/www.web3d.org/x3d/stylesheets/python
+$ ant upgrade.x3d.py
+Buildfile: C:\x3d-code\www.web3d.org\x3d\stylesheets\python\build.xml
+
+upgrade.x3d.py:
+     [echo] Upgrade local installation of Python X3D package
+     [echo] python -m pip install --upgrade x3d
+     [exec] Collecting x3d
+     [exec]   Using cached x3d-4.0.64.4-py3-none-any.whl (410 kB)
+     [exec] Requirement already satisfied: xmlschema in c:\users\brutzman.it160907-uwalpp\appdata\local\programs\python\py
+thon311\lib\site-packages (from x3d) (2.1.1)
+     [exec] Requirement already satisfied: elementpath<4.0.0,>=3.0.0 in c:\users\brutzman.it160907-uwalpp\appdata\local\pr
+ograms\python\python311\lib\site-packages (from xmlschema->x3d) (3.0.2)
+     [exec] Installing collected packages: x3d
+     [exec] Successfully installed x3d-4.0.64.4
+
+BUILD SUCCESSFUL
+

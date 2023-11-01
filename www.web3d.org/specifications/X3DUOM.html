@@ -1,0 +1,561 @@
+<html lang="en">
+<head>
+        <link rel="shortcut icon" href="images/X3DtextIcon16.png" title="X3D" >
+        <title>X3D Unified Object Model (X3DUOM)</title>
+        <meta name="author"      content="Don Brutzman">
+        <meta name="description" content="All related assets for X3D Unified Object Model (X3DUOM).  Original title Object Model For X3D (OM4X3D).">
+        <meta name="filename"    content="X3DUOM.html">
+        <meta name="reference"   content="license.html">
+        <meta name="created"     content="10 August 2017">
+        <meta name="identifier"  content="https://www.web3d.org/specifications/X3DUOM.html">
+        <meta name="reference"   content="http://x3d.svn.sourceforge.net/viewvc/x3d/www.web3d.org/specifications/X3DUOM.html">
+        <meta name='generator'   content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit'>
+</head>
+<body>
+        <table style="border:0" cellspacing="0" cellpadding="0" summary="" align="center">
+            <tr align="center">
+                <td><a href="https://www.web3d.org/x3d/content/examples/X3dResources.html" target="_blank"><img src="images/x3d2-s.gif" width="154" height="97" style="border:0" title="to X3D Resources" alt="to X3D Resources"></a></td>
+                <td><pre>   </pre></td>
+                <td>
+    <h2>
+        X3D Unified Object Model (X3DUOM)
+    </h2>
+                </td>
+                <td><pre>    </pre></td>
+                <td><a href="https://www.web3d.org" target="_blank"><img src="images/web3d_logo2.png" width="120" height="60" style="border:0" title="to Web3D home page" alt="to Web3D home page"></a></td>
+            </tr>
+        </table>
+
+		<p style="text-align:center">
+			The X3D Unified Object Model (X3DUOM) is a full set of object-oriented interfaces for all nodes, fields and statements in the X3D Architecture Specification.
+		</p>
+                
+        <blockquote>
+            <p style="text-align:center"><small>
+                <a href="#Description">Description</a>&nbsp;|
+                <a href="#Design">Design&nbsp;and&nbsp;Production</a>&nbsp;|
+                <a href="#Glossary">Glossary</a>&nbsp;|
+                <a href="#Implementation">Implementation&nbsp;and&nbsp;Evaluation</a>&nbsp;|
+                <a href="#Java">Java&nbsp;assets</a>&nbsp;|
+                <a href="#Python">Python&nbsp;assets</a>&nbsp;|
+                <a href="#Ontology">X3D&nbsp;Ontology&nbsp;assets</a>&nbsp;|
+                <a href="#Future">Future work</a>:
+                <a href="#C">C,&nbsp;C++,&nbsp;C#&nbsp;assets</a> and 
+                <a href="#JavaScript">JavaScript&nbsp;assets</a>&nbsp;|
+                <a href="https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof" target="X3dSpecification">X3D 4.0 Architecture</a>&nbsp;|
+                <a href="#Contact">Contact</a>
+                </small>
+            </p>
+        </blockquote>
+
+        <!-- =================================================== -->
+		
+            <h2>
+                <a id="Description">Description</a>
+                <!-- omit bookmark to top, unhelpful here -->
+            </h2>
+        
+            <p>
+                The X3D Unified Object Model (X3DUOM) is a full set of object-oriented interfaces for all nodes, fields and statements in the X3D Architecture Specification.
+                    Available source: 
+            </p>
+		<ul>
+			<li>
+                            <i>Current:</i> &nbsp; &nbsp;
+                            <a href="X3dUnifiedObjectModel-4.0.xml" target="_blank">X3dUnifiedObjectModel-4.0.xml</a>
+                           (<a href="https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/specifications/X3dUnifiedObjectModel-4.0.xml" target="_blank">version&nbsp;control</a>)
+			</li>
+			<li>
+                            <i>Related:</i>
+                            <a href="X3dUnifiedObjectModel-3.3.xml" target="_blank">X3dUnifiedObjectModel-3.3.xml</a>
+                           (<a href="https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/specifications/X3dUnifiedObjectModel-3.3.xml" target="_blank">version&nbsp;control</a>)
+                            and earlier X3D versions are also available.
+			</li>
+			<li>
+                                <i>Validity:</i>
+				corresponding
+                                <a href="X3dUnifiedObjectModel.xsd" target="_blank">X3dUnifiedObjectModel.xsd</a>
+				validation schema.
+			</li>
+		</ul>
+		<p>
+                    X3DUOM provides a validatable expression of X3D relationships that can be 
+                    applied to implement various X3D file encodings and programming-language bindings.
+		</p>
+
+        <!-- =================================================== -->
+		
+		<h2>
+            <a id="Design">Design and Production </a>
+            <a href="#top">
+               <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+            </a>
+		</h2>
+		<p>
+			<!-- width="1006" height="650" -->
+			<a href="X3DUOM/X3dUnifiedObjectModelCreation.png"><img src="X3DUOM/X3dUnifiedObjectModelCreation.png" alt="X3D Unified Object Model creation process" title="X3D Unified Object Model creation process" style="max-width:242px; max-height:184px; float: left; border: 1px solid black; margin: 0px 20px;"/></a>
+			To build the X3DUOM, first the X3D XML Schema is annotated to include all object-oriented information for X3D nodes and fields.
+			All fields are included regardless of accessType 
+			(<code>initializeOnly</code>, <code>inputOutput</code>, <code>inputOnly</code>, <code>outputOnly</code>). 
+			The schema is then read and converted into a simple XML file that fully lists the object-oriented characteristics of all X3D nodes, statements and attributes.
+		</p>
+		<ul>
+			<li>
+				<a href="X3dGraphicsStandardsRelationships.png" target="_blank">X3D Specification Relationships diagram</a>
+				shows how various X3D file-format and language-binding standards all align together.
+                Each file-format and programming-language standard has equivalent expressive power to the 
+                <a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/Architecture.html" target="_blank">ISO/IEC&nbsp;19775-1 X3D Architecture</a> abstract reference model
+                and this
+                X3D Unified Object Model (X3DUOM).
+			</li>
+			<li>
+				Diagram 
+                <a href="X3DUOM/X3dUnifiedObjectModelCreation.png">X3D Unified Object Model (X3DUOM) Creation</a>
+				illustrates how the X3DUOM build process works.
+			</li>
+			<li>
+				<a href="contents.html">X3D Specifications: Schema and DOCTYPE Validation</a>
+				provide multiple tools for validating X3D files consistently with X3DUOM.
+			</li>
+			<li>
+				<a href="https://www.web3d.org/x3d/tooltips/X3dTooltips.html">X3D Tooltips</a>
+				provide additional detail on content-model parent-child relationships and attribute data typing.
+			</li>
+			<li>
+				All information in X3DUOM
+				is automatically generated from definitions in the
+				<a href="x3d-4.0.xsd">x3d-4.0.xsd XML Schema</a>
+                               (<a href="X3dSchemaDocumentation4.0.html">documentation</a>)
+			</li>
+			<li>
+                Conversions are performed using the
+                <a href="../x3d/stylesheets/BuildX3dUnifiedObjectModelXmlFile.xslt">BuildX3dUnifiedObjectModelXmlFile.xslt</a> stylesheet.
+			</li>
+			<li>
+				Design tutorial:
+				<a href="X3DUOM/ObjectModelForX3dMasterClassWeb3dConference2017June7.pdf">ObjectModelForX3dMasterClassWeb3dConference2017June7.pdf</a>
+			</li>
+			<li>
+				<a href="X3dRegularExpressions.html">X3D Regular Expressions (regexes)</a>
+				provides documentation for the regexes used in X3DUOM, X3D schemas, X3DJSAIL etc.
+			</li>
+		<!--
+			<li>
+			</li>
+		-->
+		</ul>
+		
+		<p>
+			The availability of X3DUOM as a parsable XML file means that matching codebases in different programming languages 
+			can all be created for producing and manipulating valid X3D models.
+		</p>
+		<p>
+			X3DUOM source for all versions of X3D:
+		</p>
+		<ul>
+			<li>
+				<a href="X3dUnifiedObjectModel-4.0.xml">X3dUnifiedObjectModel-4.0.xml</a> (current)
+			</li>
+			<li>
+				<a href="X3dUnifiedObjectModel-3.3.xml">X3dUnifiedObjectModel-3.3.xml</a> (strict backwards compatibility)
+			</li>
+			<li>
+				<a href="X3dUnifiedObjectModel-3.2.xml">X3dUnifiedObjectModel-3.2.xml</a> (strict backwards compatibility)
+			</li>
+			<li>
+				<a href="X3dUnifiedObjectModel-3.1.xml">X3dUnifiedObjectModel-3.1.xml</a> (strict backwards compatibility)
+			</li>
+			<li>
+				<a href="X3dUnifiedObjectModel-3.0.xml">X3dUnifiedObjectModel-3.0.xml</a> (strict backwards compatibility)
+			</li>
+		</ul>
+                <p>
+                    Also available:
+                    <a href="X3dUnifiedObjectModel-4.0.json">.json</a> version (experimental).
+                </p>
+		
+		<p>
+			This project was originally named Object Model for X3D (OM4X3D). It has been renamed as X3DUOM
+			to better describe the unified nature of common X3D APIs across multiple programming languages.
+		</p>
+
+        <hr />
+
+        <!-- =================================================== -->
+
+        <h3>
+            <a id="Glossary">Glossary</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+            </a>
+        </h3>
+        
+        <p>
+            The
+            <a href="https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/Architecture.html" target="X3dSpecification">X3D 4.0 Architecture</a>
+            is ISO/IEC International Standard (IS) ISO/IEC 19775-1
+            includes Clause&nbsp;3
+            <a href="https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/glossary.html" target="X3dSpecification">Definitions, acronyms, and abbreviated terms</a>
+        </p>
+        
+        <p>
+            Both acronyms and glossary terms have been codified and included in the X3D XML Schema and X3DUOM.
+            Available at
+        <p>
+        <ul>
+            <li>
+                <a href="glossary.xsd">glossary.xsd</a>
+                excerpted from
+                <a href="x3d-4.0.xsd">X3D 4.0 XML Schema</a>, with documentation for
+                <a href="X3dSchemaDocumentation4.0/x3d-4.0_acronymChoices.html" target="_blank">acronymChoices</a>
+                and
+                <a href="X3dSchemaDocumentation4.0/x3d-4.0_glossaryChoices.html" target="_blank">glossaryChoices</a>
+            </li>
+            <li>
+                <a href="glossary.xml">glossary.xml</a>
+                excerpted from
+                <a href="X3dUnifiedObjectModel-4.0.xml">X3DUOM 4.0</a>
+            </li>
+            <li>
+                <a href="glossary.html" target="_blank">glossary.html</a>
+                produced by stylesheet
+                <a href="https://www.web3d.org/x3d/stylesheets/X3duomGlossaryToHtml.xslt" target="_blank">X3duomGlossaryToHtml.xslt</a>
+                via
+                <a href="https://www.web3d.org/x3d/stylesheets/build.xml" target="_blank">build.xml</a>
+            </li>
+            <li>
+                Corresponding programming-language versions can be found in
+                <a href="https://www.web3d.org/specifications/java/javadoc/org/web3d/x3d/jsail/Core/X3D.html#GLOSSARY_ACTIVATE" target="_blank">X3DJSAIL (Java)</a>.
+                TODO:
+                <a href="https://www.web3d.org/x3d/stylesheets/python/python.html" target="_blank">X3DPSAIL (Python)</a>, and
+                <a href="https://www.web3d.org/x3d/content/semantics/documentation/owldoc/index.html" target="_blank">X3D Ontology (Turtle)</a>.
+            </li>
+        </ul>
+        
+        <p>
+            We expect further conversions to support work by
+            <a href="https://metaverse-standards.org/domain-groups/standards-register" target="_blank">Metaverse Standards Register (MSR) Working Group</a>
+            at
+            <a href="https://metaverse-standards.org" target="_blank">Metaverse Standards Forum (MSF)</a>.                
+        </p>
+
+        <hr />
+
+        <!-- =================================================== -->
+
+		<h2><a id="Implementation">Implementation and Evaluation</a>
+            <a href="#top">
+               <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+            </a>
+		</h2>
+        
+        <p>
+			<!-- width="2643" height="2043" -->
+			<a href="X3dGraphicsStandardsRelationships.png"><img src="X3dGraphicsStandardsRelationships.png" alt="X3D Specification Relationships" title="X3D Specification Relationships" style="max-width:132px; max-height:102px; float: left; border: 1px solid black; margin: 0px 20px;"/></a>
+            As described on the
+            <a href="https://www.web3d.org/standards" target="_blank">Web3D Consortium Recommended Standards</a> page,
+            Extensible 3D (X3D) Graphics provides a
+            <a href="https://www.web3d.org/specifications/X3dGraphicsStandardsRelationships.png" target="_blank">coordinated set of steadily evolving ISO standards</a>.
+        </p>
+        
+        <p>
+            Tandem work on Java, JavaScript and Python by Don Brutzman and John Carlson is expected to
+            provide multiple implementation confirmations and possibly small revisions to 
+            multiple specifications including the governing
+            <a href="https://www.web3d.org/documents/specifications/19775-2/V3.3/Part02/X3D_SAI.html" target="_blank">ISO/IEC 19775-2 X3D Scene Access Interface (SAI)</a>
+            abstract specification.
+        </p>
+        
+        <p>
+            Development efforts for each of the following programming-language bindings are
+            providing the full capabilities of the X3D Architecture in language-specific ways.
+            Once complete, this body of work will provide unparalleled breadth and portability 
+            for export and utilization of Web-based 3D graphics.
+        </p>
+
+        <!-- =================================================== -->
+
+		<h3>
+                    <a id="Java">Java assets</a>
+                    <a href="#">
+                        <!-- width="154" height="97" -->
+                       <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+                    </a>
+		</h3>
+
+		<ul>
+			<li>
+				<a href="https://www.web3d.org/specifications/java/X3DJSAIL.html" target="_blank">X3D Java Scene Access Interface Library (X3DJSAIL)</a>
+				 implements the entire X3DUOM as an open-source Java library.
+			</li>
+			<li>
+				X3DJSAIL supports programmers with standards-based X3D Java interfaces and objects, all as open source.
+				Current work has achieved good design patterns and full coverage for source code.
+			</li>
+			<li>
+                                Production chain:
+                <ul>
+                    <li>
+                        Ant
+                        <a href="../x3d/stylesheets/build.xml" target="_blank">build.xml</a>
+                        targets <code>create.X3DJSAIL</code> and <code>test.X3DJSAIL</code> pertain.
+                    </li>
+                    <li>
+                        XSLT stylesheet
+                        <a href="../x3d/stylesheets/CreateX3dSceneAccessInterfaceJava.xslt" target="_blank">CreateX3dSceneAccessInterfaceJava.xslt</a>
+                        processes the X3DUOM.xml file, producing the full library.
+                    </li>
+                </ul>
+			</li>
+			<li>
+				Draft standard available on <i>Web3D Consortium Member-only GitHub</i>:
+                <a href="https://github.com/Web3DConsortium/X3D/tree/master/ISO-IEC%2019777/ISO-IEC%2019777-2" target="_blank">ISO/IEC 19777-2 X3D Language Bindings for Java</a>
+			</li>
+		</ul>
+
+        <!-- =================================================== -->
+
+		<h3>
+                    <a id="Python">Python assets</a>
+                    <a href="#">
+                        <!-- width="154" height="97" -->
+                       <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+                    </a>
+		</h3>
+		
+		<ul>
+			<li>
+				<a href="https://www.web3d.org/x3d/stylesheets/python/python.html" target="_blank">X3D Python Scene Access Interface Library (X3DPSAIL)</a>
+				implements the entire X3DUOM as an open-source Python library, published as
+                                <a href="https://pypi.org/project/x3d" target="_blank">x3d.py</a> package on the 
+                                widely used Python Packaging Index (PyPI).
+			</li>
+			<li>
+				X3DPSAIL supports programmers with standards-based X3D Python interfaces and objects, all as open source.
+				Current work has achieved good design patterns and full coverage for source code.
+			</li>
+			<li>
+                Production chain:
+                <ul>
+                    <li>
+                        Ant
+                        <a href="../x3d/stylesheets/build.xml" target="_blank">build.xml</a>
+                        targets <code>create.X3DPSAIL</code> and <code>test.X3DPSAIL</code> pertain.
+                    </li>
+                    <li>
+                        XSLT stylesheet
+                        <a href="../x3d/stylesheets/X3duomToX3dPythonPackage.xslt" target="_blank">X3duomToX3dPythonPackage.xslt</a>
+                        processes the X3DUOM.xml file, producing the full library.
+                    </li>
+                <!--<li>
+                        under-development
+                        <a href="../x3d/stylesheets/python/X3dPythonPackage.py" target="_blank">X3dPythonPackage.py</a>
+                    </li>
+                    <li>
+                        TODO:
+                        node typing checks,
+                        .x3d model conversions and export,
+                        self-validation tests, and
+                        PIP package deployment.
+                    </li>
+                -->
+                </ul>
+			</li>
+			<li>
+                Prior work:
+			<a href="https://pyjnius.readthedocs.io/en/stable/" target="_blank">Pyjnius</a>
+			   (<a href="https://github.com/kivy/pyjnius" target="_blank">source</a>)
+                is a Python library for accessing Java classes.
+                Developed in tandem with X3DJSAIL Java-based implementation,
+                <a href="https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/x3d/stylesheets/java/src/python/pyjnius" target="_blank">X3DJSAIL&nbsp;pyjnius</a>
+                package (alternatively
+                <a href="https://github.com/coderextreme/pythonSAI" target="_blank">pythonSAI</a>
+				codebase at
+				<a href="https://github.com/coderextreme/pythonSAI" target="_blank">https://github.com/coderextreme/pythonSAI</a>)
+				reads X3D files and generates Python source code,
+				allowing programmers to access Java classes from Python.
+                Unfortunately parts of the Pyjnius mapping apparently were unable to correctly use reflection to utilize X3DJSAIL completely.
+                We eventually abandoned this approach as problematic, opting instead to further adapt X3DUOM and generate native Python source instead.
+			</li>
+                        <!--
+			<li>
+				TODO: Masaki Aono original slideset
+			</li>
+                        -->
+		</ul>
+
+        <!-- =================================================== -->
+
+		<h3>
+                    <a id="Ontology">X3D Ontology assets</a>
+                    <a href="#">
+                        <!-- width="154" height="97" -->
+                       <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+                    </a>
+		</h3>
+		
+		<ul>
+                        <li>
+                                <a href="https://www.web3d.org/x3d/content/semantics" target="_blank">X3D Ontology for Semantic Web</a>
+                                provides terms of reference for semantic query of X3D graphics models, including interactive 3D geometry, multimedia, and metadata.
+                        </li>
+			<li>
+				Current work is has achieved good design patterns and full coverage supporting the X3D Ontology.
+			</li>
+			<li>
+                                Production chain:
+                <ul>
+                    <li>
+                        Ant
+                        <a href="../x3d/stylesheets/build.xml" target="_blank">build.xml</a>
+                        target <code>BuildX3dOntologyFromX3duom.saxon</code> pertain.
+                    </li>
+                    <li>
+                        XSLT stylesheet
+                        <a href="../x3d/stylesheets/X3duomToX3dOntology.xslt" target="_blank">X3duomToX3dOntology.xslt</a>
+                        processes the X3DUOM.xml file, producing the full library.
+                    </li>
+                </ul>
+			</li>
+		</ul>
+
+        <hr />
+
+        <!-- =================================================== -->
+		
+		<h2>
+                    <a id="FutureWork">Future work</a>
+                    <!-- omit bookmark to top, unhelpful here -->
+		</h2>
+        
+        <p>
+            We plan to continue these multiple-language library generation techniques
+            to make open-source X3D software libraries even more broadly available.
+        </p>
+        <p>
+            Please see the
+            <a href="https://www.web3d.org/specifications">X3D Graphics Standards Relationships</a>
+            figure to see how a common X3D&nbsp;Architecture can be implemented with consistent semantics for X3D scene graphs.
+        </p>
+        <p>
+            Future efforts under consideration follow.
+        </p>
+
+        <!-- =================================================== -->
+
+		<h3>
+                    <a id="c"></a><a id="cpp"></a><a id="c#"></a> C, C++, C# assets
+                    <a href="#">
+                        <!-- width="154" height="97" -->
+                       <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+                    </a>
+		</h3>
+		
+		<ul>
+			<li>
+				Design and implementation of language bindings for C, C++ and C# are being pursued by
+				Myeong Won Lee with early contributions by Roy Walmsley.
+			</li>
+			<li>
+				Draft standard available on <i>Web3D Consortium Member-only Github</i>:
+                draft 
+                <a href="https://github.com/Web3DConsortium/X3D/tree/master/ISO-IEC%2019777" target="_blank">ISO/IEC 19777-3,4,5 X3D Language Bindings for C, C++ and C</a>
+			</li>
+			<li>
+                Draft bindings have been submitted to ISO/IEC by Web3D Consortium as a
+                New Work Item Proposal (NWIP).
+			</li>
+			<li>
+                Slideset presentation 
+                <a href="https://www.web3d.org/sites/default/files/attachment/node/2326/edit/27_MyeongWonLee_C_Cpp_Csharp_X3dLanguageBindings_Seoul190122.pdf" target="_blank">X3D C/C++/C# Language Bindings (Updates)</a> 
+                by Myeong Won Lee at
+                <a href="https://www.web3d.org/event/web3d-korea-chapter-and-isoiec-jtc-1sc24-wg9" target="_blank">Web3D Korea Chapter Meeting January 2019</a>
+			</li>
+			<li>
+				Current work is focused on achieving good design patterns and full coverage for source code.
+			</li>
+			<li>
+				TODO: draft specification prose for ISO/IEC 19776-6 and submit corresponding NWIP through Web3D to ISO.
+			</li>
+		</ul>
+
+        <!-- =================================================== -->
+
+		<h3>
+                    <a id="JavaScript">JavaScript (ECMAScript) assets</a>
+                    <!-- no bookmark to top, avoid colliding with spec relationships ciagram -->
+		</h3>
+
+		<ul>
+			<li>
+                                Finalization of
+                                <a href="https://www.web3d.org/x3d/stylesheets/X3dToJson.html" target="_blank">X3D to JSON Conversion</a>
+                                is awaiting the long-pending standardization of a
+                                <a href="https://json-schema.org" target="_blank">JSON Schema</a>.
+                        </li>
+                        <li>
+				An example implementation is
+                                <a href="https://github.com/coderextreme/X3DJSONLD" target="_blank">X3DJSONLD</a>
+				codebase at
+				<a href="https://github.com/coderextreme/X3DJSONLD" target="_blank">https://github.com/coderextreme/X3DJSONLD</a>
+			</li>
+			<li>
+				<a href="X3DUOM/CarlsonX3DJSONLoaderTutorial.pdf" target="_blank">X3D JSON Loader Tutorial with Object Model integration</a>
+				by 
+				John Carlson (<a href="mailto:yottzumm%20@%20gmail.com(John%20Carlson)">yottzumm@gmail.com</a>)
+			</li>
+			<li>
+				Draft standard available on <i>Web3D Consortium Member-only Github</i>:
+                <a href="https://github.com/Web3DConsortium/X3D/tree/master/ISO-IEC%2019777/ISO-IEC%2019777-1" target="_blank">ISO/IEC 19777-1 X3D Language Bindings for ECMAScript</a>
+			</li>
+			<li>
+				Related work has achieved good design patterns and full coverage for
+                <a href="https://www.web3d.org/wiki/index.php/X3D_JSON_Encoding" target="_blank">X3D JavaScript Object Notation (JSON) encoding</a>.
+                Next steps await completion of 
+                <a href="http://json-schema.org" target="_blank">JSON Schema IETF draft-08</a>.
+			</li>
+			<li>
+				Further work to follow is confirming similar support for JavaScript source code.
+			</li>
+		</ul>
+
+        <hr />
+
+        <!-- =================================================== -->
+        
+        <h2><a id="Contact">Contact</a>
+            <a href="#top">
+               <img src="images/x3d2-s.gif" style="max-width:50px; max-height:32px; border:0; float:right" title="to top" alt="to top"/>
+            </a>
+        </h2>
+        
+		<blockquote>
+        <p>
+            Available online at
+            <a href="https://www.web3d.org/specifications/X3DUOM.html">https://www.web3d.org/specifications/X3DUOM.html</a>
+        </p>
+
+        <p>
+            Discussion regarding X3D Unified Object Model (X3DUOM) takes place on
+            <a href="mailto:x3d-public@web3D.org%20(X3D%20Public%20Mailing%20List)?subject=feedback:%20X3DUOM%20Unified%20Object%20Model"><i>x3d-public&nbsp;at&nbsp;web3D.org</i></a>
+            mailing list
+            (<a href="https://www.web3d.org/mailman/listinfo/x3d-public_web3d.org">subscribe</a>).
+	</p>
+        <p>
+            Questions, suggestions, additions and comments about this X3D Unified Object Model (X3DUOM) page are welcome.
+            Please send them to
+            <a href="http://faculty.nps.edu/brutzman" target="_blank">Don&nbsp;Brutzman</a>
+            (<a href="mailto:brutzman%20at%20nps.edu%20(Don%20Brutzman)?subject=feedback:%20X3D%20Resources%20"><i>brutzman&nbsp;at&nbsp;nps.edu</i></a>).
+        </p>
+        <p>
+            Version control of these assets is maintained at
+            <a href="https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/specifications/X3DUOM" target="_blank">https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/specifications/X3DUOM</a>
+        </p>
+        <p>
+            Updated: 2 July 2023
+        </p>
+			
+		</blockquote>
+    </body>
+</html>

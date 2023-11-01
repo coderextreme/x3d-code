@@ -1,0 +1,176 @@
+ant -f C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\python -DXmaxwarns=1000 package.prepare
+package.prepare:
+Preparing local Python X3D package for deployment to PyPI...
+Prerequisite: run as administrative user with administrative permissions
+References:  build.DeploymentSteps.txt
+             https://www.web3d.org/x3d/stylesheets/python/python.html
+             https://pypi.org/project/x3d
+             https://packaging.python.org/en/latest/tutorials/packaging-projects/
+----------------
+X3D stylesheets.BuildX3dPythonPackageFromX3duom.saxon:
+Following output is for X3D version 4.0 in X3dPackageDirectory=python
+Result: created files C:\x3d-code\www.web3d.org\x3d\stylesheets/python/x3d.py and __init__.py
+PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+BuildX3dPythonPackageFromX3duom.saxon complete.
+----------------
+Upgrade distribution x3d.py, move prior pypi package files to dist.archive directory
+----------------
+View pyproject.toml
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+# https://packaging.python.org/en/latest/tutorials/packaging-projects/#creating-pyproject-toml
+# https://packaging.python.org/en/latest/tutorials/packaging-projects/#uploading-your-project-to-pypi
+
+[project]
+name = "x3d"
+version = "4.0.64.4"
+authors = [
+  { name="Don Brutzman", email="brutzman@nps.edu" },
+]
+description = "Python package support for Extensible 3D (X3D) Graphics International Standard (IS)"
+readme = "README.md"
+requires-python = ">=3.1"
+keywords = ['X3D', '3D', 'graphics', 'Web3D']
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://www.web3d.org/x3d/stylesheets/python/python.html"
+#"Bug Tracker" = "TODO add url"
+----------------
+Copy package contents into src/x3d
+Copying 1 file to C:\x3d-code\www.web3d.org\x3d\stylesheets\python\src\x3d
+Copying C:\x3d-code\www.web3d.org\x3d\stylesheets\python\__init__.py to C:\x3d-code\www.web3d.org\x3d\stylesheets\python\src\x3d\__init__.py
+Copying 1 file to C:\x3d-code\www.web3d.org\x3d\stylesheets\python\src\x3d
+Copying C:\x3d-code\www.web3d.org\x3d\stylesheets\python\x3d.py to C:\x3d-code\www.web3d.org\x3d\stylesheets\python\src\x3d\x3d.py
+----------------
+Build distribution package:
+* Creating venv isolated environment...
+* Installing packages in isolated environment... (setuptools>=61.0, wheel)
+* Getting build dependencies for sdist...
+running egg_info
+writing src\x3d.egg-info\PKG-INFO
+writing dependency_links to src\x3d.egg-info\dependency_links.txt
+writing requirements to src\x3d.egg-info\requires.txt
+writing top-level names to src\x3d.egg-info\top_level.txt
+reading manifest file 'src\x3d.egg-info\SOURCES.txt'
+adding license file 'LICENSE'
+adding license file 'license.html'
+adding license file 'license.txt'
+writing manifest file 'src\x3d.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing src\x3d.egg-info\PKG-INFO
+writing dependency_links to src\x3d.egg-info\dependency_links.txt
+writing requirements to src\x3d.egg-info\requires.txt
+writing top-level names to src\x3d.egg-info\top_level.txt
+reading manifest file 'src\x3d.egg-info\SOURCES.txt'
+adding license file 'LICENSE'
+adding license file 'license.html'
+adding license file 'license.txt'
+writing manifest file 'src\x3d.egg-info\SOURCES.txt'
+running check
+creating x3d-4.0.64.4
+creating x3d-4.0.64.4\src
+creating x3d-4.0.64.4\src\x3d
+creating x3d-4.0.64.4\src\x3d.egg-info
+copying files to x3d-4.0.64.4...
+copying LICENSE -> x3d-4.0.64.4
+copying README.md -> x3d-4.0.64.4
+copying license.html -> x3d-4.0.64.4
+copying license.txt -> x3d-4.0.64.4
+copying pyproject.toml -> x3d-4.0.64.4
+copying setup.cfg -> x3d-4.0.64.4
+copying src\x3d\__init__.py -> x3d-4.0.64.4\src\x3d
+copying src\x3d\x3d.py -> x3d-4.0.64.4\src\x3d
+copying src\x3d.egg-info\PKG-INFO -> x3d-4.0.64.4\src\x3d.egg-info
+copying src\x3d.egg-info\SOURCES.txt -> x3d-4.0.64.4\src\x3d.egg-info
+copying src\x3d.egg-info\dependency_links.txt -> x3d-4.0.64.4\src\x3d.egg-info
+copying src\x3d.egg-info\requires.txt -> x3d-4.0.64.4\src\x3d.egg-info
+copying src\x3d.egg-info\top_level.txt -> x3d-4.0.64.4\src\x3d.egg-info
+Writing x3d-4.0.64.4\setup.cfg
+Creating tar archive
+removing 'x3d-4.0.64.4' (and everything under it)
+* Building wheel from sdist
+* Creating venv isolated environment...
+* Installing packages in isolated environment... (setuptools>=61.0, wheel)
+* Getting build dependencies for wheel...
+running egg_info
+writing src\x3d.egg-info\PKG-INFO
+writing dependency_links to src\x3d.egg-info\dependency_links.txt
+writing requirements to src\x3d.egg-info\requires.txt
+writing top-level names to src\x3d.egg-info\top_level.txt
+reading manifest file 'src\x3d.egg-info\SOURCES.txt'
+adding license file 'LICENSE'
+adding license file 'license.html'
+adding license file 'license.txt'
+writing manifest file 'src\x3d.egg-info\SOURCES.txt'
+* Installing packages in isolated environment... (wheel)
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build
+creating build\lib
+creating build\lib\x3d
+copying src\x3d\x3d.py -> build\lib\x3d
+copying src\x3d\__init__.py -> build\lib\x3d
+running egg_info
+writing src\x3d.egg-info\PKG-INFO
+writing dependency_links to src\x3d.egg-info\dependency_links.txt
+writing requirements to src\x3d.egg-info\requires.txt
+writing top-level names to src\x3d.egg-info\top_level.txt
+reading manifest file 'src\x3d.egg-info\SOURCES.txt'
+adding license file 'LICENSE'
+adding license file 'license.html'
+adding license file 'license.txt'
+writing manifest file 'src\x3d.egg-info\SOURCES.txt'
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\x3d
+copying build\lib\x3d\x3d.py -> build\bdist.win-amd64\wheel\.\x3d
+copying build\lib\x3d\__init__.py -> build\bdist.win-amd64\wheel\.\x3d
+running install_egg_info
+Copying src\x3d.egg-info to build\bdist.win-amd64\wheel\.\x3d-4.0.64.4-py3.11.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\x3d-4.0.64.4.dist-info\WHEEL
+creating 'C:\x3d-code\www.web3d.org\x3d\stylesheets\python\dist\.tmp-896b_c9o\x3d-4.0.64.4-py3-none-any.whl' and adding 'build\bdist.win-amd64\wheel' to it
+adding 'x3d/__init__.py'
+adding 'x3d/x3d.py'
+adding 'x3d-4.0.64.4.dist-info/LICENSE'
+adding 'x3d-4.0.64.4.dist-info/METADATA'
+adding 'x3d-4.0.64.4.dist-info/WHEEL'
+adding 'x3d-4.0.64.4.dist-info/license.html'
+adding 'x3d-4.0.64.4.dist-info/license.txt'
+adding 'x3d-4.0.64.4.dist-info/top_level.txt'
+adding 'x3d-4.0.64.4.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built x3d-4.0.64.4.tar.gz and x3d-4.0.64.4-py3-none-any.whl
+----------------
+dist contents:
+  x3d-4.0.64.4-py3-none-any.whl;x3d-4.0.64.4.tar.gz;x3d.py-4.0.64.4-py3-none-any.whl;x3d.py-4.0.64.4.tar.gz
+x3d*.tar.gz: 402481 bytes
+----------------
+set.local.PYTHONPATH:
+local.PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python
+test.x3d.py:
+Loading active PYTHONPATH x3d.py package in python to check for correctness...
+x3d.py package 4.0.64.4 loaded, have fun with X3D Graphics!
+----------------
+Next commands:
+python -m twine upload dist/* --verbose
+ant upgrade.x3d.py
+  https://www.web3d.org/x3d/stylesheets/python/python.html
+BUILD SUCCESSFUL (total time: 20 seconds)

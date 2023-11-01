@@ -1,0 +1,1658 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" SYSTEM "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+        <link rel="shortcut icon" href="images/X3DtextIcon16.png" title="X3D" >
+        <title>X3D Regular Expressions (regexes)</title>
+        <meta name="author"      content="Don Brutzman">
+        <meta name="description" content="X3D Regular Expressions for content validation: exploring various patterns and possibilities">
+        <meta name="filename"    content="X3dRegularExpressions.html">
+        <meta name="created"     content="4 June 2015">
+        <meta name="identifier"  content="https://www.web3d.org/specifications/X3dRegularExpressions.html">
+        <meta name="reference"   content="https://x3d.svn.sourceforge.net/viewvc/x3d/www.web3d.org/specifications">
+        <meta name='generator'   content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit'>
+<style type="text/css">
+.anchorcharacter     { background-color:yellow;         font-weight:bold; }
+.boolean             { background-color:lightgreen;     font-weight:bold; }
+.hexadecimal         { background-color:#FFAAFF;        font-weight:bold; }
+.scientific          { background-color:#DDEEFF;        font-weight:bold; }
+.integer             { background-color:lightskyblue;   font-weight:bold; } /* #87CEFA */
+.float               { background-color:lightsteelblue; font-weight:bold; }
+.nonnegativefloat    { background-color:lightsteelblue; font-weight:bold; }
+.nonnegativefraction { background-color:#CCCCFF;        font-weight:bold; }
+.whitespace          { background-color:lightgrey;      font-weight:bold; }
+.grouprepetition     { background-color:salmon;         font-weight:bold; }
+.notallowed          { background-color:#FFBB77;        font-weight:bold; } /* negative lookahead */
+/* https://stackoverflow.com/questions/6136855/add-title-attribute-from-css */
+</style>
+</head>
+<body>
+        <a name="top" />
+            
+        <table style="border:0" cellspacing="0" cellpadding="0" summary="" align="center">
+            <tr align="center">
+                <td><a href="contents.html"><img src="images/x3d2-s.gif" width="154" height="97" style="border:0" title="to X3D Specifications: XML Schema and DOCTYPE Validation" alt="to X3D Specifications: XML Schema and DOCTYPE Validation"></a></td>
+                <td><pre>   </pre></td>
+                <td>
+        
+    <h2>
+        X3D Regular Expressions (regexes)
+    </h2>
+                </td>
+                <td><pre>    </pre></td>
+                <td><a href="https://www.web3d.org"><img src="images/web3d_logo2.png" width="120" height="60" style="border:0" title="to Web3D home page" alt="to Web3D home page"></a></td>
+            </tr>
+        </table>
+        <blockquote>
+            <p align="center"><small>
+                <a href="#Overview">Overview</a> | 
+                <a href="#Design">Design&nbsp;Considerations</a>
+                and
+                <a href="#Whitespace">Whitespace</a> |
+                <a href="#X3dPatterns">X3D&nbsp;Patterns</a> |
+                <a href="#XmlPatterns">XML&nbsp;Patterns</a> |
+                <a href="#References">References</a> |
+                <a href="#Tools">Tools</a> |
+                <a href="https://www.web3d.org/x3d/content/examples/X3dResources.html" target="_blank">X3D&nbsp;Resources</a> |
+                <a href="#Contact">Contact</a>
+            </small></p>
+        </blockquote>
+
+<!-- =================================================== -->
+
+<p align="center">
+	X3D Regular Expressions (regexes) are used to validate the correctness of string and numeric array values in an X3D scene.
+</p>
+        <blockquote>
+            <p align="center"><small>
+                <a href="#XML">XML</a> |
+                <a href="#DOCTYPE4.0">DOCTYPE</a> |
+                <a href="#SFBool">Bool</a> |
+                <a href="#SFColor">Color</a> |
+                <a href="#SFColorRGBA">ColorRGBA</a> |
+                <a href="#SFDouble">Double</a> |
+                <a href="#SFFloat">Float</a> |
+                <a href="#SFImage">Image</a> |
+                <a href="#SFInt32">Int32</a> |
+                <a href="#SFRotation">Rotation</a> |
+                <a href="#SFString">String</a> |
+                <a href="#SFTime">Time</a> |
+                <a href="#SFVec2f">Vec2</a> |
+                <a href="#SFVec3f">Vec3</a> |
+                <a href="#SFVec4f">Vec4</a> |
+                <a href="#SFMatrix3f">Matrix3</a> |
+                <a href="#SFMatrix4f">Matrix4</a> |
+                <a href="#bboxSize">bboxSize</a>
+            </small></p>
+        </blockquote>
+
+<!-- =================================================== -->
+
+        <hr />
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#Overview">&#128278;</a>
+            <a name="Overview">Overview</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+
+        <p>
+            Regular expressions (regexes) define string grammars that efficiently and rigorously define allowable character patterns making up a data value.
+        </p>
+        <p>
+            Regexes themselves are carefully defined sequences of characters that form a search pattern, mainly used for string pattern matching.
+            For example, this technique allows detection of well-formed (or incorrect) MFVec3f arrays of three-tuple floats in an X3D scene. 
+        </p>
+        <p>
+            X3D regexes are utilized judiciously when the base types of XML Schema are insufficient to capture the necessary richness of X3D content validation. 
+            Like all aspects of X3D Schema validation, regex validation is typically high performance and optional for end-user content display.
+        </p>
+        
+        <p>
+            Note that not all regex languages are completely consistent, thus small (but fundamentally important) variations can occur.
+            This work strictly follows regex syntax for XML Schema, which in turn permits consistent application using other variations of regex languages.
+        </p>
+        
+        <p>
+            Interestingly, various data validation tools provide expressive power that is able to validate values to different degrees of fidelity.
+        </p>
+        
+        <ol type="a">
+            <li>
+                <b>DOCTYPE (DTD).</b>
+                DOCTYPE validation can only check that attribute values are strings.
+                In some cases, a strict set of allowed enumeration values is defined
+                (such as legal names for profiles and components).
+            </li>
+            
+            <li>
+                <b>XML Schema.</b>
+                Schema validation can check a large set of 
+                <a href="https://www.w3.org/TR/xmlschema11-2/#built-in-datatypes">built-in data types</a>.
+                
+                However, XML Schema validation is typically not able to fully check the correctness of array values.
+                For example, an SFVec3f triplet (3-tuple) or an MFVec3f array can be checked to only contain floating-point values, 
+                but cannot be checked to have a multiple of three floats.
+            </li>
+            
+            <li>
+                <b>Regular expressions (regexes).</b>
+                Regular expressions can define any regular grammar, and thus have arbitrary expressive power.
+                Although definitions may be tricky to define, character patterns of arbitrary complexity are theoretically achievable.
+            </li>
+            <li>
+                Regexes found on this page are included in the data-type definitions of each
+                <a href="https://www.web3d.org/specifications/X3dSchemaDocumentation4.0/x3d-4.0.html" target="_blank">X3D XML Schema</a>
+                and
+           		<a href="https://www.web3d.org/specifications/X3DUOM.html" target="_blank">X3D Unified Object Model (X3DUOM)</a>.
+        </ol>
+        
+        <p>
+            X3D Regular Expressions are an important part of 
+            <a href="https://www.web3d.org/x3d/content/examples/X3dResources.html#QualityAssurance">X3D Quality Assurance (QA)</a>
+            to maximize the correctness of X3D scene content.
+        </p>
+        
+<!-- =================================================== -->
+
+        <hr />
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#Design">&#128278;</a>
+            <a name="DesignConsiderations"></a><a name="Design">Design Considerations</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+        
+		<p>
+			General regex design considerations for X3D XML Schema include the following.
+		</p>
+        <ol type="a">
+            <li>
+			    Regex constructs that are inconsistently implemented across major programming languages are avoided.
+		    </li>
+            <li>
+				Careful design allows use of regexes that can be adapted for usage in
+                XML, ClassicVRML, JavaScript/JSON, Java and other language environments.
+            </li>
+            <li>
+				For numeric types, leading sign characters (<code>+</code> or <code>-</code>) are optionally present.
+            </li>
+            <li>
+				For numeric types, leading zeroes are not allowed, except for an optional leading zero preceding the decimal point when the
+                <a href="https://en.wikipedia.org/wiki/Significand" target="blank">significand</a>
+                is only fractional.
+            </li>
+            <li>
+                A required 
+                <a href="https://en.wikipedia.org/wiki/mantissa" target="blank">mantissa</a>
+                (integer or floating point) is represented as 
+                <code>0|[1-9][0-9]*</code> 
+                (meaning either a solitary <code>0</code> or else a single non-zero digit followed by an optional number of additional digits).
+            </li>
+            <li>
+                The fractional part (to the right of the decimal point) can be represented as <code>[0-9]*</code>                    
+			</li>
+            <li>
+                The
+                <a href="https://en.wikipedia.org/wiki/Decimal_separator" target="blank">decimal separator</a>
+                is the symbol used to separate the integer part from the fractional part of a decimal number.
+                The period character <code>.</code> is used for all such X3D values, and is 
+                escaped as <code>\.</code> when written in a regex.
+            </li>
+            <li>
+                Scientific notation starts with upper or lower-case <code>E</code>,
+                is optionally positive or negative
+                <code><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?</span></code> 
+                and can be appended to float expressions. 
+                For integer expressions, nonnegative scientific notation
+                <code><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span></code>
+                can be appended.
+			</li>
+            <li>
+                <a name="anchors">Regex anchors</a>
+                are implicit and not included in XML&nbsp;Schema and X3DUOM regexes.
+                Note that strict consumption of all value characters gets performed by these regexes.
+                The anchor characters are necessary for regex101 engine unit testing so that otherwise-illegal values are not rejected (in MF tests).
+		    </li>
+        </ol>
+        
+        <p> 
+            <a href="X3dRegularExpressions.png" title="X3D n-Tuple Regular Expression Patterns"><img src="X3dRegularExpressions.png" width="40%" align="right"/></a>
+            Pattern components are used repeatedly in this design:
+        </p>
+        
+        <ul>
+            <li>
+		Regex anchor matching:&nbsp;
+                <code><span class="anchorcharacter" title="anchor character">^</span></code> (line start) and 
+                <code><span class="anchorcharacter" title="anchor character">$</span></code> (line end)
+            </li>
+            <li>
+				Whitespace matching:
+                <ul>
+                    <li>
+                        <code><span class="whitespace" title="whitespace optional">\s*</span></code>&nbsp;(optional&nbsp;whitespace outside all values)
+                    </li>
+                    <li>
+                        <code><span class="whitespace" title="whitespace required">\s+</span></code>&nbsp;(required&nbsp;whitespace within tuple values)
+                    </li>
+                    <li>
+                        <!-- non-XML Schema regex can use negative lookahead to avoid multiple adjacent commas -->
+                        <code><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span></code>&nbsp;(required&nbsp;whitespace with optional single comma, following each n-tuple value)
+                    </li>
+                </ul>
+           </li>
+            <li>
+				Group repetition: &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                <code><span class="grouprepetition" title="group repetition">{<i>n</i>}</span></code> repeats the preceding group <i>n</i> number of times.
+            </li>
+            <li>
+				Boolean-value matching:
+                <code><span class="boolean" title="boolean">true|false</span></code>
+            </li>
+            <li>
+				Hexadecimal matching: &nbsp;
+                <code><span class="hexadecimal" title="hexadecimal">0x[0-9a-fA-F]{1,16}</span></code>
+            </li>
+            <li>
+				Scientific notation: &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 
+                <code><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?</span></code>
+		    </li>
+            <li>
+				Integer-value matching: &nbsp;
+                <code><span class="integer" title="integer">[+-]?(0|[1-9][0-9]*)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?</span></code>
+		    </li>
+            <li>
+				Float-value matching: &nbsp;&nbsp; &nbsp;
+                <code><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span></code>
+            </li>
+            <li>
+				Nonnegative float [0..1] matching: &nbsp;&nbsp; &nbsp;
+                <code><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span></code>
+            </li>
+        </ul>
+        
+        <h4>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#DisallowedValues">&#128278;</a>
+            <a name="DisallowedValues">Disallowed values</a>
+            and 
+            <a name="NegativeLookahead">Negative Lookahead</a>
+        </h4> 
+        <p>
+            Some values may be numerically correct but not permitted.
+        </p>
+        <ul>
+            <li>
+                For example, numbers using scientific notation in the range <code>[0..1]</code> 
+                such as <code>3.0E-6</code> which nevertheless have a leading digit in range <code>[2..9]</code>.
+            </li>
+        </ul>
+        <p>  
+            <a href="https://www.regular-expressions.info/lookaround.html" target="_blank">Negative Lookahead</a>
+            filters have potential to disqualify attributes that contain illegal values.
+        </p>
+        <ul>
+            <li>
+                <a href="https://www.w3.org/TR/xmlschema11-2/#regexs" target="_blank">W3C Recommendation for XML Schema (XSD): Regular Expressions</a>
+                does not support this construct, perhaps to avoid the possibility of computational denial-of-service (DoS) attacks.
+            </li>
+            <li>
+               <code><span class="notallowed" title="not allowed: zero axis vector">(?!((0|0\.0*|\.0+)\s+){3})</span></code>
+                prohibits <code>0 0 0</code> and <code>0.0 0.0 0.0</code> (for example).
+            </li>
+            <li>
+                <code><span class="notallowed" title="not allowed: multiple adjacent commas in intermediate whitespace">(?!\s*,\s*,)</span></code>
+                prohibits multiple adjacent commas in intermediate whitespace, for example <code>0 0 0, ,0 0 0</code> is an illegal set of MFColor values.
+            </li>
+        </ul>
+        <p>
+            This can be a useful construct since some specific values are disallowed in X3D.
+            One such instance is that any zero vector is illegal as initial axis triplet of an SFRotation.
+        </p>
+        <p>
+            Alternate (stricter and more complex) regexes might someday get included in X3DUOM,
+            but current regular expressions are powerful and satisfactory.
+        </p>
+			<!--
+		<p>
+			Future work includes regression testing of 
+			native XML Schema data types
+			(both as singletons and arrays) against all scenes in the 
+			X3D Example Archives
+			in order to determine which approach (or mix of approaches) is best suitable for overall
+			<a href="https://www.web3d.org/x3d/content/examples/X3dResources.html#QualityAssurance" target="_blank">X3D Quality Assurance&nbsp;(QA)</a>.
+		</p>
+			-->
+        <h4>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#Whitespace">&#128278;</a>
+            <a name="Whitespace">Whitespace Considerations</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h4>
+            
+        <p>
+            Intermediate commas are treated as whitespace, but are only allowed between each singleton value.
+            For example, SFVec3f 3-tuple values within an MFVec3f array do not contain comma characters (but may be separated by commas and whitespace).
+            Experience has shown that misplaced commas are a crucial indicator of malformed tuple values in large float arrays.
+        </p>
+        
+        <ul>
+            <li>
+                Reference:
+                <a href="https://www.web3d.org/documents/specifications/19776-1/V3.3/Part01/EncodingOfFields.html#Description" target="_blank">X3D Extensible Markup Language (XML) encoding, Clause 5 Encoding of fields, 5.1.2 Description</a>
+		    </li>
+        </ul>
+		<p> 
+			For XML Schema to enable any inclusion of intermediate commas as whitespace characters in MultiField&nbsp;(MF) array types,
+			native XML Schema datatypes typically cannot be used directly.
+			In order to ensure strict validation, regex patterns must be used instead.
+		</p>
+        <ul>
+            <li>
+				Patterns to consume outer whitespace are prepended/appended for each type.
+                Type regexes also allow multiple inner whitespace characters, 
+                optionally including a single comma between individual MF array values.
+		    </li>
+            <li>
+                Of note is that regex patterns only apply to base type <code>xs:string</code>,
+                and so further application of strong XML Schema typing (i.e. <code>base="xs:double"</code> etc.)
+                is not simultaneously possible when allowing commas as whitespace.
+            </li>
+            <li>
+                Implementation of the <code>\s</code> regex pattern can vary in Perl Compatible Regular Expressions
+                <a href="https://www.regular-expressions.info/pcre.html" target="_blank">PCRE</a> library (C, PHP, R, etc.) 
+                and some other implementations to accept a number of characters
+                such as vertical whitespace <code>\v</code> including vertical tab <code>cK</code>, form feed <code>\f</code>, line feed, paragraph or line separator, 
+                and special Unicode characters.
+                Thus an even stricter pattern <code>( \n\r\t)*</code> might conceivably be used instead of pattern <code>\s</code>
+                in order to strictly honor whitespace characters defined in
+                <a href="https://www.web3d.org/documents/specifications/19776-2/V3.3/Part02/grammar.html" target="_blank">ClassicVRML grammar</a>.
+            </li>
+            <li>
+                Similar to some programming languages, <code>MFVec</code> patterns typically allow a single trailing comma at the end of an array.
+            </li>
+        </ul>
+        <p>
+            Potential whitespace variations in scene content are not an issue if 
+            <a href="https://www.web3d.org/files/specifications/19776-3/V3.1/Part03/concepts.html#X3DCanonicalForm">X3D Canonicalization (C14N)</a>
+            has been applied to an X3D scene.
+        </p>
+
+<!-- =================================================== -->
+
+        <hr />
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#X3dPatterns">&#128278;</a>
+            <a name="X3dPatterns">X3D Patterns</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+
+        <p>
+            The following regex patterns are used in
+            <a href="X3dSchemaDocumentation4.0/x3d-4.0.html" target="_blank">X3D XML Schema</a>,
+           	<a href="https://www.web3d.org/specifications/X3DUOM.html" target="_blank">X3D Unified Object Model (X3DUOM)</a>
+            and other validation tools.
+        </p>
+
+<table border="1" align="center">
+    <tr><th align="center" colspan=2">
+			X3D datatype regex patterns
+    </th></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle; margin: 0;"><td>
+        <a href="#SFBool">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+		<a href="#SFBool">SFBool</a> and
+        ordered list
+        <a href="#MFBool">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+		<a href="#MFBool">MFBool</a>:
+        each SFBool value can be either <code>true</code> or <code>false</code>. 
+        <p>
+            Note that VRML97 values <code>TRUE</code> and <code>FALSE</code> are capitalized and illegal in X3D.
+        </p>
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFBool"><a name="MFBool"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFBoolAndMFBool" target="X3dArchitecture">5.3.1 SFBool and MFBool</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFBool.html" target="X3dSchema">SFBool</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFBool.html" target="X3dSchema">MFBool</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://my.nps.edu/privacy-policy/X3dTooltips.html#SFBool" target="X3dTooltips">SFBool</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFBool" target="X3dTooltips">MFBool</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/LnCN7W" target="regex101">SFBool eval and unit tests</a>,
+				<a href="https://regex101.com/r/eCg84A" target="regex101">MFBool eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+            SFBool matching: single <i>true</i> or <i>false</i> value.
+		</h4>
+		<i>XML Schema:</i> &nbsp; <code>&lt;xs:restriction base="xs:boolean"/&gt;</code>
+		<br /> <i>Regex pattern:</i>&nbsp;
+		<code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="boolean" title="boolean">true|false</span>)<span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFBool matching: ordered list of zero or more SFBool values.
+		</h4>
+		<i>XML Schema:</i>&nbsp; <code>&lt;xs:list itemType="xs:boolean"/&gt;</code>
+		<br /> <i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="boolean" title="boolean">(true|false)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle; margin: 0;"><td>
+		<a href="#SFImage">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFImage">SFImage</a> and
+        ordered list
+        <a href="#MFImage">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFImage">MFImage</a>:
+        each SFImage value describes pixels in a 2D image. 
+        <br />
+        <p>
+            SFImage fields contain three nonnegative integers representing width, height and number of components [1..4] in the image, 
+            followed by width�height hexadecimal or integer values representing pixel colors in the image.
+        </p>
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+                <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+                <a href="#">&#128278;</a>
+				<a name="SFImage"><a name="MFImage"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFImageAndMFImage" target="X3dArchitecture">5.3.1 SFImage and MFImage</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFImage.html" target="X3dSchema">SFImage</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFImage.html" target="X3dSchema">MFImage</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFImage" target="X3dTooltips">SFImage</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFImage" target="X3dTooltips">MFImage</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/CR2ywj/2" target="regex101">SFImage eval and unit tests</a>,
+				<a href="https://regex101.com/r/m8uTL6/2" target="regex101">MFImage eval and unit tests</a>
+                <br />
+                Alternative original example:
+				<a href="https://regex101.com/r/CJ1h80/4/tests" target="regex" title="thanks Andreas">regex101: SFImage</a>
+			   (<a href="images/Regex101SFImageTestingScreenshot.png" target="_blank">screenshot</a>)
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFImage matching: two nonnegative integers, followed by integer [0-4], followed by a hexadecimal array,
+             values
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="integer" title="nonnegative integer">[+]?(0|[1-9][0-9]*)</span><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="integer" title="integer from 0 to 4">[+]?[0-4]</span>(<span class="whitespace" title="whitespace required">\s+</span>(<span class="hexadecimal" title="hexadecimal">0x[0-9a-fA-F]{1,16}</span>|<span class="integer" title="nonnegative integer">[+]?(0|[1-9][0-9]*)</span><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span>))*<span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFImage matching: ordered list of zero or more SFImage values.
+		</h4>
+    	<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="integer" title="nonnegative integer">[+]?(0|[1-9][0-9]*)</span><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="integer" title="integer from 0 to 4">[+]?[0-4]</span>(<span class="whitespace" title="whitespace required">\s+</span>(<span class="hexadecimal" title="hexadecimal">0x[0-9a-fA-F]{1,16}</span>|<span class="integer" title="nonnegative integer">[+]?(0|[1-9][0-9]*)</span><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span>))*<span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle; margin: 0;"><td>
+		<a href="#SFInt32">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFInt32">SFInt32</a> and
+        ordered list
+        <a href="#MFInt32">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFInt32">MFInt32</a>:
+        each SFInt32 value is an unrestricted integer, with optional scientific-notation exponent. 
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFInt32"><a name="MFInt32"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFInt32AndMFInt32" target="X3dArchitecture">5.3.1 SFInt32 and MFInt32</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFInt32.html" target="X3dSchema">SFInt32</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFInt32.html" target="X3dSchema">MFInt32</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFInt32" target="X3dTooltips">SFInt32</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFInt32" target="X3dTooltips">MFInt32</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/VpSiAX/3" target="regex101">SFInt32 eval and unit tests</a>,
+				<a href="https://regex101.com/r/8Bt5xh/4" target="regex101">MFInt32 eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFInt32 matching: integer value with optional scientific notation.
+		</h4>
+		<i>XML Schema:</i>&nbsp; <code>&lt;xs:restriction base="xs:integer"/&gt;</code>
+		<br /> <i>Regex pattern:</i>&nbsp;
+		<code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="integer" title="integer">[+-]?(0|[1-9][0-9]*)</span><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFInt32 matching: ordered list of zero or more SFInt32 values.
+		</h4>
+        <i>Regex pattern:</i>&nbsp;
+		<code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="integer" title="integer">[+-]?(0|[1-9][0-9]*)</span><span class="scientific" title="nonnegative scientific notation">([Ee][+]?[0-9]+)?</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle; margin: 0;"><td>
+		<a href="#SFFloat">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFFloat">SFFloat</a> &nbsp;&nbsp; and
+        ordered list
+        <a href="#MFFloat">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFFloat">MFFloat</a>: &nbsp;&nbsp;&nbsp;
+		each SFFloat &nbsp; &nbsp; value is a &nbsp;single-precision  floating-point number.
+		<br />
+		<a href="#SFDouble">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFDouble">SFDouble</a> and
+        ordered list
+        <a href="#MFDouble">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFDouble">MFDouble</a>:
+		each SFDouble value is a double-precision floating-point number.
+		<br />
+		<a href="#SFTime">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFTime">SFTime</a> &nbsp;&nbsp; and
+        ordered list
+        <a href="#MFTime">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFTime">MFTime</a>: &nbsp;&nbsp;&nbsp;
+		each SFTime &nbsp; &nbsp; value is a double-precision floating-point number. 
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFFloat"><a name="MFFloat"></a></a>
+				<a name="SFDouble"><a name="MFDouble"></a></a>
+				<a name="SFTime"><a name="MFTime"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFFloatAndMFFloat" target="X3dArchitecture">5.3.5 SFFloat and MFFloat</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFDoubleAndMFDouble" target="X3dArchitecture">5.3.4 SFDouble and MFDouble</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFTimeAndMFTime" target="X3dArchitecture">5.3.15 SFTime and MFTime</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFFloat.html" target="X3dSchema">SFFloat</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFFloat.html" target="X3dSchema">MFFloat</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFDouble.html" target="X3dSchema">SFDouble</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFDouble.html" target="X3dSchema">MFDouble</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFTime.html" target="X3dSchema">SFTime</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFTime.html" target="X3dSchema">MFTime</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat" target="X3dTooltips">SFFloat</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFFloat" target="X3dTooltips">MFFloat</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFDouble" target="X3dTooltips">SFDouble</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFDouble" target="X3dTooltips">MFDouble</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFTime" target="X3dTooltips">SFTime</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFTime" target="X3dTooltips">MFTime</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/RMeNmE/6" target="regex101">SFFloat/SFDouble/SFTime eval and unit tests</a>,
+				<a href="https://regex101.com/r/Q70E88/5" target="regex101">MFFloat/MFDouble/MFTime eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFFloat, SFDouble and SFTime matching: floating-point value with optional scientific notation.
+		</h4>
+		<i>XML Schema:</i> &nbsp; <code>&lt;xs:restriction base="xs:float"/&gt;</code> and 
+                                  <code>&lt;xs:restriction base="xs:double"/&gt;</code>
+		<br /> <i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFFloat/MFDouble/MFTime matching: ordered list of zero or more SFFloat/SFDouble/SFTime values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFVec2f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFVec2f">SFVec2f</a> &nbsp;and
+        ordered list
+        <a href="#">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFVec2f">MFVec2f</a>:
+        each SFVec2f &nbsp;value is a 2-tuple set of &nbsp;single-precision  floating point numbers.
+		<br />
+		<a href="#SFVec2d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFVec2d">SFVec2d</a> and
+        ordered list
+        <a href="#">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFVec2d">MFVec2d</a>:
+        each SFVec2d value is a 2-tuple set of double-precision floating point numbers.
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFVec2f"><a name="MFVec2f"></a></a>
+				<a name="SFVec2d"><a name="MFVec2d"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFVec2fAndMFVec2f" target="X3dArchitecture">5.3.17 SFVec2f and MFVec2f</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFVec2dAndMFVec2d" target="X3dArchitecture">5.3.16 SFVec2d and MFVec2d</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFVec2f.html" target="X3dSchema">SFVec2f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFVec2f.html" target="X3dSchema">MFVec2f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFVec2d.html" target="X3dSchema">SFVec2d</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFVec2d.html" target="X3dSchema">MFVec2d</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec2f" target="X3dTooltips">SFVec2f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFVec2f" target="X3dTooltips">MFVec2f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec2d" target="X3dTooltips">SFVec2d</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFVec2d" target="X3dTooltips">MFVec2d</a>
+            </li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/iY7KP2/6" target="regex101">SFVec2f/SFVec2d eval and unit tests</a>,
+				<a href="https://regex101.com/r/QA0Y1e/4" target="regex101">MFVec2f/MFVec2d eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFVec2f/SFVec2d matching: two-tuple floating-point values with optional scientific notation.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){1}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFVec2f/MFVec2d matching: ordered list of zero or more SFVec2f/SFVec2d values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){1}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFVec3f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFVec3f">SFVec3f</a> &nbsp;and 
+        ordered list
+        <a href="#MFVec3f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFVec3f">MFVec3f</a>:
+        each SFVec3f &nbsp;value is a 3-tuple triplet of &nbsp;single-precision  floating point numbers.
+		<br />
+		<a href="#SFVec3d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFVec3d">SFVec3d</a> and 
+        ordered list
+        <a href="#MFVec3d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFVec3d">MFVec3d</a>:
+        each SFVec3d value is a 3-tuple triplet of double-precision floating point numbers.
+		<br /> 
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFVec3f"><a name="MFVec3f"></a></a>
+				<a name="SFVec3d"><a name="MFVec3d"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFVec3fAndMFVec3f" target="X3dArchitecture">5.3.19 SFVec3f and MFVec3f</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFVec3dAndMFVec3d" target="X3dArchitecture">5.3.18 SFVec3d and MFVec3d</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFVec3f.html" target="X3dSchema">SFVec3f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFVec3f.html" target="X3dSchema">MFVec3f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFVec3d.html" target="X3dSchema">SFVec3d</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFVec3d.html" target="X3dSchema">MFVec3d</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec3f" target="X3dTooltips">SFVec3f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFVec3f" target="X3dTooltips">MFVec3f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec3d" target="X3dTooltips">SFVec3d</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFVec3d" target="X3dTooltips">MFVec3d</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/nGHcxa/4" target="regex101">SFVec3f/SFVec3d eval and unit tests</a>
+               (<a href="https://regex101.com/r/v3mBsA/3" target="regex101">non-negative</a>),
+				<a href="https://regex101.com/r/tJA8T1/5" target="regex101">MFVec3f/MFVec3d eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFVec3f/SFVec3d matching: three-tuple floating-point values with optional scientific notation.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFVec3f/MFVec3d matching: ordered list of zero or more SFVec3f/SFVec3d values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFVec4f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFVec4f">SFVec4f</a> &nbsp;and
+        ordered list
+        <a href="#MFVec4f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFVec4f">MFVec4f</a>:
+        each SFVec4f &nbsp;value is a 4-tuple set of &nbsp;single-precision  floating point numbers.
+		<br />
+		<a href="#SFVec4d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFVec4d">SFVec4d</a> and
+        ordered list
+        <a href="#MFVec4d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFVec4d">MFVec4d</a>:
+        each SFVec4d value is a 4-tuple set of double-precision floating point numbers.
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFVec4f"><a name="MFVec4f"></a></a>
+				<a name="SFVec4d"><a name="MFVec4d"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFVec4fAndMFVec4f" target="X3dArchitecture">5.3.21 SFVec4f and MFVec4f</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFVec4dAndMFVec4d" target="X3dArchitecture">5.3.20 SFVec4d and MFVec4d</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFVec4f.html" target="X3dSchema">SFVec4f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFVec4f.html" target="X3dSchema">MFVec4f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFVec4d.html" target="X3dSchema">SFVec4d</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFVec4d.html" target="X3dSchema">MFVec4d</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec4f" target="X3dTooltips">SFVec4f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFVec4f" target="X3dTooltips">MFVec4f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec4d" target="X3dTooltips">SFVec4d</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFVec4d" target="X3dTooltips">MFVec4d</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/PkPZKV/4" target="regex101">SFVec4f/SFVec4d eval and unit tests</a>,
+				<a href="https://regex101.com/r/HG7g8C/4" target="regex101">MFVec4f/MFVec4d eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFVec4f/SFVec4d matching: four-tuple floating-point values with optional scientific notation.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){3}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFVec4f/MFVec4d matching: ordered list of zero or more SFVec4f/SFVec4d values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){3}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFColor">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFColor">SFColor</a> &nbsp;and
+        ordered list
+        <a href="#MFColor">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFColor">MFColor</a>:
+        each SFColor value is a 3-tuple set of &nbsp;single-precision  floating point numbers, each ranging from [0,1] inclusive.
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFColor"><a name="MFColor"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFColorAndMFColor" target="X3dArchitecture">5.3.2 SFColor and MFColor</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFColor.html" target="X3dSchema">SFColor</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFColor.html" target="X3dSchema">MFColor</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFColor" target="X3dTooltips">SFColor</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFColor" target="X3dTooltips">MFColor</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/otLJSW/5" target="regex101">SFColor eval and unit tests</a>,
+				<a href="https://regex101.com/r/1KjrHy/6" target="regex101">MFColor eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFColor matching: three-tuple floating-point values with optional scientific notation, bounded.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFColor matching: ordered list of zero or more SFColor values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFColorRGBA">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFColorRGBA">SFColorRGBA</a> &nbsp;and
+        ordered list
+        <a href="#MFColorRGBA">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFColorRGBA">MFColorRGBA</a>:
+        each SFColorRGBA value is a 4-tuple set of &nbsp;single-precision  floating point numbers, each ranging from [0,1] inclusive.
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFColorRGBA"><a name="MFColorRGBA"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFColorRGBAAndMFColorRGBA" target="X3dArchitecture">5.3.3s SFColorRGBA and MFColorRGBA</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFColorRGBA.html" target="X3dSchema">SFColorRGBA</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFColorRGBA.html" target="X3dSchema">MFColorRGBA</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFColorRGBA" target="X3dTooltips">SFColorRGBA</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFColorRGBA" target="X3dTooltips">MFColorRGBA</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/xsY1lC/4" target="regex101">SFColorRGBA eval and unit tests</a>,
+				<a href="https://regex101.com/r/kmzvvg/4" target="regex101">MFColorRGBA eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFColorRGBA matching: four-tuple floating-point values with optional scientific notation, bounded.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){3}</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFColorRGBA matching: ordered list of zero or more SFColorRGBA values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){3}</span><span class="nonnegativefraction" title="nonnegative float [0..1]">([+]?((0(\.[0-9]*)?|\.[0-9]+)|1(\.0*)?)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFMatrix3f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFMatrix3f">SFMatrix3f</a> &nbsp;and 
+        ordered list
+        <a href="#MFMatrix3f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFMatrix3f">MFMatrix3f</a>:
+        each SFMatrix3f &nbsp;value is a 3x3 nine-tuple triplet of &nbsp;single-precision  floating point numbers.
+		<br />
+		<a href="#SFMatrix3d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFMatrix3d">SFMatrix3d</a> and 
+        ordered list
+        <a href="#MFMatrix3d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFMatrix3d">MFMatrix3d</a>:
+        each SFMatrix3d value is a 3x3 nine-tuple triplet of double-precision floating point numbers.
+		<br /> 
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFMatrix3f"><a name="MFMatrix3f"></a></a>
+				<a name="SFMatrix3d"><a name="MFMatrix3d"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFMatrix3fAndMFMatrix3f" target="X3dArchitecture">5.3.19 SFMatrix3f and MFMatrix3f</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFMatrix3dAndMFMatrix3d" target="X3dArchitecture">5.3.18 SFMatrix3d and MFMatrix3d</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFMatrix3f.html" target="X3dSchema">SFMatrix3f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFMatrix3f.html" target="X3dSchema">MFMatrix3f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFMatrix3d.html" target="X3dSchema">SFMatrix3d</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFMatrix3d.html" target="X3dSchema">MFMatrix3d</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFMatrix3f" target="X3dTooltips">SFMatrix3f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFMatrix3f" target="X3dTooltips">MFMatrix3f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFMatrix3d" target="X3dTooltips">SFMatrix3d</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFMatrix3d" target="X3dTooltips">MFMatrix3d</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/sx0rko/2" target="regex101">SFMatrix3f/SFMatrix3d eval and unit tests</a>,
+                
+				<a href="https://regex101.com/r/CYkb5Y/2" target="regex101">MFMatrix3f/MFMatrix3d eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFMatrix3f/SFMatrix3d matching: 3x3 nine-tuple floating-point values with optional scientific notation.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){8}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFMatrix3f/MFMatrix3d matching: ordered list of zero or more SFMatrix3f/SFMatrix3d values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){8}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFMatrix4f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFMatrix4f">SFMatrix4f</a> &nbsp;and
+        ordered list
+        <a href="#MFMatrix4f">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFMatrix4f">MFMatrix4f</a>:
+        each SFMatrix4f &nbsp;value is a 4x4 sixteen-tuple set of &nbsp;single-precision  floating point numbers.
+		<br />
+		<a href="#SFMatrix4d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFMatrix4d">SFMatrix4d</a> and
+        ordered list
+        <a href="#MFMatrix4d">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFMatrix4d">MFMatrix4d</a>:
+        each SFMatrix4d value is a 4x4 sixteen-tuple set of double-precision floating point numbers.
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFMatrix4f"><a name="MFMatrix4f"></a></a>
+				<a name="SFMatrix4d"><a name="MFMatrix4d"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFMatrix4fAndMFMatrix4f" target="X3dArchitecture">5.3.21 SFMatrix4f and MFMatrix4f</a>,
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFMatrix4dAndMFMatrix4d" target="X3dArchitecture">5.3.20 SFMatrix4d and MFMatrix4d</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFMatrix4f.html" target="X3dSchema">SFMatrix4f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFMatrix4f.html" target="X3dSchema">MFMatrix4f</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFMatrix4d.html" target="X3dSchema">SFMatrix4d</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFMatrix4d.html" target="X3dSchema">MFMatrix4d</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFMatrix4f" target="X3dTooltips">SFMatrix4f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFMatrix4f" target="X3dTooltips">MFMatrix4f</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFMatrix4d" target="X3dTooltips">SFMatrix4d</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFMatrix4d" target="X3dTooltips">MFMatrix4d</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/nZmA25/2" target="regex101">SFMatrix4f/SFMatrix4d eval and unit tests</a>,
+				<a href="https://regex101.com/r/leJ62L/2" target="regex101">MFMatrix4f/MFMatrix4d eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFMatrix4f/SFMatrix4d matching: 4x4 sixteen-tuple floating-point values with optional scientific notation.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){15}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFMatrix4f/MFMatrix4d matching: ordered list of zero or more SFMatrix4f/SFMatrix4d values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){15}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFRotation">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFRotation">SFRotation</a> &nbsp;and
+        ordered list
+        <a href="#MFRotation">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFRotation">MFRotation</a>:
+        each SFRotation value is a 4-tuple set of &nbsp;single-precision  floating point numbers, 
+        representing normalized 3-tuple axis of rotation,
+        followed by angle of rotation  in angle base units (default is radians).
+        <ul>
+            <li>
+                Note: it is reject illegal axis vector using negative lookahead
+                <code><span class="notallowed" title="not allowed: zero axis vector">(?!((0|0\.0*|\.0+)\s+){3})</span></code>
+            </li>
+            <li>
+                <i>Candidate subtypes:</i>
+                stricter enforcement that magnitudes of axis values are not greater than 1.
+            </li>
+        </ul>
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFRotation"><a name="MFRotation"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFRotationAndMFRotation" target="X3dArchitecture">5.3.21 SFRotation and MFRotation</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFRotation.html" target="X3dSchema">SFRotation</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFRotation.html" target="X3dSchema">MFRotation</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFRotation" target="X3dTooltips">SFRotation</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFRotation" target="X3dTooltips">MFRotation</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/5Htb3O/4" target="regex101">SFRotation eval and unit tests</a>,
+				<a href="https://regex101.com/r/dczLT9/4" target="regex101">MFRotation eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFRotation matching: four-tuple floating-point values with optional scientific notation.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span><span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){3}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span><span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFRotation matching: ordered list of zero or more SFRotation values.
+		</h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>(<span class="grouprepetition" title="group repetition">(</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){3}</span><span class="float" title="float">([+-]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace with optional single comma">\s*,?\s*</span>)*<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#SFString">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#SFString">SFString</a> &nbsp;and 
+        ordered list
+        <a href="#MFString">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+        <a href="#MFString">MFString</a>:
+		each SFString value is an unquoted set of characters, while each MFString consists of quoted SFString values separated by whitespace (including commas).
+		</td>
+		<td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="SFString"><a name="MFString"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#SFStringAndMFString" target="X3dArchitecture">5.3.14 SFString and MFString</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_SFString.html" target="X3dSchema">SFString</a>,
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_MFString.html" target="X3dSchema">MFString</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFString" target="X3dTooltips">SFString</a>,
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFString" target="X3dTooltips">MFString</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			SFString matching: unquoted string value.
+		</h4>
+        <i>XML Schema:</i>&nbsp; <code>&lt;xs:restriction base="xs:string"/&gt;</code>
+        <br />
+		<i>Regex pattern:</i>&nbsp;none.
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			MFString matching: ordered list of zero or more quoted SFString values.
+		</h4>
+		<i>XML Schema:</i>&nbsp; <code>&lt;xs:list itemType="xs:string"/&gt;</code>
+        <br />
+        <b>TODO</b>. Is there a practical regex that can match pairs of unescaped quotation marks?
+    </td></tr>
+<!-- =================================================== -->
+
+    <tr style="background-color: #dddddd; vertical-align: middle;"><td>
+		<a href="#bboxSize">&#128278;</a> <!-- Unicode Character 'BOOKMARK' (U+1F516) -->
+		<a href="#bboxSize">Bounding box size (bboxSize)</a>:
+        a 3-tuple <a href="#SFVec3f">SFVec3f</a> value with each x,y,z component in nonnegative range [0,+infinity) or else <code>-1&nbsp;-1&nbsp;-1<code>.
+        <br />
+        Default <code>bboxSize='-1 -1 -1'</code> is a sentinel value indicating that no bounding box value has been provided.
+    </td>
+    <td>
+		<ul style="margin-bottom: 0;">
+			<li>
+				<a name="bbox"><a name="bbox"></a></a>
+				<a name="bboxSize"><a name="bboxSize"></a></a>
+				<a href="#">
+					<!-- width="154" height="97" -->
+				   <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+				</a>
+				X3D Architecture Specification:
+				<a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/group.html#BoundingBoxes" target="X3dArchitecture">10.2.2 Bounding boxes</a>
+			</li>
+			<li>
+				X3D Schema documentation: simpleType
+				<a href="X3dSchemaDocumentation4.0/x3d-4.0_boundingBoxSizeType.html" target="X3dSchema">boundingBoxSizeType</a>
+			</li>
+			<li>
+				X3D Tooltips:
+				<a href="https://www.web3d.org/x3d/content/X3dTooltips.html#Anchor.bboxSize" target="X3dTooltips">Anchor.bboxSize</a>
+			</li>
+			<li>
+				regex101:
+				<a href="https://regex101.com/r/93e1Sh" target="regex101">bboxSize eval and unit tests</a>
+			</li>
+		</ul>
+    </td></tr>
+    <tr><td colspan=2">
+		<h4>
+			bboxSize matching: three-tuple floating-point values with optional scientific notation, bounded non-negative or else -1&nbsp;-1&nbsp;-1 sentinel value.
+        </h4>
+		<i>Regex pattern:</i>&nbsp;
+        <code><span class="anchorcharacter" title="anchor character">^</span><span class="whitespace" title="whitespace optional">\s*</span>((<span class="grouprepetition" title="group repetition">(</span><span class="float" title="nonnegative float">[+]?(((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace required">\s+</span><span class="grouprepetition" title="group repetition">){2}</span><span class="float" title="nonnegative float">(</span><span class="float" title="nonnegative float">[+]?((0|[1-9][0-9]*)(\.[0-9]*)?|\.[0-9]+)</span><span class="scientific" title="scientific notation">([Ee][+-]?[0-9]+)?)</span><span class="whitespace" title="whitespace optional">\s*</span>)<b>|</b><span class="grouprepetition" title="group repetition">(</span>(\-1(\.(0)*)?<span class="scientific" title="scientific notation">([Ee][+-]?[0]+)?</span><span class="whitespace" title="whitespace">\s+</span><span class="grouprepetition" title="group repetition">){2}</span>\-1(\.(0)*)?<span class="scientific" title="scientific notation">([Ee][+-]?[0]+)?</span>)<span class="whitespace" title="whitespace optional">\s*</span>)?<span class="anchorcharacter" title="anchor character">$</span></code>
+    </td></tr>
+<!-- =================================================== -->
+</table>
+
+<p><b>TODO</b>.  Several pattern possibilities for urls/URNs are conceivable.
+    Adding an MFString url regex pattern is likely useful.</p>
+<p>
+    <a href="https://www.web3d.org/specifications/java/X3DJSAIL.html" target="_blank">X3D Java Scene Access Interface Library (X3DJSAIL)</a>
+    provides a set of unit tests in
+    <a href="https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/x3d/stylesheets/java/src/org/web3d/x3d/tests/FieldObjectTests.java" target="_blank"><code>org.web3d.x3d.tests.FieldObjectTests</code></a>
+    to check these regexes against default and alternative values.
+</p>
+<p>
+	A scratch pad of various experimental regexes is found in
+	<a href="X3dRegularExpressionTests.txt">X3dRegularExpressionTests.txt</a>.
+</p>
+
+<!-- =================================================== -->
+
+        <hr />
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#XmlPatterns">&#128278;</a><a name="XML"></a>
+            <a name="XmlPatterns">XML Patterns</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+        
+        <p>
+            The Extensible Markup Language (XML) provides several useful definitions and restrictions on string types.
+            <ul>
+                <li>
+                    <code>CDATA</code> is Character Data, or unrestricted text.
+                    (<a href="https://www.w3.org/TR/REC-xml/#syntax" target="_blank">XML Recommendation</a>)
+                    (<a href="" target="_blank">XML Schema</a>)
+                </li>
+                <li>
+                    <code>NMTOKEN</code> is Name Token to match naming requirements for legal characters with no spaces.
+                    (<a href="https://www.w3.org/TR/REC-xml/#sec-common-syn" target="_blank">XML Recommendation</a>)
+                    (<a href="https://www.w3.org/TR/xmlschema11-2/#NMTOKEN" target="_blank">XML Schema</a>)
+                </li>
+                <li>
+                    <code>xs:token</code> is similar to NMTOKEN but allows single-occurrence whitespace characters within the string. No leading or trailing spaces can occur.
+                    (<a href="https://www.w3.org/TR/xmlschema11-2/#token" target="_blank">XML Schema</a>)
+                </li>
+            </ul>
+        </p>
+        
+        <p>
+            <a href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#Validation">X3D Scene Authoring Hints: Validation</a>
+			describe all initial XML headers for X3D.
+        </p>
+        <p>
+            Note that regex checking of expressions within the X3D XML Schemas are needed, 
+            since literal validation of those attribute values gets performed by various authoring tools (such as Altova XMLSpy).
+        </p>
+        <p>
+            Regex testing for XML-related constructs by
+			<a href="https://svn.code.sf.net/p/x3d/code/www.web3d.org/x3d/tools/X3dQualityAssurance/X3dValidator/src/java/org/web3d/x3d/tools/X3dDoctypeChecker.java">X3dDoctypeChecker.java</a>
+			include the following.
+        </p>
+		
+<table border="1" align="center">
+    <tr><th align="center">
+			XML and DOCTYPE regex patterns
+    </th></tr>
+    <tr><td>
+        <a name="XML" href="https://www.w3.org/TR/xml/#sec-prolog-dtd" target="_blank">XML declaration</a>
+		as part of the document prolog:
+		<br />
+		<code>&lt;\\?xml version=(\"|')1.(0|1)(\"|') encoding=(\"|')UTF-(8|16)(\"|')\\?&gt;</code>
+    </td></tr>
+    <tr><td>
+        <a href="https://www.w3.org/TR/xml/#sec-prolog-dtd" target="_blank">XML declaration</a>, case insensitive:
+		<br />
+		<code>&lt;\\?xml version=(\"|')1.(0|1)(\"|') encoding=(\"|')(U|u)(T|t)(F|f)-(8|16)(\"|')\\?&gt;</code>
+    </td></tr>
+    <tr><td>
+        <a name="DOCTYPE4.0" href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#DOCTYPE4.0" target="_blank">Experimental X3D 4.0 DOCTYPE</a>:
+		<br />
+		<code>&lt;!DOCTYPE X3D PUBLIC(\\s)+\"ISO//Web3D//DTD X3D 4.0//EN\"(\\s)+\"https://www.web3d.org/specifications/x3d-4.0.dtd\"(\\s)*(&gt;|\\[)</code>
+    </td></tr>
+    <tr><td>
+        <a name="DOCTYPE3.3" href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#DOCTYPE3.3" target="_blank">Approved X3D 3.3 DOCTYPE</a>:
+		<br />
+		<code>&lt;!DOCTYPE X3D PUBLIC(\\s)+\"ISO//Web3D//DTD X3D 3.3//EN\"(\\s)+\"https://www.web3d.org/specifications/x3d-3.3.dtd\"(\\s)*(&gt;|\\[)</code>
+    </td></tr>
+    <tr><td>
+        <a name="DOCTYPE3.2" href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#DOCTYPE3.2" target="_blank">X3D 3.2 DOCTYPE</a>:
+		<br />
+		<code>&lt;!DOCTYPE X3D PUBLIC(\\s)+\"ISO//Web3D//DTD X3D 3.2//EN\"(\\s)+\"https://www.web3d.org/specifications/x3d-3.2.dtd\"(\\s)*(&gt;|\\[)</code>
+    </td></tr>
+    <tr><td>
+        <a name="DOCTYPE3.1" href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#DOCTYPE3.1" target="_blank">X3D 3.1 DOCTYPE</a>:
+		<br />
+		<code>&lt;!DOCTYPE X3D PUBLIC(\\s)+\"ISO//Web3D//DTD X3D 3.1//EN\"(\\s)+\"https://www.web3d.org/specifications/x3d-3.1.dtd\"(\\s)*(&gt;|\\[)</code>
+    </td></tr>
+    <tr><td>
+        <a name="DOCTYPE3.0" href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#DOCTYPE3.0" target="_blank">X3D 3.0 DOCTYPE</a>:
+		<br />
+		<code>&lt;!DOCTYPE X3D PUBLIC(\\s)+\"ISO//Web3D//DTD X3D 3.0//EN\"(\\s)+\"https://www.web3d.org/specifications/x3d-3.0.dtd\"(\\s)*(&gt;|\\[)</code>
+    </td></tr>
+</table>
+	<p>
+		    <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#ErrorDetection">&#128278;</a>
+            <a name="ErrorDetection">Error-detection regexes</a> 
+        are applied as part of
+        <a href="https://www.web3d.org/x3d/content/examples/X3dResources.html#Examples" target="_blank">X3D Examples Archives</a>
+        build.xml checking, see target <code>processScenes.regularExpressionChecks</code> for invocation details.
+    </p>
+		
+<table border="1" align="center">
+    <tr><th align="center">
+            Error-Detection Patterns
+    </th></tr>
+    <tr><td>
+        Malformed floating-point numbers (multiple decimal points, etc.), property name="regexGarbledFloats"
+		<br />
+		<code>(\s|,|&quot;|')(((\+|-)?((\.\d+)|(\d+\.\d*))((E|e)(\+|-)?\d+)?(\.|\+|-)+(\d*))|(\d+((\+|-)\d+)+))(\s|,|&quot;|')</code>
+    </td></tr>
+    <tr><td>
+        Excess leading zeroes, property name="regexLeadingZeroes"
+		<br />
+		<code>(\s|,|&quot;|')(\+|-)?0\d+(\.\d*)?((E|e)(\+|-)?\d+)?(\s|,|&quot;|')</code>
+    </td></tr>
+    <tr><td>
+        ... which is preceded by negative look-behind checks to avoid flagging software version numbers, property name="regexNegativeLookBehinds"
+		<br />
+		<code>?&lt;!address=)(?&lt;!pecification)(?&lt;!ection)(?&lt;!aragraph)(?&lt;!CosmoPlayer)(?&lt;!CAD Exchanger)</code>
+    </td></tr>
+</table>
+        
+	<p>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#ErrorCorrection">&#128278;</a>
+            <a name="ErrorCorrection">Error-correction regexes</a> 
+		are also possible using
+        XPath <code>replace(source,pattern,replacement)</code> function.
+        For repeatability the <code>pattern</code> being matched must be a strict regular expression rather than a literal.
+    </p>
+		
+<table border="1" align="center">
+    <tr><th align="center">
+            Error-Correction Patterns
+    </th></tr>
+    <tr><td>
+        Remove whitespace commas from appropriately typed numeric values
+		<br />
+        <code>normalize-space(replace(., '<span class="float" title="X3D comma whitespace">,</span>', '<span class="float" title="whitespace character"> </span>'))</code>
+    </td></tr>
+    <tr><td>
+        Omit trailing decimal point if followed by whitespace
+		<br />
+        <code>normalize-space(replace(concat(replace(., ',', ' '),' '),'<span class="float" title="float pattern">([.][ ])</span>', '<span class="float" title="trailing decimal point omitted"> </span>'))</code>
+    </td></tr>
+    <tr><td>
+        Insert 0 if negative fraction encountered, e.g. <code>-.123</code> to <code>-<b>0</b>.123 </code>
+		<br />
+        <code>replace(normalize-space(replace(., ',', ' ')),'<span class="float" title="float pattern">([-][.])</span>', '<span class="float" title="float replacement, inserted zero">-0.</span>')</code>
+    </td></tr>
+</table>
+        
+<!-- =================================================== -->
+
+        <hr />        
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#References">&#128278;</a>
+            <a name="References">References</a> 
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+        
+        <p>
+            The following references provide useful additional information about X3D, regular expressions and data validation.
+        </p>
+        
+        <ol type="a">
+            <li>
+                Apache Ant Manual:
+                <a href="https://ant.apache.org/manual/Tasks/replaceregexp.html" target="_blank">replaceregexp</a>,
+                <a href="https://ant.apache.org/manual/Types/regexp.html" target="_blank">regexp type</a>,
+                <a href="https://ant.apache.org/manual/Types/mapper.html#regexp-mapper" target="_blank">regexp type mapper</a>.
+                Also Ant-contrib
+                <a href="http://ant-contrib.sourceforge.net/tasks/tasks/propertyregex.html" target="_blank">propertyregex</a>.
+            </li>
+            
+            <li>
+                Davis, Mark.
+                <a href="https://www.unicode.org/unicode/reports/tr18" target="_blank">Unicode Regular Expression Guidelines</a>, 2016.
+            </li>
+            
+            <li>
+                Friedl, Jeffrey E.F.,
+                <a href="https://shop.oreilly.com/product/9780596528126.do" target="_blank">Mastering Regular Expressions: Understand Your Data and Be More Productive</a>
+                Third Edition, O'Reilly and Associates, Sebastopol California, 2009.
+            </li>
+                  
+            <li>
+                Goyvaertz, Jan and Levithan, Steven,
+                <a href="https://shop.oreilly.com/product/0636920023630.do" target="_blank">Regular Expressions Cookbook: Detailed Solutions in Eight Programming Languages</a>,
+                second edition, O'Reilly Media, Sebastopol California, 2012.
+            </li>
+            
+            <li>
+                Python regular expression (regex) library
+                <a href="https://docs.python.org/3/library/re.html" target="_blank"> <code>re</code></a>
+                is built into Python
+               (<a href="https://docs.python.org/3/howto/regex.html#regex-howto" target="_blank">Python regex howto</a>)
+            </li>
+                  
+            <li>
+                <a href="https://regexlib.com" target="_blank">RegExLib.com</a> 
+                regular expression library
+            </li>
+                  
+            <li>
+                <a href="https://www.regular-expressions.info" target="_blank">Regular-expressions.Info</a> 
+                website, including
+				<a href="https://www.regular-expressions.info/xml.html">XML Schema Regular Expressions</a>
+				and
+                <a href="https://www.regular-expressions.info/catastrophic.html">Runaway Regular Expressions: Catastrophic Backtracking</a>.
+			</li>
+            
+            <li>
+                E-mail post:
+                <a href="https://www.web3d.org/pipermail/x3d-public_web3d.org/2012-March/001950.html" target="_blank">Regular expression checking</a>
+                for malformed floating-point numbers and excess leading zeros
+            </li>
+            
+            <li>
+                Wikipedia: 
+                <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank">Regular expression</a> 
+                article.
+            </li>
+            
+            <li>
+                Wikipedia: 
+                <a href="https://en.wikipedia.org/wiki/Thompson%27s_construction_algorithm" target="_blank">Ken Thompson's construction algorithm</a> 
+                article.
+            </li>
+
+            <li>
+                <a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html#FieldTypes" target="_blank">X3D field data types</a>
+                are defined in 
+                <a href="https://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/fieldsDef.html" target="_blank">Annex 5. Field type reference</a>
+                X3D Abstract Specification.
+            </li>
+            
+            <li>
+                World Wide Web Consortium (W3C) Recommendation: 
+                <a href="https://www.w3.org/TR/xmlschema11-2" target="_blank">XML Schema Definition Language (XSD) 1.1 Part 2 Datatypes</a>
+                with sections on
+                <a href="https://www.w3.org/TR/xmlschema11-2/#regexs" target="_blank">Regular expressions</a>,
+                <a href="https://www.w3.org/TR/xmlschema11-2/#float" target="_blank">float</a> checking, 
+                etc.
+            </li>
+            
+            <li>
+                <a href="https://www.web3d.org/specifications/contents.html" target="_blank">X3D Specifications: XML Schema and DOCTYPE Validation</a>
+                include the latest versions of recommended XML Schemas and DOCTYPEs (DTDs) for X3D.
+            </li>
+            
+            <li>
+                <a href="https://www.web3d.org/x3d/content/examples/X3dResources.html" target="_blank">X3D Resources</a>
+                provides links to numerous resources supporting X3D and VRML. 
+                <ul>
+                    <li>
+                        <a href="https://www.web3d.org/x3d/content/examples/X3dResources.html#QualityAssurance" target="_blank">X3D Quality Assurance (QA)</a>
+                        identifies errors and warnings in order to make X3D scene content more portable and reliable.
+                        This section provides links to each of the different QA tests that are available.
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html" target="_blank">X3D Scene Authoring Hints</a>
+                provide a collection of style guidelines, authoring tips and best practices to improve the quality, consistency and maintainability of X3D Graphics scenes. 
+                <ul>
+                    <li>
+                        <a href="https://www.web3d.org/x3d/content/examples/X3dSceneAuthoringHints.html#Validation" target="_blank">Validation of X3D Scenes using DTD and XML Schema</a>
+                        shows example declarations of DTD and Schema in X3D scenes.
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+           		<a href="https://www.web3d.org/specifications/X3DUOM.html" target="_blank">X3D Unified Object Model (X3DUOM)</a>
+			</li>
+
+            <li>
+           		<a href="https://www.web3d.org/specifications/java/X3DJSAIL.html" target="_blank">X3D Java Scene Access Interface Library (X3DJSAIL)</a>
+			</li>
+            
+            <li>
+                <a href="https://savage.nps.edu/X3dValidator" target="_blank">X3D Validator</a>
+                is a Web application that checks X3D scene validity. 
+            </li>
+            
+            <li>
+                <a href="https://www.w3.org/TR/xmlschema11-2" target="_blank">XML Schema 1.1 Part 2: Datatypes Second Edition</a>, 
+                World Wide Web Consortium (W3C) Recommendation.
+                Includes sections on
+                <a href="https://www.w3.org/TR/xmlschema11-2/#typesystem" target="_blank">Datatype System</a>,
+                <a href="https://www.w3.org/TR/xmlschema11-2/#built-in-datatypes" target="_blank">Built-in datatypes</a>
+                and
+                <a href="https://www.w3.org/TR/xmlschema11-2/#regexs" target="_blank">Regular Expressions</a>.
+            </li>
+        </ol>
+
+<!-- =================================================== -->
+
+        <hr />
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#Tools">&#128278;</a>
+            <a name="Tools">Tools</a> 
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+        
+        <p>
+            Links to tools of interest follow.
+            Additional recommendations are welcome.
+        </p>                
+	   
+        <ul>
+            
+            <li>
+                <a href="https://regex101.com" target="_blank">Online Regex Tester</a>
+                allows live color-coded testing of regex expressions and corresponding string matches in a browser.
+                (n.b. alternative regex vocabularies offered)
+            </li>
+            
+            <li>
+                <a href="http://www.xmlschemareference.com/regularExpression.html" target="_blank">XML Schema - Regular Expressions</a>
+                offers detailed guidance.
+            </li>
+<!--
+
+XML Spy?  Netbeans?
+
+            <li>
+                <a href=""></a>
+            </li>
+ -->
+        </ul>
+
+<!-- =================================================== -->
+
+        <hr />
+
+        <h3>
+            <!-- Unicode Character 'BOOKMARK' (U+1F516) https://www.fileformat.info/info/unicode/char/1f516/index.htm -->
+            <a href="#Contact">&#128278;</a>
+            <a name="Contact">Contact</a>
+            <a href="#">
+                <!-- width="154" height="97" -->
+               <img src="images/x3d2-s.gif" width="50" height="32" style="border:0" title="to top" alt="to top" align="right"/>
+            </a>
+        </h3>
+
+        <p>
+            Questions, suggestions and comments about these resources are welcome.
+            Please send them to
+            <a href="https://faculty.nps.edu/brutzman" target="_blank">Don&nbsp;Brutzman</a>.
+        </p>
+        <p>
+            The contributions of 
+            Roy Walmsley
+        <!--(<a href="mailto:roy.walmsley@ntlworld.com%20(Roy%20Walmsley)?subject=feedback:%20X3D%20Regular%20Expressions%20(regexes)%20"><i>brutzman&nbsp;at&nbsp;nps.edu, roy.walmsley&nbsp;at&nbsp;ntlworld.com(</i></a>)-->
+            are gratefully acknowledged.
+        </p>
+
+        <p>
+            Available online at
+            <a href="https://www.web3d.org/specifications/X3dRegularExpressions.html">https://www.web3d.org/specifications/X3dRegularExpressions.html</a>
+        </p>
+
+        <p>
+            Version control of this document is maintained at
+            <br />
+            <a href="https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/specifications/X3dRegularExpressions.html">https://sourceforge.net/p/x3d/code/HEAD/tree/www.web3d.org/specifications/X3dRegularExpressions.html</a>
+        </p>
+
+        <p>
+            Updated: 3 September 2023
+        </p>
+
+</body>
+</html>
