@@ -5473,6 +5473,7 @@ Open-source license:
 			<xs:enumeration value="modulationTypeDetail"/>
 			<xs:enumeration value="modulationTypeSystem"/>
 			<xs:enumeration value="momentsOfInertia"/>
+			<xs:enumeration value="motionsEnabled"/>
 			<xs:enumeration value="motor1Axis"/>
 			<xs:enumeration value="motor2Axis"/>
 			<xs:enumeration value="motor3Axis"/>
@@ -19561,6 +19562,7 @@ Open-source license:
 					<xs:attribute name="jointBindingRotations" type="MFRotation" default="0 0 1 0"/>
 					<xs:attribute name="jointBindingScales" type="MFVec3f" default="0 0 0"/>
 					<xs:attribute name="loa" type="loaType" default="-1"/>
+					<xs:attribute name="motionsEnabled" type="MFBool" default=""/>
 					<xs:attribute name="name" type="xs:NMTOKEN">
 						<xs:annotation>
 							<xs:appinfo>name attribute is ordinarily required, unless this is a USE node</xs:appinfo>
@@ -19730,7 +19732,7 @@ Open-source license:
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="X3DChildNode">
-					<xs:attribute name="channels" type="MFString"/>
+					<xs:attribute name="channels" type="SFString"/>
 					<xs:attribute name="channelsEnabled" type="MFBool"/>
 					<xs:attribute name="description" type="SFString"/>
 					<xs:attribute name="enabled" type="SFBool" default="false"/>
@@ -19756,7 +19758,7 @@ Open-source license:
 							</xs:restriction>
 						</xs:simpleType>
 					</xs:attribute>
-					<xs:attribute name="joints" type="MFString"/>
+					<xs:attribute name="joints" type="SFString"/>
 					<xs:attribute name="loa" type="loaType" default="-1"/>
 					<xs:attribute name="loop" type="SFBool" default="false"/>
 					<xs:attribute name="name" type="xs:NMTOKEN">

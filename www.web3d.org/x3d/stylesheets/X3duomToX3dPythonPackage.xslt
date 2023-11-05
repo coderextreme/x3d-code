@@ -654,7 +654,7 @@ class Comment(_X3DStatement):
             value = SFString.DEFAULT_VALUE()
         self.__value = str(value)
     # output function - - - - - - - - - -
-    def XML(self, indentLevel=0, syntax="XML"):
+    def XML(self, indentLevel=0, syntax="XML", field="children"):
         """ <!-- XML comments are wrapped in special delimiters --> """
         result = ''
         indent = '  ' * indentLevel
@@ -2890,6 +2890,7 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
     </xsl:text>
     
         <xsl:variable name="tooltipText"><!-- /attribute[@name = $fieldName] -->
+            <!--<xsl:value-of select="$elementName" />-->
             <xsl:value-of select="$x3d.tooltips.document//element[@name = $elementName]/@tooltip" disable-output-escaping="yes"/>
         </xsl:variable>
         <xsl:variable name="fieldTooltip">
@@ -2941,6 +2942,12 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
         """ Extensible 3D (X3D) Graphics International Standard governs X3D architecture for all file formats and programming languages. """
         return '</xsl:text>
         <xsl:value-of select="InterfaceDefinition/@specificationUrl"/>
+        <xsl:text>'
+    @classmethod
+    def CONTAINERFIELD_DEFAULT(cls):
+        """ Default value for containerField attribute in XML encoding """
+        return '</xsl:text>
+        <xsl:value-of select="InterfaceDefinition/containerField/@default"/>
         <xsl:text>'
     @classmethod
     def TOOLTIP_URL(cls):
@@ -3468,10 +3475,12 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                         <xsl:when test="($elementName = 'meta') and ($fieldName = 'httpequiv')">
                             <!-- some field names got munged -->
                             <xsl:value-of select="$x3d.tooltips.document//element[@name = $elementName]/attribute[@name = 'http-equiv']/@tooltip" disable-output-escaping="yes"/>
+                            <!--<xsl:value-of select="$elementName"/>-->
                         </xsl:when>
                         <xsl:otherwise>
                             <!-- some field names have underscores to avoid collisions with Python reserved words -->
                             <xsl:value-of select="$x3d.tooltips.document//element[@name = $elementName]/attribute[@name = translate($fieldName,'_','')]/@tooltip" disable-output-escaping="yes"/>
+                            <!--<xsl:value-of select="$elementName"/>-->
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
@@ -3789,7 +3798,7 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
         <!-- XML() functions -->
         <xsl:text>
     # output function - - - - - - - - - -
-    def XML(self, indentLevel=0, syntax="XML"):
+    def XML(self, indentLevel=0, syntax="XML", field="children"):
         """ Provide Canonical X3D output serialization using XML encoding. """
         result = ''
         indent = '  ' * indentLevel</xsl:text>
@@ -3907,6 +3916,9 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                 <!-- opening tag is unclosed since followed by attributes -->
                 <xsl:value-of select="$elementName"/>
                 <xsl:text>'</xsl:text>
+                <xsl:text>
+        if (self.CONTAINERFIELD_DEFAULT() != '') &amp; (self.CONTAINERFIELD_DEFAULT() != field):
+            result += " containerField='" + field + "'"</xsl:text>
                 <!-- opening tag is unclosed since followed by attributes -->
                 <!-- output simple-type fields as XML attributes -->
                 <xsl:for-each select="$allFields[not(contains(@type,'Node')) and not(@name = 'sourceCode')]">
@@ -4165,7 +4177,9 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                         <xsl:text>: # output this SFNode
                 result += self.</xsl:text>
                         <xsl:value-of select="$fieldName"/>
-                        <xsl:text>.XML(indentLevel=indentLevel+1, syntax=syntax)</xsl:text>
+                        <xsl:text>.XML(indentLevel=indentLevel+1, syntax=syntax, field="</xsl:text>
+                        <xsl:value-of select="$fieldName"/>
+                        <xsl:text>")</xsl:text>
                                     </xsl:when>
                                     <xsl:otherwise>
                         <!-- ## result += indent + '  ' + 'TODO iterate over each child element' + '\n' -->
@@ -4186,7 +4200,9 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                 for each in self.</xsl:text>
                         <xsl:value-of select="$fieldName"/>
                         <xsl:text>:
-                    result += each.XML(indentLevel=indentLevel+1, syntax=syntax)</xsl:text>
+                    result += each.XML(indentLevel=indentLevel+1, syntax=syntax, field="</xsl:text>
+                        <xsl:value-of select="$fieldName"/>
+                        <xsl:text>")</xsl:text>
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </xsl:if>
