@@ -102,8 +102,8 @@ from x3d import *
         <xsl:choose>
             <xsl:when test="//*[starts-with(local-name(),'Xvl')]">
             <xsl:text>
-print('*** Lattice Xvl nodes were an experimental extensibility effort in 2002 and are not supported in ISO-standard X3D. Exiting.')
 import sys
+print('*** Lattice Xvl nodes were an experimental extensibility effort in 2002 and are not supported in ISO-standard X3D. Exiting.', file=sys.stderr)
 sys.exit()
 ####################################################################################################
 </xsl:text>
@@ -115,8 +115,8 @@ sys.exit()
                             (//meta[@name='title']/@content='TestSchematronDiagnostics.x3d') or
                             (//meta[@name='title']/@content='X3dRetreatProtoExercise.x3d')">
             <xsl:text>
-print('*** </xsl:text><xsl:value-of select="//meta[@name='title']/@content"/><xsl:text> is an experimental X3D model and not intended to run. Exiting.')
 import sys
+print('*** </xsl:text><xsl:value-of select="//meta[@name='title']/@content"/><xsl:text> is an experimental X3D model and not intended to run. Exiting.', file=sys.stderr)
 sys.exit()
 ####################################################################################################
 </xsl:text>
@@ -128,6 +128,7 @@ sys.exit()
         
         <!-- this block follows model creation since parsing and loading must be completed before running metaDiagnostics(newModel) -->
         <xsl:text>
+import sys
 ####################################################################################################
 # Self-test diagnostics
 ####################################################################################################
@@ -138,101 +139,95 @@ print('Self-test diagnostics</xsl:text>
             <xsl:text> for </xsl:text>
             <xsl:value-of select="$modelFileName"/>
         </xsl:if>
-        <xsl:text>:')</xsl:text>
+        <xsl:text>:', file=sys.stderr)</xsl:text>
         <xsl:choose>
             <xsl:when test="($insertPackagePrefix = 'true')">
                 <xsl:text>
 if        x3d.metaDiagnostics(newModel): # built-in utility method in X3D class to show
-    print(x3d.metaDiagnostics(newModel)) # ('info', 'hint', 'warning', 'error', 'TODO')
+    print(x3d.metaDiagnostics(newModel), file=sys.stderr) # ('info', 'hint', 'warning', 'error', 'TODO')
 </xsl:text>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:text>
 if        metaDiagnostics(newModel): # built-in utility method in X3D class
-    print(metaDiagnostics(newModel)) # display meta info, hint, warning, error, TODO values in this model</xsl:text>
+    print(metaDiagnostics(newModel), file=sys.stderr) # display meta info, hint, warning, error, TODO values in this model</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
         <xsl:text>
-# print('check newModel.XML() serialization...')
+print('check newModel.XML() serialization...', file=sys.stderr)
 newModelXML= newModel.XML() # test export method XML() for exceptions during export</xsl:text>
-   <!--<xsl:text>
-debug ============
-print(prependLineNumbers(newModelVRML))
+   <xsl:text>
+print(prependLineNumbers(newModelXML), file=sys.stderr)
 x3dfile = open("</xsl:text>
 <xsl:value-of select="substring-before($modelFileName,'.')"/>
 <xsl:text>PythonToX3d.x3d","wt")
 x3dfile.write(newModelXML)
 x3dfile.close()
-==================
-        </xsl:text>-->
+        </xsl:text>
         <xsl:text>
 newModel.XMLvalidate()
-# print(newModelXML) # diagnostic
+print(newModelXML) # diagnostic
 
 try:
-#   print('check newModel.VRML() serialization...')
+    print('check newModel.VRML() serialization...', file=sys.stderr)
     newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
-    # print(prependLineNumbers(newModelVRML)) # debug</xsl:text>
-   <!--<xsl:text>
-# debug ============
-#   print(prependLineNumbers(newModelVRML)) # debug
-#   vrmlfile = open("</xsl:text>
-#     <xsl:value-of select="substring-before($modelFileName,'.')"/>
-#     <xsl:text>PythonToJSON.wrl","wt")
-#   vrmlfile.write(newModelVRML)
-#   vrmlfile.close()
-# ==================
-        </xsl:text>-->
+    # print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug</xsl:text>
+   <xsl:text>
+    print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug
+    vrmlfile = open("</xsl:text>
+      <xsl:value-of select="substring-before($modelFileName,'.')"/>
+      <xsl:text>PythonToVRML.x3dv","wt")
+    vrmlfile.write(newModelVRML)
+    vrmlfile.close()
+        </xsl:text>
         <xsl:text>
-    print("Python-to-VRML export of VRML output successful", flush=True)
+    print("Python-to-VRML export of VRML output successful", flush=True, file=sys.stderr)
 except Exception as err: # usually BaseException
     # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
-    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err, file=sys.stderr)
     if newModelVRML: # may have failed to generate
-        print(prependLineNumbers(newModelVRML, err.lineno))
+        print(prependLineNumbers(newModelVRML, err.lineno), file=sys.stderr)
 
 try:
-#   print('check newModel.JSON() serialization...')
+    print('check newModel.JSON() serialization...', file=sys.stderr)
     newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
-#   print(prependLineNumbers(newModelJSON)) # debug</xsl:text>
-   <!--<xsl:text>
-# debug ============
-#   print(prependLineNumbers(newModelJSON)) # debug
-#   jsonfile = open("</xsl:text>
-#     <xsl:value-of select="substring-before($modelFileName,'.')"/>
-#     <xsl:text>PythonToJSON.json","wt")
-#   jsonfile.write(newModelJSON)
-#   jsonfile.close()
-# ==================
-        </xsl:text>-->
+#   print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug</xsl:text>
+   <xsl:text>
+    print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug
+    jsonfile = open("</xsl:text>
+     <xsl:value-of select="substring-before($modelFileName,'.')"/>
+     <xsl:text>PythonToJSON.json","wt")
+    jsonfile.write(newModelJSON)
+    jsonfile.close()
+        </xsl:text>
         <xsl:text>
-    print("Python-to-JSON export of JSON output successful (under development)")
+    print("Python-to-JSON export of JSON output successful (under development)", file=sys.stderr)
 except Exception as err: # usually SyntaxError
-    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err, file=sys.stderr)
     if newModelJSON: # may have failed to generate
-        print(prependLineNumbers(newModelJSON,err.lineno))
+        print(prependLineNumbers(newModelJSON,err.lineno), file=sys.stderr)
 
 print("python</xsl:text>
         <xsl:if test="(string-length($modelFileName) > 0)">
             <xsl:text> </xsl:text>
             <xsl:value-of select="$modelFileName"/>
         </xsl:if>
-        <xsl:text> load and self-test diagnostics complete.")
+        <xsl:text> load and self-test diagnostics complete.", file=sys.stderr)
 </xsl:text>
 <!--
 TODO print meta warnings, errors etc. as part of validation
 TODO Script and other CDATA blocks
 
-print ('type(newModel)        =', type(newModel))
-print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__      =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__)
-print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__     =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__)
-print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__    =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__)
-print ('newModel.head =', newModel.head )
-print ('newModel.Scene=', newModel.Scene)
+print ('type(newModel)        =', type(newModel), file=sys.stderr)
+print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__      =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__, file=sys.stderr)
+print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__     =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__, file=sys.stderr)
+print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__    =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__, file=sys.stderr)
+print ('newModel.head =', newModel.head , file=sys.stderr)
+print ('newModel.Scene=', newModel.Scene, file=sys.stderr)
 
 verbose alternates:
-print ('str(newModel.head)    =', str(newModel.head))
-print ('str(newModel.Scene)   =', str(newModel.Scene))
+print ('str(newModel.head)    =', str(newModel.head), file=sys.stderr)
+print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 -->
     </xsl:template>
 

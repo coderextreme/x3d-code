@@ -1,6 +1,10 @@
 ####################################################################################################
 #
-# Now available: developmental python x3d.py package on PyPI for import.
+# Invoking X3D model self-test:
+#
+#   $ python MaterialModulator.py
+#
+# Python package x3d.py package is available on PyPI for import.
 #   This approach simplifies Python X3D deployment and use.
 #   https://pypi.org/project/x3d
 #
@@ -9,7 +13,7 @@
 # or
 #       python -m pip install x3d
 #
-# Developer options for loading x3d package:
+# Developer options for loading x3d package in other Python programs:
 #
 #    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
 #
@@ -33,13 +37,13 @@ newModel=X3D(profile='Immersive',version='3.3',
     meta(content='20 October 2019',name='modified'),
     meta(content='X3D prototype requiring Script inputOutput fields',name='subject'),
     meta(content='MaterialModulator.png',name='Image'),
-    meta(content='https://X3dGraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulator.x3d',name='identifier'),
+    meta(content='https://www.web3d.org/x3d/content/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulator.x3d',name='identifier'),
     meta(content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit',name='generator'),
     meta(content='../license.html',name='license')]),
   Scene=Scene(
     children=[
     WorldInfo(title='MaterialModulator.x3d'),
-    ProtoDeclare(appinfo='mimic a Material node and modulate the diffuseColor field as an animation effect',documentation='https://x3dgraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulatorIndex.html',name='MaterialModulator',
+    ProtoDeclare(appinfo='mimic a Material node and modulate the diffuseColor field as an animation effect',documentation='https://www.web3d.org/x3d/content/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulatorIndex.html',name='MaterialModulator',
       ProtoInterface=ProtoInterface(
         field=[
         field(accessType='inputOutput',appinfo='default value true',name='enabled',type='SFBool',value=True),
@@ -89,7 +93,7 @@ function clockTrigger (timeValue)
     newColor = new SFColor ((red + 0.02) % 1, (green + 0.03) % 1, (blue + 0.04) % 1);
 	if (enabled)
 	{
-		Browser.print ('diffuseColor=(' + red +',' + green + ',' + blue + ') newColor=' + newColor.toString() + '\n');
+		Browser.println ('diffuseColor=(' + red +',' + green + ',' + blue + ') newColor=' + newColor.toString());
 	}
 }
 function set_enabled (newValue)
