@@ -166,14 +166,14 @@ x3dfile.close()
         </xsl:text>
         <xsl:text>
 newModel.XMLvalidate()
-print(newModelXML) # diagnostic
+# print(newModelXML) # diagnostic
 
 try:
     print('check newModel.VRML() serialization...', file=sys.stderr)
     newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
     # print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug</xsl:text>
    <xsl:text>
-    print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug
+#    print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug
     vrmlfile = open("</xsl:text>
       <xsl:value-of select="substring-before($modelFileName,'.')"/>
       <xsl:text>PythonToVRML.x3dv","wt")
@@ -193,7 +193,7 @@ try:
     newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
 #   print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug</xsl:text>
    <xsl:text>
-    print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug
+#    print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug
     jsonfile = open("</xsl:text>
      <xsl:value-of select="substring-before($modelFileName,'.')"/>
      <xsl:text>PythonToJSON.json","wt")

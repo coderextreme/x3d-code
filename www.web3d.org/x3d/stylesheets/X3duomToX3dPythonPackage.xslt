@@ -221,10 +221,40 @@ This work is part of the X3D Python Scene Access Interface Library (X3DPSAIL).
 # https://www.web3d.org/specifications/X3dRegularExpressions.html
 
 import re
+import copy
 
 _DEBUG = False       # options True False
 
 ###############################################
+
+# Override this function in your application code
+# VVVVVV   PROPOSED CHANGE, ADD THESE LINES  VVVVVV
+defusetable = {}
+
+def initdefuse():
+    defusetable = {}
+
+def defuse(node):
+    if hasattr(node, 'DEF'):
+        if node.DEF in defusetable:
+            usenode = type(node)(USE=node.DEF)
+            return usenode
+        elif node.USE in defusetable:
+            usenode = type(node)(USE=node.USE)
+            return usenode
+        elif node.DEF:
+            defusetable.update({node.DEF : node})
+            return node
+        elif node.USE:
+            # USE found, not in defusetable, but no DEF, switch to DEF
+            node.DEF = node.USE
+            defusetable.update({node.USE : node})
+            return node
+        else:
+            return node
+    else: # no USE or DEF
+        # what do we do if there are multiple parents?
+        return node
 
 # SimpleType Enumerations
 </xsl:text>
@@ -3919,6 +3949,8 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                 <xsl:text>
         if (self.CONTAINERFIELD_DEFAULT() != '') &amp; (self.CONTAINERFIELD_DEFAULT() != field):
             result += " containerField='" + field + "'"</xsl:text>
+                <xsl:text>
+        self = defuse(self)  # PROPOSED CHANGE, ADD THIS LINE</xsl:text>
                 <!-- opening tag is unclosed since followed by attributes -->
                 <!-- output simple-type fields as XML attributes -->
                 <xsl:for-each select="$allFields[not(contains(@type,'Node')) and not(@name = 'sourceCode')]">
@@ -3939,8 +3971,20 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                     </xsl:variable>
                     <!-- avoid duplicate fields problem in X3DUOM, e.g. ParticleSet geometry (TODO fix X3DUOM) -->
                     <xsl:if test="not(preceding-sibling::*[@name = $fieldName])">
+                        <xsl:choose>
+                            <xsl:when test="($fieldName = 'DEF')">
                         <xsl:text>
         if </xsl:text>
+                            </xsl:when>
+                            <xsl:when test="($fieldName = 'USE')">
+                        <xsl:text>
+        if </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                        <xsl:text>
+        if (not hasattr(self, 'USE') or not self.USE) and </xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
                         <xsl:choose>
                             <xsl:when test="(@type = 'SFBool')">
                                 <xsl:if test="(@default = 'true')">
@@ -4107,11 +4151,10 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                                 <xsl:text> + "'"</xsl:text>
                             </xsl:otherwise>
                         </xsl:choose>
-                        
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:text>
-        if not self.hasChild()</xsl:text>
+        if (not hasattr(self,'USE') or not self.USE) and not self.hasChild()</xsl:text>
             <xsl:if test="(@name = 'Script') or (@name = 'ShaderProgram') or (@name = 'ShaderPart')">
                 <xsl:text> and not self.sourceCode</xsl:text>
             </xsl:if>
@@ -4577,6 +4620,7 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                                   not($elementName = 'Scene')">
                     <!-- also see below; TODO simpler construct possible? -->
                     <xsl:text>
+        # self = defuse(self)  # PROPOSED CHANGE, ADD THIS LINE
         if self.DEF:
             result += 'DEF ' + self.DEF + ' ' + '</xsl:text>
                     <xsl:value-of select="$elementName"/>
@@ -4765,7 +4809,7 @@ def assertValidFieldInitializationValue(name, fieldType, value, parent=''):
                                   not($elementName = 'head') and not($elementName = 'component') and not($elementName = 'meta') and not($elementName = 'unit') and
                                   not($elementName = 'Scene')">
                         <xsl:text>
-        if not self.USE:
+        if not hasattr(self,'USE') or not self.USE:
             result += '\n' + indent + '}' +  '\n' + indent</xsl:text>
                   </xsl:when>
                   <xsl:otherwise>
