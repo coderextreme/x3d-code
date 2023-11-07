@@ -234,6 +234,7 @@ defusetable = {}
 def initdefuse():
     defusetable = {}
 
+# copy this to your code that uses DAGs
 def defuse(node):
     if hasattr(node, 'DEF'):
         if node.DEF in defusetable:
@@ -247,14 +248,17 @@ def defuse(node):
             return node
         elif node.USE:
             # USE found, not in defusetable, but no DEF, switch to DEF
-            node.DEF = node.USE
-            defusetable.update({node.USE : node})
+            #node.DEF = node.USE
+            #defusetable.update({node.DEF : node})
             return node
         else:
             return node
     else: # no USE or DEF
         # what do we do if there are multiple parents?
         return node
+
+def defuse(node):
+   return node
 
 # SimpleType Enumerations
 </xsl:text>
