@@ -656,7 +656,6 @@ POSSIBILITY OF SUCH DAMAGE.
     </target>
 
 	<target name="batch">
-		<!--
           <javac srcdir="." includes="CreatePython.java" classpath="${saxon.dir}/${saxon.jar};${saxon.dir}/${xmlresolver.jar};.">
           </javac>
 	  <apply executable="java">
@@ -664,22 +663,21 @@ POSSIBILITY OF SUCH DAMAGE.
 	    <arg value="${saxon.dir}/${saxon.jar};${saxon.dir}/${xmlresolver.jar};."/>
 	    <arg value="CreatePython"/>
 	    <srcfile/>
-	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/" casesensitive="yes">
+	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin" casesensitive="yes">
                <include name="**/*.x3d"/>
                <exclude name="**/*Python*.x3d"/>
 	    </fileset>
 	  </apply>
-	  <apply executable="py">
+	  <apply executable="py" dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin">
 	    <srcfile/>
-	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/" casesensitive="yes">
+	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin" casesensitive="yes">
                <include name="**/*.py"/>
 	    </fileset>
 	  </apply>
-		-->
-	  <apply executable="tovrmlx3d">
+	  <apply executable="C:/Users/john/Downloads/view3dscene-4.3.0-win64-x86_64/view3dscene/tovrmlx3d">
 	    <arg value="--validate"/>
 	    <srcfile/>
-	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/" casesensitive="yes">
+	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin" casesensitive="yes">
                <include name="**/*Python*.x3dv"/>
                <include name="**/*Python*.x3d"/>
 	    </fileset>
