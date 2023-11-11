@@ -221,7 +221,6 @@ This work is part of the X3D Python Scene Access Interface Library (X3DPSAIL).
 # https://www.web3d.org/specifications/X3dRegularExpressions.html
 
 import re
-import copy
 
 _DEBUG = False       # options True False
 
@@ -233,6 +232,9 @@ defusetable = {}
 
 def initdefuse():
     defusetable = {}
+
+def defuse(node):
+   return node
 
 # copy this to your code that uses DAGs
 def defuse(node):
@@ -256,9 +258,6 @@ def defuse(node):
     else: # no USE or DEF
         # what do we do if there are multiple parents?
         return node
-
-def defuse(node):
-   return node
 
 # SimpleType Enumerations
 </xsl:text>
