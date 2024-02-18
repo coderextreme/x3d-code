@@ -117,6 +117,26 @@ https://www.web3d.org/x3d/content/examples/X3dResources.html#Feedback
 X3D DTD update activity:
 https://www.web3d.org/specifications/x3d-dtd-changelog.txt
 
+17 DEC 2023, brutzman
+- (4.0) capitalization of WaveShaper oversample allowed parameters (NONE|2X|4X)
+
+20 NOV 2023, seelig, brutzman
+- ArcClose2D Disk2D Rectangle2D TriangleSet2D field solid has default value false
+- HAnimMotion field enabled has default value true
+
+5 NOV 2023, seelig, brutzman
+- (4.0) added ComposedCubeMapTexture textureProperties, must follow other textures
+- ElevationGrid    default values xDimension 0, zDimension 0, height is empty array
+- GeoElevationGrid default values xDimension 0, zDimension 0, height is [0 0]
+  with difference noted as X3D 4.1 erratum in issue tracker under Mantis 1447.
+- note fieldOfView default values set to 0.7854 rather than spec value 0.785398
+  in order to avoid false-positive validation errors, also avoid roundoff errors in tools
+- (4.0) OrthoViewpoint fieldOfView has type MFFloat even though SFVec3f is more
+  correct to prevent modeling errors, deficiency recorded as Mantis 1398
+- SurfaceEmitter has no coordIndex field, removed
+- CylinderSensor, PlaneSensor field axisRotation default value 0 0 1 0
+- (4.0) added TextureTransform3D, TextureTransformMatrix3D mapping field
+
 2 JUL 2023, brutzman
 - (4.0) HAnimMotion skeletalConfiguration removed, not supported in final
   version of X3D 4.0 Architecture

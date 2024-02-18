@@ -2981,6 +2981,7 @@ Open-source license:
 		<xs:annotation>
 			<xs:appinfo>
 				<!-- attrib attribute added in X3D version 3.1 -->
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:element name="color" type="SFNode" fixed="inputOutputField" default="X3DColorNode"/>
 				<xs:element name="coord" type="SFNode" fixed="inputOutputField" default="X3DCoordinateNode"/>
 				<!-- fogCoord attribute added in X3D version 3.1 -->
@@ -3035,6 +3036,7 @@ Open-source license:
 	<xs:complexType name="X3DEnvironmentalSensorNode" abstract="true">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="size" type="SFVec3f" default="0 0 0" fixed="initializeOnlyField"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="EnvironmentalSensor"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 				Base type for the environmental sensor nodes ProximitySensor, TransformSensor and VisibilitySensor.
@@ -3322,6 +3324,7 @@ Open-source license:
 	<xs:complexType name="X3DNurbsSurfaceGeometryNode" abstract="true">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:element name="controlPoint" type="SFNode" fixed="inputOutputField" default="X3DCoordinateNode"/>
 				<xs:element name="texCoord" type="SFNode" fixed="inputOutputField" default="X3DTextureCoordinateNode|NurbsTextureCoordinate"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="NURBS"/>
@@ -6495,6 +6498,8 @@ Open-source license:
 	<xs:element name="Box">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="size" type="SFVec3f" default="2 2 2" fixed="initializeOnlyField"/>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Geometry3D"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 			</xs:appinfo>
@@ -6619,6 +6624,7 @@ Open-source license:
 	<xs:element name="Cone">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Geometry3D"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 			</xs:appinfo>
@@ -6724,6 +6730,7 @@ Open-source license:
 	<xs:element name="Cylinder">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Geometry3D"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 			</xs:appinfo>
@@ -6769,7 +6776,7 @@ Open-source license:
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="X3DDragSensorNode">
-					<xs:attribute name="axisRotation" type="SFRotation" default="0 1 0 0"/>
+					<xs:attribute name="axisRotation" type="SFRotation" default="0 0 1 0"/>
 					<xs:attribute name="diskAngle" default="0.26179167">
 						<xs:simpleType>
 							<xs:restriction base="SFFloat">
@@ -6857,6 +6864,7 @@ Open-source license:
 			<xs:appinfo>
 				<xs:attribute name="set_height" type="MFFloat" fixed="inputOnlyField"/>
 				<!-- attrib attribute added in X3D version 3.1 -->
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:element name="color" type="SFNode" fixed="inputOutputField" default="X3DColorNode"/>
 				<!-- fogCoord attribute added in X3D version 3.1 -->
 				<xs:element name="normal" type="SFNode" fixed="inputOutputField" default="X3DNormalNode"/>
@@ -6870,7 +6878,7 @@ Open-source license:
 			<xs:complexContent>
 				<xs:extension base="X3DGeometryNode">
 					<xs:group ref="ColorNormalTexCoordContentModel" minOccurs="0"/>
-					<xs:attribute name="height" type="MFFloat" default="0 0 0 0"/>
+					<xs:attribute name="height" type="MFFloat"/>
 					<xs:attribute name="ccw" type="SFBool" default="true">
 						<xs:annotation>
 							<xs:appinfo>
@@ -6890,7 +6898,7 @@ Open-source license:
 					</xs:attribute>
 					<xs:attribute name="normalPerVertex" type="SFBool" default="true"/>
 					<xs:attribute name="solid" type="SFBool" default="true"/>
-					<xs:attribute name="xDimension" default="2">
+					<xs:attribute name="xDimension" default="0">
 						<!-- type="SFInt32NonNegative" -->
 						<xs:simpleType>
 							<xs:restriction base="SFInt32">
@@ -6906,7 +6914,7 @@ Open-source license:
 							</xs:restriction>
 						</xs:simpleType>
 					</xs:attribute>
-					<xs:attribute name="zDimension" default="2">
+					<xs:attribute name="zDimension" default="0">
 						<!-- type="SFInt32NonNegative" -->
 						<xs:simpleType>
 							<xs:restriction base="SFInt32">
@@ -6930,6 +6938,16 @@ Open-source license:
 	<xs:element name="Extrusion">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="beginCap" type="SFBool" default="true" fixed="inputOnlyField"/>
+                                <xs:attribute name="ccw" type="SFBool" default="true" fixed="inputOnlyField"/>
+                                <xs:attribute name="convex" type="SFBool" default="true" fixed="inputOnlyField"/>
+                                <xs:attribute name="creaseAngle" type="SFBool" default="0" fixed="inputOnlyField"/>
+                                <xs:attribute name="crossSection" type="MFVec2f" default="1 1 1 -1 -1 -1 -1 1 1 1" fixed="inputOnlyField"/>
+                                <xs:attribute name="endCap" type="SFBool" default="true" fixed="inputOnlyField"/>
+                                <xs:attribute name="orientation" type="MFRotation" default="0 0 1 0" fixed="inputOnlyField"/>
+                                <xs:attribute name="scale" type="MFVec2f" default="1 1" fixed="inputOnlyField"/>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
+                                <xs:attribute name="spine" type="MFVec3f" default="0 0 0 0 1 0" fixed="inputOnlyField"/>
 				<xs:attribute name="set_crossSection" type="MFVec2f" fixed="inputOnlyField"/>
 				<xs:attribute name="set_orientation" type="MFRotation" fixed="inputOnlyField"/>
 				<xs:attribute name="set_scale" type="MFVec2f" fixed="inputOnlyField"/>
@@ -8078,7 +8096,7 @@ Open-source license:
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="X3DDragSensorNode">
-					<xs:attribute name="axisRotation" type="SFRotation" default="0 1 0 0"/>
+					<xs:attribute name="axisRotation" type="SFRotation" default="0 0 1 0"/>
 					<xs:attribute name="maxPosition" type="SFVec2f" default="-1 -1"/>
 					<xs:attribute name="minPosition" type="SFVec2f" default="0 0"/>
 					<xs:attribute name="offset" type="SFVec3f" default="0 0 0"/>
@@ -8090,6 +8108,19 @@ Open-source license:
 	<xs:element name="PointLight">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="radius" default="100" fixed="inputOutputField">
+                                    <xs:annotation>
+                                        <xs:appinfo>
+                                            <xs:attribute name="componentName" type="componentNameChoices" fixed="Lighting"/>
+                                            <xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="3"/>
+                                        </xs:appinfo>
+                                    </xs:annotation>
+                                    <xs:simpleType>
+                                        <xs:restriction base="SFFloat">
+                                            <xs:minInclusive value="0"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Lighting"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="2"/>
 				Linear attenuation may occur at level 2, full support at level 3.
@@ -8120,7 +8151,7 @@ Open-source license:
 							</xs:restriction>
 						</xs:simpleType>
 					</xs:attribute>
-				    <!-- global field in X3D version 3.1 -->
+                                        <!-- global field in X3D version 3.1 -->
 					<xs:attribute name="containerField" type="xs:NMTOKEN" default="children"/>
 				</xs:extension>
 			</xs:complexContent>
@@ -8257,6 +8288,7 @@ Open-source license:
 	<xs:element name="Rectangle2D">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="size" type="SFVec2f" default="2 2" fixed="initializeOnlyField"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Geometry2D"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 			</xs:appinfo>
@@ -8386,6 +8418,7 @@ Open-source license:
 	<xs:element name="Sphere">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Geometry3D"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="1"/>
 			</xs:appinfo>
@@ -8429,6 +8462,19 @@ Open-source license:
 	<xs:element name="SpotLight">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="radius" default="100" fixed="inputOutputField">
+                                    <xs:annotation>
+                                        <xs:appinfo>
+                                            <xs:attribute name="componentName" type="componentNameChoices" fixed="Lighting"/>
+                                            <xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="3"/>
+                                        </xs:appinfo>
+                                    </xs:annotation>
+                                    <xs:simpleType>
+                                        <xs:restriction base="SFFloat">
+                                            <xs:minInclusive value="0"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="Lighting"/>
 				<xs:attribute name="componentLevel" type="xs:positiveInteger" fixed="2"/>
 				Linear attenuation may occur at level 2, full support at level 3.
@@ -10028,7 +10074,8 @@ Open-source license:
 	<xs:element name="GeoElevationGrid">
 		<xs:annotation>
 			<xs:appinfo>
-				<xs:attribute name="set_height" type="MFFloat" fixed="inputOnlyField"/>
+				<xs:attribute name="set_height" type="MFDouble" fixed="inputOnlyField"/>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:element name="color" type="SFNode" fixed="inputOutputField" default="X3DColorNode"/>
 				<xs:element name="normal" type="SFNode" fixed="inputOutputField" default="X3DNormalNode"/>
 				<xs:element name="geoOrigin" type="SFNode" fixed="initializeOnlyField" default="GeoOrigin"/>
@@ -10053,7 +10100,7 @@ Open-source license:
 					</xs:choice>
 					<xs:attribute name="geoSystem" type="geoSystemType" default='"GD" "WE"'/>
 					<xs:attribute name="geoGridOrigin" type="SFVec3d" default="0 0 0"/>
-					<xs:attribute name="height" type="MFDouble" default="0 0 0 0"/>
+					<xs:attribute name="height" type="MFDouble" default="0 0"/>
 					<xs:attribute name="ccw" type="SFBool" default="true"/>
 					<xs:attribute name="colorPerVertex" type="SFBool" default="true"/>
 					<xs:attribute name="creaseAngle" default="0">
@@ -10066,7 +10113,7 @@ Open-source license:
 					</xs:attribute>
 					<xs:attribute name="normalPerVertex" type="SFBool" default="true"/>
 					<xs:attribute name="solid" type="SFBool" default="true"/>
-					<xs:attribute name="xDimension" default="2">
+					<xs:attribute name="xDimension" default="0">
 						<!-- type="SFInt32NonNegative" -->
 						<xs:simpleType>
 							<xs:restriction base="SFInt32">
@@ -10090,7 +10137,7 @@ Open-source license:
 							</xs:restriction>
 						</xs:simpleType>
 					</xs:attribute>
-					<xs:attribute name="zDimension" default="2">
+					<xs:attribute name="zDimension" default="0">
 						<!-- type="SFInt32NonNegative" -->
 						<xs:simpleType>
 							<xs:restriction base="SFInt32">
@@ -12484,6 +12531,7 @@ Open-source license:
 	<xs:element name="HAnimDisplacer">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="coordIndex" type="MFInt32" fixed="inputOutputField"/>
 				<xs:attribute name="name" type="hanimFeaturePointNameValues">
 					<!-- TODO regex pattern -->
 					<xs:annotation>
@@ -12957,6 +13005,7 @@ Open-source license:
 	<xs:element name="NurbsOrientationInterpolator">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="knot" type="MFDouble" fixed="inputOutputField"/>
 				<xs:attribute name="set_fraction" type="SFFloat" fixed="inputOnlyField"/>
 				<xs:attribute name="value_changed" type="SFRotation" fixed="outputOnlyField"/>
 				<xs:attribute name="order" type="SFInt32" fixed="inputOutputField" default="3"/>
@@ -13046,6 +13095,7 @@ Open-source license:
 	<xs:element name="NurbsPositionInterpolator">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="knot" type="MFDouble" fixed="inputOutputField"/>
 				<xs:attribute name="set_fraction" type="SFFloat" fixed="inputOnlyField"/>
 				<xs:attribute name="value_changed" type="SFVec3f" fixed="outputOnlyField"/>
 				<xs:attribute name="order" type="SFInt32" fixed="inputOutputField" default="3"/>
@@ -13194,6 +13244,7 @@ Open-source license:
 	<xs:element name="NurbsSweptSurface">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:element name="crossSectionCurve" type="SFNode" fixed="inputOutputField" default="X3DNurbsControlCurveNode"/>
 				<xs:element name="trajectoryCurve" type="SFNode" fixed="inputOutputField" default="NurbsCurve"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="NURBS"/>
@@ -13237,6 +13288,7 @@ Open-source license:
 	<xs:element name="NurbsSwungSurface">
 		<xs:annotation>
 			<xs:appinfo>
+                                <xs:attribute name="solid" type="SFBool" default="true" fixed="initializeOnlyField"/>
 				<xs:element name="profileCurve" type="SFNode" fixed="inputOutputField" default="X3DNurbsControlCurveNode"/>
 				<xs:element name="trajectoryCurve" type="SFNode" fixed="inputOutputField" default="X3DNurbsControlCurveNode"/>
 				<xs:attribute name="componentName" type="componentNameChoices" fixed="NURBS"/>

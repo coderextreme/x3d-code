@@ -143,6 +143,59 @@ https://www.web3d.org/x3d/content/examples/X3dResources.html#Feedback
 X3D XML Schema update activity:
 https://www.web3d.org/specifications/x3d-schema-changelog.txt
 
+2 FEB 2024, brutzman
+- Final Web3D url for X3D 4.0 Architecture International Standard (IS)
+  https://www.web3d.org/specifications/X3Dv4/ISO-IEC19775-1v4-IS/Part01/Architecture.html
+
+17 DEC 2023, brutzman
+- ComposedCubeMapTexture field textureProperties default is TextureProperties node
+
+20 NOV 2023, seelig, brutzman
+- X3DEnvironmentalSensorNode size field has accessType inputOutput which affects
+  ProximitySensor TransformSensor VisibilitySensor GeoProximitySensor
+- HAnimHumanoid motionsEnabled field is an MFBool attribute, not an element
+- ArcClose2D Disk2D Rectangle2D TriangleSet2D field solid has default value false
+- Extrusion fields have accessType initializeOnly, creaseAngle has type SFFloat
+- HAnimHumanoid fields jointBindingPositions jointBindingRotations jointBindingScales
+  have default value of empty array
+- HAnimMotion fields channels, joints have type SFString
+- HAnimMotion field enabled has default value true
+- Text field solid has default value false
+
+5 NOV 2023, seelig, brutzman
+- all solid fields have accessType initializeOnly
+- (4.0) added ComposedCubeMapTexture textureProperties, must follow other textures
+- several size fields have accessType initializeOnly (rather than inputOutput):
+  X3DEnvironmentalSensorNode, Box, GeneratedCubeMapTexture, Rectangle2D
+- ElevationGrid    default values xDimension 0, zDimension 0, height is empty array
+- GeoElevationGrid default values xDimension 0, zDimension 0, height is [0 0]
+  with difference noted as X3D 4.1 erratum in issue tracker under Mantis 1447.
+- GeoElevationGrid set_height has type MFDouble
+- Extrusion fields beginCap, ccw, convex, creaseAngle, crossSection, endCap,
+  orientation, scale, solid, spine have accessType initializeOnly.
+- note fieldOfView default values set to 0.7854 rather than spec value 0.785398
+  in order to avoid false-positive validation errors, also avoid roundoff errors in tools
+- HAnimDisplacer attribute coordIndex has accessType inputOutput
+- added HAnimHumanoid MFBool [in out] motionsEnabled
+- (4.0) HAnimMotion added next, previous fields
+- SplinePositionInterpolator, SplinePositionInterpolator2D, SplineScalarInterpolator
+  closed field has accessType inputOutput
+- SquadOrientationInterpolator has no closed field
+- LayerSet order field has accessType inputOutput
+- PointLight, SpotLight radius field has accessType inputOutput
+- NurbsOrientationInterpolator, NurbsPositionInterpolator knot field
+  has accessType inputOutput
+- (4.0) OrthoViewpoint fieldOfView has type MFFloat even though SFVec3f is more
+  correct to prevent modeling errors, deficiency recorded as Mantis 1398
+- (4.0) ParticleSystem color field has type SFNode (synonym for prior colorRamp field)
+- SurfaceEmitter has no coordIndex fields, removed
+- CylinderSensor, PlaneSensor field axisRotation default value 0 0 1 0
+- UniversalJoint field body2axis is type SFVec3f
+- X3DVertexAttributeNode, FloatVertexAttribute, Matrix3VertexAttribute Matrix4VertexAttribute
+  field name has accessType inputOutput
+- (4.0) added Appearance backMaterial field
+- (4.0) added TextureTransform, TextureTransform3D, TextureTransformMatrix3D mapping field
+
 2 JUL 2023, brutzman
 - (4.0) HAnimMotion skeletalConfiguration removed, not supported in final
   version of X3D 4.0 Architecture

@@ -701,7 +701,7 @@
 <!ATTLIST CylinderSensor
 	description %SFString; #IMPLIED
 	autoOffset %SFBool;     "true"
-	axisRotation %SFRotation; "0 1 0 0"
+	axisRotation %SFRotation; "0 0 1 0"
 	diskAngle  %SFFloat;    "0.26179167"
 	maxAngle   %SFFloat;    "-1"
 	minAngle   %SFFloat;    "0"
@@ -761,11 +761,11 @@
 	creaseAngle     %SFFloat; "0"
 	normalPerVertex %SFBool;  "true"
 	solid           %SFBool;  "true"
-	xDimension      %SFInt32; "2"
+	xDimension      %SFInt32; "0"
 	xSpacing        %SFFloat; "1.0"
-	zDimension      %SFInt32; "2"
+	zDimension      %SFInt32; "0"
 	zSpacing        %SFFloat; "1.0"
-	height          %MFFloat; "0 0 0 0"
+	height          %MFFloat; ""
 	containerField NMTOKEN "geometry"
 	class    NMTOKENS     #IMPLIED
 	DEF             ID        #IMPLIED
@@ -1295,7 +1295,7 @@
 <!ATTLIST PlaneSensor
 	description %SFString; #IMPLIED
 	autoOffset  %SFBool;  "true"
-	axisRotation %SFRotation; "0 1 0 0"
+	axisRotation %SFRotation; "0 0 1 0"
 	enabled     %SFBool;  "true"
 	maxPosition %SFVec2f; "-1 -1"
 	minPosition %SFVec2f; "0 0"
@@ -2120,12 +2120,12 @@
 <!ATTLIST GeoElevationGrid
 	geoSystem	%MFString; '&quot;GD&quot; &quot;WE&quot;'
 	geoGridOrigin	%SFVec3d;	"0 0 0"
-	xDimension	%SFInt32;	"2"
+	xDimension	%SFInt32;	"0"
 	xSpacing	%SFDouble;	"1.0"
 	yScale		%SFFloat;	"1.0"
-	zDimension	%SFInt32;	"2"
+	zDimension	%SFInt32;	"0"
 	zSpacing	%SFDouble;	"1.0"
-	height		%MFDouble; 	"0 0 0 0"
+	height		%MFDouble; 	"0 0"
 	normalPerVertex	%SFBool;	"true"
 	ccw		%SFBool;	"true"
 	colorPerVertex	%SFBool;	"true"
