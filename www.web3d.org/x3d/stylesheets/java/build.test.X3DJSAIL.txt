@@ -1,28 +1,27 @@
 ant -f C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets test.X3DJSAIL
 versions:
-  ANT_HOME=C:\apache-ant-1.10.13
- JAVA_HOME=C:\Program Files\Java\openjdk\jdk-20.0.2
-PYTHONHOME=C:\Program Files\Python311
+  ANT_HOME=C:\apache-ant-1.10.14
+ JAVA_HOME=C:\Program Files\Java\openjdk\jdk-21
+PYTHONHOME=C:\Program Files\Python312
 PYTHONPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\python;
 Check CLASSPATH for X3DJSAIL X3DJSAIL.4.0.full.jar or X3DJSAIL.4.0.classes.jar
 CLASSPATH=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar;
 javac source/target      $java.source=17
                          $java.target=17
-Java/JVM version    $ant.java.version=20
-Java/JVM detail version $java.version=20.0.2
+Java/JVM version    $ant.java.version=21
+Java/JVM detail version $java.version=21
 Saxon directory            $saxon.dir=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib
 Saxon jar                  $saxon.jar=saxon-he-12.1.jar 
-Ant version              $ant.version=Apache Ant(TM) version 1.10.13 compiled on January 4 2023
+Ant version              $ant.version=Apache Ant(TM) version 1.10.14 compiled on August 16 2023
 
 ant -version
-ANT_OPTS is set to  -Djava.security.manager=allow
-Apache Ant(TM) version 1.10.13 compiled on January 4 2023
+Apache Ant(TM) version 1.10.14 compiled on August 16 2023
 java -version
-openjdk version "20.0.2" 2023-07-18
-OpenJDK Runtime Environment (build 20.0.2+9-78)
-OpenJDK 64-Bit Server VM (build 20.0.2+9-78, mixed mode, sharing)
+openjdk version "21" 2023-09-19
+OpenJDK Runtime Environment (build 21+35-2513)
+OpenJDK 64-Bit Server VM (build 21+35-2513, mixed mode, sharing)
 python -version
-Python 3.11.5
+Python 3.12.0
 saxon -? help
 SaxonJ-HE 12.1 from Saxonica
 Usage: see http://www.saxonica.com/documentation/index.html#!using-xsl/commandline
@@ -35,9 +34,9 @@ Params:
   ?param=expression     Set stylesheet parameter using XPath
   !param=value          Set serialization parameter
 Check for node.js installation from https://nodejs.org
-v20.6.1
+v21.0.0
 X3DJSAIL.4.0.full.jar -version
-X3DJSAIL version date: 24 September 2023
+X3DJSAIL version date: 21 November 2023
 Configuration settings:  https://savage.nps.edu/Savage/developers.html
 ===========================================
 test.X3DJSAIL.clean:
@@ -60,6 +59,13 @@ delete *.class bytecode...
 Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgram.class
 compile HelloWorldProgram.java source...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test.X3DJSAIL:
 ===========================================
 helpful invocations for CommandLine debugging
@@ -190,6 +196,13 @@ delete *.class bytecode...
 Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgram.class
 compile HelloWorldProgram.java source...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 ===========================================
 test execution and self-validation of HelloWorldProgram and other examples:
 compile.examples.java:
@@ -197,6 +210,13 @@ delete *.class bytecode...
 Deleting C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgram.class
 compile HelloWorldProgram.java source...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test.HelloWorldProgram.java:
 ===========================================
 SpecialTest section:
@@ -214,7 +234,7 @@ ConfigurationProperties.getClassPath()=C:\x3d-code\www.web3d.org\x3d\stylesheets
 X3DUnifiedObjectModelJaxbTests.x3duomInspectionsTest() start...
 X3DUnifiedObjectModelJaxbTests.x3duomInspectionsTest() complete
 ===========================================
-X3DJSAIL version date: 24 September 2023
+X3DJSAIL version date: 21 November 2023
 ===========================================
 HelloWorldProgram() Constructor
 ===========================================
@@ -272,7 +292,7 @@ x3dModel.toStringX3D()
     <meta content='https://www.web3d.org/specifications/java/X3DJSAIL.html' name='reference'/>
     <meta content='HelloWorldProgramOutput.java' name='generator'/>
     <meta content='6 September 2016' name='created'/>
-    <meta content='24 September 2023' name='modified'/>
+    <meta content='21 November 2023' name='modified'/>
     <meta content='X3D Java Scene Access Interface Library (X3DJSAIL)' name='generator'/>
     <meta content='https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java' name='generator'/>
     <meta content='Netbeans https://www.netbeans.org' name='generator'/>
@@ -660,7 +680,7 @@ x3dModel.toStringXML()
     <meta content='https://www.web3d.org/specifications/java/X3DJSAIL.html' name='reference'/>
     <meta content='HelloWorldProgramOutput.java' name='generator'/>
     <meta content='6 September 2016' name='created'/>
-    <meta content='24 September 2023' name='modified'/>
+    <meta content='21 November 2023' name='modified'/>
     <meta content='X3D Java Scene Access Interface Library (X3DJSAIL)' name='generator'/>
     <meta content='https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java' name='generator'/>
     <meta content='Netbeans https://www.netbeans.org' name='generator'/>
@@ -1586,7 +1606,7 @@ META "description" "Example HelloWorldProgram creates an X3D model using the X3D
 META "reference" "https://www.web3d.org/specifications/java/X3DJSAIL.html"
 META "generator" "HelloWorldProgramOutput.java"
 META "created" "6 September 2016"
-META "modified" "24 September 2023"
+META "modified" "21 November 2023"
 META "generator" "X3D Java Scene Access Interface Library (X3DJSAIL)"
 META "generator" "https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java"
 META "generator" "Netbeans https://www.netbeans.org"
@@ -2172,7 +2192,7 @@ ShaderProgram {
 #META "reference" "https://www.web3d.org/specifications/java/X3DJSAIL.html"
 #META "generator" "HelloWorldProgramOutput.java"
 #META "created" "6 September 2016"
-#META "modified" "24 September 2023"
+#META "modified" "21 November 2023"
 #META "generator" "X3D Java Scene Access Interface Library (X3DJSAIL)"
 #META "generator" "https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java"
 #META "generator" "Netbeans https://www.netbeans.org"
@@ -2206,7 +2226,6 @@ C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.
 Create pretty-print .html documentation of model
 Note: toFileStylesheetConversion(X3dExtrusionCrossSectionToSvg.xslt) is overwriting prior file HelloWorldProgramOutput.svg
 Note: toFileStylesheetConversion(X3dToXhtml.xslt) is overwriting prior file HelloWorldProgramOutput.html
-*** ignore USE nodes
 helloWorld.toFileHtmlDocumentation("HelloWorldProgramOutput.html") success: true
 C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.html
 ===========================================
@@ -2233,7 +2252,6 @@ C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.
 Create pretty-print HTML documentation of model using ConfigurationProperties.getXsltEngine()=SAXON9HE and stylesheet X3dToXhtml.xslt
 Note: toFileStylesheetConversion(X3dExtrusionCrossSectionToSvg.xslt) is overwriting prior file HelloWorldProgramOutput.svg
 Note: toFileStylesheetConversion(X3dToXhtml.xslt) is overwriting prior file HelloWorldProgramOutput.html
-*** ignore USE nodes
 helloWorld.toFileHtmlDocumentation("HelloWorldProgramOutput.html") success: true
 C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.html
 ===========================================
@@ -2305,7 +2323,7 @@ import org.web3d.x3d.jsail.Time.*;
 		</tr>
 		<tr>
 			<td style="text-align:right; vertical-align: text-top;"> <i> modified </i> </td>
-			<td> 24 September 2023 </td>
+			<td> 21 November 2023 </td>
 		</tr>
 		<tr>
 			<td style="text-align:right; vertical-align: text-top;"> <i> generator </i> </td>
@@ -2412,7 +2430,7 @@ public class temporaryJavaOutputFile
     .addMeta(new meta().setName(meta.NAME_REFERENCE  ).setContent("https://www.web3d.org/specifications/java/X3DJSAIL.html"))
     .addMeta(new meta().setName(meta.NAME_GENERATOR  ).setContent("HelloWorldProgramOutput.java"))
     .addMeta(new meta().setName(meta.NAME_CREATED    ).setContent("6 September 2016"))
-    .addMeta(new meta().setName(meta.NAME_MODIFIED   ).setContent("24 September 2023"))
+    .addMeta(new meta().setName(meta.NAME_MODIFIED   ).setContent("21 November 2023"))
     .addMeta(new meta().setName(meta.NAME_GENERATOR  ).setContent("X3D Java Scene Access Interface Library (X3DJSAIL)"))
     .addMeta(new meta().setName(meta.NAME_GENERATOR  ).setContent("https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java"))
     .addMeta(new meta().setName(meta.NAME_GENERATOR  ).setContent("Netbeans https://www.netbeans.org"))
@@ -2732,7 +2750,7 @@ function clockTrigger (timeValue)
      */
     public static void main(String args[])
     {
-        System.out.println("Build this X3D model, showing diagnostics...");
+        System.out.println("Build this X3D model, showing validation diagnostics...");
         X3D thisExampleX3dModel = new temporaryJavaOutputFile().getX3dModel();
 //      System.out.println("X3D model construction complete.");
 	
@@ -2900,7 +2918,7 @@ Script DEF=MaterialModulatorScript contains CDATA source-code text, copied as "#
           },
           {
             "@name":"modified",
-            "@content":"24 September 2023"
+            "@content":"21 November 2023"
           },
           {
             "@name":"generator",
@@ -2956,7 +2974,7 @@ Script DEF=MaterialModulatorScript contains CDATA source-code text, copied as "#
           },
           {
             "@name":"translated",
-            "@content":"24 September 2023"
+            "@content":"21 November 2023"
           },
           {
             "@name":"generator",
@@ -5557,7 +5575,7 @@ Interface Library (X3DJSAIL)',name='description'),
 meta(content='https://www.web3d.org/specifications/java/X3DJSAIL.html',name='reference'),
 meta(content='HelloWorldProgramOutput.java',name='generator'),
 meta(content='6 September 2016',name='created'),
-meta(content='24 September 2023',name='modified'),
+meta(content='21 November 2023',name='modified'),
 meta(content='X3D Java Scene Access Interface Library (X3DJSAIL)',name='generator'),
 meta(content='https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java',name='generator'),
 meta(content='Netbeans https://www.netbeans.org',name='generator'),
@@ -6017,7 +6035,7 @@ Test success: x3dLoader.loadX3DfromXML(HelloWorldProgramOutput.x3d), x3dLoader.g
     <meta content='https://www.web3d.org/specifications/java/X3DJSAIL.html' name='reference'/>
     <meta content='HelloWorldProgramOutput.java' name='generator'/>
     <meta content='6 September 2016' name='created'/>
-    <meta content='24 September 2023' name='modified'/>
+    <meta content='21 November 2023' name='modified'/>
     <meta content='X3D Java Scene Access Interface Library (X3DJSAIL)' name='generator'/>
     <meta content='https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java' name='generator'/>
     <meta content='Netbeans https://www.netbeans.org' name='generator'/>
@@ -6394,28 +6412,28 @@ newX3DModel HelloWorldProgramOutput.xml loadSuccess=true, isEmpty()=false, valid
 ===========================================
 ===========================================
 Check file sizes for various forms of compression
-Source file HelloWorldProgramOutput.x3d 23501 bytes
+Source file HelloWorldProgramOutput.x3d 23500 bytes
 ===========================================
 Test toFileEXI() with EXIficient
-HelloWorldProgramOutput_EXIFICIENT.exi  filesize 3656 bytes, compression 15.56% of original
+HelloWorldProgramOutput_EXIFICIENT.exi  filesize 3659 bytes, compression 15.57% of original
 ===========================================
 Test fromFileEXI() with EXIficient
 Note: fromFileEXI() is overwriting prior file HelloWorldProgramOutput_EXIFICIENT.exi
-EXI decompressed examples\temp.exiInputTransformed.x3d size=30777 bytes
+EXI decompressed examples\temp.exiInputTransformed.x3d size=30776 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
   fromFileEXIsuccess=true for HelloWorldProgramOutput_EXIFICIENT.exi
 exiModel.validate() results:  success
 ===========================================
 Test toFileEXI() with OpenEXI: testing in progress
-HelloWorldProgramOutputOPENEXI.exi  filesize 3656 bytes, compression 15.56% of original
+HelloWorldProgramOutputOPENEXI.exi  filesize 3659 bytes, compression 15.57% of original
 ===========================================
 Test fromFileEXI() with OpenEXI: TODO testing in progress, not fully implemented yet
 ===========================================
 Test toFileGZIP()
-HelloWorldProgramOutput.gz  filesize 6236 bytes, compression 26.54% of original
+HelloWorldProgramOutput.gz  filesize 6239 bytes, compression 26.55% of original
 ===========================================
 Test toFileZip()
-HelloWorldProgramOutput.zip filesize 6497 bytes, compression 27.65% of original
+HelloWorldProgramOutput.zip filesize 6500 bytes, compression 27.66% of original
 ===========================================
 ===========================================
 Test CommandLine invocations
@@ -6473,7 +6491,7 @@ sourceModel.zip [-fromZIP]        # source model file name, ZIP  format
 
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -canonicalize, -toFile, HelloWorldProgramOutputCanonical.xml]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-canonicalize" for X3D and XML canonicalization (C14N)
 CommandLine parameter: "-toFile" "HelloWorldProgramOutputCanonical.xml" for result file name root HelloWorldProgramOutputCanonical
 CommandLine invocation: new X3dCanonicalizer(C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.x3d,HelloWorldProgramOutputCanonical.xml)
@@ -6481,24 +6499,24 @@ CommandLine invocation: new X3dCanonicalizer(C:\x3d-code\www.web3d.org\x3d\style
 Note: x3dCanonicalizer is overwriting prior file HelloWorldProgramOutputCanonical.xml
 now check result...
 CommandLine [HelloWorldProgramOutputCanonical.xml, -validate]
-parameter: source file HelloWorldProgramOutputCanonical.xml filesize 23362 bytes
+parameter: source file HelloWorldProgramOutputCanonical.xml filesize 23361 bytes
 CommandLine parameter: "-validate" for model validation
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 validate results: success, no problems noted
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toX3D, -toFile, HelloWorldProgramOutput_CommandLine.x3d]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toX3D" for conversion to X3D encoding
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.x3d" for result file name root HelloWorldProgramOutput_CommandLine
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to X3D:
 Note: toFileX3D() is overwriting prior file HelloWorldProgramOutput_CommandLine.x3d
-file conversion successful: HelloWorldProgramOutput_CommandLine.x3d (23501 bytes)
+file conversion successful: HelloWorldProgramOutput_CommandLine.x3d (23500 bytes)
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toVRML97, -toFile, HelloWorldProgramOutput_CommandLine.wrl]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toVRML97" for conversion to VRML97 encoding
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.wrl" for result file name root HelloWorldProgramOutput_CommandLine
 convert to VRML97:
@@ -6513,49 +6531,49 @@ convert to VRML97:
 Note: fileStylesheetConversion() is overwriting prior file HelloWorldProgramOutput_CommandLine.wrl
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toX3DV, -toFile, HelloWorldProgramOutput_CommandLine.x3dv]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toX3DV" for conversion to ClassicVRML encoding
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.x3dv" for result file name root HelloWorldProgramOutput_CommandLine
 convert to ClassicVRML:
 Note: fileStylesheetConversion() is overwriting prior file HelloWorldProgramOutput_CommandLine.x3dv
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toMarkdown, -toFile, HelloWorldProgramOutputCatalog.md]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toMarkdown" for producing .md model meta information markdown
 CommandLine parameter: "-toFile" "HelloWorldProgramOutputCatalog.md" for result file name root HelloWorldProgramOutputCatalog
 convert to .md model meta information markdown, include subdirectories in meta links: true
 Note: fileStylesheetConversion() is overwriting prior file HelloWorldProgramOutputCatalog.md
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toMarkdown, -toFile, HelloWorldProgramOutput.md]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toMarkdown" for producing .md model meta information markdown
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput.md" for result file name root HelloWorldProgramOutput
 convert to .md model meta information markdown, include subdirectories in meta links: true
 Note: fileStylesheetConversion() is overwriting prior file HelloWorldProgramOutput.md
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -EXIFICIENT, -toEXI, -toFile, HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-EXIFICIENT" invoked ConfigurationProperties.setExiEngine(EXIFICIENT);
 CommandLine parameter: "-toEXI" for conversion to compressed EXI containing model
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi" for result file name root HelloWorldProgramOutput_CommandLine_EXIFICIENT
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to EXI using EXIFICIENT:
-source: HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi filesize 3656 bytes, compression 15.56% of original
+source: HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi filesize 3659 bytes, compression 15.57% of original
 ===========================================
 CommandLine [HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi, -EXIFICIENT, -fromEXI, -toFile, HelloWorldProgramOutput_CommandLine_EXIFICIENT.RoundTrip.x3d]
-parameter: source file HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi filesize 3656 bytes
+parameter: source file HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi filesize 3659 bytes
 CommandLine parameter: "-EXIFICIENT" invoked ConfigurationProperties.setExiEngine(EXIFICIENT);
 CommandLine parameter: "-fromEXI" for conversion from compressed EXI containing model
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine_EXIFICIENT.RoundTrip.x3d" for result file name root HelloWorldProgramOutput_CommandLine_EXIFICIENT.RoundTrip
 Note: fromFileEXI() is overwriting prior file HelloWorldProgramOutput_CommandLine_EXIFICIENT.exi
-EXI decompressed examples\temp.exiInputTransformed.x3d size=30777 bytes
+EXI decompressed examples\temp.exiInputTransformed.x3d size=30776 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 load result: true
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -OpenEXI, -toEXI, -toFile, HelloWorldProgramOutput_CommandLine.OPENEXI.exi]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-OpenEXI" invoked ConfigurationProperties.setExiEngine(OPENEXI);
   [warning] "OPENEXI" testing in progress, can also use EXIFICIENT instead.
 CommandLine parameter: "-toEXI" for conversion to compressed EXI containing model
@@ -6563,56 +6581,56 @@ CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.OPENEXI.ex
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to EXI using OPENEXI:
-source: HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput_CommandLine.OPENEXI.exi filesize 3722 bytes, compression 15.84% of original
+source: HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput_CommandLine.OPENEXI.exi filesize 3724 bytes, compression 15.85% of original
 ===========================================
 CommandLine [HelloWorldProgramOutput_CommandLine.OPENEXI.exi, -OpenEXI, -fromEXI, -toFile, HelloWorldProgramOutput_CommandLine.OPENEXI.RoundTrip.x3d]
-parameter: source file HelloWorldProgramOutput_CommandLine.OPENEXI.exi filesize 3722 bytes
+parameter: source file HelloWorldProgramOutput_CommandLine.OPENEXI.exi filesize 3724 bytes
 CommandLine parameter: "-OpenEXI" invoked ConfigurationProperties.setExiEngine(OPENEXI);
   [warning] "OPENEXI" testing in progress, can also use EXIFICIENT instead.
 CommandLine parameter: "-fromEXI" for conversion from compressed EXI containing model
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.OPENEXI.RoundTrip.x3d" for result file name root HelloWorldProgramOutput_CommandLine.OPENEXI.RoundTrip
 Note: fromFileEXI() is overwriting prior file HelloWorldProgramOutput_CommandLine.OPENEXI.exi
-EXI decompressed examples\temp.exiInputTransformed.x3d size=30956 bytes
+EXI decompressed examples\temp.exiInputTransformed.x3d size=30955 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 load result: true
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toGZIP, -toFile, HelloWorldProgramOutput_CommandLine.x3d.gz]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toGZIP" for conversion to compressed GZIP containing model
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.x3d.gz" for result file name root HelloWorldProgramOutput_CommandLine.x3d
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to GZIP:
-source: HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput_CommandLine.x3d.gz  filesize 6236 bytes, compression 26.54% of original
+source: HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput_CommandLine.x3d.gz  filesize 6239 bytes, compression 26.55% of original
 ===========================================
 CommandLine [HelloWorldProgramOutput_CommandLine.x3d.gz, -fromGZIP]
-parameter: source file HelloWorldProgramOutput_CommandLine.x3d.gz filesize 6236 bytes
+parameter: source file HelloWorldProgramOutput_CommandLine.x3d.gz filesize 6239 bytes
 CommandLine parameter: "-fromGZIP" for conversion from compressed GZIP containing model
   fromFileGZIP() output modelFileName HelloWorldProgramOutput_CommandLine.x3d
 Note: fromFileGZIP() is overwriting prior file HelloWorldProgramOutput_CommandLine.x3d
-gunzipped HelloWorldProgramOutput_CommandLine.x3d size=23501 bytes
+gunzipped HelloWorldProgramOutput_CommandLine.x3d size=23500 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 load result: true
 ===========================================
 CommandLine [HelloWorldProgramOutput.x3d, -toZIP, -toFile, HelloWorldProgramOutput_CommandLine.x3d.zip]
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toZIP" for conversion to compressed ZIP containing model
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLine.x3d.zip" for result file name root HelloWorldProgramOutput_CommandLine.x3d
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to ZIP:
-source: HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput_CommandLine.x3d.zip filesize 6497 bytes, compression 27.65% of original
+source: HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput_CommandLine.x3d.zip filesize 6500 bytes, compression 27.66% of original
 ===========================================
 CommandLine [HelloWorldProgramOutput_CommandLine.x3d.zip, -fromZIP, -toFile, HelloWorldProgramOutput_CommandLineUnzipped.x3d]
-parameter: source file HelloWorldProgramOutput_CommandLine.x3d.zip filesize 6497 bytes
+parameter: source file HelloWorldProgramOutput_CommandLine.x3d.zip filesize 6500 bytes
 CommandLine parameter: "-fromZIP" for conversion from compressed ZIP containing model
 CommandLine parameter: "-toFile" "HelloWorldProgramOutput_CommandLineUnzipped.x3d" for result file name root HelloWorldProgramOutput_CommandLineUnzipped
 [warning] fromFileZIP() modelFileName was empty, unzipping found initial X3D file to load: HelloWorldProgramOutput.x3d
 Note: fromFileZIP() is overwriting prior file HelloWorldProgramOutput_CommandLineUnzipped.x3d
-Unzipped HelloWorldProgramOutput_CommandLineUnzipped.x3d size=23501 bytes
+Unzipped HelloWorldProgramOutput_CommandLineUnzipped.x3d size=23500 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 load result: true
 ===========================================
@@ -6938,14 +6956,14 @@ X3DJSAIL.properties loading complete.
 BlenderLauncher.run("CleatClamp.x3d -toImage")
 BlenderLauncher parameter: source file CleatClamp.x3d filesize 172231 bytes
 BlenderLauncher parameter: "-toImage" for creating screenshot image of default viewpoint
-*** [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
+       [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
 [diagnostic] jarPath=jar:file:X3DJSAIL.4.0.full.jar!/, filePath=/python/blenderScripts/BlenderX3dToPng.py
-executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng15841909835317925102.py -- CleatClamp.x3d")
+executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng12492633097677865181.py -- CleatClamp.x3d")
 executeCommand() response:
 Blender 3.5.1 (hash e1ccd9d4a1d3 built 2023-04-24 23:56:35)
 Error: Python: Traceback (most recent call last):
   File "<string>", line 1, in <module>
-  File "C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng15841909835317925102.py", line 155, in <module>
+  File "C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng12492633097677865181.py", line 155, in <module>
     bpy.data.materials[mesh_object_material.name].use_vertex_color_paint = False
 AttributeError: 'Material' object has no attribute 'use_vertex_color_paint'
 BlenderX3dToPng.py start...
@@ -6957,7 +6975,7 @@ Example invocations:
 $ ant blender.python.run.BlenderX3dToPng.py
 $ blender.exe --background --factory-startup --python BlenderX3dToPng.py LPD17.x3d products/
 
-Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng15841909835317925102.py', '--', 'CleatClamp.x3d']
+Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng12492633097677865181.py', '--', 'CleatClamp.x3d']
 sourceFile=CleatClamp.x3d outputPath=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
 
 Clean up initial view...
@@ -6976,12 +6994,12 @@ CommandLine parameter: "-toImage" for creating screenshot image of default viewp
 Pass through to BlenderLauncher...
 BlenderLauncher parameter: source file CleatClamp.x3d filesize 172231 bytes
 BlenderLauncher parameter: "-toImage" for creating screenshot image of default viewpoint
-executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng15841909835317925102.py -- CleatClamp.x3d")
+executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng12492633097677865181.py -- CleatClamp.x3d")
 executeCommand() response:
 Blender 3.5.1 (hash e1ccd9d4a1d3 built 2023-04-24 23:56:35)
 Error: Python: Traceback (most recent call last):
   File "<string>", line 1, in <module>
-  File "C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng15841909835317925102.py", line 155, in <module>
+  File "C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng12492633097677865181.py", line 155, in <module>
     bpy.data.materials[mesh_object_material.name].use_vertex_color_paint = False
 AttributeError: 'Material' object has no attribute 'use_vertex_color_paint'
 BlenderX3dToPng.py start...
@@ -6993,7 +7011,7 @@ Example invocations:
 $ ant blender.python.run.BlenderX3dToPng.py
 $ blender.exe --background --factory-startup --python BlenderX3dToPng.py LPD17.x3d products/
 
-Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng15841909835317925102.py', '--', 'CleatClamp.x3d']
+Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng12492633097677865181.py', '--', 'CleatClamp.x3d']
 sourceFile=CleatClamp.x3d outputPath=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
 
 Clean up initial view...
@@ -7013,7 +7031,7 @@ CommandLine parameter: "-toFile" "CleatClamp.java" for result file name root Cle
 convert to Java:
 [diagnostic] Output file path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.java
 
-*** [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
+       [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
 [diagnostic] jarPath=jar:file:X3DJSAIL.4.0.full.jar!/, filePath=/stylesheets/X3dToJava.xslt
 no className provided, using normalized meta title value='CleatClamp'
 [meta] name='warning' content='Do not use for climbing or yachting.'
@@ -7026,7 +7044,7 @@ CommandLine parameter: "-toFile" "CleatClamp.json" for result file name root Cle
 convert to JSON:
 [diagnostic] Output file path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.json
 
-*** [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
+       [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
 [diagnostic] jarPath=jar:file:X3DJSAIL.4.0.full.jar!/, filePath=/stylesheets/X3dToJson.xslt
 [diagnostic] Output file path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.json
 Note: fileStylesheetConversion() is overwriting prior file CleatClamp.json
@@ -7037,7 +7055,7 @@ CommandLine parameter: "-toFile" "CleatClamp.py" for result file name root Cleat
 convert to Python:
 [diagnostic] Output file path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.py
 
-*** [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
+       [diagnostic] System java.class.path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\jars\X3DJSAIL.4.0.full.jar
 [diagnostic] jarPath=jar:file:X3DJSAIL.4.0.full.jar!/, filePath=/stylesheets/X3dToPython.xslt
 [diagnostic] Output file path=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.py
 Note: fileStylesheetConversion() is overwriting prior file CleatClamp.py
@@ -7114,8 +7132,15 @@ test.examples.java:
 compile HelloWorldProgramOutput.java source...
      (i.e. new source program which was just produced by HelloWorldProgram execution)
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test HelloWorldProgramOutput.java execution and self-validation:
-Build this X3D model, showing diagnostics...
+Build this X3D model, showing validation diagnostics...
 HelloWorldProgramOutput self-validation test results: 
 <meta content='continued development and testing in progress' name='info'/>
 Deleting: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput.class
@@ -7543,7 +7568,7 @@ ant antfile=java/build.xml target=test.junit5.ant
 X3DJSAIL: X3D Java SAI Library.antVersionCheck:
 X3DJSAIL: X3D Java SAI Library.test.junit5.ant:
 ===========================================
-ant Apache Ant(TM) version 1.10.13 compiled on January 4 2023 build.xml test.junit5 for X3DJSAIL
+ant Apache Ant(TM) version 1.10.14 compiled on August 16 2023 build.xml test.junit5 for X3DJSAIL
 JUnit classpath is: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\apiguardian-api-1.1.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\codemodel.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\istack-commons-runtime.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\istack-commons-tools.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\javax.activation-api.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\jaxb-api.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\jaxb-runtime.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\jaxb-xjc.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\relaxng-datatype.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\rngom.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jaxb\xsom.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\junit-platform-commons-1.5.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\junit-platform-engine-1.5.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\junit-platform-launcher-1.5.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jupiter\junit-jupiter-api-5.5.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jupiter\junit-jupiter-engine-5.5.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\opentest4j-1.1.0.jar
 JUnit jupiter classpath is: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jupiter\junit-jupiter-api-5.5.0.jar;C:\x3d-code\www.web3d.org\x3d\stylesheets\java\lib\support\jupiter\junit-jupiter-engine-5.5.0.jar
 compiling tests...
@@ -7700,28 +7725,28 @@ junitlauncher task complete
 ===========================================
 test.EXI:
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d -EXIFICIENT -toEXI -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.exificient.exi
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-EXIFICIENT" invoked ConfigurationProperties.setExiEngine(EXIFICIENT);
 CommandLine parameter: "-toEXI" for conversion to compressed EXI containing model
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.exificient.exi" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.exificient
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to EXI using EXIFICIENT:
-source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput.exificient.exi filesize 3656 bytes, compression 15.56% of original
+source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput.exificient.exi filesize 3659 bytes, compression 15.57% of original
 ===========================================
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.exificient.exi -EXIFICIENT -fromEXI -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ExificientRoundTrip.x3d
-parameter: source file HelloWorldProgramOutput.exificient.exi filesize 3656 bytes
+parameter: source file HelloWorldProgramOutput.exificient.exi filesize 3659 bytes
 CommandLine parameter: "-EXIFICIENT" invoked ConfigurationProperties.setExiEngine(EXIFICIENT);
 CommandLine parameter: "-fromEXI" for conversion from compressed EXI containing model
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ExificientRoundTrip.x3d" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ExificientRoundTrip
 Note: fromFileEXI() is overwriting prior file C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.exificient.exi
-EXI decompressed examples\temp.exiInputTransformed.x3d size=30777 bytes
+EXI decompressed examples\temp.exiInputTransformed.x3d size=30776 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 load result: true
 ===========================================
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d -OpenEXI -toEXI -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.openexi.exi
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-OpenEXI" invoked ConfigurationProperties.setExiEngine(OPENEXI);
   [warning] "OPENEXI" testing in progress, can also use EXIFICIENT instead.
 CommandLine parameter: "-toEXI" for conversion to compressed EXI containing model
@@ -7729,17 +7754,17 @@ CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to EXI using OPENEXI:
-source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput.openexi.exi filesize 3722 bytes, compression 15.84% of original
+source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput.openexi.exi filesize 3724 bytes, compression 15.85% of original
 ===========================================
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.openexi.exi -OpenEXI -fromEXI -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.OpenExiRoundTrip.x3d
-parameter: source file HelloWorldProgramOutput.openexi.exi filesize 3722 bytes
+parameter: source file HelloWorldProgramOutput.openexi.exi filesize 3724 bytes
 CommandLine parameter: "-OpenEXI" invoked ConfigurationProperties.setExiEngine(OPENEXI);
   [warning] "OPENEXI" testing in progress, can also use EXIFICIENT instead.
 CommandLine parameter: "-fromEXI" for conversion from compressed EXI containing model
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.OpenExiRoundTrip.x3d" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.OpenExiRoundTrip
 Note: fromFileEXI() is overwriting prior file C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.openexi.exi
-EXI decompressed examples\temp.exiInputTransformed.x3d size=30956 bytes
+EXI decompressed examples\temp.exiInputTransformed.x3d size=30955 bytes
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 load result: true
 ===========================================
@@ -7750,8 +7775,15 @@ test.X3dToJava.xslt.one:
 org.web3d.x3d.jsail.CommandLine test/HelloWorld.x3d -toJava -toFile test/HelloWorld.java
 compile HelloWorld.java source...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\test
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test HelloWorld.java execution and self-validation:
-Build this X3D model, showing diagnostics...
+Build this X3D model, showing validation diagnostics...
 HelloWorld self-validation test results: success
 ===========================================
 test.X3dToJava.xslt:
@@ -7760,10 +7792,17 @@ translation input: test/CameraExamples.x3d
 [meta] name='TODO' content='Schematron rules, backed up by initialize() checks'
 compile...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\test
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test CameraExamples.java execution and self-validation:
-Build this X3D model, showing diagnostics...
+Build this X3D model, showing validation diagnostics...
 [info] meta name newValue='documentation' includes an unrecognized value not matching any of the optional string tokens.
-      Supported values are accessRights, author, CML-version, contributor, created, creator, description, disclaimer, drawing, error, generator, hint, identifier, Image, info, information, isVersionOf, keywords, license, mediator, modified, movie, MovingImage, original, photo, photograph, publisher, reference, requires, rights, robots, Sound, source, specificationSection, specificationUrl, subject, Text, title, TODO, translator, translated, version, warning Suggested meta term: name='reference'
+       Supported values are accessRights, author, CML-version, contributor, created, creator, description, disclaimer, drawing, error, generator, hint, identifier, Image, info, information, isVersionOf, keywords, license, mediator, modified, movie, MovingImage, original, photo, photograph, publisher, reference, requires, rights, robots, Sound, source, specificationSection, specificationUrl, subject, Text, title, TODO, translator, translated, version, warning Suggested meta term: name='reference'
 CameraExamples self-validation test results: 
 <meta content='Schematron rules, backed up by initialize() checks' name='TODO'/>
 
@@ -7782,8 +7821,15 @@ convert to Java:
 no className provided, using normalized meta title value='arc'
 compile arc.java source...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\test
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test arc.java execution and self-validation:
-Build this X3D model, showing diagnostics...
+Build this X3D model, showing validation diagnostics...
 arc self-validation test results: success
 ===========================================
 org.web3d.x3d.jsail.CommandLine test/flowers4.x3d -toJava -toFile test/flowers4.java
@@ -7794,8 +7840,15 @@ convert to Java:
 no className provided, using normalized meta title value='flowers4'
 compile...
 Compiling 1 source file to C:\x3d-code\www.web3d.org\x3d\stylesheets\test
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test flowers4.java execution and self-validation:
-Build this X3D model, showing diagnostics...
+Build this X3D model, showing validation diagnostics...
 flowers4 self-validation test results: success
 ===========================================
 ===========================================
@@ -8106,12 +8159,12 @@ parameters: "-BLENDER_PATH" "C:\Program Files\Blender Foundation\Blender 3.5" fo
 org.web3d.x3d.jsail.BlenderLauncher C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.x3d -toImage
 BlenderLauncher parameter: source file CleatClamp.x3d filesize 172231 bytes
 BlenderLauncher parameter: "-toImage" for creating screenshot image of default viewpoint
-executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng1200423223020201501.py -- C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.x3d")
+executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng8303705744519791820.py -- C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.x3d")
 executeCommand() response:
 Blender 3.5.1 (hash e1ccd9d4a1d3 built 2023-04-24 23:56:35)
 Error: Python: Traceback (most recent call last):
   File "<string>", line 1, in <module>
-  File "C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng1200423223020201501.py", line 155, in <module>
+  File "C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng8303705744519791820.py", line 155, in <module>
     bpy.data.materials[mesh_object_material.name].use_vertex_color_paint = False
 AttributeError: 'Material' object has no attribute 'use_vertex_color_paint'
 BlenderX3dToPng.py start...
@@ -8123,7 +8176,7 @@ Example invocations:
 $ ant blender.python.run.BlenderX3dToPng.py
 $ blender.exe --background --factory-startup --python BlenderX3dToPng.py LPD17.x3d products/
 
-Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng1200423223020201501.py', '--', 'C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\java\\examples/CleatClamp.x3d']
+Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng8303705744519791820.py', '--', 'C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\java\\examples/CleatClamp.x3d']
 sourceFile=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.x3d outputPath=C:\x3d-code\www.web3d.org\x3d\stylesheets
 
 Clean up initial view...
@@ -8144,16 +8197,16 @@ CommandLine parameter: "-toImage" for creating screenshot image of default viewp
 Pass through to BlenderLauncher...
 BlenderLauncher parameter: source file CleatClamp.stl filesize 542534 bytes
 BlenderLauncher parameter: "-toImage" for creating screenshot image of default viewpoint
-executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng16743610673999750659.py -- C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.stl")
+executeCommand("C:\Program Files\Blender Foundation\Blender 3.5\blender.exe --background --factory-startup --python C:\Users\brutzman\AppData\Local\Temp\BlenderX3dToPng15389650786590154991.py -- C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.stl")
 executeCommand() response:
 Blender 3.5.1 (hash e1ccd9d4a1d3 built 2023-04-24 23:56:35)
-Fra:1 Mem:14.99M (Peak 16.08M) | Time:00:00.93 | Syncing Light
-Fra:1 Mem:14.99M (Peak 16.08M) | Time:00:00.93 | Rendering 1 / 64 samples
-Fra:1 Mem:15.00M (Peak 16.08M) | Time:00:00.98 | Rendering 26 / 64 samples
-Fra:1 Mem:15.00M (Peak 16.08M) | Time:00:01.00 | Rendering 51 / 64 samples
-Fra:1 Mem:15.00M (Peak 16.08M) | Time:00:01.01 | Rendering 64 / 64 samples
+Fra:1 Mem:14.99M (Peak 16.08M) | Time:00:01.23 | Syncing Light
+Fra:1 Mem:14.99M (Peak 16.08M) | Time:00:01.23 | Rendering 1 / 64 samples
+Fra:1 Mem:15.00M (Peak 16.08M) | Time:00:01.27 | Rendering 26 / 64 samples
+Fra:1 Mem:15.00M (Peak 16.08M) | Time:00:01.28 | Rendering 51 / 64 samples
+Fra:1 Mem:15.00M (Peak 16.08M) | Time:00:01.29 | Rendering 64 / 64 samples
 Saved: 'C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\CleatClamp.viewpoint.blender.png'
- Time: 00:01.58 (Saving: 00:00.56)
+ Time: 00:01.84 (Saving: 00:00.54)
 
 BlenderX3dToPng.py start...
 
@@ -8164,7 +8217,7 @@ Example invocations:
 $ ant blender.python.run.BlenderX3dToPng.py
 $ blender.exe --background --factory-startup --python BlenderX3dToPng.py LPD17.x3d products/
 
-Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng16743610673999750659.py', '--', 'C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\java\\examples/CleatClamp.stl']
+Command line: 7 args ['C:\\Program Files\\Blender Foundation\\Blender 3.5\\blender.exe', '--background', '--factory-startup', '--python', 'C:\\Users\\brutzman\\AppData\\Local\\Temp\\BlenderX3dToPng15389650786590154991.py', '--', 'C:\\x3d-code\\www.web3d.org\\x3d\\stylesheets\\java\\examples/CleatClamp.stl']
 sourceFile=C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/CleatClamp.stl outputPath=C:\x3d-code\www.web3d.org\x3d\stylesheets
 
 Clean up initial view...
@@ -8232,14 +8285,14 @@ Capabilities are in PyMeshLab which requires Python language support. See https:
 ===========================================
 Continuing with individual tests
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d -toZIP -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant.zip
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toZIP" for conversion to compressed ZIP containing model
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant.zip" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to ZIP:
-source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput.ant.zip filesize 6609 bytes, compression 28.12% of original
+source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput.ant.zip filesize 6612 bytes, compression 28.14% of original
 ===========================================
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/flowers4.x3d -toJava -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/flowers4.java
 parameter: source file flowers4.x3d filesize 7176 bytes
@@ -8249,8 +8302,15 @@ convert to Java:
 no className provided, using normalized meta title value='flowers4'
 compile flowers4.java source...
 Compiling 3 source files to C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples
+Note: Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
 test flowers4.java execution and self-validation:
-Build this X3D model, showing diagnostics...
+Build this X3D model, showing validation diagnostics...
 flowers4 self-validation test results: success
 ===========================================
 org.web3d.x3d.jsail.CommandLine C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/flowers4.x3d -toJSON -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/flowers4.json
@@ -8262,45 +8322,44 @@ Script DEF=OrbitScript contains CDATA source-code text, copied as "#sourceCode" 
 Note: fileStylesheetConversion() is overwriting prior file C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\flowers4.json
 ===========================================
 org.web3d.x3d.jsail.CommandLine -toGZIP -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant.gz
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toGZIP" for conversion to compressed GZIP containing model
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant.gz" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to GZIP:
-source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23501 bytes
-result: HelloWorldProgramOutput.ant.gz  filesize 6236 bytes, compression 26.54% of original
+source: C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.x3d filesize 23500 bytes
+result: HelloWorldProgramOutput.ant.gz  filesize 6239 bytes, compression 26.55% of original
 ===========================================
 org.web3d.x3d.jsail.CommandLine -toGZIP -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput.ant.gz
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toX3D" for conversion to X3D encoding
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.x3d" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to X3D:
 Note: toFileX3D() is overwriting prior file C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.x3d
-file conversion successful: HelloWorldProgramOutput_CommandLine.x3d (23501 bytes)
+file conversion successful: HelloWorldProgramOutput_CommandLine.x3d (23500 bytes)
 ===========================================
 org.web3d.x3d.jsail.CommandLine -toXML -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.xml
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toXML" for conversion to XML encoding
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.xml" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine
 Parsing using Document Object Model (DOM) based X3DLoaderDOM...
 [X3DLoaderDOM] <meta name='info' content='continued development and testing in progress'/>
 convert to XML:
 Note: toFileX3D() is overwriting prior file C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.xml
-file conversion successful: HelloWorldProgramOutput_CommandLine.xml (23501 bytes)
+file conversion successful: HelloWorldProgramOutput_CommandLine.xml (23500 bytes)
 ===========================================
 org.web3d.x3d.jsail.CommandLine -toHTML -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.html (pretty print)
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-toHTML" for producing .html pretty-print documentation
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.html" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine
 convert to HTML using files:
-*** ignore USE nodes
 Note: fileStylesheetConversion() is overwriting prior file C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples\HelloWorldProgramOutput_CommandLine.html
 ===========================================
 org.web3d.x3d.jsail.CommandLine -markdown -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.md
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-markdown" for producing .md model meta information markdown
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine.md" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutput_CommandLine
 convert to .md model meta information markdown, include subdirectories in meta links: true
@@ -8316,7 +8375,7 @@ Library (X3DJSAIL) |
 | `reference` | [https://www.web3d.org/specifications/java/X3DJSAIL.html](https://www.web3d.org/specifications/java/X3DJSAIL.html) |
 | `generator` | HelloWorldProgramOutput.java |
 | `created` | 6 September 2016 |
-| `modified` | 24 September 2023 |
+| `modified` | 21 November 2023 |
 | `generator` | X3D Java Scene Access Interface Library (X3DJSAIL) |
 | `generator` | [https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java](https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java) |
 | `generator` | Netbeans https://www.netbeans.org |
@@ -8334,7 +8393,7 @@ Library (X3DJSAIL) |
 [HelloWorldProgramOutput.README.md](HelloWorldProgramOutput.README.md) contains additional file links and information.
 ===========================================
 org.web3d.x3d.jsail.CommandLine -tidy -toFile C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutputTidy.CommandLine.x3d
-parameter: source file HelloWorldProgramOutput.x3d filesize 23501 bytes
+parameter: source file HelloWorldProgramOutput.x3d filesize 23500 bytes
 CommandLine parameter: "-tidy" for producing X3D-Tidy cleanup of .x3d
 CommandLine parameter: "-toFile" "C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutputTidy_CommandLine.x3d" for result file name root C:\x3d-code\www.web3d.org\x3d\stylesheets\java\examples/HelloWorldProgramOutputTidy_CommandLine
 convert to X3D Tidy cleaned-up version
@@ -8349,10 +8408,10 @@ X3DUnifiedObjectModelJaxbTests start...
 X3DUnifiedObjectModelJaxbTests.x3duomInspectionsTest() start...
 Preliminary tests...
 X3DUOM:
-x3duomInstanceXml.length()=1968214
+x3duomInstanceXml.length()=1971732
 X3DUnifiedObjectModelJaxbTests.x3duomInspectionsTest() complete
 X3DUnifiedObjectModelJaxbTests complete
 ===========================================
 build.test.X3DJSAIL.txt holds output results
 ===========================================
-BUILD SUCCESSFUL (total time: 3 minutes 12 seconds)
+BUILD SUCCESSFUL (total time: 3 minutes 32 seconds)

@@ -1,0 +1,51 @@
+Agenda:  Skype/Zoom meeting to discuss:
+
+Discuss changes to XML Schema/X3DUOM to comply with standard
+
+1. Please add motionsEnabled field to HAnimHumanoid in XML schema, per the specification
+   https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/components/hanim.html#HAnimHumanoid
+2. Please modify HAnimMotion channels field and joints field changed to SFString from MFString in XMLSchema.  The standard is not in agreement with XML Schema. This causes problems when producing VRML
+   https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/components/hanim.html#HAnimMotion (right?)
+   https://www.web3d.org/specifications/X3dSchemaDocumentation4.0/x3d-4.0_HAnimMotion.html#Link4A4 (wrong?)
+   https://www.web3d.org/specifications/X3dSchemaDocumentation4.0/x3d-4.0_HAnimMotion.html#Link4AC (wrong?)
+
+Fixes to x3d.py
+
+3. Stop removing brackets [] from MFBools in x3d.py VRML and JSON output
+4. Sort skeleton before joints, so we can DEF HAnimJoints in the skeleton field, and USE HAnimJoints in joints field (this touches a lot of code it might not have to).
+5. Change header for classic VRML 4.0, per view3dscene, or at least classic VRML 3.3  #X3D V...
+6. Add containerField optional parameter to XML output methods, then remove default containerFields, per Andreas.
+7. Make this change to def VRML, this is due to view3scene not accepting children for all MFNode (maybe more MF) fields, I think.  We can back this out if you think it's correct (Similar issue in JSON?)
+==========================================================================================================================
+New code:
+==========================================================================================================================
+
+                                    <xsl:otherwise>
+                        <!-- ## result += indent + '  ' + 'TODO iterate over each child element' + '\n' -->
+                                        <xsl:text>
+        if self.</xsl:text>
+                        <xsl:value-of select="$fieldName"/>
+                        <xsl:text>: # walk each child in list, if any (avoid empty list recursion)
+            result += '\n' + indent + '  ' + '</xsl:text><xsl:value-of select="$fieldName"/><xsl:text> [' + '\n' + indent + '  ' + '  '
+            for each in self.</xsl:text>
+                        <xsl:value-of select="$fieldName"/>
+                        <xsl:text>:
+                result += each.VRML(indentLevel=indentLevel+2, VRML97=VRML97)
+            result += '\n' + indent + '  ' + ']' + '\n' + indent</xsl:text>
+                                    </xsl:otherwise>
+==========================================================================================================================
+Old code below.  See replacment of "children" above.  New code:  </xsl:text><xsl:value-of select="$fieldName"/><xsl:text> 
+==========================================================================================================================
+				    <xsl:otherwise>
+                        <!-- ## result += indent + '  ' + 'TODO iterate over each child element' + '\n' -->
+                                        <xsl:text>
+        if self.</xsl:text>
+                        <xsl:value-of select="$fieldName"/>
+                        <xsl:text>: # walk each child in list, if any (avoid empty list recursion)
+            result += '\n' + indent + '  ' + 'children [' + '\n' + indent + '  ' + '  '
+            for each in self.</xsl:text>
+                        <xsl:value-of select="$fieldName"/>
+                        <xsl:text>:
+                result += each.VRML(indentLevel=indentLevel+2, VRML97=VRML97)
+            result += '\n' + indent + '  ' + ']' + '\n' + indent</xsl:text>
+                                    </xsl:otherwise>

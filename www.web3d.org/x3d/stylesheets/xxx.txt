@@ -1,0 +1,144 @@
+Index: X3duomToX3dPythonPackage.xslt
+===================================================================
+--- X3duomToX3dPythonPackage.xslt	(revision 35644)
++++ X3duomToX3dPythonPackage.xslt	(working copy)
+@@ -2497,7 +2497,7 @@
+                 <xsl:text>return str(self.__value).upper()</xsl:text>
+             </xsl:when>
+             <xsl:when test="($fieldTypeName = 'MFBool')">
+-                <xsl:text>return str(self.__value).upper().replace(',', '').replace('[', '').replace(']', '')</xsl:text>
++                <xsl:text>return str(self.__value).upper().replace(',', '')</xsl:text>
+             </xsl:when>
+             <xsl:when test="starts-with($fieldTypeName, 'SF') and (contains($fieldTypeName, 'Double') or contains($fieldTypeName, 'Float') or contains($fieldTypeName, 'Vec') or
+                             contains($fieldTypeName, 'Int32') or contains($fieldTypeName, 'Time') or contains($fieldTypeName, 'Color') or contains($fieldTypeName, 'Rotation') or
+@@ -2552,7 +2552,7 @@
+                 <xsl:text>return str(self.__value).lower()</xsl:text>
+             </xsl:when>
+             <xsl:when test="($fieldTypeName = 'MFBool')">
+-                <xsl:text>return str(self.__value).lower().replace(',', '').replace('[', '').replace(']', '')</xsl:text>
++                <xsl:text>return str(self.__value).lower().replace(',', '')</xsl:text>
+             </xsl:when>
+             <xsl:when test="starts-with($fieldTypeName, 'SF') and (contains($fieldTypeName, 'Double') or contains($fieldTypeName, 'Float') or contains($fieldTypeName, 'Vec') or
+                             contains($fieldTypeName, 'Int32') or contains($fieldTypeName, 'Time') or contains($fieldTypeName, 'Color') or contains($fieldTypeName, 'Rotation') or
+@@ -2968,7 +2968,7 @@
+     X3D_XML_SCHEMA_ATTRIBUTES_4_0 = "xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'"
+     X3D_XML_SCHEMA_ATTRIBUTES_4_1 = "xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'"
+     VRML97_HEADER = '#VRML V2.0 utf8'
+-    CLASSIC_VRML_HEADER_PREFIX = '#VRML V' # followed by X3D version number
++    CLASSIC_VRML_HEADER_PREFIX = '#X3D V' # followed by X3D version number
+     CLASSIC_VRML_HEADER_SUFFIX = ' utf8'
+ 
+     # TODO confirm JSON Schema header
+@@ -3152,7 +3152,8 @@
+                 <xsl:sort select="(@name = 'IS')"/>
+                 <xsl:sort select="(@name = 'USE')"/>
+                 <xsl:sort select="(@name = 'DEF')"/>
+-                <xsl:sort select="(@type='MFNode')"/>
++                <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++                <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                 <xsl:sort select="(@type='SFNode') and not(@name = 'IS') and not(@name = 'metadata')"/>
+                 <xsl:sort select="not(contains(@type,'Node')) and not(@name = 'DEF') and not(@name = 'USE') and not(@name = 'class') and not(@name = 'id') and not(@name = 'style')"/>
+ 
+@@ -3234,7 +3235,8 @@
+                 <xsl:sort select="(@name = 'IS')"/>
+                 <xsl:sort select="(@name = 'USE')"/>
+                 <xsl:sort select="(@name = 'DEF')"/>
+-                <xsl:sort select="(@type='MFNode')"/>
++                <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++                <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                 <xsl:sort select="(@type='SFNode') and not(@name = 'IS') and not(@name = 'metadata')"/>
+                 <xsl:sort select="not(contains(@type,'Node')) and not(@name = 'DEF') and not(@name = 'USE') and not(@name = 'class') and not(@name = 'id') and not(@name = 'style')"/>
+                 
+@@ -3308,7 +3310,8 @@
+             <xsl:sort select="(@name = 'IS')"/>
+             <xsl:sort select="(@name = 'USE')"/>
+             <xsl:sort select="(@name = 'DEF')"/>
+-            <xsl:sort select="(@type='MFNode')"/>
++            <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++            <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+             <xsl:sort select="(@type='SFNode') and not(@name = 'IS') and not(@name = 'metadata')"/>
+             <xsl:sort select="not(contains(@type,'Node')) and not(@name = 'DEF') and not(@name = 'USE') and not(@name = 'class')  and not(@name = 'id') and not(@name = 'style')"/>
+ 
+@@ -3364,7 +3367,8 @@
+                 <xsl:sort select="(@name = 'IS')"/>
+                 <xsl:sort select="(@name = 'USE')"/>
+                 <xsl:sort select="(@name = 'DEF')"/>
+-                <xsl:sort select="(@type='MFNode')"/>
++            	<xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++            	<xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                 <xsl:sort select="(@type='SFNode') and not(@name = 'IS') and not(@name = 'metadata')"/>
+                 <xsl:sort select="not(contains(@type,'Node')) and not(@name = 'DEF') and not(@name = 'USE') and not(@name = 'class') and not(@name = 'id') and not(@name = 'style')"/>
+ 
+@@ -3708,7 +3712,8 @@
+             <xsl:when test="(count($allFields[contains(@type,'Node')]) > 0)">
+                 <!-- TODO hasComment -->
+                 <xsl:for-each select="$allFields[contains(@type,'Node')]">
+-                    <xsl:sort select="(@type = 'MFNode')"/>
++            	    <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++            	    <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                     <xsl:sort select="(@type = 'SFNode')"/>
+                     
+                     <xsl:variable name="fieldName">
+@@ -4128,11 +4133,12 @@
+                     </xsl:when>
+                     <xsl:otherwise>
+                         <xsl:for-each select="$allFields[contains(@type,'Node')]">
+-                            <xsl:sort select="(@type='MFNode')"/>
++            		    <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++            		    <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                             <xsl:sort select="(@type='SFNode')"/>
+                             <xsl:sort select="(@name = 'ProtoBody')"/>
+                             <xsl:sort select="(@name = 'ProtoInterface')"/>
+-                            <xsl:sort select="@name" order="ascending"/>
++			    <!--<xsl:sort select="@name" order="ascending"/>-->
+ 
+                             <xsl:variable name="fieldName">
+                                 <xsl:call-template name="fieldName">
+@@ -4252,7 +4258,7 @@
+                 <!-- opening tag is unclosed since followed by attributes -->
+                 <!-- output simple-type fields as JSON attributes -->
+                 <xsl:for-each select="$allFields[not(contains(@type,'Node'))]">
+-                    <xsl:sort select="@name[not(.='DEF') and not(.='USE')]" order="ascending"/>
++		    <xsl:sort select="@name[not(.='DEF') and not(.='USE')]" order="ascending"/>
+                     <xsl:sort select="(@name = 'USE')"/>
+                     <xsl:sort select="(@name = 'DEF')"/>
+                     
+@@ -4391,11 +4397,12 @@
+                         </xsl:when>
+                     <xsl:otherwise>
+                         <xsl:for-each select="$allFields[contains(@type,'Node')]">
+-                            <xsl:sort select="(@type='MFNode')"/>
++            		    <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++            		    <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                             <xsl:sort select="(@type='SFNode')"/>
+                             <xsl:sort select="(@name = 'ProtoBody')"/>
+                             <xsl:sort select="(@name = 'ProtoInterface')"/>
+-                            <xsl:sort select="@name" order="ascending"/>
++			    <!--<xsl:sort select="@name" order="ascending"/>-->
+ 
+                             <xsl:variable name="fieldName">
+                                 <xsl:call-template name="fieldName">
+@@ -4671,11 +4678,12 @@
+                 </xsl:for-each>
+                 <!-- output child SFNode/MFNode fields as child XML elements -->
+                         <xsl:for-each select="$allFields[contains(@type,'Node')]">
+-                            <xsl:sort select="(@type='MFNode')"/>
++            		    <xsl:sort select="(@type='MFNode') and (@name = 'skeleton')" order="descending"/>
++            		    <xsl:sort select="(@type='MFNode') and not(@name = 'skeleton')"/>
+                             <xsl:sort select="(@type='SFNode')"/>
+                             <xsl:sort select="(@name = 'ProtoBody')"/>
+                             <xsl:sort select="(@name = 'ProtoInterface')"/>
+-                            <xsl:sort select="@name" order="ascending"/>
++			    <!--<xsl:sort select="@name" order="ascending"/>-->
+ 
+                             <xsl:variable name="fieldName">
+                                 <xsl:call-template name="fieldName">
+@@ -4717,7 +4725,7 @@
+         if self.</xsl:text>
+                         <xsl:value-of select="$fieldName"/>
+                         <xsl:text>: # walk each child in list, if any (avoid empty list recursion)
+-            result += '\n' + indent + '  ' + 'children [' + '\n' + indent + '  ' + '  '
++            result += '\n' + indent + '  ' + '</xsl:text><xsl:value-of select="$fieldName"/><xsl:text> [' + '\n' + indent + '  ' + '  '
+             for each in self.</xsl:text>
+                         <xsl:value-of select="$fieldName"/>
+                         <xsl:text>:

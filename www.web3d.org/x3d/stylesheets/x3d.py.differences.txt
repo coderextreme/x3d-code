@@ -1,0 +1,347 @@
+Index: python/x3d.py
+===================================================================
+--- python/x3d.py	(revision 35687)
++++ python/x3d.py	(working copy)
+@@ -1293,6 +1293,7 @@
+     # specification-defined values follow, other values are also allowed
+     'accessRights',  # permission required to access resource or security status
+     'author',  # name of individual author
++    'CML-version',  # Chemistry Markup Language (CML) version used
+     'contributor',  # name of individual contributing to this resource
+     'created',  # date of initial version
+     'creator',  # name of original author
+@@ -15144,6 +15145,7 @@
+         try:
+             selfX3dXmlText = ''
+             import xmlschema
++            # XML Security dsig namespace validation problem fixed: https://github.com/sissaschool/xmlschema/issues/357
+             x3dSchemaUrl = 'https://www.web3d.org/specifications/x3d-' + validationVersion + '.xsd'
+             x3dschema = xmlschema.XMLSchema(x3dSchemaUrl)
+             try:
+@@ -15173,6 +15175,9 @@
+                 lineNumber = 1
+             if selfX3dXmlText: # might have failed to generate
+                 print(prependLineNumbers(selfX3dXmlText,lineNumber))
++            # TODO handle xmldsig# namespace error by xmlschema library - otherwise trap/identify this error
++            # Submitted bug report: validation problem, xmldsig# namespace for XML digital signature #357
++            # https://github.com/sissaschool/xmlschema/issues/357
+     # output function - - - - - - - - - -
+     def VRML97(self, indentLevel=0):
+         """ Provide VRML97 output serialization suitable for .wrl file. """
+@@ -45487,6 +45492,7 @@
+         ('jointBindingRotations', [(0, 0, 1, 0)], FieldType.MFRotation, AccessType.inputOutput, 'HAnimHumanoid'),
+         ('jointBindingScales', [(0, 0, 0)], FieldType.MFVec3f, AccessType.inputOutput, 'HAnimHumanoid'),
+         ('loa', -1, FieldType.SFInt32, AccessType.inputOutput, 'HAnimHumanoid'),
++        ('motionsEnabled', [], FieldType.MFBool, AccessType.inputOutput, 'HAnimHumanoid'),
+         ('name', '', FieldType.SFString, AccessType.inputOutput, 'HAnimHumanoid'),
+         ('rotation', (0, 0, 1, 0), FieldType.SFRotation, AccessType.inputOutput, 'HAnimHumanoid'),
+         ('scale', (1, 1, 1), FieldType.SFVec3f, AccessType.inputOutput, 'HAnimHumanoid'),
+@@ -45524,6 +45530,7 @@
+         jointBindingRotations=None,
+         jointBindingScales=None,
+         loa=-1,
++        motionsEnabled=None,
+         name='',
+         rotation=(0, 0, 1, 0),
+         scale=(1, 1, 1),
+@@ -45562,6 +45569,7 @@
+         self.jointBindingRotations = jointBindingRotations
+         self.jointBindingScales = jointBindingScales
+         self.loa = loa
++        self.motionsEnabled = motionsEnabled
+         self.name = name
+         self.rotation = rotation
+         self.scale = scale
+@@ -45689,6 +45697,17 @@
+         assertLessThanEquals('loa', loa, 4)
+         self.__loa = loa
+     @property # getter - - - - - - - - - -
++    def motionsEnabled(self):
++        """Array of boolean values corresponding to HAnimMotion nodes indicating which can animate the HAnimHumanoid."""
++        return self.__motionsEnabled
++    @motionsEnabled.setter
++    def motionsEnabled(self, motionsEnabled):
++        if  motionsEnabled is None:
++            motionsEnabled = MFBool.DEFAULT_VALUE()
++            # if _DEBUG: print('...DEBUG... set value to MFBool.DEFAULT_VALUE()=' + str(MFBool.DEFAULT_VALUE()))
++        assertValidMFBool(motionsEnabled)
++        self.__motionsEnabled = motionsEnabled
++    @property # getter - - - - - - - - - -
+     def name(self):
+         """Unique name attribute must be defined so that each HAnimHumanoid node in a scene can be identified at run time for animation purposes."""
+         return self.__name
+@@ -45963,6 +45982,8 @@
+             result += " jointBindingScales='" + MFVec3f(self.jointBindingScales).XML() + "'"
+         if self.loa != -1:
+             result += " loa='" + SFInt32(self.loa).XML() + "'"
++        if self.motionsEnabled != []:
++            result += " motionsEnabled='" + MFBool(self.motionsEnabled).XML() + "'"
+         if self.name:
+             result += " name='" + SFString(self.name).XML() + "'"
+         if self.rotation != (0, 0, 1, 0):
+@@ -46079,6 +46100,8 @@
+             attributeResult += "        " + '"@jointBindingScales":"' + MFVec3f(self.jointBindingScales).JSON() + '"' + ',\n'
+         if self.loa != -1:
+             attributeResult += "        " + '"@loa":"' + SFInt32(self.loa).JSON() + '"' + ',\n'
++        if self.motionsEnabled != []:
++            attributeResult += "        " + '"@motionsEnabled":"' + MFBool(self.motionsEnabled).JSON() + '"' + ',\n'
+         if self.name:
+             attributeResult += "        " + '"@name":"' + SFString(self.name).JSON() + '"' + ',\n'
+         if self.rotation != (0, 0, 1, 0):
+@@ -46202,6 +46225,8 @@
+             result += '\n' + indent + '  ' + "jointBindingScales " + MFVec3f(self.jointBindingScales).VRML() + ""
+         if self.loa != -1:
+             result += '\n' + indent + '  ' + "loa " + SFInt32(self.loa).VRML() + ""
++        if self.motionsEnabled != []:
++            result += '\n' + indent + '  ' + "motionsEnabled " + MFBool(self.motionsEnabled).VRML() + ""
+         if self.name:
+             result += '\n' + indent + '  ' + "name " +  '"' + self.name + '"' + ""
+         if self.rotation != (0, 0, 1, 0):
+@@ -46842,7 +46867,7 @@
+ 
+ class HAnimMotion(_X3DChildNode):
+     """
+-    An HAnimMotion node supports discrete frame-by-frame playback for H-Anim motion data animation.
++    An HAnimMotion node supports discrete frame-by-frame playback for HAnim motion data animation.
+     """
+     # immutable constant functions have getter but no setter - - - - - - - - - -
+     @classmethod
+@@ -46861,7 +46886,7 @@
+     def FIELD_DECLARATIONS(cls):
+         """ Field declarations for this node: name, defaultValue, type, accessType, inheritedFrom """
+         return [
+-        ('channels', [], FieldType.MFString, AccessType.inputOutput, 'HAnimMotion'),
++        ('channels', '', FieldType.SFString, AccessType.inputOutput, 'HAnimMotion'),
+         ('channelsEnabled', [], FieldType.MFBool, AccessType.inputOutput, 'HAnimMotion'),
+         ('description', '', FieldType.SFString, AccessType.inputOutput, 'HAnimMotion'),
+         ('enabled', False, FieldType.SFBool, AccessType.inputOutput, 'HAnimMotion'),
+@@ -46869,13 +46894,11 @@
+         ('frameDuration', 0.1, FieldType.SFTime, AccessType.inputOutput, 'HAnimMotion'),
+         ('frameIncrement', 1, FieldType.SFInt32, AccessType.inputOutput, 'HAnimMotion'),
+         ('frameIndex', 0, FieldType.SFInt32, AccessType.inputOutput, 'HAnimMotion'),
+-        ('joints', [], FieldType.MFString, AccessType.inputOutput, 'HAnimMotion'),
++        ('joints', '', FieldType.SFString, AccessType.inputOutput, 'HAnimMotion'),
+         ('loa', -1, FieldType.SFInt32, AccessType.inputOutput, 'HAnimMotion'),
+         ('loop', False, FieldType.SFBool, AccessType.inputOutput, 'HAnimMotion'),
+         ('name', '', FieldType.SFString, AccessType.inputOutput, 'HAnimMotion'),
+-        ('skeletalConfiguration', 'BASIC', FieldType.SFString, AccessType.inputOutput, 'HAnimMotion'),
+         ('startFrame', 0, FieldType.SFInt32, AccessType.inputOutput, 'HAnimMotion'),
+-        ('totalFrameCount', 0, FieldType.SFInt32, AccessType.inputOutput, 'HAnimMotion'),
+         ('values', [], FieldType.MFFloat, AccessType.inputOutput, 'HAnimMotion'),
+         ('DEF', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
+         ('USE', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
+@@ -46885,7 +46908,7 @@
+         ('id_', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode'),
+         ('style_', '', FieldType.SFString, AccessType.inputOutput, 'X3DNode')]
+     def __init__(self,
+-        channels=None,
++        channels='',
+         channelsEnabled=None,
+         description='',
+         enabled=False,
+@@ -46893,13 +46916,11 @@
+         frameDuration=0.1,
+         frameIncrement=1,
+         frameIndex=0,
+-        joints=None,
++        joints='',
+         loa=-1,
+         loop=False,
+         name='',
+-        skeletalConfiguration='BASIC',
+         startFrame=0,
+-        totalFrameCount=0,
+         values=None,
+         DEF='',
+         USE='',
+@@ -46922,9 +46943,7 @@
+         self.loa = loa
+         self.loop = loop
+         self.name = name
+-        self.skeletalConfiguration = skeletalConfiguration
+         self.startFrame = startFrame
+-        self.totalFrameCount = totalFrameCount
+         self.values = values
+         self.id_ = id_
+         self.style_ = style_
+@@ -46935,9 +46954,9 @@
+     @channels.setter
+     def channels(self, channels):
+         if  channels is None:
+-            channels = MFString.DEFAULT_VALUE()
+-            # if _DEBUG: print('...DEBUG... set value to MFString.DEFAULT_VALUE()=' + str(MFString.DEFAULT_VALUE()))
+-        assertValidMFString(channels)
++            channels = SFString.DEFAULT_VALUE()
++            # if _DEBUG: print('...DEBUG... set value to SFString.DEFAULT_VALUE()=' + str(SFString.DEFAULT_VALUE()))
++        assertValidSFString(channels)
+         self.__channels = channels
+     @property # getter - - - - - - - - - -
+     def channelsEnabled(self):
+@@ -47021,9 +47040,9 @@
+     @joints.setter
+     def joints(self, joints):
+         if  joints is None:
+-            joints = MFString.DEFAULT_VALUE()
+-            # if _DEBUG: print('...DEBUG... set value to MFString.DEFAULT_VALUE()=' + str(MFString.DEFAULT_VALUE()))
+-        assertValidMFString(joints)
++            joints = SFString.DEFAULT_VALUE()
++            # if _DEBUG: print('...DEBUG... set value to SFString.DEFAULT_VALUE()=' + str(SFString.DEFAULT_VALUE()))
++        assertValidSFString(joints)
+         self.__joints = joints
+     @property # getter - - - - - - - - - -
+     def loa(self):
+@@ -47059,16 +47078,6 @@
+         assertValidSFString(name)
+         self.__name = name
+     @property # getter - - - - - - - - - -
+-    def skeletalConfiguration(self):
+-        """Models sharing a common skeletal configuration can share animations and binding poses."""
+-        return self.__skeletalConfiguration
+-    @skeletalConfiguration.setter
+-    def skeletalConfiguration(self, skeletalConfiguration):
+-        if  skeletalConfiguration is None:
+-            skeletalConfiguration = 'BASIC'  # default
+-        assertValidSFString(skeletalConfiguration)
+-        self.__skeletalConfiguration = skeletalConfiguration
+-    @property # getter - - - - - - - - - -
+     def startFrame(self):
+         """[0,+infinity) startFrame indicates initial index of animated frame."""
+         return self.__startFrame
+@@ -47080,17 +47089,6 @@
+         assertNonNegative('startFrame', startFrame)
+         self.__startFrame = startFrame
+     @property # getter - - - - - - - - - -
+-    def totalFrameCount(self):
+-        """[0,+infinity) totalFrameCount indicates the total number of frames present in the animation, equaling the number of sets of channel data rows present in the values array."""
+-        return self.__totalFrameCount
+-    @totalFrameCount.setter
+-    def totalFrameCount(self, totalFrameCount):
+-        if  totalFrameCount is None:
+-            totalFrameCount = 0  # default
+-        assertValidSFInt32(totalFrameCount)
+-        assertNonNegative('totalFrameCount', totalFrameCount)
+-        self.__totalFrameCount = totalFrameCount
+-    @property # getter - - - - - - - - - -
+     def values(self):
+         """values field contains all transformation values, ordered first by frame, then by joint, and then by transformation Sets of floats in the values array matching the order listed in joints and channels fields."""
+         return self.__values
+@@ -47140,8 +47138,8 @@
+             result += " DEF='" + SFString(self.DEF).XML() + "'"
+         if self.USE:
+             result += " USE='" + SFString(self.USE).XML() + "'"
+-        if self.channels != []:
+-            result += " channels='" + MFString(self.channels).XML() + "'"
++        if self.channels:
++            result += " channels='" + SFString(self.channels).XML() + "'"
+         if self.channelsEnabled != []:
+             result += " channelsEnabled='" + MFBool(self.channelsEnabled).XML() + "'"
+         if self.class_:
+@@ -47160,8 +47158,8 @@
+             result += " frameIndex='" + SFInt32(self.frameIndex).XML() + "'"
+         if self.id_:
+             result += " id='" + SFString(self.id_).XML() + "'"
+-        if self.joints != []:
+-            result += " joints='" + MFString(self.joints).XML() + "'"
++        if self.joints:
++            result += " joints='" + SFString(self.joints).XML() + "'"
+         if self.loa != -1:
+             result += " loa='" + SFInt32(self.loa).XML() + "'"
+         if self.loop:  # default=false
+@@ -47168,14 +47166,10 @@
+             result += " loop='" + SFBool(self.loop).XML() + "'"
+         if self.name:
+             result += " name='" + SFString(self.name).XML() + "'"
+-        if self.skeletalConfiguration != 'BASIC':
+-            result += " skeletalConfiguration='" + SFString(self.skeletalConfiguration).XML() + "'"
+         if self.startFrame != 0:
+             result += " startFrame='" + SFInt32(self.startFrame).XML() + "'"
+         if self.style_:
+             result += " style='" + SFString(self.style_).XML() + "'"
+-        if self.totalFrameCount != 0:
+-            result += " totalFrameCount='" + SFInt32(self.totalFrameCount).XML() + "'"
+         if self.values != []:
+             result += " values='" + MFFloat(self.values).XML() + "'"
+         if not self.hasChild():
+@@ -47209,8 +47203,8 @@
+             attributeResult += "        " + '"@DEF":"' + SFString(self.DEF).JSON() + '"' + ',\n'
+         if self.USE:
+             attributeResult += "        " + '"@USE":"' + SFString(self.USE).JSON() + '"' + ',\n'
+-        if self.channels != []:
+-            attributeResult += "        " + '"@channels":"' + MFString(self.channels).JSON() + '"' + ',\n'
++        if self.channels:
++            attributeResult += "        " + '"@channels":"' + SFString(self.channels).JSON() + '"' + ',\n'
+         if self.channelsEnabled != []:
+             attributeResult += "        " + '"@channelsEnabled":"' + MFBool(self.channelsEnabled).JSON() + '"' + ',\n'
+         if self.class_:
+@@ -47229,8 +47223,8 @@
+             attributeResult += "        " + '"@frameIndex":"' + SFInt32(self.frameIndex).JSON() + '"' + ',\n'
+         if self.id_:
+             attributeResult += "        " + '"@id":"' + SFString(self.id_).JSON() + '"' + ',\n'
+-        if self.joints != []:
+-            attributeResult += "        " + '"@joints":"' + MFString(self.joints).JSON() + '"' + ',\n'
++        if self.joints:
++            attributeResult += "        " + '"@joints":"' + SFString(self.joints).JSON() + '"' + ',\n'
+         if self.loa != -1:
+             attributeResult += "        " + '"@loa":"' + SFInt32(self.loa).JSON() + '"' + ',\n'
+         if self.loop:  # default=false
+@@ -47237,14 +47231,10 @@
+             attributeResult += "        " + '"@loop":"' + SFBool(self.loop).JSON() + '"' + ',\n'
+         if self.name:
+             attributeResult += "        " + '"@name":"' + SFString(self.name).JSON() + '"' + ',\n'
+-        if self.skeletalConfiguration != 'BASIC':
+-            attributeResult += "        " + '"@skeletalConfiguration":"' + SFString(self.skeletalConfiguration).JSON() + '"' + ',\n'
+         if self.startFrame != 0:
+             attributeResult += "        " + '"@startFrame":"' + SFInt32(self.startFrame).JSON() + '"' + ',\n'
+         if self.style_:
+             attributeResult += "        " + '"@style":"' + SFString(self.style_).JSON() + '"' + ',\n'
+-        if self.totalFrameCount != 0:
+-            attributeResult += "        " + '"@totalFrameCount":"' + SFInt32(self.totalFrameCount).JSON() + '"' + ',\n'
+         if self.values != []:
+             attributeResult += "        " + '"@values":"' + MFFloat(self.values).JSON() + '"'
+         # print("attributeResult=" + attributeResult) # debug
+@@ -47285,8 +47275,8 @@
+             result += 'USE ' + self.USE # no node name, nothing follows
+         else:
+             result += 'HAnimMotion' + ' {'
+-        if self.channels != []:
+-            result += '\n' + indent + '  ' + "channels " + MFString(self.channels).VRML() + ""
++        if self.channels:
++            result += '\n' + indent + '  ' + "channels " +  '"' + self.channels + '"' + ""
+         if self.channelsEnabled != []:
+             result += '\n' + indent + '  ' + "channelsEnabled " + MFBool(self.channelsEnabled).VRML() + ""
+         if self.class_:
+@@ -47305,8 +47295,8 @@
+             result += '\n' + indent + '  ' + "frameIndex " + SFInt32(self.frameIndex).VRML() + ""
+         if self.id_:
+             result += '\n' + indent + '  ' + "id " +  '"' + self.id_ + '"' + ""
+-        if self.joints != []:
+-            result += '\n' + indent + '  ' + "joints " + MFString(self.joints).VRML() + ""
++        if self.joints:
++            result += '\n' + indent + '  ' + "joints " +  '"' + self.joints + '"' + ""
+         if self.loa != -1:
+             result += '\n' + indent + '  ' + "loa " + SFInt32(self.loa).VRML() + ""
+         if self.loop: # default=false
+@@ -47313,14 +47303,10 @@
+             result += '\n' + indent + '  ' + "loop " + SFBool(self.loop).VRML() + ""
+         if self.name:
+             result += '\n' + indent + '  ' + "name " +  '"' + self.name + '"' + ""
+-        if self.skeletalConfiguration != 'BASIC':
+-            result += '\n' + indent + '  ' + "skeletalConfiguration " +  '"' + self.skeletalConfiguration + '"' + ""
+         if self.startFrame != 0:
+             result += '\n' + indent + '  ' + "startFrame " + SFInt32(self.startFrame).VRML() + ""
+         if self.style_:
+             result += '\n' + indent + '  ' + "style " +  '"' + self.style_ + '"' + ""
+-        if self.totalFrameCount != 0:
+-            result += '\n' + indent + '  ' + "totalFrameCount " + SFInt32(self.totalFrameCount).VRML() + ""
+         if self.values != []:
+             result += '\n' + indent + '  ' + "values " + MFFloat(self.values).VRML() + ""
+         if self.IS: # output this SFNode
+@@ -93779,7 +93765,7 @@
+         self.__entityID = entityID
+     @property # getter - - - - - - - - - -
+     def frequency(self):
+-        """Transmission frequency in Hz."""
++        """[0,+infinity) Transmission frequency in Hz."""
+         return self.__frequency
+     @frequency.setter
+     def frequency(self, frequency):

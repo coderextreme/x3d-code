@@ -32,7 +32,7 @@ META "description" "Example HelloWorldProgram creates an X3D model using the X3D
 META "reference" "https://www.web3d.org/specifications/java/X3DJSAIL.html"
 META "generator" "HelloWorldProgramOutput.java"
 META "created" "6 September 2016"
-META "modified" "24 September 2023"
+META "modified" "21 November 2023"
 META "generator" "X3D Java Scene Access Interface Library (X3DJSAIL)"
 META "generator" "https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java"
 META "generator" "Netbeans https://www.netbeans.org"
@@ -53,15 +53,17 @@ MetadataSet {
   name "topLevelSceneMetadata"
 }
 ViewpointGroup {
-  description Available viewpoints
-  DEF DefaultView Viewpoint {
-    description "Hello X3DJSAIL"
-  }
-  DEF TopDownView Viewpoint {
-    description "top-down view from above"
-    orientation 1 0 0 -1.570796
-    position 0 100 0
-  }
+  description "Available viewpoints"
+  children [
+      DEF DefaultView Viewpoint {
+        description "Hello X3DJSAIL"
+      }
+      DEF TopDownView Viewpoint {
+        description "top-down view from above"
+        orientation 1 0 0 -1.570796
+        position 0 100 0
+      }
+  ]
 }
 NavigationInfo {
   type [ "EXAMINE" "FLY" "ANY"  ] 
@@ -115,6 +117,7 @@ DEF LineShape Shape {
   }
   geometry IndexedLineSet {
     coordIndex [ 0 1 2 3 4 0 ]
+    # Coordinate 3-tuple point count: 6
     coord Coordinate {
       point [ 0 1.5 0 2 1.5 0 2 1.5 -2 -2 1.5 -2 -2 1.5 0 0 1.5 0 ]
     }
@@ -139,33 +142,42 @@ DEF TextTransform Transform {
         }
         geometry Text {
           string [ "X3D Java" "SAI Library" "X3DJSAIL" ]
-          # metadata
-          MetadataSet {
+          # Comment example A, plain quotation marks: He said, "Immel did it!"
+          # Comment example B, XML character entities: He said, &quot;Immel did it!&quot;
+          metadata MetadataSet {
             name "EscapedQuotationMarksMetadataSet"
             value [
-              MetadataString {
+                              
+MetadataString {
                 name "quotesTestC"
                 value [ "MFString example C backslash-escaped quotes: He said \"Immel did it!\""  ] 
               }
-              MetadataString {
+                              
+MetadataString {
                 name "extraChildTest"
                 value [ "checks MetadataSet addValue() method"  ] 
               }
             ]
           }
+          # Comment example A, plain quotation marks: He said, "Immel did it!"
+          # Comment example B, XML character entities: He said, &quot;Immel did it!&quot;
           fontStyle FontStyle {
             justify [ "MIDDLE" "MIDDLE"  ] 
           }
         }
       }
       Collision {
- proxy
+  proxy
           DEF ProxyShape Shape {
+            # alternative XML encoding: Text string='"One, Two, Comment" "" "He said, \&quot;Immel did it!\&quot;"'
+            # alternative XML encoding: Text string='"One, Two, Comment" "" "He said, \&quot;Immel did it!\&quot;" ""'
+            # alternative Java source: .setString(new String [] {"One, Two, Comment", "", "He said, \"Immel did it!\""})
+            # reference: https://www.web3d.org/x3d/content/examples/Basic/X3dSpecifications/StringArrayEncodingExamplesIndex.html
             geometry Text {
               string [ "One, Two, Text" "" "He said, \"Immel did it!\" \"\"" ]
             }
           }
- children [
+  children [
           # test containerField='proxy'
  ]
       }
@@ -190,8 +202,8 @@ DEF BackgroundGroup Group {
       DEF GradualBackground Background {
       }
       DEF colorTypeConversionScript Script {
-        inputOnly      SFColor	colorInput
-        outputOnly     MFColor	colorsOutput
+        inputOnly      SFColor	 colorInput
+        outputOnly     MFColor	 colorsOutput
 
 	url [ "ecmascript: // ### X3D Browser.print() not supported by all VRML97 viewers, instead simply using print()
 
@@ -208,6 +220,7 @@ function colorInput (eventValue) // Example source code
       DEF ColorAnimator ColorInterpolator {
         key [ 0 0.5 1 ]
         keyValue [ 0.9411765 1 1 0.29411766 0 0.50980395 0.9411765 1 1 ]
+        # AZURE to INDIGO and back again
       }
       DEF ColorClock TimeSensor {
         cycleInterval 60.0
@@ -221,9 +234,9 @@ ROUTE ColorClock.fraction_changed TO ColorAnimator.set_fraction
 PROTO ArtDeco01Material [
   # [appinfo] tooltip: ArtDeco01Material prototype is a Material node
 
-  inputOutput    SFString	description "ArtDeco01Material prototype is a Material node"    # [appinfo] tooltip for descriptionField
+  inputOutput    SFString	 description "ArtDeco01Material prototype is a Material node"    # [appinfo] tooltip for descriptionField
 
-  inputOutput    SFBool	enabled TRUE
+  inputOutput    SFBool	 enabled TRUE
 ] {
   Material {
     ambientIntensity 0.25
@@ -242,15 +255,17 @@ EXTERNPROTO ArtDeco02Material [
   # [appinfo] this is a different Material node
 
   # [HelloWorldProgram diagnostic] artDeco02ExternProtoDeclare.getNodeType()="ERROR_UNKNOWN_EXTERNPROTODECLARE_NODE_TYPE: ExternProtoDeclare name='ArtDeco02Material' type cannot be remotely accessed at run time. TODO X3DJSAIL needs to add further capability that retrieves the ExternProtoDeclare file."
-  inputOutput    SFString	description    # [appinfo] tooltip for descriptionField
+  inputOutput    SFString	 description    # [appinfo] tooltip for descriptionField
 
 ][
 "https://X3dGraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/ArtDecoPrototypesExcerpt.x3d#ArtDeco02Material" "https://X3dGraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/ArtDecoPrototypesExcerpt.x3dv#ArtDeco02Material"
- ]
+ ] ### here1 
 # Tested ArtDeco01ProtoInstance, ArtDeco02ProtoInstance for improper node type when ProtoInstance is added in wrong place
 DEF TestShape1 Shape {
   appearance DEF TestAppearance1 Appearance {
+    # ArtDeco01Material prototype goes here... TODO ensure setContainerField is handled in exported Java
     material  ArtDeco01Material {
+      # [HelloWorldProgram diagnostic] ArtDeco01ProtoInstance.getNodeType()="Material"
       description  "ArtDeco01Material can substitute for a Material node"
     }
   }
@@ -260,7 +275,9 @@ DEF TestShape1 Shape {
 }
 DEF TestShape2 Shape {
   appearance DEF TestAppearance2 Appearance {
+    # ArtDeco02Material prototype goes here... TODO ensure setContainerField is handled in exported Java
     material DEF ArtDeco02MaterialDEF  ArtDeco02Material {
+      # [HelloWorldProgram diagnostic] ArtDeco02ProtoInstance.getNodeType()="ERROR_UNKNOWN_EXTERNPROTODECLARE_NODE_TYPE: ExternProtoDeclare name='ArtDeco02Material' type cannot be remotely accessed at run time. TODO X3DJSAIL needs to add further capability that retrieves the ExternProtoDeclare file."
       description  "ArtDeco02Material can substitute for another Material node"
     }
   }
@@ -271,6 +288,7 @@ DEF TestShape2 Shape {
 }
 DEF TestShape3 Shape {
   appearance DEF TestAppearance3 Appearance {
+    # ArtDeco02Material ProtoInstance USE goes here. Note that name field is NOT defined as part of ProtoInstance USE.
     material USE ArtDeco02MaterialDEF
   }
   geometry Cylinder {
@@ -296,13 +314,13 @@ PROTO MaterialModulator [
 
  # documentation: https://x3dgraphics.com/examples/X3dForWebAuthors/Chapter14Prototypes/MaterialModulatorIndex.html
 
-  inputOutput    SFBool	enabled TRUE
-  inputOutput    SFColor	diffuseColor 0 0 0
-  inputOutput    SFColor	emissiveColor 0.05 0.05 0.5
-  inputOutput    SFColor	specularColor 0 0 0
-  inputOutput    SFFloat	transparency 0.0
-  inputOutput    SFFloat	shininess 0.0
-  inputOutput    SFFloat	ambientIntensity 0.0
+  inputOutput    SFBool	 enabled TRUE
+  inputOutput    SFColor	 diffuseColor 0 0 0
+  inputOutput    SFColor	 emissiveColor 0.05 0.05 0.5
+  inputOutput    SFColor	 specularColor 0 0 0
+  inputOutput    SFFloat	 transparency 0.0
+  inputOutput    SFFloat	 shininess 0.0
+  inputOutput    SFFloat	 ambientIntensity 0.0
 ] {
   DEF MaterialNode Material {
           diffuseColor IS diffuseColor
@@ -313,10 +331,10 @@ PROTO MaterialModulator [
       ambientIntensity IS ambientIntensity
   }
   DEF MaterialModulatorScript Script {
-    inputOutput    SFBool	enabled IS enabled
-    inputOutput    SFColor	diffuseColor IS diffuseColor
-    outputOnly     SFColor	newColor
-    inputOnly      SFTime	clockTrigger
+    inputOutput    SFBool	 enabled IS enabled
+    inputOutput    SFColor	 diffuseColor IS diffuseColor
+    outputOnly     SFColor	 newColor
+    inputOnly      SFTime	 clockTrigger
                 
 	url [ "ecmascript: // ### X3D Browser.print() not supported by all VRML97 viewers, instead simply using print()
 
@@ -352,6 +370,7 @@ DEF DeclarativeGroupExample Group {
   children [
       Shape {
         appearance DEF DeclarativeAppearanceExample Appearance {
+          # DeclarativeMaterialExample gets overridden by subsequently added MaterialModulator ProtoInstance
           material DEF MyMaterialModulator  MaterialModulator {
           }
         }
@@ -371,19 +390,32 @@ DEF DeclarativeGroupExample Group {
 # Test success: x3dModel.findElementByNameValue("MaterialModulator", "ProtoDeclare") found
 # Test success: x3dModel.findElementByNameValue("MaterialModulator", "ProtoInstance") found
 DEF TestFieldObjectsGroup Group {
+  # testFieldObjects() results
+  # SFBool default=false, true=true, false=false, negate()=true
+  # MFBool default=, initial=true false true, negate()=false true false
+  # SFFloat default=0.0, initial=1.0, setValue(2)=2.0, setValue(3.0f)=3.0, setValue(4.0)=4.0
+  # MFFloat default=, initial=1 2 3, append(5)=1 2 3 5, inserts(3,4)(0,0)=0 1 2 3 4 5, append(6)=0 1 2 3 4 5 6, size()=7
+  # ... get1Value[3]=3.0, remove[1]=0 2 3 4 5 6, set1Value(0,10)=10 2 3 4 5 6, multiply(2)=20 4 6 8 10 12, clear=
+  # SFVec3f default=0 0 0, initial=1 2 3, setValue=4 5 6, multiply(2)=8 10 12, normalize()=0.45584232 0.5698029 0.68376344, regex matches()=true
+  # regex test SFVec3f().matches("1 2 3")=true, regex test SFVec3f().matches("1 2 3 4")=false, regex test (SFRotation.matches("0 0 0 0")=true, failure detecting illegal (zero axis) rotation value
 }
 Sound {
   location 0 1.6 0
+  # set sound-ellipsoid location height at 1.6m to match typical avatar height
   source AudioClip {
     description "chimes"
     url [ "chimes.wav" "https://www.web3d.org/x3d/content/examples/ConformanceNist/Sounds/AudioClip/chimes.wav" ]
+    # Scene example fragment from https://www.web3d.org/x3d/content/examples/ConformanceNist/Sounds/AudioClip/default.x3d
   }
 }
 Sound {
   location 0 1.6 0
+  # set sound-ellipsoid location height at 1.6m to match typical avatar height
   source MovieTexture {
-    description mpgsys.mpg from ConformanceNist suite
+    description "mpgsys.mpg from ConformanceNist suite"
     url [ "mpgsys.mpg" "https://www.web3d.org/x3d/content/examples/ConformanceNist/Appearance/MovieTexture/mpgsys.mpg" ]
+    # Scene example fragment from https://www.web3d.org/x3d/content/examples/ConformanceNist/Appearance/MovieTexture/mpeg1-systems.x3d
+    # Expected containerField='source', allowed containerField values="texture" "source" "back" "bottom" "front" "left" "right" "top" "backTexture" "bottomTexture" "frontTexture" "leftTexture" "rightTexture" "topTexture" "children"
   }
 }
 # Test success: Anchor.isNode()=true, siteAnchor.isNode()=true
@@ -393,6 +425,8 @@ Sound {
 # Test success: CommentsBlock.isNode()=false, testComments.isNode()=false
 # Test failure: CommentsBlock.isStatement()=true, testComments.isStatement()=true
 DEF ExtrusionShape Shape {
+  # ExampleExtrusion isCrossSectionClosed()=true, crossSection='[1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0]'
+  # ExampleExtrusion isSpineClosed()=false, spine='[0.0, 0.0, 0.0, 0.0, 1.0, 0.0]'
   appearance DEF TransparentAppearance Appearance {
     material Material {
       transparency 1.0
@@ -406,7 +440,7 @@ Group {
       # Test MFNode children array as an ordered list consisting of comments, statements, ProtoInstance and nodes
       PROTO NewWorldInfo [
          ### Warning:  ProtoInterface <field name='description'/> is unreferenced in ProtoBody with no corresponding IS/connect/@protoField
-initializeOnly SFString	description ""
+initializeOnly SFString	 description ""
 ] {
         WorldInfo {
         }
@@ -415,10 +449,12 @@ initializeOnly SFString	description ""
         description  "testing 1 2 3"
       }
       DEF Node2 Group {
+        # intentionally empty
       }
       DEF Proto3  NewWorldInfo {
       }
       DEF Node4 Transform {
+        # intentionally empty
       }
       # Test satisfactorily creates MFNode children array as an ordered list with mixed content
   ]
@@ -430,6 +466,8 @@ PROTO ShaderProto [
 }
 Shape {
   appearance Appearance {
+    # Test MFNode shaders array as an ordered list consisting of comments, ProtoInstance and nodes
+    # Test satisfactorily creates MFNode shaders array as an ordered list with mixed content
     shaders DEF TestShader1 ProgramShader {
       programs DEF TestShader2 ShaderProgram {
       }
@@ -496,6 +534,8 @@ DISEntityManager {
 }
 LoadSensor {
   watchList [
+    # Contained nodes typically must be USE references for nodes previously DEFined in the scene
+    # The following nodes are test cases for all X3DUrlObject nodes
     USE siteAnchor
     USE inlineScene
     DISEntityTypeMapping {

@@ -72,6 +72,7 @@ POSSIBILITY OF SUCH DAMAGE.
     <property name="user.name.build" value="Don Brutzman, brutzman@nps.edu"/>
 
     <property name="examples.dir"       location="../content/examples"/>
+    <property name="batch.examples.dir" location="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation"/>
     <property name="X3dDtdsSchemas.dir" location="../../specifications"/>
     <!-- Current official X3D Schema source file is version 3.3, development in progress for X3D 4.0 -->
     <property name="X3dSchemaSource"    value="x3d-4.0.xsd"/>
@@ -663,21 +664,21 @@ POSSIBILITY OF SUCH DAMAGE.
 	    <arg value="${saxon.dir}/${saxon.jar};${saxon.dir}/${xmlresolver.jar};."/>
 	    <arg value="CreatePython"/>
 	    <srcfile/>
-	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin" casesensitive="yes">
+	    <fileset dir="${batch.examples.dir}" casesensitive="yes">
                <include name="**/*.x3d"/>
                <exclude name="**/*Python*.x3d"/>
 	    </fileset>
 	  </apply>
-	  <apply executable="py" dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin">
+	  <apply executable="py" dir="${batch.examples.dir}">
 	    <srcfile/>
-	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin" casesensitive="yes">
+	    <fileset dir="${batch.examples.dir}" casesensitive="yes">
                <include name="**/*.py"/>
 	    </fileset>
 	  </apply>
 	  <apply executable="C:/Users/john/Downloads/view3dscene-4.3.0-win64-x86_64/view3dscene/tovrmlx3d">
 	    <arg value="--validate"/>
 	    <srcfile/>
-	    <fileset dir="C:/x3d-code/www.web3d.org/x3d/content/examples/HumanoidAnimation/Skin" casesensitive="yes">
+	    <fileset dir="${batch.examples.dir}" casesensitive="yes">
                <include name="**/*Python*.x3dv"/>
                <include name="**/*Python*.x3d"/>
 	    </fileset>

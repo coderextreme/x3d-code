@@ -85,7 +85,7 @@ Invocation:
             </xsl:when>
             <xsl:otherwise>
                 <!-- v4.0 includes bookmarks for each node in Node Index clause -->
-                <xsl:text>https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof</xsl:text>
+                <xsl:text>https://www.web3d.org/specifications/X3Dv4/ISO-IEC19775-1v4-IS</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
 	</xsl:variable>
@@ -3427,6 +3427,30 @@ Invocation:
 				<xsl:text>' attribute '</xsl:text>
 				<xsl:value-of select="@name"/>
 				<xsl:text>' has unmatched ] bracket</xsl:text>
+			</xsl:message>
+		</xsl:if>
+		<xsl:if test="(starts-with(@name,'set') or starts-with(@tooltip,'[set')) and not(contains(@tooltip,'accessType inputOnly'))"><!--  -->
+			<xsl:message>
+				<xsl:text>[Error] element '</xsl:text>
+				<xsl:value-of select="../@name"/>
+				<xsl:text>' attribute '</xsl:text>
+				<xsl:value-of select="@name"/>
+                                <!-- debug
+				<xsl:text>' tooltip '</xsl:text>
+				<xsl:value-of select="@tooltip"/> -->
+				<xsl:text>' starts with 'set' but does not indicate accessType inputOnly</xsl:text>
+			</xsl:message>
+		</xsl:if>
+		<xsl:if test="(ends-with(@name,'_changed') or starts-with(@tooltip,concat('[',@name,'_changed '))) and not(contains(@tooltip,'accessType outputOnly'))"><!--  -->
+			<xsl:message>
+				<xsl:text>[Error] element '</xsl:text>
+				<xsl:value-of select="../@name"/>
+				<xsl:text>' attribute '</xsl:text>
+				<xsl:value-of select="@name"/>
+                                <!-- debug
+				<xsl:text>' tooltip '</xsl:text>
+				<xsl:value-of select="@tooltip"/> -->
+				<xsl:text>' starts with 'set' but does not indicate accessType inputOnly</xsl:text>
 			</xsl:message>
 		</xsl:if>
 		<xsl:variable name="signatureSummary">

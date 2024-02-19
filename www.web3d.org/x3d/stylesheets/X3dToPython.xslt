@@ -102,8 +102,8 @@ from x3d import *
         <xsl:choose>
             <xsl:when test="//*[starts-with(local-name(),'Xvl')]">
             <xsl:text>
+print('*** Lattice Xvl nodes were an experimental extensibility effort in 2002 and are not supported in ISO-standard X3D. Exiting.')
 import sys
-print('*** Lattice Xvl nodes were an experimental extensibility effort in 2002 and are not supported in ISO-standard X3D. Exiting.', file=sys.stderr)
 sys.exit()
 ####################################################################################################
 </xsl:text>
@@ -115,8 +115,8 @@ sys.exit()
                             (//meta[@name='title']/@content='TestSchematronDiagnostics.x3d') or
                             (//meta[@name='title']/@content='X3dRetreatProtoExercise.x3d')">
             <xsl:text>
+print('*** </xsl:text><xsl:value-of select="//meta[@name='title']/@content"/><xsl:text> is an experimental X3D model and not intended to run. Exiting.')
 import sys
-print('*** </xsl:text><xsl:value-of select="//meta[@name='title']/@content"/><xsl:text> is an experimental X3D model and not intended to run. Exiting.', file=sys.stderr)
 sys.exit()
 ####################################################################################################
 </xsl:text>
@@ -128,7 +128,6 @@ sys.exit()
         
         <!-- this block follows model creation since parsing and loading must be completed before running metaDiagnostics(newModel) -->
         <xsl:text>
-import sys
 ####################################################################################################
 # Self-test diagnostics
 ####################################################################################################
@@ -139,95 +138,101 @@ print('Self-test diagnostics</xsl:text>
             <xsl:text> for </xsl:text>
             <xsl:value-of select="$modelFileName"/>
         </xsl:if>
-        <xsl:text>:', file=sys.stderr)</xsl:text>
+        <xsl:text>:')</xsl:text>
         <xsl:choose>
             <xsl:when test="($insertPackagePrefix = 'true')">
                 <xsl:text>
 if        x3d.metaDiagnostics(newModel): # built-in utility method in X3D class to show
-    print(x3d.metaDiagnostics(newModel), file=sys.stderr) # ('info', 'hint', 'warning', 'error', 'TODO')
+    print(x3d.metaDiagnostics(newModel)) # ('info', 'hint', 'warning', 'error', 'TODO')
 </xsl:text>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:text>
 if        metaDiagnostics(newModel): # built-in utility method in X3D class
-    print(metaDiagnostics(newModel), file=sys.stderr) # display meta info, hint, warning, error, TODO values in this model</xsl:text>
+    print(metaDiagnostics(newModel)) # display meta info, hint, warning, error, TODO values in this model</xsl:text>
             </xsl:otherwise>
         </xsl:choose>
         <xsl:text>
-print('check newModel.XML() serialization...', file=sys.stderr)
+# print('check newModel.XML() serialization...')
 newModelXML= newModel.XML() # test export method XML() for exceptions during export</xsl:text>
-   <xsl:text>
-print(prependLineNumbers(newModelXML), file=sys.stderr)
+   <!--<xsl:text>
+debug ============
+print(prependLineNumbers(newModelVRML))
 x3dfile = open("</xsl:text>
 <xsl:value-of select="substring-before($modelFileName,'.')"/>
 <xsl:text>PythonToX3d.x3d","wt")
 x3dfile.write(newModelXML)
 x3dfile.close()
-        </xsl:text>
+==================
+        </xsl:text>-->
         <xsl:text>
 newModel.XMLvalidate()
 # print(newModelXML) # diagnostic
 
 try:
-    print('check newModel.VRML() serialization...', file=sys.stderr)
+#   print('check newModel.VRML() serialization...')
     newModelVRML=newModel.VRML() # test export method VRML() for exceptions during export
-    # print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug</xsl:text>
-   <xsl:text>
-#    print(prependLineNumbers(newModelVRML), file=sys.stderr) # debug
-    vrmlfile = open("</xsl:text>
-      <xsl:value-of select="substring-before($modelFileName,'.')"/>
-      <xsl:text>PythonToVRML.x3dv","wt")
-    vrmlfile.write(newModelVRML)
-    vrmlfile.close()
-        </xsl:text>
+    # print(prependLineNumbers(newModelVRML)) # debug</xsl:text>
+   <!--<xsl:text>
+# debug ============
+#   print(prependLineNumbers(newModelVRML)) # debug
+#   vrmlfile = open("</xsl:text>
+#     <xsl:value-of select="substring-before($modelFileName,'.')"/>
+#     <xsl:text>PythonToJSON.wrl","wt")
+#   vrmlfile.write(newModelVRML)
+#   vrmlfile.close()
+# ==================
+        </xsl:text>-->
         <xsl:text>
-    print("Python-to-VRML export of VRML output successful", flush=True, file=sys.stderr)
+    print("Python-to-VRML export of VRML output successful", flush=True)
 except Exception as err: # usually BaseException
     # https://stackoverflow.com/questions/18176602/how-to-get-the-name-of-an-exception-that-was-caught-in-python
-    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err, file=sys.stderr)
+    print("*** Python-to-VRML export of VRML output failed:", type(err).__name__, err)
     if newModelVRML: # may have failed to generate
-        print(prependLineNumbers(newModelVRML, err.lineno), file=sys.stderr)
+        print(prependLineNumbers(newModelVRML, err.lineno))
 
 try:
-    print('check newModel.JSON() serialization...', file=sys.stderr)
+#   print('check newModel.JSON() serialization...')
     newModelJSON=newModel.JSON() # test export method JSON() for exceptions during export
-#   print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug</xsl:text>
-   <xsl:text>
-#    print(prependLineNumbers(newModelJSON), file=sys.stderr) # debug
-    jsonfile = open("</xsl:text>
-     <xsl:value-of select="substring-before($modelFileName,'.')"/>
-     <xsl:text>PythonToJSON.json","wt")
-    jsonfile.write(newModelJSON)
-    jsonfile.close()
-        </xsl:text>
+#   print(prependLineNumbers(newModelJSON)) # debug</xsl:text>
+   <!--<xsl:text>
+# debug ============
+#   print(prependLineNumbers(newModelJSON)) # debug
+#   jsonfile = open("</xsl:text>
+#     <xsl:value-of select="substring-before($modelFileName,'.')"/>
+#     <xsl:text>PythonToJSON.json","wt")
+#   jsonfile.write(newModelJSON)
+#   jsonfile.close()
+# ==================
+        </xsl:text>-->
         <xsl:text>
-    print("Python-to-JSON export of JSON output successful (under development)", file=sys.stderr)
+    print("Python-to-JSON export of JSON output successful (under development)")
 except Exception as err: # usually SyntaxError
-    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err, file=sys.stderr)
+    print("*** Python-to-JSON export of JSON output failed:", type(err).__name__, err)
     if newModelJSON: # may have failed to generate
-        print(prependLineNumbers(newModelJSON,err.lineno), file=sys.stderr)
+        print(prependLineNumbers(newModelJSON,err.lineno))
 
 print("python</xsl:text>
         <xsl:if test="(string-length($modelFileName) > 0)">
             <xsl:text> </xsl:text>
             <xsl:value-of select="$modelFileName"/>
         </xsl:if>
-        <xsl:text> load and self-test diagnostics complete.", file=sys.stderr)
+        <xsl:text> load and self-test diagnostics complete.")
 </xsl:text>
 <!--
 TODO print meta warnings, errors etc. as part of validation
 TODO Script and other CDATA blocks
 
-print ('type(newModel)        =', type(newModel), file=sys.stderr)
-print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__      =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__, file=sys.stderr)
-print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__     =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__, file=sys.stderr)
-print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__    =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__, file=sys.stderr)
-print ('newModel.head =', newModel.head , file=sys.stderr)
-print ('newModel.Scene=', newModel.Scene, file=sys.stderr)
+print ('type(newModel)        =', type(newModel))
+print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__      =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>X3D.__name__)
+print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__     =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>head.__name__)
+print ('</xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__    =', </xsl:text><xsl:value-of select="$packagePrefix"/><xsl:text>Scene.__name__)
+print ('newModel.head =', newModel.head )
+print ('newModel.Scene=', newModel.Scene)
 
 verbose alternates:
-print ('str(newModel.head)    =', str(newModel.head), file=sys.stderr)
-print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
+print ('str(newModel.head)    =', str(newModel.head))
+print ('str(newModel.Scene)   =', str(newModel.Scene))
 -->
     </xsl:template>
 
@@ -954,14 +959,17 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                       (local-name()='colorPerVertex' and string(.)='true') or
                       (local-name()='normalPerVertex' and string(.)='true') or
                       (local-name()='solid' and string(.)='true') or
-                      (local-name()='xDimension' and (string(.)='2')) or
+                      (local-name()='xDimension' and (string(.)='0')) or
                       (local-name()='xSpacing' and (string(.)='1' or string(.)='1.0')) or
-                      (local-name()='zDimension' and (string(.)='2')) or
+                      (local-name()='zDimension' and (string(.)='0')) or
                       (local-name()='zSpacing' and (string(.)='1' or string(.)='1.0')) or
                       (local-name()='yScale' and (string(.)='1' or string(.)='1.0')) or
-                      (local-name()='height' and (string(.)='0 0 0 0' or string(.)='0.0 0.0 0.0 0.0')) or
                       (local-name()='geoGridOrigin' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
                       (local-name()='creaseAngle' and (string(.)='0' or string(.)='0.0')))) and
+                      not((local-name(..)='ElevationGrid') and
+                      (local-name()='height' and (string(.)='' or string(.)=''))) and
+                      not((local-name(..)='GeoElevationGrid') and
+                      (local-name()='height' and (string(.)='0 0' or string(.)='0.0 0.0'))) and
                       not( local-name(..)='Extrusion'	and
                       ((local-name()='beginCap' and string(.)='true') or
                       (local-name()='ccw' and string(.)='true') or
@@ -1340,7 +1348,7 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                       ((local-name()='containerField' and string(.)='children'))) and
                       not( local-name(..)='OscillatorSource' and
                       ((local-name()='containerField' and string(.)='children') or
-                      (local-name()='frequency' and (string(.)='0' or string(.)='0.0')))) and
+                      (local-name()='frequency' and (string(.)='440' or string(.)='440.0')))) and
                       not( local-name(..)='PeriodicWave' and
                       ((local-name()='containerField' and string(.)='children') or
                       (local-name()='type' and (string(.)='SQUARE')))) and
@@ -1536,9 +1544,6 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                        (local-name()='bboxCenter' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
                        (local-name()='bboxSize' and (string(.)='-1 -1 -1' or string(.)='-1.0 -1.0 -1.0')) or
                        (local-name()='center' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
-                       (local-name()='jointBindingPositions' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
-                       (local-name()='jointBindingRotations' and (string(.)='0 0 1 0' or string(.)='0 1 0 0' or string(.)='0.0 0.0 1.0 0.0' or string(.)='0.0 1.0 0.0 0.0')) or
-                       (local-name()='jointBindingScales' and (string(.)='1 1 1' or string(.)='1.0 1.0 1.0')) or
                        (local-name()='loa' and (string(.)='-1')) or
                        (local-name()='version' and (($isHAnim1 = true() and (string(.)='1.0' or (string-length(string(.)) = 0))) or ($isHAnim2 = true() and string(.)='2.0'))) or
                        (local-name()='skeletalConfiguration' and (string(.)='BASIC')) or
@@ -1581,7 +1586,7 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                       (local-name()='vDimension' and (string(.)='0')) or
                       (local-name()='uOrder' and (string(.)='3')) or
                       (local-name()='vOrder' and (string(.)='3')))) and
-                      not((local-name(..)='NurbsCurve' or local-name(..)='NurbsSwungSurface') and
+                      not((local-name(..)='NurbsSweptSurface' or local-name(..)='NurbsSwungSurface') and
                       ((local-name()='ccw' or local-name()='solid') and (string(.)='true'))) and
                       not((contains(local-name(..),'SplinePositionInterpolator') or local-name(..)='SplineScalarInterpolator' or local-name(..)='SquadOrientationInterpolator') and
                       ((local-name()='closed' or local-name()='normalizeVelocity') and (string(.)='false')))" />
@@ -2135,14 +2140,17 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 					($attributeName='loop')     or
 					($attributeName='next')     or
 					($attributeName='previous') or
+					($attributeName='normalize')         or
 					($attributeName='normalizeVelocity') or
+					($attributeName='pickable')          or
 					($attributeName='rtpHeaderExpected') or
 					($attributeName='shadows') or
 					($attributeName='solid') or
 					($attributeName='trackCurrentView') or
 					($attributeName='uClosed') or ($attributeName='vClosed') or
-					($attributeName='visible') or
+					($attributeName='useFiniteRotation') or ($attributeName='useGlobalGravity') or
 					($attributeName='viewAll') or
+					($attributeName='visible') or
 					($parentElementName='AudioClip' and $attributeName='loop') or
 					($parentElementName='BooleanToggle' and $attributeName='toggle') or
 					($parentElementName='Collision' and $attributeName='enabled') or
@@ -2169,7 +2177,6 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 					($parentElementName='NurbsPatchSurface' and $attributeName='closedSurface') or
 					($parentElementName='ParticleSystem' and $attributeName='createParticles') or
 					($parentElementName='VolumeEmitter' and $attributeName='internal') or
-					($parentElementName='PickableGroup' and $attributeName='pickable') or
 					($parentElementName='PixelTexture' and ($attributeName='repeatS' or $attributeName='repeatT')) or
 					($parentElementName='NavigationInfo' and $attributeName='headlight') or
 					($parentElementName='PlaneSensor' and $attributeName='autoOffset') or
@@ -2262,18 +2269,35 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                                         ($attributeName='absorption')       or
                                         ($attributeName='ambientIntensity') or
 					($attributeName='attack')           or
+                                        ($attributeName='axis1Angle')       or ($attributeName='axis2Angle')  or ($attributeName='axis3Angle')  or	
+					($attributeName='axis1Torque')      or ($attributeName='axis2Torque') or ($attributeName='axis3Torque') or	
+					($attributeName='bounce')           or ($attributeName='minBounceSpeed')  or
                                         ($attributeName='coneInnerAngle')   or ($attributeName='coneOuterAngle')  or ($attributeName='coneOuterGain')    or
+					($attributeName='constantForceMix') or ($attributeName='contactSurfaceThickness')      or 
 					($attributeName='creaseAngle')      or
-					($attributeName='detune')           or
+                                        ($attributeName='desiredAngularVelocity1') or ($attributeName='desiredAngularVelocity2')  or
+                                        ($attributeName='disabledAngularSpeed') or ($attributeName='disabledLinearSpeed') or ($attributeName='disabledTime')  or	
+                                        ($attributeName='detune')           or
                                         ($attributeName='diffuse')          or
+					($attributeName='errorCorrection')  or
 					($attributeName='farDistance')      or ($attributeName='nearDistance')    or
 					($attributeName='frequency')        or
 					($attributeName='gain')             or
+					($attributeName='hinge1Angle')      or ($attributeName='hinge2Angle')       or
+					($attributeName='hinge1AngleRate')  or ($attributeName='hinge2AngleRate')   or
 					($attributeName='intensity')        or
 					($attributeName='interauralDistance') or
 					($attributeName='knee')             or
+					($attributeName='linearDampingFactor') or ($attributeName='linearVelocity') or
 					($attributeName='loopEnd')          or ($attributeName='loopStart')       or
-					($attributeName='maxDistance')      or
+					($attributeName='mass')             or
+					($attributeName='maxAngle1')        or ($attributeName='maxAngle2')       or
+					($attributeName='maxTorque1')       or ($attributeName='maxTorque2')      or
+					($attributeName='maxAngle')         or ($attributeName='minAngle1')       or
+					($attributeName='maxCorrectionSpeed') or
+					($attributeName='motor1Angle')      or ($attributeName='motor2Angle')     or
+                                        ($attributeName='motor1AngleRate')  or ($attributeName='motor2AngleRate') or
+                                        ($attributeName='maxDistance')      or
 					($attributeName='minDecibels')      or ($attributeName='maxDecibels')     or
                                         starts-with($attributeName,'pointSize') or
 					($attributeName='priority')         or
@@ -2283,10 +2307,16 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 					($attributeName='referenceDistance') or
                                         ($attributeName='refraction')       or
                                         ($attributeName='rolloffFactor')    or
+					($attributeName='separation')       or ($attributeName='separationRate')     or
 					($attributeName='shadowIntensity')  or
 					($attributeName='smoothingTimeConstant')  or
                                         ($attributeName='specular')         or
                                         ($attributeName='startAngle')       or ($attributeName='endAngle') or
+					($attributeName='stopBounce')       or ($attributeName='stopErrorCorrection') or
+                                        ($attributeName='stop1Bounce')      or ($attributeName='stop1ConstantForceMix ') or ($attributeName='stop1ErrorCorrection') or 
+                                        ($attributeName='stop2Bounce')      or ($attributeName='stop2ConstantForceMix ') or ($attributeName='stop2ErrorCorrection') or 
+                                        ($attributeName='stop3Bounce')      or ($attributeName='stop3ConstantForceMix ') or ($attributeName='stop3ErrorCorrection') or 
+                                        ($attributeName='suspensionErrorCorrection') or ($attributeName='suspensionForce') or 
 					($attributeName='threshold')        or
                                         ($attributeName='tolerance')        or
 					($attributeName='transparency')     or
@@ -2398,14 +2428,15 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                     ($attributeName='timestamp')      or
                     ($attributeName='readInterval')   or
                     ($attributeName='writeInterval')  or
-                    ($parentElementName='LoadSensor'     and $attributeName='timeOut')  or
-                    ($parentElementName='AudioClip'      and ends-with($attributeName,'Time'))  or
-                    ($parentElementName='EspduTransform' and ends-with($attributeName,'Time'))  or
-                    ($parentElementName='HAnimMotion'    and $attributeName='frameDuration') or
-                    ($parentElementName='MovieTexture'   and ends-with($attributeName,'Time')) or
+                    ($parentElementName='LoadSensor'         and $attributeName='timeOut')  or
+                    ($parentElementName='AudioClip'          and ends-with($attributeName,'Time'))  or
+                    ($parentElementName='DynamicsCompressor' and $attributeName='release')  or
+                    ($parentElementName='EspduTransform'     and ends-with($attributeName,'Time'))  or
+                    ($parentElementName='HAnimMotion'        and $attributeName='frameDuration') or
+                    ($parentElementName='MovieTexture'       and ends-with($attributeName,'Time')) or
                     ($parentElementName='TimeSensor')"> 
-                    <!-- TimeSensor loop & enabled are caught by SFBool tests, all other TimeSensor fields are SFTime -->
-			  <xsl:text>SFTime</xsl:text>
+                        <!-- TimeSensor loop & enabled are caught by SFBool tests, all other TimeSensor fields are SFTime -->
+                        <xsl:text>SFTime</xsl:text>
 		  </xsl:when>
 		  <!-- no MFTime -->
 		  <!-- SFVec2f -->
@@ -2474,6 +2505,8 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 					($attributeName='center')      or
 					($attributeName='scale')       or
 					($attributeName='translation') or
+					($attributeName='body1AnchorPoint') or ($attributeName='body2AnchorPoint') or
+					($attributeName='body1Axis')   or ($attributeName='body2Axis') or
 					($parentElementName='Billboard' and $attributeName='axisOfRotation') or
 					($parentElementName='Box' and $attributeName='size') or
 					(ends-with($parentElementName,'Emitter') and ($attributeName='direction' or $attributeName='position')) or
@@ -2522,6 +2555,7 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 					($parentElementName='NormalInterpolator'         and $attributeName='keyValue') or
 					($parentElementName='PositionInterpolator'       and $attributeName='keyValue') or
 					($parentElementName='SplinePositionInterpolator' and ($attributeName='keyValue' or $attributeName='keyVelocity')) or
+					($parentElementName='RigidBody'                  and ($attributeName='forces'   or $attributeName='torques')) or
 					(contains($parentElementName,'Coordinate') and $attributeName='point') or
 					($parentElementName='Extrusion' and $attributeName='spine') or
 					($parentElementName='Normal' and $attributeName='vector') or
@@ -2586,6 +2620,36 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
                     ($parentElementName='Matrix4VertexAttribute' and $attributeName='value')">
 			  <xsl:text>MFMatrix4f</xsl:text>
 		  </xsl:when>
+		  <!-- SFNode and MFNode are needed for type lookup when checking ROUTE connections -->
+		  <!-- SFNode -->
+		  <xsl:when test="
+                    ($localFieldType='SFNode')    or 
+                    ($attributeName='attrib') or ($attributeName='color') or ($attributeName='coord') or ($attributeName='normal') or ($attributeName='texCoord') or 
+                    ($attributeName='body1')  or ($attributeName='body2') or ($attributeName='geometry1')  or ($attributeName='geometry2') or 
+                    (($parentElementName='MetadataSet')         and  $attributeName='metadata') or
+                    (($parentElementName='CollidableOffset')    and  $attributeName='collidable') or
+                    (($parentElementName='CollidableShape')     and  $attributeName='shape') or
+                    ((($parentElementName='CollisionSensor') or ($parentElementName='RigidBodyCollection'))  and  $attributeName='collider') or
+                    (($parentElementName='RigidBody')           and  $attributeName='massDensityModel') or
+                    (($parentElementName='RigidBodyCollection') and  $attributeName='joints') or
+                    ($parentElementName='Shape'                 and (($attributeName='appearance')     or ($attributeName='geometry'))) or
+                    ($parentElementName='Appearance'            and (($attributeName='material')       or ($attributeName='texture')          or ($attributeName='textureTransform') or ($attributeName='acousticProperties') or
+                    ($attributeName='fillProperties') or ($attributeName='lineProperties')  or ($attributeName='pointProperties'))) or
+                    ($parentElementName='PhysicalMaterial'      and (($attributeName='baseTexture')    or ($attributeName='emissiveTexture') or ($attributeName='metallicRoughnessTexture') or ($attributeName='normalTexture') or ($attributeName='occlusionTexture'))) or
+                    ($parentElementName='UnlitMaterial'         and (($attributeName='baseTexture')    or ($attributeName='emissiveTexture')                                                or ($attributeName='normalTexture')))">
+			  <xsl:text>SFNode</xsl:text>
+		  </xsl:when>
+		  <!-- MFNode -->
+		  <xsl:when test="
+                    ($localFieldType='MFNode')  or 
+                    ($attributeName='children') or ($attributeName='addChildren') or ($attributeName='removeChildren') or 
+                    (ends-with($parentElementName,'LOD') and  ($attributeName='level')) or
+                    ($attributeName='bodies') or ($attributeName='collidables') or ($attributeName='contacts') or
+                    (($parentElementName='RigidBodyCollection') and  $attributeName='joints') or
+                    ($parentElementName='MetadataSet' and $attributeName='metadata') or
+                    ($parentElementName='Appearance'  and $attributeName='shaders')">
+			  <xsl:text>MFNode</xsl:text>
+		  </xsl:when>
 		  <!-- MFInt32 --> <!-- must precede SFInt32 -->
 		  <xsl:when test="
 					($localFieldType='MFInt32')    or 
@@ -2615,11 +2679,18 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 		  <!-- Statements: xs:integer as SFInt32 - TODO schema/spec change? -->
 		  <!-- SFInt32 --> <!-- Note that other DIS attibutes must get tested before this, including MFInt32 -->
 		  <xsl:when test="
-                    ($localFieldType='SFInt32')           or 
-                     ends-with($attributeName,'ID')             or
-                    ($attributeName='farClippingPlane')         or
-                    ($attributeName='nearClippingPlane')        or
-                    ($attributeName='order')                    or
+                                        ($parentElementName='IntegerSequencer' and $attributeName='value') or
+                                        ($localFieldType='SFInt32')                 or 
+                                         ends-with($attributeName,'ID')             or
+                                        ($attributeName='farClippingPlane')         or
+                                        ($attributeName='nearClippingPlane')        or
+                                        ($attributeName='bufferLength')             or
+					($attributeName='channelSelection')         or
+					($attributeName='enabledAxes')              or
+					($attributeName='fftSize')                  or
+					($attributeName='frequencyBinCount')        or
+					($attributeName='maxChannelCount')          or
+                                        ($attributeName='order')                    or
 					($attributeName='channelSelection')         or
 					($attributeName='uOrder')                   or
 					($attributeName='vOrder')                   or
@@ -2631,15 +2702,15 @@ print ('str(newModel.Scene)   =', str(newModel.Scene), file=sys.stderr)
 					($parentElementName='SignalPdu')            or
 					($parentElementName='ReceiverPdu')          or
 					($parentElementName='TransmitterPdu')       or
-                    (($parentElementName='component') and $attributeName='level')    or 
+                                        (($parentElementName='component') and $attributeName='level')    or 
 					($parentElementName='CartoonVolumeStyle' and $attributeName='colorSteps') or
 					(contains($parentElementName,'ElevationGrid') and ($attributeName='xDimension' or $attributeName='zDimension')) or
 					($parentElementName='FillProperties' and ($attributeName='hatchStyle')) or
 					($parentElementName='FloatVertexAttribute' and $attributeName='numComponents') or
 					($parentElementName='GeneratedCubeMapTexture' and $attributeName='size') or
 					(starts-with($parentElementName,'HAnim') and $attributeName='loa') or
-                    ($parentElementName='HAnimMotion' and (($attributeName='frameIncrement') or ($attributeName='frameIndex') or ($attributeName='startFrame') or ($attributeName='endFrame'))) or
-                    ($parentElementName='IntegerTrigger' and $attributeName='integerKey') or
+                                        ($parentElementName='HAnimMotion' and (($attributeName='frameIncrement') or ($attributeName='frameIndex') or ($attributeName='startFrame') or ($attributeName='endFrame'))) or
+                                        ($parentElementName='IntegerTrigger' and $attributeName='integerKey') or
 					($parentElementName='LayerSet' and ($attributeName='activeLayer')) or
 					($parentElementName='LineProperties' and ($attributeName='linetype')) or
 					($parentElementName='MotorJoint' and $attributeName='enabledAxe') or

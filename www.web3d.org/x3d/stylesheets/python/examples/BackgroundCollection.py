@@ -1,10 +1,6 @@
 ####################################################################################################
 #
-# Invoking X3D model self-test:
-#
-#   $ python BackgroundCollection.py
-#
-# Python package x3d.py package is available on PyPI for import.
+# Now available: developmental python x3d.py package on PyPI for import.
 #   This approach simplifies Python X3D deployment and use.
 #   https://pypi.org/project/x3d
 #
@@ -13,7 +9,7 @@
 # or
 #       python -m pip install x3d
 #
-# Developer options for loading x3d package in other Python programs:
+# Developer options for loading x3d package:
 #
 #    from x3d import *  # preferred approach, terser source that avoids x3d.* class prefixes
 #

@@ -29,6 +29,21 @@ span.route {color: red}
 b.warning {color: #CC5500}
 b.error {color: #CC0000}
 
+/* https://stackoverflow.com/questions/10769016/display-image-on-text-link-hover-css-only 
+    position: relative;
+    left: 20px;*/
+.child {
+    float: right;
+    height: 0px;
+}
+.parent:hover {
+    background-color: lightyellow;
+}
+.parent:hover .child {
+    background-color: lightyellow;
+    height: 200px;
+}
+
                 </style>
       <style type="text/css">
 table.curvedEdges { border:10px solid RoyalBlue;-webkit-border-radius:13px;-moz-border-radius:13px;-ms-border-radius:13px;-o-border-radius:13px;border-radius:13px; }
@@ -122,7 +137,7 @@ table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;padd
                <span title="meta 'created' provides date of initial version">&lt;<span class="element">meta</span>&#160;<span class="attribute">name</span>='<span class="value">created</span>'&#160;<span class="attribute">content</span>='<span class="value">6 September 2016</span>'/&gt;
                </span><br />
 
-               <span title="meta 'modified' provides date of modified version">&lt;<span class="element">meta</span>&#160;<span class="attribute">name</span>='<span class="value">modified</span>'&#160;<span class="attribute">content</span>='<span class="value">24 September 2023</span>'/&gt;
+               <span title="meta 'modified' provides date of modified version">&lt;<span class="element">meta</span>&#160;<span class="attribute">name</span>='<span class="value">modified</span>'&#160;<span class="attribute">content</span>='<span class="value">21 November 2023</span>'/&gt;
                </span><br />
 
                <span title="meta 'generator' provides name of authoring tool or translation tool producing this
@@ -322,7 +337,7 @@ table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;padd
 <br />
 &#160;&#160;<span title="uniform resource locator (url) list of relative or absolute file addresses, performed
                            in order until resource retrieval succeeds"><span class="attribute">url</span>='
-                           "<a href="images/X3dJavaSceneAccessInterfaceSaiLibrary.png" target="_blank">images/X3dJavaSceneAccessInterfaceSaiLibrary.png</a>" "<a href="https://www.web3d.org/specifications/java/examples/images/X3dJavaSceneAccessInterfaceSaiLibrary.png" target="_blank">https://www.web3d.org/specifications/java/examples/images/X3dJavaSceneAccessInterfaceSaiLibrary.png</a>" '</span>
+                           "<a href="images/X3dJavaSceneAccessInterfaceSaiLibrary.png" target="_blank" class="parent">images/X3dJavaSceneAccessInterfaceSaiLibrary.png<img class="child" src="images/X3dJavaSceneAccessInterfaceSaiLibrary.png"/></a>" "<a href="https://www.web3d.org/specifications/java/examples/images/X3dJavaSceneAccessInterfaceSaiLibrary.png" target="_blank" class="parent">https://www.web3d.org/specifications/java/examples/images/X3dJavaSceneAccessInterfaceSaiLibrary.png<img class="child" src="https://www.web3d.org/specifications/java/examples/images/X3dJavaSceneAccessInterfaceSaiLibrary.png"/></a>" '</span>
                            /&gt;
                            </span></div><span title="Appearance specifies visual properties of geometry by containing Material, texture
                         and TextureTransform nodes">&lt;/<span class="element">Appearance</span>&gt;
@@ -384,12 +399,12 @@ table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;padd
                </span></div><!--div.boxedBlock-->
                <br />
 <a name="ROUTE_1"> </a> 
-               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_1" href="#ROUTE_1" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_1" href="#ROUTE_1" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                <a title="go to the original DEF node definition" href="#OrbitClock" class="idName">OrbitClock</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">fraction_changed</span>'</span>&#160;<span class="attribute">toNode</span>='
                <a title="go to the original DEF node definition" href="#BoxPathAnimator" class="idName">BoxPathAnimator</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">set_fraction</span>'</span>/&gt;
                </span><br />
 <a name="ROUTE_2"> </a> 
-               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_2" href="#ROUTE_2" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_2" href="#ROUTE_2" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                <a title="go to the original DEF node definition" href="#BoxPathAnimator" class="idName">BoxPathAnimator</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">value_changed</span>'</span>&#160;<span class="attribute">toNode</span>='
                <a title="go to the original DEF node definition" href="#LogoGeometryTransform" class="idName">LogoGeometryTransform</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">set_translation</span>'</span>/&gt;
                </span><br />
@@ -496,12 +511,12 @@ table.curvedEdges td, table.curvedEdges th { border-bottom:1px dotted black;padd
                </span></div><!--div.boxedBlock-->
                <br />
 <a name="ROUTE_3"> </a> 
-               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_3" href="#ROUTE_3" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_3" href="#ROUTE_3" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                <a title="go to the original DEF node definition" href="#SpinClock" class="idName">SpinClock</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">fraction_changed</span>'</span>&#160;<span class="attribute">toNode</span>='
                <a title="go to the original DEF node definition" href="#SpinInterpolator" class="idName">SpinInterpolator</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">set_fraction</span>'</span>/&gt;
                </span><br />
 <a name="ROUTE_4"> </a> 
-               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_4" href="#ROUTE_4" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+               <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_4" href="#ROUTE_4" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                <a title="go to the original DEF node definition" href="#SpinInterpolator" class="idName">SpinInterpolator</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">value_changed</span>'</span>&#160;<span class="attribute">toNode</span>='
                <a title="go to the original DEF node definition" href="#TextTransform" class="idName">TextTransform</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">rotation</span>'</span>/&gt;
                </span><br />
@@ -581,17 +596,17 @@ function colorInput (eventValue) // Example source code
                   </span></div><!--div.boxedBlock-->
                   <br />
 <a name="ROUTE_5"> </a> 
-                  <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_5" href="#ROUTE_5" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+                  <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_5" href="#ROUTE_5" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                   <a title="go to the original DEF node definition" href="#colorTypeConversionScript" class="idName">colorTypeConversionScript</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">colorsOutput</span>'</span>&#160;<span class="attribute">toNode</span>='
                   <a title="go to the original DEF node definition" href="#GradualBackground" class="idName">GradualBackground</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">skyColor</span>'</span>/&gt;
                   </span><br />
 <a name="ROUTE_6"> </a> 
-                  <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_6" href="#ROUTE_6" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+                  <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_6" href="#ROUTE_6" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                   <a title="go to the original DEF node definition" href="#ColorAnimator" class="idName">ColorAnimator</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">value_changed</span>'</span>&#160;<span class="attribute">toNode</span>='
                   <a title="go to the original DEF node definition" href="#colorTypeConversionScript" class="idName">colorTypeConversionScript</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">colorInput</span>'</span>/&gt;
                   </span><br />
 <a name="ROUTE_7"> </a> 
-                  <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="bookmark for this ROUTE is #ROUTE_7" href="#ROUTE_7" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
+                  <span title="ROUTE connects fields between nodes to enable event passing" style="background-color:#DDEEFF;">&lt;<span class="route"><a title="HTML bookmark for this ROUTE is #ROUTE_7" href="#ROUTE_7" class="route">ROUTE</a></span>&#160;<span class="attribute">fromNode</span>='
                   <a title="go to the original DEF node definition" href="#ColorClock" class="idName">ColorClock</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">fromField</span>='<span class="value">fraction_changed</span>'</span>&#160;<span class="attribute">toNode</span>='
                   <a title="go to the original DEF node definition" href="#ColorAnimator" class="idName">ColorAnimator</a>'<span title="" style="background-color:#DDEEFF;;">&#160;<span class="attribute">toField</span>='<span class="value">set_fraction</span>'</span>/&gt;
                   </span></div><span title="Group is a Grouping node that can contain most nodes">&lt;/<span class="element">Group</span>&gt;
@@ -1443,10 +1458,10 @@ function clockTrigger (timeValue)
          </div><span style="color:white">--&gt;</span>
          <!-- apply-templates * | comment() complete --></div>
       
-      <div style="background-color:#DDEEFF;"><br/><p style="text-align:center;"><b><a name="EventGraph"> </a><a href="#EventGraph">Event Graph ROUTE Table</a> entries with 7 ROUTE connections total, showing <a href="https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/concepts.html#Eventmodel" target="_blank" title="X3D 4.0 Architecture, Concepts, Event Model">event model</a> relationships for this scene.</b></p>
+      <div style="background-color:#DDEEFF;"><br/><p style="text-align:center;"><b><a name="EventGraph"> </a><a href="#EventGraph" title="bookmark link">Event Graph ROUTE Table</a> entries with 7 <a href="https://www.web3d.org/x3d/content/X3dTooltips.html#ROUTE" title="X3D Tooltips: ROUTE" target="_blank">ROUTE</a> connections total, showing <a href="https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/concepts.html#Eventmodel" target="_blank" title="X3D 4.0 Architecture, Concepts, Event Model">event model relationships</a> for this scene.</b></p>
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;"><!--starting first row-->
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;"><!--starting first row-->
 <tr>
          
             <td style="text-align:right"><br/><b>TransmitterPdu</b><br/></td>
@@ -1456,7 +1471,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>TransmitterPdu</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1464,7 +1479,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>TouchSensor</b><br/></td>
             <td>within ProtoBody<br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1473,23 +1488,23 @@ function clockTrigger (timeValue)
          <!-- EventGraph -->
          
          <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
-            <td style="text-align:right; background-color:white;" title=""><a href="#ColorClock">ColorClock</a><br/><b>TimeSensor</b><br/><b><a title="X3D Tooltips: TimeSensor.fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#TimeSensor.fraction">fraction_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFFloat" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#ColorClock" title="DEF name">ColorClock</a><br/><b><span title="X3D node name">TimeSensor</span></b><br/><b><a title="X3D Tooltips: field TimeSensor.fraction_changed" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#TimeSensor.fraction">fraction_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFFloat data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_7" href="#ROUTE_7">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#ColorAnimator">ColorAnimator</a><br/><b>ColorInterpolator</b><br/><b><a title="X3D Tooltips: ColorInterpolator.fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#ColorInterpolator.fraction">set_fraction</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFFloat" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
-            <td style="vertical-align:middle; text-align:center; background-color:lightgrey"><i>then</i></td>
-            <td style="text-align:right; background-color:white;" title=""><a href="#ColorAnimator">ColorAnimator</a><br/><b>ColorInterpolator</b><br/><b><a title="X3D Tooltips: ColorInterpolator.value" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#ColorInterpolator.value">value_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFColor" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFColor">SFColor</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#ColorAnimator" title="DEF name">ColorAnimator</a><br/><b><span title="X3D node name">ColorInterpolator</span></b><br/><b><a title="X3D Tooltips: field ColorInterpolator.set_fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#ColorInterpolator.set_fraction">set_fraction</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFFloat data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
+            <td style="text-align:center; background-color:white; vertical-align:bottom;"><span style="background-color:lightgrey;"><i>then</i></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#ColorAnimator" title="DEF name">ColorAnimator</a><br/><b><span title="X3D node name">ColorInterpolator</span></b><br/><b><a title="X3D Tooltips: field ColorInterpolator.value_changed" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#ColorInterpolator.value_changed">value_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFColor data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFColor">SFColor</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_6" href="#ROUTE_6">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#colorTypeConversionScript">colorTypeConversionScript</a><br/><b>Script</b><br/><b><a title="X3D Tooltips: Script.value" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Script.colorInput">colorInput</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFColor" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFColor">SFColor</a></span></td>
-            <td style="vertical-align:middle; text-align:center; background-color:lightgrey"><i>then</i></td>
-            <td style="text-align:right; background-color:white;" title=""><a href="#colorTypeConversionScript">colorTypeConversionScript</a><br/><b>Script</b><br/><b><a title="X3D Tooltips: Script.colorsOutput" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Script.colorsOutput">colorsOutput</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: MFColor" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFColor">MFColor</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#colorTypeConversionScript" title="DEF name">colorTypeConversionScript</a><br/><b><span title="X3D node name">Script</span></b><br/><b><a title="X3D Tooltips: field Script.colorInput" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Script.colorInput">colorInput</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFColor data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFColor">SFColor</a></span></td>
+            <td style="text-align:center; background-color:white; vertical-align:bottom;"><span style="background-color:lightgrey;"><i>then</i></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#colorTypeConversionScript" title="DEF name">colorTypeConversionScript</a><br/><b><span title="X3D node name">Script</span></b><br/><b><a title="X3D Tooltips: field Script.colorsOutput" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Script.colorsOutput">colorsOutput</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: MFColor data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFColor">MFColor</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_5" href="#ROUTE_5">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#GradualBackground">GradualBackground</a><br/><b>Background</b><br/><b><a title="X3D Tooltips: Background.colorsOutput" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Background.skyColor">skyColor</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: MFColor" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFColor">MFColor</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#GradualBackground" title="DEF name">GradualBackground</a><br/><b><span title="X3D node name">Background</span></b><br/><b><a title="X3D Tooltips: field Background.skyColor" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Background.skyColor">skyColor</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: MFColor data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#MFColor">MFColor</a></span></td>
             <!--time to start new row--><!--row finished-->
 </tr>
 </table>
@@ -1498,17 +1513,17 @@ function clockTrigger (timeValue)
          <!-- EventGraph -->
          
          <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
-            <td style="text-align:right; background-color:white;" title=""><a href="#OrbitClock">OrbitClock</a><br/><b>TimeSensor</b><br/><b><a title="X3D Tooltips: TimeSensor.fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#TimeSensor.fraction">fraction_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFFloat" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#OrbitClock" title="DEF name">OrbitClock</a><br/><b><span title="X3D node name">TimeSensor</span></b><br/><b><a title="X3D Tooltips: field TimeSensor.fraction_changed" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#TimeSensor.fraction">fraction_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFFloat data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_1" href="#ROUTE_1">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#BoxPathAnimator">BoxPathAnimator</a><br/><b>PositionInterpolator</b><br/><b><a title="X3D Tooltips: PositionInterpolator.fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#PositionInterpolator.fraction">set_fraction</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFFloat" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
-            <td style="vertical-align:middle; text-align:center; background-color:lightgrey"><i>then</i></td>
-            <td style="text-align:right; background-color:white;" title=""><a href="#BoxPathAnimator">BoxPathAnimator</a><br/><b>PositionInterpolator</b><br/><b><a title="X3D Tooltips: PositionInterpolator.value" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#PositionInterpolator.value">value_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFVec3f" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec3f">SFVec3f</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#BoxPathAnimator" title="DEF name">BoxPathAnimator</a><br/><b><span title="X3D node name">PositionInterpolator</span></b><br/><b><a title="X3D Tooltips: field PositionInterpolator.set_fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#PositionInterpolator.set_fraction">set_fraction</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFFloat data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
+            <td style="text-align:center; background-color:white; vertical-align:bottom;"><span style="background-color:lightgrey;"><i>then</i></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#BoxPathAnimator" title="DEF name">BoxPathAnimator</a><br/><b><span title="X3D node name">PositionInterpolator</span></b><br/><b><a title="X3D Tooltips: field PositionInterpolator.value_changed" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#PositionInterpolator.value_changed">value_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFVec3f data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec3f">SFVec3f</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_2" href="#ROUTE_2">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#LogoGeometryTransform">LogoGeometryTransform</a><br/><b>Transform</b><br/><b><a title="X3D Tooltips: Transform.value" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Transform.translation">set_translation</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFVec3f" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec3f">SFVec3f</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#LogoGeometryTransform" title="DEF name">LogoGeometryTransform</a><br/><b><span title="X3D node name">Transform</span></b><br/><b><a title="X3D Tooltips: field Transform.translation" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Transform.translation">set_translation</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFVec3f data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFVec3f">SFVec3f</a></span></td>
             <!--time to start new row--><!--row finished-->
 </tr>
 </table>
@@ -1517,17 +1532,17 @@ function clockTrigger (timeValue)
          <!-- EventGraph -->
          
          <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
-            <td style="text-align:right; background-color:white;" title=""><a href="#SpinClock">SpinClock</a><br/><b>TimeSensor</b><br/><b><a title="X3D Tooltips: TimeSensor.fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#TimeSensor.fraction">fraction_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFFloat" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#SpinClock" title="DEF name">SpinClock</a><br/><b><span title="X3D node name">TimeSensor</span></b><br/><b><a title="X3D Tooltips: field TimeSensor.fraction_changed" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#TimeSensor.fraction">fraction_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFFloat data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_3" href="#ROUTE_3">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#SpinInterpolator">SpinInterpolator</a><br/><b>OrientationInterpolator</b><br/><b><a title="X3D Tooltips: OrientationInterpolator.fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#OrientationInterpolator.fraction">set_fraction</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFFloat" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
-            <td style="vertical-align:middle; text-align:center; background-color:lightgrey"><i>then</i></td>
-            <td style="text-align:right; background-color:white;" title=""><a href="#SpinInterpolator">SpinInterpolator</a><br/><b>OrientationInterpolator</b><br/><b><a title="X3D Tooltips: OrientationInterpolator.value" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#OrientationInterpolator.value">value_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFRotation" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFRotation">SFRotation</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#SpinInterpolator" title="DEF name">SpinInterpolator</a><br/><b><span title="X3D node name">OrientationInterpolator</span></b><br/><b><a title="X3D Tooltips: field OrientationInterpolator.set_fraction" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#OrientationInterpolator.set_fraction">set_fraction</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFFloat data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFFloat">SFFloat</a></span></td>
+            <td style="text-align:center; background-color:white; vertical-align:bottom;"><span style="background-color:lightgrey;"><i>then</i></span></td>
+            <td style="text-align:right; background-color:white;" title=""><a href="#SpinInterpolator" title="DEF name">SpinInterpolator</a><br/><b><span title="X3D node name">OrientationInterpolator</span></b><br/><b><a title="X3D Tooltips: field OrientationInterpolator.value_changed" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#OrientationInterpolator.value_changed">value_changed</a></b><br/><span title="" style="background-color:white;title:;"><a title="X3D Tooltips: SFRotation data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFRotation">SFRotation</a></span></td>
             <td style="vertical-align:middle; text-align:center; background-color:white;">
                <div style="background-color:white" title=""><br/><a title="go to #ROUTE_4" href="#ROUTE_4">ROUTE</a><br/> event to <br/> &#160; </div>
             </td>
-            <td style="text-align:left; background-color:white;" title=""><a href="#TextTransform">TextTransform</a><br/><b>Transform</b><br/><b><a title="X3D Tooltips: Transform.value" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Transform.rotation">rotation</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFRotation" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFRotation">SFRotation</a></span></td>
+            <td style="text-align:left; background-color:white;" title=""><a href="#TextTransform" title="DEF name">TextTransform</a><br/><b><span title="X3D node name">Transform</span></b><br/><b><a title="X3D Tooltips: field Transform.rotation" target="_blank" href="https://www.web3d.org/x3d/content/X3dTooltips.html#Transform.rotation">rotation</a></b><br/><span title="" style="background-color:white;"><a title="X3D Tooltips: SFRotation data type" target="_tooltip_type" href="https://www.web3d.org/x3d/content/X3dTooltips.html#SFRotation">SFRotation</a></span></td>
             <!--time to start new row--><!--row finished-->
 </tr>
 </table>
@@ -1535,7 +1550,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>SignalPdu</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1543,7 +1558,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>SignalPdu</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1551,7 +1566,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>Script</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1560,7 +1575,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><a href="#MaterialModulatorScript">MaterialModulatorScript</a><br/><b>Script</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1568,7 +1583,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>ReceiverPdu</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1576,7 +1591,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>ReceiverPdu</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1584,7 +1599,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>ProtoInstance</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1592,12 +1607,12 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;"/>
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;"/>
          <br/>
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><a href="#ArtDeco02MaterialDEF">ArtDeco02MaterialDEF</a><br/><b>ProtoInstance</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1605,7 +1620,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><a href="#MyMaterialModulator">MyMaterialModulator</a><br/><b>ProtoInstance</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1613,7 +1628,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><a href="#Proto1">Proto1</a><br/><b>ProtoInstance</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1621,7 +1636,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><a href="#Proto3">Proto3</a><br/><b>ProtoInstance</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1629,7 +1644,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><a href="#TestShader3">TestShader3</a><br/><b>ProtoInstance</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1637,7 +1652,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>LoadSensor</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1645,7 +1660,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>EspduTransform</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1653,7 +1668,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>EspduTransform</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1661,7 +1676,7 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>AudioClip</b><br/></td>
             <td>chimes<br/>(No ROUTE connection found for this node)<br/></td>
          </table>
@@ -1669,11 +1684,11 @@ function clockTrigger (timeValue)
          
          <!-- EventGraph -->
          
-         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:#DDEEFF;">
+         <table border="1" style="border: 1px solid black; margin-left: auto; margin-right: auto; background-color:white;">
             <td style="text-align:right"><br/><b>AudioClip</b><br/></td>
             <td><br/>(No ROUTE connection found for this node)<br/></td>
          </table>
-         </div>
+         <br/></div>
       <hr style="width:100%"/>
       <span style="color:white">--&gt;</span>
       

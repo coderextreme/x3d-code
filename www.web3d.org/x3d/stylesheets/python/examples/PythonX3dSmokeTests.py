@@ -1461,8 +1461,6 @@ print ('TEST add regex checks on field export for XML attributes')
 Appearance(      material=Material(diffuseColor=(0.5,0.5,0.5), transparency=0.2, DEF='Grey')) # explicit
 Appearance(      material=Material(diffuseColor=(0.5,0.5,0.5), transparency=0.2, DEF='Grey'), alphaMode='BLEND', alphaCutoff=0.6)
 
-Transform( children=[ Shape( appearance=Appearance(material=Material()), geometry=Box(size = (0.05, 0.05, 0.05))) ])
-
 # TODO is better constructor pattern possible for mixed node/field content?
 # Appearance(         Material(diffuseColor=(0.5,0.5,0.5), transparency=0.2, DEF='Grey'))   # implicit: problem due to alphaMode
 # Appearance(material=Material(diffuseColor=(0.5,0.5,0.5), transparency=0.2, DEF='Grey'))   # explicit

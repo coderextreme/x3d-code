@@ -18,7 +18,7 @@
 	<xsl:param name="disableIndent"><xsl:text>false</xsl:text></xsl:param>
 
 <!--
-Copyright (c) 2000-2023 held by the author(s).  All rights reserved.
+Copyright (c) 2000-2024 held by the author(s). All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions
@@ -305,10 +305,10 @@ EXTERNPROTO BooleanSequencer [
   # Regular interpolator-style input
   eventIn      SFFloat	set_fraction	# [appinfo] typically range [0..1]
   eventIn      MFFloat	set_key
-  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1].  Must have the same number of keys as keyValues.
+  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1]. Must have the same number of keys as keyValues.
   eventOut     MFFloat	key_changed
   eventIn      SFString	set_keyValue
-  exposedField SFString	keyValue	# [appinfo] Array of Boolean values (implemented as SFString).  Must have the same number of keys as keyValues.
+  exposedField SFString	keyValue	# [appinfo] Array of Boolean values (implemented as SFString). Must have the same number of keys as keyValues.
   eventOut     SFString	keyValue_changed
   # Regular interpolator-style output
   eventOut     SFBool	value_changed
@@ -330,10 +330,10 @@ EXTERNPROTO BooleanSequencer [
 EXTERNPROTO CoordinateInterpolator2D [
   eventIn  SFFloat set_fraction
   eventIn      MFFloat	set_key
-  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1].  Must have the same number of keys as keyValues.
+  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1]. Must have the same number of keys as keyValues.
   eventOut     MFFloat	key_changed
   eventIn      MFVec2f	set_keyValue
-  exposedField MFVec2f	keyValue	# [appinfo] Array of integer values.  Must have the same number of keys as keyValues.
+  exposedField MFVec2f	keyValue	# [appinfo] Array of integer values. Must have the same number of keys as keyValues.
   eventOut     MFVec2f	keyValue_changed
   # Regular interpolator-style output
   eventOut     MFVec2f value_changed
@@ -363,9 +363,9 @@ EXTERNPROTO LoadSensor [
   eventOut SFFloat progress # [appinfo] progress [0..1] indicates fraction of loading complete.
   field SFNode metadata # [appinfo] associated Metadata node.
 ][
-  "LoadSensorPrototype.wrl#LoadSensor"
+  # "LoadSensorPrototype.wrl#LoadSensor"
   "https://www.web3d.org/x3d/content/examples/Basic/development/LoadSensorPrototype.wrl#LoadSensor"
-  "LoadSensorPrototype.x3d#LoadSensor"
+  # "LoadSensorPrototype.x3d#LoadSensor"
   "https://www.web3d.org/x3d/content/examples/Basic/development/LoadSensorPrototype.x3d#LoadSensor"
 ]
 ]]>
@@ -378,11 +378,11 @@ EXTERNPROTO IntegerSequencer [
   # Regular interpolator-style input
   eventIn      SFFloat	set_fraction	# [appinfo] typically range [0..1]
   eventIn      MFFloat	set_key
-  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1].  Must have the same number of keys as keyValues.
+  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1]. Must have the same number of keys as keyValues.
   eventOut     MFFloat	key_changed
   ### When Script node supports exposedField, then it would be better to change keyValue to exposedField.
   eventIn      MFInt32	set_keyValue
-  field        MFInt32	keyValue	# [appinfo] Array of integer values.  Must have the same number of keys as keyValues.
+  field        MFInt32	keyValue	# [appinfo] Array of integer values. Must have the same number of keys as keyValues.
   eventOut     MFInt32	keyValue_changed
   # Regular interpolator-style output
   eventOut     SFInt32	value_changed
@@ -404,10 +404,10 @@ EXTERNPROTO IntegerSequencer [
 EXTERNPROTO PositionInterpolator2D [
   eventIn      SFFloat set_fraction
   eventIn      MFFloat	set_key
-  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1].  Must have the same number of keys as keyValues.
+  exposedField MFFloat	key		# [appinfo] Array sequentially increasing, typically [0..1]. Must have the same number of keys as keyValues.
   eventOut     MFFloat	key_changed
   eventIn      MFVec2f	set_keyValue
-  exposedField MFVec2f	keyValue	# [appinfo] Array of integer values.  Must have the same number of keys as keyValues.
+  exposedField MFVec2f	keyValue	# [appinfo] Array of integer values. Must have the same number of keys as keyValues.
   eventOut     MFVec2f	keyValue_changed
   # Regular interpolator-style output
   eventOut     SFVec2f value_changed
@@ -427,13 +427,13 @@ EXTERNPROTO PositionInterpolator2D [
 EXTERNPROTO MetadataBoolean [
   # [appinfo] MetadataBoolean contains a set of double-precision floating-point numbers in the value field.
   exposedField SFString name
-  exposedField MFFloat value
+  exposedField MFBool value
   exposedField SFString reference
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "MetadataPrototypes.wrl#MetadataBoolean"
+  # "MetadataPrototypes.wrl#MetadataBoolean"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.wrl#MetadataBoolean"
-  "MetadataPrototypes.x3d#MetadataBoolean"
+  # "MetadataPrototypes.x3d#MetadataBoolean"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.x3d#MetadataBoolean"
  ]
 ]]>
@@ -448,9 +448,9 @@ EXTERNPROTO MetadataDouble [
   exposedField SFString reference
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "MetadataPrototypes.wrl#MetadataDouble"
+  # "MetadataPrototypes.wrl#MetadataDouble"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.wrl#MetadataDouble"
-  "MetadataPrototypes.x3d#MetadataDouble"
+  # "MetadataPrototypes.x3d#MetadataDouble"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.x3d#MetadataDouble"
  ]
 ]]>
@@ -465,9 +465,9 @@ EXTERNPROTO MetadataFloat [
   exposedField SFString reference
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "MetadataPrototypes.wrl#MetadataFloat"
+  # "MetadataPrototypes.wrl#MetadataFloat"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.wrl#MetadataFloat"
-  "MetadataPrototypes.x3d#MetadataFloat"
+  # "MetadataPrototypes.x3d#MetadataFloat"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.x3d#MetadataFloat"
  ]
 ]]>
@@ -483,9 +483,9 @@ EXTERNPROTO MetadataInteger [
   exposedField SFString reference
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "MetadataPrototypes.wrl#MetadataInteger"
+  # "MetadataPrototypes.wrl#MetadataInteger"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.wrl#MetadataInteger"
-  "MetadataPrototypes.x3d#MetadataInteger"
+  # "MetadataPrototypes.x3d#MetadataInteger"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.x3d#MetadataInteger"
  ]
 ]]>
@@ -500,9 +500,9 @@ EXTERNPROTO MetadataSet [
   exposedField SFString reference
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "MetadataPrototypes.wrl#MetadataSet"
+  # "MetadataPrototypes.wrl#MetadataSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.wrl#MetadataSet"
-  "MetadataPrototypes.x3d#MetadataSet"
+  # "MetadataPrototypes.x3d#MetadataSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.x3d#MetadataSet"
  ]
 ]]>
@@ -517,9 +517,9 @@ EXTERNPROTO MetadataString [
   exposedField SFString reference
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "MetadataPrototypes.wrl#MetadataString"
+  # "MetadataPrototypes.wrl#MetadataString"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.wrl#MetadataString"
-  "MetadataPrototypes.x3d#MetadataString"
+  # "MetadataPrototypes.x3d#MetadataString"
   "https://www.web3d.org/x3d/content/examples/Basic/development/MetadataPrototypes.x3d#MetadataString"
  ]
 ]]>
@@ -551,10 +551,10 @@ EXTERNPROTO IndexedQuadSet [
   exposedField SFNode metadata # [appinfo] [X3DMetadataObject]
   # Specification initialization: NULL node
 ][
-  "CADGeometryPrototypes.wrl#IndexedQuadSet"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.wrl#IndexedQuadSet"
-  "CADGeometryPrototypes.x3d#IndexedQuadSet"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.x3d#IndexedQuadSet"
+  # "CadGeometryPrototypes.wrl#IndexedQuadSet"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.wrl#IndexedQuadSet"
+  # "CadGeometryPrototypes.x3d#IndexedQuadSet"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.x3d#IndexedQuadSet"
 ]
 ]]>
     </xsl:if>
@@ -579,10 +579,10 @@ EXTERNPROTO QuadSet [
   exposedField SFNode metadata # [appinfo] [X3DMetadataObject]
   # Specification initialization: NULL node
 ][
-  "CADGeometryPrototypes.wrl#QuadSet"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.wrl#QuadSet"
-  "CADGeometryPrototypes.x3d#QuadSet"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.x3d#QuadSet"
+  # "CadGeometryPrototypes.wrl#QuadSet"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.wrl#QuadSet"
+  # "CadGeometryPrototypes.x3d#QuadSet"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.x3d#QuadSet"
 ]
 ]]>
     </xsl:if>
@@ -601,10 +601,10 @@ EXTERNPROTO CADAssembly [
   exposedField SFNode metadata # [appinfo] [X3DMetadataObject]
   # Specification initialization: NULL node
 ][
-  "CADGeometryPrototypes.wrl#CADAssembly"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.wrl#CADAssembly"
-  "CADGeometryPrototypes.x3d#CADAssembly"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.x3d#CADAssembly"
+  # "CadGeometryPrototypes.wrl#CADAssembly"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.wrl#CADAssembly"
+  # "CadGeometryPrototypes.x3d#CADAssembly"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.x3d#CADAssembly"
 ]
 ]]>
     </xsl:if>
@@ -620,10 +620,10 @@ EXTERNPROTO CADFace [
   exposedField SFNode metadata # [appinfo] [X3DMetadataObject]
   # Specification initialization: NULL node
 ][
-  "CADGeometryPrototypes.wrl#CADFace"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.wrl#CADFace"
-  "CADGeometryPrototypes.x3d#CADFace"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.x3d#CADFace"
+  # "CadGeometryPrototypes.wrl#CADFace"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.wrl#CADFace"
+  # "CadGeometryPrototypes.x3d#CADFace"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.x3d#CADFace"
 ]
 ]]>
     </xsl:if>
@@ -645,10 +645,10 @@ EXTERNPROTO CADLayer [
   exposedField SFNode metadata # [appinfo] [X3DMetadataObject]
   # Specification initialization: NULL node
 ][
-  "CADGeometryPrototypes.wrl#CADLayer"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.wrl#CADLayer"
-  "CADGeometryPrototypes.x3d#CADLayer"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.x3d#CADLayer"
+  # "CadGeometryPrototypes.wrl#CADLayer"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.wrl#CADLayer"
+  # "CadGeometryPrototypes.x3d#CADLayer"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.x3d#CADLayer"
 ]
 ]]>
     </xsl:if>
@@ -673,10 +673,10 @@ EXTERNPROTO CADPart [
   exposedField SFNode metadata # [appinfo] [X3DMetadataObject]
   # Specification initialization: NULL node
 ][
-  "CADGeometryPrototypes.wrl#CADPart"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.wrl#CADPart"
-  "CADGeometryPrototypes.x3d#CADPart"
-  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CADGeometryPrototypes.x3d#CADPart"
+  # "CadGeometryPrototypes.wrl#CADPart"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.wrl#CADPart"
+  # "CadGeometryPrototypes.x3d#CADPart"
+  "https://www.web3d.org/x3d/content/examples/Basic/CAD/CadGeometryPrototypes.x3d#CADPart"
 ]
 ]]>
     </xsl:if>
@@ -691,7 +691,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoCoordinate.wrl#GeoCoordinate"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoCoordinate.wrl#GeoCoordinate"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.0/protos/GeoCoordinate.wrl#GeoCoordinate"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.0/protos/GeoCoordinate.wrl#GeoCoordinate"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoCoordinate.wrl#GeoCoordinate"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -719,7 +719,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoElevationGrid.wrl#GeoElevationGrid"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoElevationGrid.wrl#GeoElevationGrid"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoElevationGrid.wrl#GeoElevationGrid"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoElevationGrid.wrl#GeoElevationGrid"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoElevationGrid.wrl#GeoElevationGrid"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -746,7 +746,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.0/protos/GeoInline.wrl#GeoInline"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.0/protos/GeoInline.wrl#GeoInline"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.0/protos/GeoInline.wrl#GeoInline"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.0/protos/GeoInline.wrl#GeoInline"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.0/protos/GeoInline.wrl#GeoInline"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -759,7 +759,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoLocation.wrl#GeoLocation"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoLocation.wrl#GeoLocation"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoLocation.wrl#GeoLocation"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoLocation.wrl#GeoLocation"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoLocation.wrl#GeoLocation"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -779,7 +779,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoLOD.wrl#GeoLOD"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoLOD.wrl#GeoLOD"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoLOD.wrl#GeoLOD"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoLOD.wrl#GeoLOD"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoLOD.wrl#GeoLOD"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -791,7 +791,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoMetadata.wrl#GeoMetadata"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoMetadata.wrl#GeoMetadata"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoMetadata.wrl#GeoMetadata"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoMetadata.wrl#GeoMetadata"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoMetadata.wrl#GeoMetadata"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -803,7 +803,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoOrigin.wrl#GeoOrigin"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoOrigin.wrl#GeoOrigin"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoOrigin.wrl#GeoOrigin"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoOrigin.wrl#GeoOrigin"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoOrigin.wrl#GeoOrigin"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -819,7 +819,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoPositionInterpolator.wrl#GeoPositionInterpolator"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoPositionInterpolator.wrl#GeoPositionInterpolator"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoPositionInterpolator.wrl#GeoPositionInterpolator"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoPositionInterpolator.wrl#GeoPositionInterpolator"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoPositionInterpolator.wrl#GeoPositionInterpolator"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -838,7 +838,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoTouchSensor.wrl#GeoTouchSensor"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoTouchSensor.wrl#GeoTouchSensor"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoTouchSensor.wrl#GeoTouchSensor"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoTouchSensor.wrl#GeoTouchSensor"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoTouchSensor.wrl#GeoTouchSensor"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -862,7 +862,7 @@ EXTERNPROTO CADPart [
     <xsl:text>] [&#10;</xsl:text>
 <!--<xsl:text>    "C:/Program Files/GeoVRML/1.1/protos/GeoViewpoint.wrl#GeoViewpoint"&#10;</xsl:text>
     <xsl:text>    "file:///C|/Program Files/GeoVRML/1.1/protos/GeoViewpoint.wrl#GeoViewpoint"&#10;</xsl:text>-->
-    <xsl:text>    "urn:web3d:geovrml:1.1/protos/GeoViewpoint.wrl#GeoViewpoint"&#10;</xsl:text>
+    <xsl:text>    # "urn:web3d:geovrml:1.1/protos/GeoViewpoint.wrl#GeoViewpoint"&#10;</xsl:text>
     <xsl:text>    "https://www.geovrml.org/1.1/protos/GeoViewpoint.wrl#GeoViewpoint"&#10;</xsl:text>
     <xsl:text>  ]&#10;</xsl:text>
   </xsl:if>
@@ -887,7 +887,7 @@ EXTERNPROTO XvlShell [
   field        SFString	faceEmpty # type MFBool
   field        SFString	faceHidden # type MFBool
 ][
-  "XvlShellProtoDeclare.wrl#XvlShell"
+  # "XvlShellProtoDeclare.wrl#XvlShell"
   "https://www.web3d.org/x3d/content/examples/Basic/LatticeXvl/XvlShellProtoDeclare.wrl#XvlShell"
  ]
 ]]>
@@ -1207,9 +1207,9 @@ EXTERNPROTO ColorRGBA [
   exposedField MFRotation color # [appinfo] locally override MFColorRGBA type (which is not supported in VRML 97) in order to downgrade to Color RGB
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#ColorRGBA"
+  # "RenderingComponentPrototypes.wrl#ColorRGBA"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#ColorRGBA"
-  "RenderingComponentPrototypes.x3d#ColorRGBA"
+  # "RenderingComponentPrototypes.x3d#ColorRGBA"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#ColorRGBA"
 ]
 ]]>
@@ -1230,9 +1230,9 @@ EXTERNPROTO IndexedTriangleFanSet [
   exposedField SFNode texCoord # [appinfo] TextureCoordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#IndexedTriangleFanSet"
+  # "RenderingComponentPrototypes.wrl#IndexedTriangleFanSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#IndexedTriangleFanSet"
-  "RenderingComponentPrototypes.x3d#IndexedTriangleFanSet"
+  # "RenderingComponentPrototypes.x3d#IndexedTriangleFanSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#IndexedTriangleFanSet"
 ]
 ]]>
@@ -1253,9 +1253,9 @@ EXTERNPROTO IndexedTriangleSet [
   exposedField SFNode texCoord # [appinfo] TextureCoordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#IndexedTriangleSet"
+  # "RenderingComponentPrototypes.wrl#IndexedTriangleSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#IndexedTriangleSet"
-  "RenderingComponentPrototypes.x3d#IndexedTriangleSet"
+  # "RenderingComponentPrototypes.x3d#IndexedTriangleSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#IndexedTriangleSet"
 ]
 ]]>
@@ -1276,9 +1276,9 @@ EXTERNPROTO IndexedTriangleStripSet [
   exposedField SFNode texCoord # [appinfo] TextureCoordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#IndexedTriangleStripSet"
+  # "RenderingComponentPrototypes.wrl#IndexedTriangleStripSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#IndexedTriangleStripSet"
-  "RenderingComponentPrototypes.x3d#IndexedTriangleStripSet"
+  # "RenderingComponentPrototypes.x3d#IndexedTriangleStripSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#IndexedTriangleStripSet"
 ]
 ]]>
@@ -1292,9 +1292,9 @@ EXTERNPROTO LineSet [
   exposedField SFNode coord # [appinfo] Coordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#LineSet"
+  # "RenderingComponentPrototypes.wrl#LineSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#LineSet"
-  "RenderingComponentPrototypes.x3d#LineSet"
+  # "RenderingComponentPrototypes.x3d#LineSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#LineSet"
 ]
 ]]>
@@ -1314,9 +1314,9 @@ EXTERNPROTO TriangleFanSet [
   exposedField SFNode texCoord # [appinfo] TextureCoordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#TriangleFanSet"
+  # "RenderingComponentPrototypes.wrl#TriangleFanSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#TriangleFanSet"
-  "RenderingComponentPrototypes.x3d#TriangleFanSet"
+  # "RenderingComponentPrototypes.x3d#TriangleFanSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#TriangleFanSet"
 ]
 ]]>
@@ -1335,9 +1335,9 @@ EXTERNPROTO TriangleSet [
   exposedField SFNode texCoord # [appinfo] TextureCoordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#TriangleSet"
+  # "RenderingComponentPrototypes.wrl#TriangleSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#TriangleSet"
-  "RenderingComponentPrototypes.x3d#TriangleSet"
+  # "RenderingComponentPrototypes.x3d#TriangleSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#TriangleSet"
 ]
 ]]>
@@ -1357,9 +1357,9 @@ EXTERNPROTO TriangleStripSet [
   exposedField SFNode texCoord # [appinfo] TextureCoordinate node only
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "RenderingComponentPrototypes.wrl#TriangleStripSet"
+  # "RenderingComponentPrototypes.wrl#TriangleStripSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.wrl#TriangleStripSet"
-  "RenderingComponentPrototypes.x3d#TriangleStripSet"
+  # "RenderingComponentPrototypes.x3d#TriangleStripSet"
   "https://www.web3d.org/x3d/content/examples/Basic/development/RenderingComponentPrototypes.x3d#TriangleStripSet"
 ]
 ]]>
@@ -1375,9 +1375,9 @@ EXTERNPROTO Arc2D [
   field SFFloat radius
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#Arc2D"
+  # "Geometry2dComponentPrototypes.wrl#Arc2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#Arc2D"
-  "Geometry2dComponentPrototypes.x3d#Arc2D"
+  # "Geometry2dComponentPrototypes.x3d#Arc2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#Arc2D"
 ]
 ]]>
@@ -1392,9 +1392,9 @@ EXTERNPROTO ArcClose2D [
   field SFBool solid
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#ArcClose2D"
+  # "Geometry2dComponentPrototypes.wrl#ArcClose2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#ArcClose2D"
-  "Geometry2dComponentPrototypes.x3d#ArcClose2D"
+  # "Geometry2dComponentPrototypes.x3d#ArcClose2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#ArcClose2D"
 ]
 ]]>
@@ -1406,9 +1406,9 @@ EXTERNPROTO Circle2D [
   field SFBool solid
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#Circle2D"
+  # "Geometry2dComponentPrototypes.wrl#Circle2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#Circle2D"
-  "Geometry2dComponentPrototypes.x3d#Circle2D"
+  # "Geometry2dComponentPrototypes.x3d#Circle2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#Circle2D"
 ]
 ]]>
@@ -1421,9 +1421,9 @@ EXTERNPROTO Disk2D [
   field SFBool solid
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#Disk2D"
+  # "Geometry2dComponentPrototypes.wrl#Disk2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#Disk2D"
-  "Geometry2dComponentPrototypes.x3d#Disk2D"
+  # "Geometry2dComponentPrototypes.x3d#Disk2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#Disk2D"
 ]
 ]]>
@@ -1435,9 +1435,9 @@ EXTERNPROTO Polyline2D [
   field SFBool solid
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#Polyline2D"
+  # "Geometry2dComponentPrototypes.wrl#Polyline2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#Polyline2D"
-  "Geometry2dComponentPrototypes.x3d#Polyline2D"
+  # "Geometry2dComponentPrototypes.x3d#Polyline2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#Polyline2D"
 ]
 ]]>
@@ -1448,9 +1448,9 @@ EXTERNPROTO Polypoint2D [
   field MFVec2f point
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#Polypoint2D"
+  # "Geometry2dComponentPrototypes.wrl#Polypoint2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#Polypoint2D"
-  "Geometry2dComponentPrototypes.x3d#Polypoint2D"
+  # "Geometry2dComponentPrototypes.x3d#Polypoint2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#Polypoint2D"
 ]
 ]]>
@@ -1462,9 +1462,9 @@ EXTERNPROTO Rectangle2D [
   field SFBool solid
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#Rectangle2D"
+  # "Geometry2dComponentPrototypes.wrl#Rectangle2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#Rectangle2D"
-  "Geometry2dComponentPrototypes.x3d#Rectangle2D"
+  # "Geometry2dComponentPrototypes.x3d#Rectangle2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#Rectangle2D"
 ]
 ]]>
@@ -1476,9 +1476,9 @@ EXTERNPROTO TriangleSet2D [
   field SFBool solid
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "Geometry2dComponentPrototypes.wrl#TriangleSet2D"
+  # "Geometry2dComponentPrototypes.wrl#TriangleSet2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.wrl#TriangleSet2D"
-  "Geometry2dComponentPrototypes.x3d#TriangleSet2D"
+  # "Geometry2dComponentPrototypes.x3d#TriangleSet2D"
   "https://www.web3d.org/x3d/content/examples/Basic/development/Geometry2dComponentPrototypes.x3d#TriangleSet2D"
 ]
 ]]>
@@ -1498,9 +1498,9 @@ EXTERNPROTO Contour2D [
   eventOut MFNode children_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#Contour2D"
+  # "NurbsPrototypes.wrl#Contour2D"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#Contour2D"
-  "NurbsPrototypes.x3d#Contour2D"
+  # "NurbsPrototypes.x3d#Contour2D"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#Contour2D"
 ]
 ]]>
@@ -1513,11 +1513,11 @@ EXTERNPROTO ContourPolyline2D [
   eventOut MFVec2f point_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#ContourPolyline2D"
+  # "NurbsPrototypes.wrl#ContourPolyline2D"
   "../../NurbsPrototypes.wrl#ContourPolyline2D"
   "../../../NurbsPrototypes.wrl#ContourPolyline2D"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#ContourPolyline2D"
-  "NurbsPrototypes.x3d#ContourPolyline2D"
+  # "NurbsPrototypes.x3d#ContourPolyline2D"
   "../../NurbsPrototypes.x3d#ContourPolyline2D"
   "../../../NurbsPrototypes.x3d#ContourPolyline2D"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#ContourPolyline2D"
@@ -1533,9 +1533,9 @@ EXTERNPROTO CoordinateDouble [
   eventOut MFVec3f point_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#CoordinateDouble"
+  # "NurbsPrototypes.wrl#CoordinateDouble"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#CoordinateDouble"
-  "NurbsPrototypes.x3d#CoordinateDouble"
+  # "NurbsPrototypes.x3d#CoordinateDouble"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#CoordinateDouble"
 ]
 ]]>
@@ -1557,9 +1557,9 @@ EXTERNPROTO NurbsCurve [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsCurve"
+  # "NurbsPrototypes.wrl#NurbsCurve"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsCurve"
-  "NurbsPrototypes.x3d#NurbsCurve"
+  # "NurbsPrototypes.x3d#NurbsCurve"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsCurve"
 ]
 ]]>
@@ -1582,9 +1582,9 @@ EXTERNPROTO NurbsCurve2D [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsCurve2D"
+  # "NurbsPrototypes.wrl#NurbsCurve2D"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsCurve2D"
-  "NurbsPrototypes.x3d#NurbsCurve2D"
+  # "NurbsPrototypes.x3d#NurbsCurve2D"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsCurve2D"
 ]
 ]]>
@@ -1609,9 +1609,9 @@ EXTERNPROTO NurbsOrientationInterpolator [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsOrientationInterpolator"
+  # "NurbsPrototypes.wrl#NurbsOrientationInterpolator"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsOrientationInterpolator"
-  "NurbsPrototypes.x3d#NurbsOrientationInterpolator"
+  # "NurbsPrototypes.x3d#NurbsOrientationInterpolator"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsOrientationInterpolator"
 ]
 ]]>
@@ -1645,9 +1645,9 @@ EXTERNPROTO NurbsPatchSurface [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsPatchSurface"
+  # "NurbsPrototypes.wrl#NurbsPatchSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsPatchSurface"
-  "NurbsPrototypes.x3d#NurbsPatchSurface"
+  # "NurbsPrototypes.x3d#NurbsPatchSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsPatchSurface"
 ]
 ]]>
@@ -1672,9 +1672,9 @@ EXTERNPROTO NurbsPositionInterpolator [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsPositionInterpolator"
+  # "NurbsPrototypes.wrl#NurbsPositionInterpolator"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsPositionInterpolator"
-  "NurbsPrototypes.x3d#NurbsPositionInterpolator"
+  # "NurbsPrototypes.x3d#NurbsPositionInterpolator"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsPositionInterpolator"
 ]
 ]]>
@@ -1694,9 +1694,9 @@ EXTERNPROTO NurbsSet [
   eventOut SFFloat tessellationScale_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsSet"
+  # "NurbsPrototypes.wrl#NurbsSet"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsSet"
-  "NurbsPrototypes.x3d#NurbsSet"
+  # "NurbsPrototypes.x3d#NurbsSet"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsSet"
 ]
 ]]>
@@ -1721,9 +1721,9 @@ EXTERNPROTO NurbsSurfaceInterpolator [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsSurfaceInterpolator"
+  # "NurbsPrototypes.wrl#NurbsSurfaceInterpolator"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsSurfaceInterpolator"
-  "NurbsPrototypes.x3d#NurbsSurfaceInterpolator"
+  # "NurbsPrototypes.x3d#NurbsSurfaceInterpolator"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsSurfaceInterpolator"
 ]
 ]]>
@@ -1741,9 +1741,9 @@ EXTERNPROTO NurbsSweptSurface [
   eventOut SFNode trajectoryCurve_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsSweptSurface"
+  # "NurbsPrototypes.wrl#NurbsSweptSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsSweptSurface"
-  "NurbsPrototypes.x3d#NurbsSweptSurface"
+  # "NurbsPrototypes.x3d#NurbsSweptSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsSweptSurface"
 ]
 ]]>
@@ -1761,9 +1761,9 @@ EXTERNPROTO NurbsSwungSurface [
   eventOut SFNode trajectoryCurve_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsSwungSurface"
+  # "NurbsPrototypes.wrl#NurbsSwungSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsSwungSurface"
-  "NurbsPrototypes.x3d#NurbsSwungSurface"
+  # "NurbsPrototypes.x3d#NurbsSwungSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsSwungSurface"
 ]
 ]]>
@@ -1785,9 +1785,9 @@ EXTERNPROTO NurbsTextureCoordinate [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsTextureCoordinate"
+  # "NurbsPrototypes.wrl#NurbsTextureCoordinate"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsTextureCoordinate"
-  "NurbsPrototypes.x3d#NurbsTextureCoordinate"
+  # "NurbsPrototypes.x3d#NurbsTextureCoordinate"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsTextureCoordinate"
 ]
 ]]>
@@ -1827,9 +1827,9 @@ EXTERNPROTO NurbsTrimmedSurface [
   eventOut MFFloat weight_changed
   exposedField SFNode metadata # [appinfo] Metadata node only
 ][
-  "NurbsPrototypes.wrl#NurbsTrimmedSurface"
+  # "NurbsPrototypes.wrl#NurbsTrimmedSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.wrl#NurbsTrimmedSurface"
-  "NurbsPrototypes.x3d#NurbsTrimmedSurface"
+  # "NurbsPrototypes.x3d#NurbsTrimmedSurface"
   "https://www.web3d.org/x3d/content/examples/Basic/NURBS/NurbsPrototypes.x3d#NurbsTrimmedSurface"
 ]
 ]]>
@@ -1938,9 +1938,9 @@ EXTERNPROTO EspduTransform [
   eventOut SFFloat articulationParameterValue6_changed
   eventOut SFFloat articulationParameterValue7_changed
 ][
-  "EspduTransformPrototypes.wrl#EspduTransform"
+  # "EspduTransformPrototypes.wrl#EspduTransform"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/EspduTransformPrototypes.wrl#EspduTransform"
-  "EspduTransformPrototypes.x3d#EspduTransform"
+  # "EspduTransformPrototypes.x3d#EspduTransform"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/EspduTransformPrototypes.x3d#EspduTransform"
 ]
 ]]>
@@ -1981,9 +1981,9 @@ EXTERNPROTO ReceiverPdu [
   eventOut SFInt32 transmitterEntityID
   eventOut SFInt32 transmitterRadioID
 ][
-  "RadioCommunicationsPrototypes.wrl#ReceiverPdu"
+  # "RadioCommunicationsPrototypes.wrl#ReceiverPdu"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/RadioCommunicationsPrototypes.wrl#ReceiverPdu"
-  "RadioCommunicationsPrototypes.x3d#ReceiverPdu"
+  # "RadioCommunicationsPrototypes.x3d#ReceiverPdu"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/RadioCommunicationsPrototypes.x3d#ReceiverPdu"
 ]
 ]]>
@@ -2035,9 +2035,9 @@ EXTERNPROTO SignalPdu [
   eventOut SFInt32 data09
   eventOut SFInt32 data10
 ][
-  "RadioCommunicationsPrototypes.wrl#SignalPdu"
+  # "RadioCommunicationsPrototypes.wrl#SignalPdu"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/RadioCommunicationsPrototypes.wrl#SignalPdu"
-  "RadioCommunicationsPrototypes.x3d#SignalPdu"
+  # "RadioCommunicationsPrototypes.x3d#SignalPdu"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/RadioCommunicationsPrototypes.x3d#SignalPdu"
 ]
 ]]>
@@ -2095,9 +2095,9 @@ EXTERNPROTO TransmitterPdu [
   eventOut SFInt32 transmitFrequencyBandwidth
   eventOut SFInt32 transmitState
 ][
-  "RadioCommunicationsPrototypes.wrl#TransmitterPdu"
+  # "RadioCommunicationsPrototypes.wrl#TransmitterPdu"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/RadioCommunicationsPrototypes.wrl#TransmitterPdu"
-  "RadioCommunicationsPrototypes.x3d#TransmitterPdu"
+  # "RadioCommunicationsPrototypes.x3d#TransmitterPdu"
   "https://www.web3d.org/x3d/content/examples/Basic/DistributedInteractiveSimulation/RadioCommunicationsPrototypes.x3d#TransmitterPdu"
 ]
 ]]>
@@ -2232,7 +2232,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="not(meta/@name='title' and meta[@name='title']/@content) and not(meta/@name='filename' and meta[@name='filename']/@content)">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='title' content='...' /&gt; for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='title' content='...' /&gt; for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2240,7 +2240,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="not(meta/@name='description' and meta[@name='description']/@content)">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='description' content='...' /&gt; for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='description' content='...' /&gt; for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2248,7 +2248,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="not(meta/@name='created' and meta[@name='created']/@content) and not(meta/@name='imported') and not(meta/@name='translated')">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='created' /&gt; date content for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='created' /&gt; date content for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2256,7 +2256,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="(meta/@name='imported') and not(meta[@name='imported']/@content)">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='imported' /&gt; date content for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='imported' /&gt; date content for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2264,7 +2264,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="(meta/@name='translated') and not(meta[@name='translated']/@content)">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='translated' /&gt; date content for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='translated' /&gt; date content for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2272,7 +2272,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="not(meta/@name='modified' and meta[@name='modified']/@content) and not(meta/@name='revised' and meta[@name='revised']/@content) and not(meta/@name='generated')">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='modified' /&gt; date content for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='modified' /&gt; date content for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2289,7 +2289,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="not(meta/@name='url' and meta[@name='url']/@content)">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
-        <xsl:text>Recommended:  add &lt;meta name='url' content='...' /&gt; for documentation</xsl:text>
+        <xsl:text>Recommended: add &lt;meta name='url' content='...' /&gt; for documentation</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node" select="local-name()"/>
     </xsl:call-template>
@@ -2297,7 +2297,7 @@ EXTERNPROTO TransmitterPdu [
   -->
 </xsl:template>
 
-<!-- ****** unit: https://www.web3d.org/specifications/X3Dv4Draft/ISO-IEC19775-1v4-IS.proof/Part01/components/core.html#UNITStatement ****** -->
+<!-- ****** unit: https://www.web3d.org/specifications/X3Dv4/ISO-IEC19775-1v4-IS/Part01/components/core.html#UNITStatement ****** -->
 <xsl:template match="unit">
   <xsl:if test="$fileEncoding!='ClassicVRML'"><xsl:text># </xsl:text></xsl:if>
   <xsl:text>UNIT </xsl:text>
@@ -2315,7 +2315,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:text>META &quot;</xsl:text>
   <xsl:value-of select="@name"/>
   <xsl:text>&quot; &quot;</xsl:text>
-  <!-- having trouble translating line breaks properly, thus changing them to spaces (which avoids runtime errors, at least).  also comment tag and escape \"double quotes\".  -->
+  <!-- having trouble translating line breaks properly, thus changing them to spaces (which avoids runtime errors, at least). also comment tag and escape \"double quotes\". -->
   <xsl:call-template name="escape-quotes-recurse">
       <xsl:with-param name="inputValue" select="translate(@content,'&#10;',' ')"/>
   </xsl:call-template>
@@ -2494,7 +2494,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:with-param name="DEF"  select="@DEF"/>
     </xsl:call-template>
   </xsl:if>
-  <!-- check quotes are matched since unterminated VRML string values cause big problems.  report error but do not append correcting quote.  -->
+  <!-- check quotes are matched since unterminated VRML string values cause big problems. report error but do not append correcting quote. -->
   <xsl:call-template name="count-quotes">
     <xsl:with-param name="inputValue" select="@content"/>
   </xsl:call-template>
@@ -3020,7 +3020,7 @@ EXTERNPROTO TransmitterPdu [
                     <xsl:value-of select="@name" />
                     <xsl:text>' /&gt;</xsl:text>
                 </xsl:for-each>
-                <xsl:text>.  Reset appropriate top-level child node(s) that are part of the set to have @containerField='value'.</xsl:text>
+                <xsl:text>. Reset appropriate top-level child node(s) that are part of the set to have @containerField='value'.</xsl:text>
               </xsl:with-param>
               <xsl:with-param name="node" select="local-name()"/>
               <xsl:with-param name="DEF"  select="@DEF"/>
@@ -3043,7 +3043,7 @@ EXTERNPROTO TransmitterPdu [
                     <xsl:value-of select="@name" />
                     <xsl:text>' /&gt;</xsl:text>
                 </xsl:for-each>
-                <xsl:text>.  Reset appropriate top-level child node(s) that are part of the set to have @containerField='value'.</xsl:text>
+                <xsl:text>. Reset appropriate top-level child node(s) that are part of the set to have @containerField='value'.</xsl:text>
               </xsl:with-param>
               <xsl:with-param name="node" select="local-name()"/>
               <xsl:with-param name="DEF"  select="@DEF"/>
@@ -3147,7 +3147,7 @@ EXTERNPROTO TransmitterPdu [
     <xsl:when test="local-name()='IS' or local-name()='connect'"><!-- ignore, handled elsewhere --></xsl:when>
     <!-- USE is no longer a valid node name -->
     <!-- <xsl:when test="(local-name()='USE' and @node)"> -->
-      <!-- don't forget the bloody wrapper tags!  children handled separately.  this section will need to be generalized for compact tagset form, or else have USE preclude wrapper-tag ignoring. -->
+      <!-- don't forget the bloody wrapper tags!  children handled separately. this section will need to be generalized for compact tagset form, or else have USE preclude wrapper-tag ignoring. -->
       <!-- output wrapper tag (except for children tag) -->
     <!--
       <xsl:if test="local-name(..)='appearance' or local-name(..)='choice' or local-name(..)='color' or local-name(..)='coord' or
@@ -3210,7 +3210,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:text>USE </xsl:text>
       <xsl:value-of select="@USE"/>
       <xsl:text>&#10;</xsl:text>
-      <!-- check for erroneous node-type reference.  could be augmented to track back to originating ProtoDeclare if ProtoInstance. -->
+      <!-- check for erroneous node-type reference. could be augmented to track back to originating ProtoDeclare if ProtoInstance. -->
       <xsl:variable name="useName"  select="@USE" />
       <xsl:if test="not(//*[@DEF=$useName])">
         <xsl:call-template name="output-error">
@@ -3342,7 +3342,7 @@ EXTERNPROTO TransmitterPdu [
                 </xsl:if>
                 <xsl:text>containerField='children' which is not appropriate for parent </xsl:text>
                 <xsl:value-of select="local-name(..)" />
-                <xsl:text> node.  Allowed containerField </xsl:text>
+                <xsl:text> node. Allowed containerField </xsl:text>
                 <xsl:choose>
                   <xsl:when test="local-name(..)='MetadataSet'">
                     <xsl:text>entries are metadata or value (for contained set of nodes)</xsl:text>
@@ -3373,7 +3373,7 @@ EXTERNPROTO TransmitterPdu [
                 </xsl:if>
                 <xsl:text>containerField='children' which is not appropriate for parent </xsl:text>
                 <xsl:value-of select="local-name(..)" />
-                <xsl:text> node.  Allowed containerField values are </xsl:text>
+                <xsl:text> node. Allowed containerField values are </xsl:text>
                 <xsl:choose>
                   <xsl:when test="local-name(..)='Appearance'">
                     <xsl:text>fillProperties, lineProperties, material, metadata, texture, textureTransform</xsl:text>
@@ -3454,7 +3454,7 @@ EXTERNPROTO TransmitterPdu [
                 </xsl:if>
                 <xsl:text>containerField='children' which is not appropriate for parent </xsl:text>
                 <xsl:value-of select="local-name(..)" />
-                <xsl:text> node.  Allowed containerField value is metadata.</xsl:text>
+                <xsl:text> node. Allowed containerField value is metadata.</xsl:text>
               </xsl:with-param>
               <xsl:with-param name="node">
                 <xsl:text>ProtoInstance </xsl:text>
@@ -3552,7 +3552,7 @@ EXTERNPROTO TransmitterPdu [
         </xsl:call-template>
         <!-- also look for ROUTEd value, that is an error -->
         <xsl:for-each select="child::*[@DEF or @USE]">
-          <!-- output DEF nodes first to ensure available for USE nodes.  questionable practice since it may reorder author's scene. -->
+          <!-- output DEF nodes first to ensure available for USE nodes. questionable practice since it may reorder author's scene. -->
           <xsl:variable name="childNodeLabel">
             <xsl:choose>
               <xsl:when test="@DEF"><xsl:value-of select="@DEF"/></xsl:when>
@@ -3598,7 +3598,7 @@ EXTERNPROTO TransmitterPdu [
        <xsl:with-param name="indent" select="$indent + 2"/>
     </xsl:apply-templates>
   </xsl:if>
-  <!-- ensure GeoLOD/rootNode handled before children, so that final close bracket ] doesn't encompass it.  Note GeoLOD children is outputOnly event. -->
+  <!-- ensure GeoLOD/rootNode handled before children, so that final close bracket ] doesn't encompass it. Note GeoLOD children is outputOnly event. -->
   <xsl:if test="local-name()='GeoLOD' and *[not(local-name()='GeoOrigin')]">
     <!-- <xsl:text>&#10;# rootNode found for </xsl:text><xsl:value-of select="local-name()"/><xsl:text>&#10;</xsl:text> -->
     <xsl:text>  rootNode</xsl:text>
@@ -3673,7 +3673,7 @@ EXTERNPROTO TransmitterPdu [
         <!-- proxy test & output -->
         <!--<xsl:text> ### here1&#10;</xsl:text> -->
         <xsl:choose>
-          <!-- if author put proxy first, keep it there.  might have DEF inside for later USE -->
+          <!-- if author put proxy first, keep it there. might have DEF inside for later USE -->
           <xsl:when test="*[@containerField='proxy'][string-length(@USE) = 0]"><!-- and (position()=1 or not(descendant-or-self::*/@USE)) -->
             <xsl:text>  proxy&#10;</xsl:text>
             <xsl:apply-templates select="*[@containerField='proxy']">
@@ -3683,7 +3683,7 @@ EXTERNPROTO TransmitterPdu [
             <xsl:text> ### here2 </xsl:text>
             <xsl:value-of select="count(*[not(@containerField='proxy')])"/>
             <xsl:text>&#10;</xsl:text> -->
-            <xsl:if             test="(count(*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))]) + count(comment()) gt 0)">
+            <xsl:if             test="(count(*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))]) + count(comment()) > 0)">
                 <xsl:text>  children [&#10;</xsl:text>
                 <xsl:apply-templates select="*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))] | comment()">
                     <xsl:with-param name="indent" select="$indent + 4"/>
@@ -3692,16 +3692,16 @@ EXTERNPROTO TransmitterPdu [
             </xsl:if>
           </xsl:when>
           <!-- backup proxy test, put proxy after children because a referencing USE is employed -->
-          <xsl:when test="*[@containerField='proxy'][string-length(@USE) gt 0]">
+          <xsl:when test="*[@containerField='proxy'][string-length(@USE) > 0]">
         <!--<xsl:text> ### here3&#10;</xsl:text> -->
-            <xsl:if             test="(count(*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))]) + count(comment()) gt 0)">
+            <xsl:if             test="(count(*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))]) + count(comment()) > 0)">
                 <xsl:text>  children [&#10;</xsl:text>
                 <xsl:apply-templates select="*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))] | comment()">
                   <xsl:with-param name="indent" select="$indent + 4"/>
                 </xsl:apply-templates>
                 <xsl:text> ]&#10;</xsl:text>
             </xsl:if>
-            <xsl:if test="(count(*[@containerField='proxy'][string-length(@USE) gt 0]) gt 0)">
+            <xsl:if test="(count(*[@containerField='proxy'][string-length(@USE) > 0]) > 0)">
                 <xsl:text>  proxy&#10;</xsl:text>
                 <xsl:apply-templates select="*[@containerField='proxy']">
                   <xsl:with-param name="indent" select="$indent + 4"/>
@@ -3709,7 +3709,7 @@ EXTERNPROTO TransmitterPdu [
             </xsl:if>
           </xsl:when>
           <!-- otherwise no proxy found -->
-          <xsl:when         test="(count(*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))]) + count(comment()) gt 0)">
+          <xsl:when         test="(count(*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))]) + count(comment()) > 0)">
             <xsl:text>  children [&#10;</xsl:text>
             <xsl:apply-templates select="*[not(@containerField='proxy') and not(local-name()='IS') and not(starts-with(local-name(),'Metadata'))] | comment()">
               <xsl:with-param name="indent" select="$indent + 4"/>
@@ -3759,7 +3759,7 @@ EXTERNPROTO TransmitterPdu [
             <!-- debug <xsl:message><xsl:value-of select="local-name()"/><xsl:text> node, processing unwrapped children...</xsl:text></xsl:message> -->
             <xsl:call-template name="print-indent"><xsl:with-param name="indent" select="$indent + 2"/></xsl:call-template>
             <!-- ensure HAnimDisplacer child nodes handled separately from children nodes -->
-            <xsl:if test="(local-name()='HAnimJoint' or local-name()='HAnimSegment') and (count(HAnimDisplacer) gt 0)">
+            <xsl:if test="(local-name()='HAnimJoint' or local-name()='HAnimSegment') and (count(HAnimDisplacer) > 0)">
                 <xsl:text>displacers [&#10;</xsl:text>
                 <xsl:apply-templates select="*[local-name()='HAnimDisplacer']"><xsl:with-param name="indent" select="$indent + 4"/></xsl:apply-templates>
                 <xsl:text>]</xsl:text>
@@ -3956,7 +3956,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:apply-templates select="HAnimJoint[@containerField='skeleton']"><xsl:with-param name="indent" select="$indent + 2"/></xsl:apply-templates>
           <xsl:text>]&#10;</xsl:text>
         </xsl:if>
-        <!-- note that joints, segments and sites should be USE nodes.  skin Shapes will USE preceding skinCoord, skinNormal definitions. -->
+        <!-- note that joints, segments and sites should be USE nodes. skin Shapes will USE preceding skinCoord, skinNormal definitions. -->
         <xsl:if test="HAnimJoint[@containerField='joints']">
           <xsl:text>joints [&#10;</xsl:text>
           <xsl:apply-templates select="HAnimJoint[@containerField='joints']"><xsl:with-param name="indent" select="$indent + 2"/></xsl:apply-templates>
@@ -3988,7 +3988,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:apply-templates select="*[@containerField='skin']"><xsl:with-param name="indent" select="$indent + 2"/></xsl:apply-templates>
           <xsl:text>]&#10;</xsl:text>
         </xsl:if>
-        <xsl:if test="*[contains(local-name(),'Coordinate')][@containerField='skinCoord'][string-length(@USE) gt 0]">
+        <xsl:if test="*[contains(local-name(),'Coordinate')][@containerField='skinCoord'][string-length(@USE) > 0]">
           <xsl:apply-templates select="*[contains(local-name(),'Coordinate')][@containerField='skinCoord']"><xsl:with-param name="indent" select="$indent + 2"/></xsl:apply-templates>
         </xsl:if>
         <xsl:if test="Normal[@containerField='skinNormal']">
@@ -4370,7 +4370,7 @@ EXTERNPROTO TransmitterPdu [
             <xsl:value-of select="local-name(.)"/>
             <xsl:text> </xsl:text>
             <xsl:text>'var' declarations of variables are not persistent</xsl:text>
-            <xsl:text> in contained ecmascript: code, values are lost after each call.  Use &lt;field&gt; definitions instead.</xsl:text>
+            <xsl:text> in contained ecmascript: code, values are lost after each call. Use &lt;field&gt; definitions instead.</xsl:text>
           </xsl:with-param>
           <xsl:with-param name="node">
             <xsl:value-of select="local-name(.)"/>
@@ -4380,7 +4380,7 @@ EXTERNPROTO TransmitterPdu [
         </xsl:call-template>
       </xsl:if>
       <xsl:if test="(contains(translate(@url,' ',''),'functioninitialize(') and not(contains(translate(@url,' ',''),'functioninitialize()'))) or
-                    (contains(translate(.   ,' ',''),'functioninitialize(') and not(contains(translate(.   ,' ',''),'functioninitialize()'))) ">
+                    (contains(translate(.  ,' ',''),'functioninitialize(') and not(contains(translate(.  ,' ',''),'functioninitialize()'))) ">
         <xsl:call-template name="output-error">
           <xsl:with-param name="errorString">
             <xsl:text>function initialize() method signature cannot include any passed parameters.</xsl:text>
@@ -4700,7 +4700,7 @@ EXTERNPROTO TransmitterPdu [
     <xsl:if test="not(@directOutput='true') and ((field/@type='SFNode') or (field/@type='MFNode'))">
         <xsl:call-template name="output-warning">
           <xsl:with-param name="warningString">
-            <xsl:text>Script attribute directOutput='true' usually needed when field(s) of type SFNode/MFNode are present.  directOutput false means Script is not allowed to modify referenced nodes.</xsl:text>
+            <xsl:text>Script attribute directOutput='true' usually needed when field(s) of type SFNode/MFNode are present. directOutput false means Script is not allowed to modify referenced nodes.</xsl:text>
           </xsl:with-param>
           <xsl:with-param name="node" select="local-name()"/>
           <xsl:with-param name="DEF"  select="@DEF"/>
@@ -4727,7 +4727,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:if test="not(starts-with(normalize-space(string(.)),'&quot;'))">
         <xsl:text>&quot;</xsl:text>
       </xsl:if>
-      <!-- CosmoPlayer url must start immediately with 'javascript:' or else it fails.  Update to handle other script language source when supported. -->
+      <!-- CosmoPlayer url must start immediately with 'javascript:' or else it fails. Update to handle other script language source when supported. -->
       <xsl:choose>
         <xsl:when test="$fileEncoding='ClassicVRML'">
           <xsl:text>ecmascript:</xsl:text>
@@ -4736,7 +4736,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:text>javascript:</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
-             <!-- 'Browser.' is stripped from 'Browser.print' entries.  Only output warning first time. -->
+             <!-- 'Browser.' is stripped from 'Browser.print' entries. Only output warning first time. -->
              <xsl:if test="contains(string(.),'Browser.print')">
                <xsl:text> // ### X3D Browser.print() not supported by all VRML97 viewers, instead simply using print()&#10;</xsl:text>
              </xsl:if>
@@ -4782,9 +4782,9 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="$LeafNodeMetadataChildFound and not($precedingLeafNodeMetadataChildFound)">
     <xsl:call-template name="output-warning">
       <xsl:with-param name="warningString">
-        <xsl:text>Metadata nodes are not supported as a child of current node </xsl:text>
+        <xsl:text>Metadata nodes are not supported as a child of </xsl:text>
         <xsl:value-of select="local-name()"/>
-        <xsl:text> in VRML97 encoding.  The child </xsl:text>
+        <xsl:text> node in VRML97 encoding. The child </xsl:text>
         <xsl:value-of select="local-name(*[starts-with(local-name(),'Metadata')][1])"/>
         <xsl:text> node has been moved to immediately follow the parent </xsl:text>
         <xsl:value-of select="local-name()"/>
@@ -5003,9 +5003,9 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="warningString">
           <xsl:value-of select="local-name()" />
           <xsl:text> behavior not guaranteed as child (or descendant) of LOD node</xsl:text>
-          <xsl:if test="ancestor::*[local-name()='LOD']/@DEF">
+          <xsl:if test="ancestor::*[local-name()='LOD'][1]/@DEF"><!-- might be more than one, report closest -->
             <xsl:text> [LOD DEF='</xsl:text>
-            <xsl:value-of select="ancestor::*[local-name()='LOD']/@DEF" />
+            <xsl:value-of select="ancestor::*[local-name()='LOD'][1]/@DEF"/><!-- might be more than one, report closest -->
             <xsl:text>'] </xsl:text>
           </xsl:if>
        </xsl:with-param>
@@ -5021,9 +5021,9 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="warningString">
           <xsl:value-of select="local-name()" />
           <xsl:text> behavior not guaranteed as child (or descendant) of Switch node</xsl:text>
-          <xsl:if test="ancestor::*[local-name()='Switch']/@DEF">
+          <xsl:if test="ancestor::*[local-name()='Switch'][1]/@DEF"><!-- might be more than one, report closest -->
             <xsl:text> [Switch DEF='</xsl:text>
-            <xsl:value-of select="ancestor::*[local-name()='Switch']/@DEF" />
+            <xsl:value-of select="ancestor::*[local-name()='Switch'][1]/@DEF" /><!-- might be more than one, report closest -->
             <xsl:text>']</xsl:text>
           </xsl:if>
        </xsl:with-param>
@@ -5038,7 +5038,8 @@ EXTERNPROTO TransmitterPdu [
   <!-- input checks for all of these nodes except Sensors -->
   <xsl:if test="contains(local-name(),'Filter') or contains(local-name(),'Interpolator') or contains(local-name(),'Sequencer') or contains(local-name(),'Toggle') or contains(local-name(),'Trigger')">
     <!-- avoid warnings when not helpful. note TouchSensor description is often used as a tooltip without corresponding event routing. -->
-    <xsl:if test="not(//ROUTE[@toNode=$DEF]) and not(local-name()='BiquadFilter') and not((local-name(..)='field') or (local-name(..)='fieldValue')) and not(IS) and not(@USE) and not ((local-name(..)='TouchSensor') and (string-length(../@DEF) = 0))">
+    <xsl:if test="not(//ROUTE[@toNode=$DEF]) and not((local-name(..)='field') or (local-name(..)='fieldValue')) and not(IS) and not(@USE) and not ((local-name(..)='TouchSensor') and (string-length(../@DEF) = 0)) and
+                  not((local-name()='Analyser') or (local-name()='AudioDestination') or (local-name()='BiquadFilter') or (local-name()='ChannelMerger') or (local-name()='ChannelSelector') or (local-name()='ChannelSplitter') or (local-name()='Convolver') or (local-name()='Delay') or (local-name()='DynamicsCompressor') or (local-name()='Gain') or (local-name()='PeriodicWave') or (local-name()='SpatialSound') or (local-name()='StreamAudioDestination') or (local-name()='WaveShaper'))">
       <xsl:call-template name="output-warning">
         <xsl:with-param name="warningString">
           <xsl:text>no ROUTE found for </xsl:text>
@@ -5055,7 +5056,8 @@ EXTERNPROTO TransmitterPdu [
   <!-- output checks -->
   <xsl:if test="contains(local-name(),'Filter') or contains(local-name(),'Interpolator') or contains(local-name(),'Sensor') or contains(local-name(),'Sequencer') or contains(local-name(),'Toggle') or contains(local-name(),'Trigger')">
     <!-- TouchSensor might be used solely for popup tooltip -->
-    <xsl:if test="not(//ROUTE[@fromNode=$DEF]) and not((local-name(..)='field') or (local-name(..)='fieldValue')) and not(IS) and not(@USE) and not((local-name()='TouchSensor') and (string-length(@description) > 0))">
+    <xsl:if test="not(//ROUTE[@fromNode=$DEF]) and not((local-name(..)='field') or (local-name(..)='fieldValue')) and not(IS) and not(@USE) and not((local-name()='TouchSensor') and (string-length(@description) > 0)) and
+                  not((local-name()='Analyser') or (local-name()='AudioDestination') or (local-name()='BiquadFilter') or (local-name()='ChannelMerger') or (local-name()='ChannelSelector') or (local-name()='ChannelSplitter') or (local-name()='Convolver') or (local-name()='Delay') or (local-name()='DynamicsCompressor') or (local-name()='Gain') or (local-name()='PeriodicWave') or (local-name()='SpatialSound') or (local-name()='StreamAudioDestination') or (local-name()='WaveShaper'))">
       <xsl:call-template name="output-warning">
         <xsl:with-param name="warningString">
           <xsl:text>no ROUTE found for </xsl:text>
@@ -5070,7 +5072,7 @@ EXTERNPROTO TransmitterPdu [
     </xsl:if>
   </xsl:if>
   <!-- Background node translation and scaling not affected by ancestor Transform (rotation modifications are honored) -->
-  <xsl:variable name="ParentTransform" select="ancestor::*[local-name()='Transform']"/>
+  <xsl:variable name="ParentTransform" select="ancestor::*[local-name()='Transform'][1]"/><!-- might be more than one, report closest -->
   <xsl:if test="(local-name()='Background') or (local-name()='TextureBackground') or (local-name()='PointLight') or (local-name()='SpotLight')">
     <xsl:if test="$ParentTransform[(@translation and @translation!='' and @translation!='0 0 0') or (@scale and @scale!='' and @scale!='1 1 1')]">
       <xsl:call-template name="output-warning">
@@ -5263,7 +5265,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="local-name()='GeoInline'">
     <xsl:call-template name="output-warning">
       <xsl:with-param name="warningString">
-        <xsl:text>GeoInline is not a legal X3D node, replace with X3D Inline.  Using VRML97 GeoInline prototype instead.</xsl:text>
+        <xsl:text>GeoInline is not a legal X3D node, replace with X3D Inline. Using VRML97 GeoInline prototype instead.</xsl:text>
      </xsl:with-param>
       <xsl:with-param name="node">
         <xsl:value-of select="local-name()" />
@@ -5276,7 +5278,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:if test="(string-length(string(@url)) > 0) and not(local-name()='Script') and not(local-name()='AudioClip') and not(local-name()='Anchor')">
     <xsl:variable name="url" select="normalize-space(string(@url))" />
 <!--<xsl:variable name="DEF" select="normalize-space(@DEF)" />-->
-    <xsl:variable name="currentParentProtoName"  select="ancestor::*[local-name()='ProtoDeclare']/@name" />
+    <xsl:variable name="currentParentProtoName"  select="ancestor::*[local-name()='ProtoDeclare'][1]/@name"/><!-- might be more than one, report closest -->
     <!-- <xsl:message><xsl:text>$currentParentProtoName =</xsl:text><xsl:value-of select="$currentParentProtoName"/><xsl:text>&#10;</xsl:text></xsl:message> -->
     <xsl:if test="preceding::*[normalize-space(string(@url))=$url] or following::*[normalize-space(string(@url))=$url]">
       <xsl:variable name="otherParentProtoName">
@@ -5848,14 +5850,17 @@ EXTERNPROTO TransmitterPdu [
                       (local-name()='colorPerVertex' and string(.)='true') or
                       (local-name()='normalPerVertex' and string(.)='true') or
                       (local-name()='solid' and string(.)='true') or
-                      (local-name()='xDimension' and (string(.)='2')) or
+                      (local-name()='xDimension' and (string(.)='0')) or
                       (local-name()='xSpacing' and (string(.)='1' or string(.)='1.0')) or
-                      (local-name()='zDimension' and (string(.)='2')) or
+                      (local-name()='zDimension' and (string(.)='0')) or
                       (local-name()='zSpacing' and (string(.)='1' or string(.)='1.0')) or
                       (local-name()='yScale' and (string(.)='1' or string(.)='1.0')) or
-                      (local-name()='height' and (string(.)='0 0 0 0' or string(.)='0.0 0.0 0.0 0.0')) or
                       (local-name()='geoGridOrigin' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
                       (local-name()='creaseAngle' and (string(.)='0' or string(.)='0.0')))) and
+                      not((local-name(..)='ElevationGrid') and
+                      (local-name()='height' and (string(.)='' or string(.)=''))) and
+                      not((local-name(..)='GeoElevationGrid') and
+                      (local-name()='height' and (string(.)='0 0' or string(.)='0.0 0.0'))) and
                       not( local-name(..)='Extrusion'	and
                       ((local-name()='beginCap' and string(.)='true') or
                       (local-name()='ccw' and string(.)='true') or
@@ -6236,7 +6241,7 @@ EXTERNPROTO TransmitterPdu [
                       ((local-name()='containerField' and string(.)='children'))) and
                       not( local-name(..)='OscillatorSource' and
                       ((local-name()='containerField' and string(.)='children') or
-                      (local-name()='frequency' and (string(.)='0' or string(.)='0.0')))) and
+                      (local-name()='frequency' and (string(.)='440' or string(.)='440.0')))) and
                       not( local-name(..)='PeriodicWave' and
                       ((local-name()='containerField' and string(.)='children') or
                       (local-name()='type' and (string(.)='SQUARE')))) and
@@ -6434,9 +6439,6 @@ EXTERNPROTO TransmitterPdu [
                        (local-name()='bboxCenter' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
                        (local-name()='bboxSize' and (string(.)='-1 -1 -1' or string(.)='-1.0 -1.0 -1.0')) or
                        (local-name()='center' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
-                       (local-name()='jointBindingPositions' and (string(.)='0 0 0' or string(.)='0.0 0.0 0.0')) or
-                       (local-name()='jointBindingRotations' and (string(.)='0 0 1 0' or string(.)='0 1 0 0' or string(.)='0.0 0.0 1.0 0.0' or string(.)='0.0 1.0 0.0 0.0')) or
-                       (local-name()='jointBindingScales' and (string(.)='1 1 1' or string(.)='1.0 1.0 1.0')) or
                        (local-name()='loa' and (string(.)='-1')) or
                        (local-name()='version' and (($isHAnim1 = true() and (string(.)='1.0' or (string-length(string(.)) = 0))) or ($isHAnim2 = true() and string(.)='2.0'))) or
                        (local-name()='skeletalConfiguration' and (string(.)='BASIC')) or
@@ -6479,7 +6481,7 @@ EXTERNPROTO TransmitterPdu [
                       (local-name()='vDimension' and (string(.)='0')) or
                       (local-name()='uOrder' and (string(.)='3')) or
                       (local-name()='vOrder' and (string(.)='3')))) and
-                      not((local-name(..)='NurbsCurve' or local-name(..)='NurbsSwungSurface') and
+                      not((local-name(..)='NurbsSweptSurface' or local-name(..)='NurbsSwungSurface') and
                       ((local-name()='ccw' or local-name()='solid') and (string(.)='true'))) and
                       not((contains(local-name(..),'SplinePositionInterpolator') or local-name(..)='SplineScalarInterpolator' or local-name(..)='SquadOrientationInterpolator') and
                       ((local-name()='closed' or local-name()='normalizeVelocity') and (string(.)='false')))" />
@@ -7087,9 +7089,9 @@ EXTERNPROTO TransmitterPdu [
           </xsl:call-template>
         </xsl:if>
         <xsl:choose>
-          <!-- output SFString.  wrap quotes if string-length 0 -->
+          <!-- output SFString. wrap quotes if string-length 0 -->
           <xsl:when test="not(.)"><xsl:value-of select="local-name()"/><xsl:text> &quot;&quot;&#10;</xsl:text></xsl:when>
-          <!-- output SFString.  no need to wrap quotes -->
+          <!-- output SFString. no need to wrap quotes -->
           <xsl:when test="starts-with(normalize-space(string(.)),'&quot;')"><xsl:value-of select="local-name()"/><xsl:text> </xsl:text><xsl:value-of select="." /><xsl:text>&#10;</xsl:text></xsl:when>
           <xsl:when test='starts-with(.,"&apos;")'><xsl:value-of select="local-name()"/><xsl:text> &quot;</xsl:text><xsl:value-of select="." /><xsl:text>&quot;&#10;</xsl:text></xsl:when>
           <!-- output SFString with wrapped quotes since it doesn't have any-->
@@ -7184,9 +7186,9 @@ EXTERNPROTO TransmitterPdu [
           </xsl:choose>
         </xsl:if>
         <xsl:choose>
-          <!-- output MFString.  wrap quotes if string-length 0 -->
+          <!-- output MFString. wrap quotes if string-length 0 -->
           <xsl:when test="not(.)"><xsl:value-of select="local-name()"/><xsl:text> [ &quot;&quot; ]&#10;</xsl:text></xsl:when>
-          <!-- output MFString.  don't modify quotes if some are there already -->
+          <!-- output MFString. don't modify quotes if some are there already -->
           <xsl:when test="contains(string(.),'&quot;')">
             <xsl:value-of select="local-name()"/><xsl:text> [ </xsl:text><xsl:value-of select="concat(normalize-space(translate(string(.),',',' ')),' ')" /><xsl:text> ] &#10;</xsl:text>
           </xsl:when> <!-- ### quotes found... -->
@@ -7258,7 +7260,7 @@ EXTERNPROTO TransmitterPdu [
         <!-- <xsl:message><xsl:text>MFString </xsl:text><xsl:value-of select="../@DEF"/><xsl:text> </xsl:text><xsl:value-of select="local-name(..)"/><xsl:text> </xsl:text><xsl:value-of select="local-name()"/><xsl:text>='</xsl:text><xsl:value-of select="."/><xsl:text>'</xsl:text></xsl:message> -->
         <xsl:choose>
           <xsl:when test="(local-name()='geoSystem') and (translate(string(.),',','')='&quot;GD&quot; &quot;WE&quot;')"><xsl:value-of select="local-name()"/><xsl:text> [ &quot;GDC&quot; ]&#10;</xsl:text></xsl:when>
-          <!-- output MFString.  wrap quotes if string-length 0 -->
+          <!-- output MFString. wrap quotes if string-length 0 -->
           <xsl:when test="not(.)"><xsl:value-of select="local-name()"/><xsl:text> [ &quot;&quot; ]&#10;</xsl:text></xsl:when>
           <!-- output MFVec3d as MFString -->
           <!-- concat(normalize-space(translate(@value,'&quot;,','  ')),' ') -->
@@ -7290,7 +7292,7 @@ EXTERNPROTO TransmitterPdu [
             <xsl:value-of select="."/>
             <xsl:text> ]&#10;</xsl:text>
           </xsl:when>
-          <!-- output MFString.  no need to wrap quotes -->
+          <!-- output MFString. no need to wrap quotes -->
           <xsl:when test="starts-with(normalize-space(string(.)),'&quot;')"><xsl:value-of select="local-name()"/><xsl:text> [ </xsl:text><xsl:value-of select="." /><xsl:text> ]&#10;</xsl:text></xsl:when>
           <xsl:when test='starts-with(.,"&apos;")'><xsl:value-of select="local-name()"/><xsl:text> [ &quot;</xsl:text><xsl:value-of select="." /><xsl:text>&quot; ]&#10;</xsl:text></xsl:when>
           <!-- handle HAnimHumanoid info embedded attribute="value" constructs -->
@@ -7419,7 +7421,7 @@ EXTERNPROTO TransmitterPdu [
     </xsl:choose>
   </xsl:if>
   <!-- attribute value validation - - - - - - - - - - - - - - - - - - -  -->
-  <!-- check quotes are matched since unterminated VRML string values cause big problems.  report error but do not append correcting quote.  -->
+  <!-- check quotes are matched since unterminated VRML string values cause big problems. report error but do not append correcting quote. -->
   <xsl:call-template name="count-quotes">
     <xsl:with-param name="inputValue" select="."/>
   </xsl:call-template>
@@ -7596,7 +7598,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:with-param name="value"><xsl:value-of select="."/></xsl:with-param>
         </xsl:call-template>
       </xsl:when>
-      <!-- SFString Enumerations.  Note some apparent mislabeling as SFString/MFstring. -->
+      <!-- SFString Enumerations. Note some apparent mislabeling as SFString/MFstring. -->
       <xsl:when test="	($parentElementName='Fog' and $attributeName='fogType') or
       			($parentElementName='FontStyle' and ($attributeName='family' or $attributeName='justify')) or
       			($parentElementName='NavigationInfo' and contains($attributeName,'type')) or
@@ -8725,7 +8727,7 @@ EXTERNPROTO TransmitterPdu [
   <xsl:param name="indent"><xsl:text>0</xsl:text></xsl:param>
   <!-- <xsl:text># $indent=</xsl:text><xsl:value-of select="$indent"/><xsl:text>### &#10;</xsl:text> -->
   <xsl:call-template name="print-indent"><xsl:with-param name="indent" select="$indent"/></xsl:call-template>
-  <!-- having trouble translating line breaks properly, changing them to spaces (which avoids runtime errors, at least).  also meta tag.  -->
+  <!-- having trouble translating line breaks properly, changing them to spaces (which avoids runtime errors, at least). also meta tag. -->
   <xsl:text># </xsl:text><xsl:value-of select="normalize-space(string(.))"/> <!-- translate(string(.),'&#10;',' ') -->
   <xsl:text>&#10;</xsl:text>
   <xsl:if test="contains(string(.),'--')">
@@ -9003,7 +9005,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="errorString">
           <xsl:text>ROUTE fromNode='"</xsl:text>
           <xsl:value-of select="@fromNode" />
-          <xsl:text>"' precedes node DEFinition.  Move the ROUTE to follow the DEF node.</xsl:text>
+          <xsl:text>"' precedes node DEFinition. Move the ROUTE to follow the DEF node.</xsl:text>
         </xsl:with-param>
         <xsl:with-param name="node">
           <xsl:text>ROUTE</xsl:text>
@@ -9016,7 +9018,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="errorString">
           <xsl:text>ROUTE toNode='"</xsl:text>
           <xsl:value-of select="@toNode" />
-          <xsl:text>"' precedes node DEFinition.  Move the ROUTE to follow the DEF node.</xsl:text>
+          <xsl:text>"' precedes node DEFinition. Move the ROUTE to follow the DEF node.</xsl:text>
         </xsl:with-param>
         <xsl:with-param name="node">
           <xsl:text>ROUTE</xsl:text>
@@ -9390,15 +9392,15 @@ EXTERNPROTO TransmitterPdu [
       <xsl:choose>
         <xsl:when test="($nodeName='Script')">
            <!-- assumes missing field definitions diagnosed elsewhere -->
-           <xsl:value-of select="preceding::Script[@DEF=$DEFname]/field[($fieldName=@name) or ($fieldName=concat('set_',@name)) or ($fieldName=concat(@name,'_changed'))]/@type"/>
+           <xsl:value-of select="preceding::Script[@DEF=$DEFname]/field[($fieldName=@name) or ($fieldName=concat('set_',@name)) or ($fieldName=concat(@name,'_changed'))][1]/@type"/>
         </xsl:when>
         <!-- ProtoInstance with matching ProtoDeclare -->
         <xsl:when test="($nodeName='ProtoDeclare')">
-            <xsl:value-of select="preceding::ProtoDeclare[@name=$ProtoName]/ProtoInterface/field[($fieldName=@name) or ($fieldName=concat('set_',@name)) or ($fieldName=concat(@name,'_changed'))]/@type"/>
+            <xsl:value-of select="preceding::ProtoDeclare[@name=$ProtoName]/ProtoInterface/field[($fieldName=@name) or ($fieldName=concat('set_',@name)) or ($fieldName=concat(@name,'_changed'))][1]/@type"/>
         </xsl:when>
         <!-- ProtoInstance with matching ExternProtoDeclare -->
         <xsl:when test="($nodeName='ExternProtoDeclare')">
-            <xsl:value-of select="preceding::ExternProtoDeclare[@name=$ProtoName]/field[($fieldName=@name) or ($fieldName=concat('set_',@name)) or ($fieldName=concat(@name,'_changed'))]/@type"/>
+            <xsl:value-of select="preceding::ExternProtoDeclare[@name=$ProtoName]/field[($fieldName=@name) or ($fieldName=concat('set_',@name)) or ($fieldName=concat(@name,'_changed'))][1]/@type"/>
         </xsl:when>
         <xsl:when test="(($shortFieldName='bboxCenter') or ($shortFieldName='bboxSize'))">
           <xsl:text>SFVec3f</xsl:text>
@@ -9490,7 +9492,10 @@ EXTERNPROTO TransmitterPdu [
         <xsl:when test="(contains($nodeName,'Sequencer')) and (($shortFieldName='previous') or ($shortFieldName='next'))">
           <xsl:text>SFBool</xsl:text>
         </xsl:when>
-        <xsl:when test="($nodeName='BooleanSequencer') and (($shortFieldName='keyValue') or ($shortFieldName='value'))">
+        <xsl:when test="($nodeName='BooleanSequencer') and ($shortFieldName='value')">
+          <xsl:text>SFBool</xsl:text>
+        </xsl:when>
+        <xsl:when test="($nodeName='BooleanSequencer') and ($shortFieldName='keyValue')">
           <xsl:text>MFBool</xsl:text>
         </xsl:when>
         <xsl:when test="($nodeName='HAnimHumanoid') and ($shortFieldName='motionsEnabled')">
@@ -9848,7 +9853,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:when test="($nodeName='IndexedFaceSet') and (($shortFieldName='convex') or ($shortFieldName='normalPerVertex'))">
           <xsl:text>SFBool</xsl:text>
         </xsl:when>
-        <xsl:when test="($nodeName='IndexedFaceSet') and (($shortFieldName='color') or ($shortFieldName='coord') or ($shortFieldName='texCoord') or ($shortFieldName='fogCoord'))">
+        <xsl:when test="(($nodeName='IndexedFaceSet') or contains($nodeName,'QuadSet')) and (($shortFieldName='color') or ($shortFieldName='coord') or ($shortFieldName='texCoord') or ($shortFieldName='fogCoord'))">
           <xsl:text>SFNode</xsl:text>
         </xsl:when>
         <xsl:when test="($nodeName='TextureProperties') and (($shortFieldName='textureProperties'))">
@@ -10202,7 +10207,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:when test="($shortFieldName = 'normal')">
           <xsl:text>SFNode</xsl:text>
         </xsl:when>
-        <xsl:when test="($nodeName='Appearance') and (contains($shortFieldName,'material') or contains($shortFieldName,'fillProperties') or contains($shortFieldName,'lineProperties') or contains($shortFieldName,'texture'))">
+        <xsl:when test="($nodeName='Appearance') and (contains($shortFieldName,'material') or contains($shortFieldName,'fillProperties') or contains($shortFieldName,'lineProperties') or contains($shortFieldName,'texture') or contains($shortFieldName,'textureTransform'))">
           <xsl:text>SFNode</xsl:text>
         </xsl:when>
         <xsl:otherwise>
@@ -10259,7 +10264,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:with-param name="errorString">
         <xsl:text>USE attribute (USE='</xsl:text>
           <xsl:value-of select="@USE"/>
-          <xsl:text>') is not valid X3D for fieldValue tags.  Edit source, rewrite as </xsl:text>
+          <xsl:text>') is not valid X3D for fieldValue tags. Edit source, rewrite as </xsl:text>
           <xsl:text disable-output-escaping="yes"><![CDATA[<]]></xsl:text>
           <xsl:text>fieldValue name='</xsl:text>
           <xsl:value-of select="@name"/>
@@ -10639,9 +10644,9 @@ EXTERNPROTO TransmitterPdu [
       		($EPnodeType = 'SFString')
                      ">
         <xsl:choose>
-          <!-- output SFString.  wrap quotes (null string) if string-length 0 -->
+          <!-- output SFString. wrap quotes (null string) if string-length 0 -->
           <xsl:when test="not(@value)"><xsl:text> &quot;&quot;&#10;</xsl:text></xsl:when>
-          <!-- output SFString.  no need to wrap quotes -->
+          <!-- output SFString. no need to wrap quotes -->
           <xsl:when test="starts-with(normalize-space(@value),'&quot;')"><xsl:text> </xsl:text><xsl:value-of select="@value" /><xsl:text>&#10;</xsl:text></xsl:when>
           <xsl:when test='starts-with(@value,"&apos;")'><xsl:text> &quot;</xsl:text><xsl:value-of select="@value" /><xsl:text>&quot;&#10;</xsl:text></xsl:when>
           <!-- output SFString with wrapped quotes since it doesn't have any-->
@@ -10671,9 +10676,9 @@ EXTERNPROTO TransmitterPdu [
       				    local-name()='type')">
         <!-- <xsl:text> ### inputString &quot;</xsl:text><xsl:value-of select="@value"/><xsl:text>&quot;&#10;</xsl:text> -->
         <xsl:choose>
-          <!-- output MFString.  wrap quotes if string-length 0 -->
+          <!-- output MFString. wrap quotes if string-length 0 -->
           <xsl:when test="not(@value)"><xsl:text> [ &quot;&quot; ]&#10;</xsl:text></xsl:when>
-          <!-- output MFString.  don't modify quotes if some are there already -->
+          <!-- output MFString. don't modify quotes if some are there already -->
           <xsl:when test="contains(string(@value),'&quot;')">
             <xsl:text> [ </xsl:text><xsl:value-of select="translate(@value,',',' ')" /><xsl:text> ]### quotes found...&#10;</xsl:text>
           </xsl:when> <!--  -->
@@ -10737,9 +10742,9 @@ EXTERNPROTO TransmitterPdu [
           </xsl:call-template>
         </xsl:if>
         <xsl:choose>
-          <!-- output MFString.  wrap quotes if string-length 0 -->
+          <!-- output MFString. wrap quotes if string-length 0 -->
           <xsl:when test="not(@value)"><xsl:text> [ &quot;&quot; ]&#10;</xsl:text></xsl:when>
-          <!-- output MFString.  no need to wrap quotes -->
+          <!-- output MFString. no need to wrap quotes -->
           <xsl:when test="starts-with(normalize-space(@value),'&quot;')"><xsl:text> [ </xsl:text><xsl:value-of select="@value" /><xsl:text> ]&#10;</xsl:text></xsl:when>
           <xsl:when test='starts-with(@value,"&apos;")'><xsl:text> [ &quot;</xsl:text><xsl:value-of select="@value" /><xsl:text>&quot; ]&#10;</xsl:text></xsl:when>
           <!-- output MFString with wrapped quotes since it doesn't have any-->
@@ -10927,7 +10932,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:with-param name="DEF"  select="../@DEF"/><!-- Script only -->
     </xsl:call-template>
   </xsl:if>
-  <!-- value not initialized.  no error reported on null string, or if contained comment might explain it. -->
+  <!-- value not initialized. no error reported on null string, or if contained comment might explain it. -->
   <xsl:if test="(@accessType='initializeOnly' or @accessType='inputOutput') and not(@type='SFString' or @type='SFNode' or starts-with(@type,'MF')) and not(@value) and not(comment()) and not(../IS/connect[@nodeField=$fieldName]) and not(local-name(..)='ExternProtoDeclare')">
     <xsl:call-template name="output-warning">
       <xsl:with-param name="warningString">
@@ -10960,7 +10965,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:value-of select="@name"/>
         <xsl:text>' with @accessType='</xsl:text>
         <xsl:value-of select="@accessType"/>
-        <xsl:text>'.  (Authors can silence this warning by inserting a comment.)</xsl:text>
+        <xsl:text>'. (Authors can silence this warning by inserting a comment.)</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node">
         <xsl:text>field '</xsl:text>
@@ -11033,7 +11038,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:with-param name="errorString">
         <xsl:text>IS attribute (IS='</xsl:text>
           <xsl:value-of select="@IS"/>
-          <xsl:text>' = defName.fieldName) is not valid X3D.  Edit source, rewrite using IS/connect tags.</xsl:text>
+          <xsl:text>' = defName.fieldName) is not valid X3D. Edit source, rewrite using IS/connect tags.</xsl:text>
       </xsl:with-param>
       <xsl:with-param name="node">
         <xsl:text>field '</xsl:text>
@@ -11055,7 +11060,7 @@ EXTERNPROTO TransmitterPdu [
       <xsl:with-param name="errorString">
         <xsl:text>USE attribute (USE='</xsl:text>
           <xsl:value-of select="@USE"/>
-          <xsl:text>') is not valid X3D for field tags.  Edit source, rewrite as </xsl:text>
+          <xsl:text>') is not valid X3D for field tags. Edit source, rewrite as </xsl:text>
           <xsl:text disable-output-escaping="yes"><![CDATA[<]]></xsl:text>
           <xsl:text>field name='</xsl:text>
           <xsl:value-of select="@name"/>
@@ -11105,7 +11110,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="warningString">
           <xsl:text>Script field '</xsl:text>
           <xsl:value-of select="@name" />
-          <xsl:text>' has accessType 'inputOutput' (exposedField), which is only allowed in X3D Script node, not VRML97 Script node.  Using exposedField anyway, may cause errors.</xsl:text>
+          <xsl:text>' has accessType 'inputOutput' (exposedField), which is only allowed in X3D Script node, not VRML97 Script node. Using exposedField anyway, may cause errors.</xsl:text>
         </xsl:with-param>
         <xsl:with-param name="node">
           <xsl:text>field '</xsl:text>
@@ -11436,7 +11441,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:value-of select="@type" />
         <xsl:text> with @value="</xsl:text>
         <xsl:value-of select="$value" />
-        <xsl:text>" is not valid X3D for field tags.  Edit source, rewrite as </xsl:text>
+        <xsl:text>" is not valid X3D for field tags. Edit source, rewrite as </xsl:text>
           <xsl:text disable-output-escaping="yes"><![CDATA[<]]></xsl:text>
           <xsl:text>field name='</xsl:text>
           <xsl:value-of select="@name"/>
@@ -11731,7 +11736,7 @@ EXTERNPROTO TransmitterPdu [
     <xsl:when test="((@accessType='inputOnly') or (@accessType='outputOnly'))"><!-- no value required --></xsl:when>
     <!-- wrap SFStrings in quotes -->
     <xsl:when test="@type='SFString' and @value"><xsl:text> &quot;</xsl:text><xsl:value-of select="$value" /><xsl:text>&quot;</xsl:text></xsl:when>
-    <!-- output MFString.  wrap quotes if string-length 0 or 1 -->
+    <!-- output MFString. wrap quotes if string-length 0 or 1 -->
     <xsl:when test="(@type='MFString' and
                      (string-length($value)=0 or string-length($value)=1))"><xsl:text> [&#10;&quot;</xsl:text><xsl:value-of select="$value" /><xsl:text>&quot;&#10;]</xsl:text></xsl:when>
     <xsl:when test="(@type='MFString' and starts-with($value,'&quot;'))"><xsl:text> [&#10;</xsl:text><xsl:value-of select="$value" /><xsl:text>&#10;]</xsl:text></xsl:when>
@@ -12013,7 +12018,7 @@ EXTERNPROTO TransmitterPdu [
 <xsl:text>][&#10;</xsl:text>
 <!-- <xsl:call-template name="print-indent"><xsl:with-param name="indent" select="$indent"/></xsl:call-template> <xsl:text>  </xsl:text>-->
 <xsl:choose>
-  <!-- output url MFString.  wrap quotes if necessary -->
+  <!-- output url MFString. wrap quotes if necessary -->
   <xsl:when test="not(@url)"><xsl:text>&quot;&quot; ### error, no URL(s) provided for EXTERNPROTO&#10;</xsl:text></xsl:when>
   <xsl:when test="string-length($url)=1"><xsl:text>&quot;</xsl:text><xsl:value-of select="@url" /><xsl:text>&quot;</xsl:text></xsl:when>
   <xsl:when test="starts-with(normalize-space(@url),'&quot;')"><xsl:value-of select="@url" /></xsl:when>
@@ -12162,7 +12167,7 @@ EXTERNPROTO TransmitterPdu [
       </xsl:with-param>
     </xsl:call-template>
   </xsl:if>
-  <!-- check quotes are matched since unterminated VRML string values cause big problems.  report error but do not append correcting quote.  -->
+  <!-- check quotes are matched since unterminated VRML string values cause big problems. report error but do not append correcting quote. -->
   <xsl:call-template name="count-quotes">
     <xsl:with-param name="inputValue" select="@url"/>
   </xsl:call-template>
@@ -12241,7 +12246,7 @@ EXTERNPROTO TransmitterPdu [
   </xsl:otherwise>
 </xsl:choose>
 <xsl:text>] {&#10;</xsl:text>
-<!-- now handle ProtoBody embedded content.  recurse on non-field-tag children. -->
+<!-- now handle ProtoBody embedded content. recurse on non-field-tag children. -->
 <xsl:choose>
   <xsl:when test="ProtoBody">
     <xsl:if test="count(ProtoBody/*[(local-name()!='ROUTE') and (local-name()!='ProtoDeclare') and (local-name()!='ExternProtoDeclare') and not(comment())]) > 1">
@@ -12279,7 +12284,7 @@ EXTERNPROTO TransmitterPdu [
 <xsl:variable name="nodeReference"><xsl:value-of select="@node"/></xsl:variable>
 <xsl:call-template name="output-error">
   <xsl:with-param name="errorString">
-    <xsl:text>USE element not allowed, utilize the USE attribute in a matching node instead.  Example: </xsl:text>
+    <xsl:text>USE element not allowed, utilize the USE attribute in a matching node instead. Example: </xsl:text>
     <xsl:text disable-output-escaping="yes"><![CDATA[<]]></xsl:text>
     <xsl:choose>
       <xsl:when test="//*[(@DEF=$nodeReference)]">
@@ -12503,7 +12508,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="DEF"  select="../@DEF"/>
       </xsl:call-template>
   </xsl:if>
-  <!-- count commas.  stronger checks needed.  no check yet for commas only between atomic types in an array -->
+  <!-- count commas. stronger checks needed. no check yet for commas only between atomic types in an array -->
   <xsl:variable name="normalizeSpaceCommasRetained">
     <!-- concat ' ' ensures minimum value of 1 -->
     <xsl:value-of select="normalize-space(concat(' ',$value))"/>
@@ -12682,7 +12687,7 @@ EXTERNPROTO TransmitterPdu [
         -->
     </xsl:when>
     <xsl:when test="$type='MFString'">
-      <!-- no checks.  Enumeration-value tests are only performed for native VRML attributes since prototypes may override them. -->
+      <!-- no checks. Enumeration-value tests are only performed for native VRML attributes since prototypes may override them. -->
     </xsl:when>
     <!-- test numeric attribute contents -->
     <xsl:otherwise>
@@ -12903,7 +12908,7 @@ EXTERNPROTO TransmitterPdu [
     </xsl:when>
     <!-- arrays -->
     <xsl:when test="starts-with($type,'MF') and not($type='MFString')">
-      <!-- count commas.  TODO:  stronger checks needed -->
+      <!-- count commas. TODO:  stronger checks needed -->
       <xsl:if test="1*($commaCount - $finalCommaCount + 1) > ($numberOfValues)">
         <xsl:call-template name="output-error">
           <xsl:with-param name="errorString">
@@ -13056,7 +13061,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:with-param name="DEF"  select="../@DEF"/>
         </xsl:call-template>
       </xsl:if>
-      <!-- count commas.  TODO:  stronger checks needed -->
+      <!-- count commas. TODO:  stronger checks needed -->
       <xsl:if test="2*($commaCount - $finalCommaCount + 1) > ($numberOfValues)">
         <xsl:call-template name="output-error">
           <xsl:with-param name="errorString">
@@ -13094,7 +13099,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:with-param name="DEF"  select="../@DEF"/>
         </xsl:call-template>
       </xsl:if>
-      <!-- count commas.  stronger checks needed -->
+      <!-- count commas. stronger checks needed -->
       <xsl:if test="3*($commaCount - $finalCommaCount + 1) > ($numberOfValues)">
         <xsl:call-template name="output-error">
           <xsl:with-param name="errorString">
@@ -13132,7 +13137,7 @@ EXTERNPROTO TransmitterPdu [
           <xsl:with-param name="DEF"  select="../@DEF"/>
         </xsl:call-template>
       </xsl:if>
-      <!-- count commas.  stronger checks needed -->
+      <!-- count commas. stronger checks needed -->
       <xsl:if test="4*($commaCount - $finalCommaCount + 1) > ($numberOfValues)">
         <xsl:call-template name="output-error">
           <xsl:with-param name="errorString">
@@ -13162,7 +13167,7 @@ EXTERNPROTO TransmitterPdu [
   		 contains($blankedValue,' -7') or
   		 contains($blankedValue,' -8') or
   		 contains($blankedValue,' -9'))">
-  		 <!-- checks to see if negative scientific exponential is in same value token.  not complete, some errors can slip through if first E- instance is correct.  -->
+  		 <!-- checks to see if negative scientific exponential is in same value token. not complete, some errors can slip through if first E- instance is correct. -->
     <xsl:call-template name="output-error">
       <xsl:with-param name="errorString">
         <xsl:value-of select="$type"/>
@@ -13194,7 +13199,7 @@ EXTERNPROTO TransmitterPdu [
   		 (contains($blankedValue,' 7') and not(contains(translate(substring-before(substring-after($blankedValue,' 7'),' '),'e','E'),'E-'))) or
   		 (contains($blankedValue,' 8') and not(contains(translate(substring-before(substring-after($blankedValue,' 8'),' '),'e','E'),'E-'))) or
   		 (contains($blankedValue,' 9') and not(contains(translate(substring-before(substring-after($blankedValue,' 9'),' '),'e','E'),'E-'))))">
-  		 <!-- checks to see if negative scientific exponential is in same value token.  not complete, some errors can slip through if first E- instance is correct.  -->
+  		 <!-- checks to see if negative scientific exponential is in same value token. not complete, some errors can slip through if first E- instance is correct. -->
     <xsl:call-template name="output-error">
       <xsl:with-param name="errorString">
         <xsl:value-of select="$type"/>
@@ -13398,7 +13403,7 @@ EXTERNPROTO TransmitterPdu [
     <xsl:text>&#10;</xsl:text>
   </xsl:message>
   -->
-  <!-- no need to quote meta tag content, unless multiple occurences are there.  (newbie mistake) -->
+  <!-- no need to quote meta tag content, unless multiple occurences are there. (newbie mistake) -->
   <xsl:if test="(local-name()='meta') and ($sizeQuoteCount = 2) and (starts-with(normalize-space($inputString),'&quot;'))">
     <xsl:call-template name="output-hint">
       <xsl:with-param name="hintString">
@@ -13788,7 +13793,7 @@ EXTERNPROTO TransmitterPdu [
     <xsl:text>[hint] </xsl:text>
     <xsl:value-of select="$hintString" disable-output-escaping="yes"/>
     <!-- no further output needed for meta error/warning/hint, otherwise indicate location -->
-    <xsl:if test="(string-length($node) > 0) and local-name()!='X3D' and (local-name()!='meta') and (local-name()!='ROUTE')">
+    <xsl:if test="(string-length($node) > 0) and local-name()!='X3D' and (local-name()!='head') and (local-name()!='component') and (local-name()!='unit') and (local-name()!='meta') and (local-name()!='ROUTE')">
       <xsl:text> [</xsl:text>
       <xsl:choose>
         <xsl:when test="$DEF">
@@ -14185,6 +14190,7 @@ EXTERNPROTO TransmitterPdu [
 		or //MetadataInteger
 		or //MetadataSet
 		or //MetadataString
+		or //WorldInfo
 		or //ROUTE
 		or //X3D">
         <xsl:text>Core</xsl:text>
@@ -14201,7 +14207,7 @@ EXTERNPROTO TransmitterPdu [
         <xsl:with-param name="warningString">
           <xsl:text disable-output-escaping="yes">&lt;X3D profile='</xsl:text>
           <xsl:value-of select="/X3D/@profile"/>
-          <xsl:text disable-output-escaping="yes">'&gt; is not supported by all browsers.  Consider using Immersive or lower profile, adding component tag(s) if needed.</xsl:text>
+          <xsl:text disable-output-escaping="yes">'&gt; is not supported by all browsers. Consider using Immersive or lower profile, adding component tag(s) if needed.</xsl:text>
         </xsl:with-param>
         <xsl:with-param name="node">
           <xsl:text>root X3D</xsl:text>
@@ -14221,7 +14227,7 @@ EXTERNPROTO TransmitterPdu [
               <xsl:value-of select="/X3D/@profile"/>
               <xsl:text disable-output-escaping="yes">'&gt; is not sufficient, since computed profile='</xsl:text>
               <xsl:value-of select="$computedProfile"/>
-              <xsl:text>' for this scene.  Raise profile, or consider adding component tags.</xsl:text>
+              <xsl:text>' for this scene. Raise profile, or consider adding component tags.</xsl:text>
             </xsl:with-param>
             <xsl:with-param name="node">
               <xsl:text>root X3D</xsl:text>

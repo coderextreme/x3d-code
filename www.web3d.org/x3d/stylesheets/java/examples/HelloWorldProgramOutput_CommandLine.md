@@ -9,7 +9,7 @@ Library (X3DJSAIL) |
 | `reference` | [https://www.web3d.org/specifications/java/X3DJSAIL.html](https://www.web3d.org/specifications/java/X3DJSAIL.html) |
 | `generator` | HelloWorldProgramOutput.java |
 | `created` | 6 September 2016 |
-| `modified` | 24 September 2023 |
+| `modified` | 21 November 2023 |
 | `generator` | X3D Java Scene Access Interface Library (X3DJSAIL) |
 | `generator` | [https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java](https://www.web3d.org/specifications/java/examples/HelloWorldProgram.java) |
 | `generator` | Netbeans https://www.netbeans.org |
